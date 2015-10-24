@@ -22,13 +22,5 @@
     "psr-4": {
       "FireGento\\MageSetup\\": ""
     }
-  },
-  "extra": {
-    "map": [
-      [
-        "*",
-        "FireGento/MageSetup"
-      ]
-    ]
   }
 }
