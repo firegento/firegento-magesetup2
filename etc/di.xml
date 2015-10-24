@@ -35,10 +35,10 @@
     </type>
 
     <type name="Magento\Framework\Pricing\Render">
-        <plugin name="mageSetupAddPriceHints" type="FireGento\MageSetup\Model\Plugin\AroundRenderPlugin" sortOrder="1"/>
+        <plugin name="mageSetupAddPriceHints" type="FireGento\MageSetup\Plugin\Pricing\AroundRenderPlugin" sortOrder="1"/>
     </type>
 
     <type name="Magento\CheckoutAgreements\Model\Agreement">
-        <plugin name="mageSetupFilterAgreementContent" type="FireGento\MageSetup\Model\Plugin\AfterGetContent" sortOrder="1"/>
+        <plugin name="mageSetupFilterAgreementContent" type="FireGento\MageSetup\Plugin\Agreements\AfterGetContent" sortOrder="1"/>
     </type>
 </config>
