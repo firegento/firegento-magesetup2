@@ -35,13 +35,19 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                 $node = $childNode->nodeName;
                 switch ($node) {
                     case 'system_config':
-                        $result[$scope]['system_config'] = $this->getSystemConfig($childNode);
+                        $result[$scope]['system_config'] = $this->getOneTierConfig($childNode);
                         break;
                     case 'tax':
                         $result[$scope]['tax'] = $this->getTaxConfig($childNode);
                         break;
                     case 'agreements':
-                        $result[$scope]['agreements'] = $this->getAgreementsConfig($childNode);
+                        $result[$scope]['agreements'] = $this->getTwoTierConfig($childNode);
+                        break;
+                    case 'pages':
+                        $result[$scope]['pages'] = $this->getTwoTierConfig($childNode);
+                        break;
+                    case 'blocks':
+                        $result[$scope]['blocks'] = $this->getTwoTierConfig($childNode);
                         break;
                 }
             }
@@ -54,7 +60,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
      * @param \DOMElement $node
      * @return array
      */
-    public function getSystemConfig(\DOMElement $node)
+    public function getOneTierConfig(\DOMElement $node)
     {
         $data = [];
 
@@ -120,7 +126,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
      * @param \DOMElement $node
      * @return array
      */
-    public function getAgreementsConfig(\DOMElement $node)
+    public function getTwoTierConfig(\DOMElement $node)
     {
         $data = [];
 
@@ -141,7 +147,6 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                 $data[$childNode->nodeName][$subChildNode->nodeName] = $subChildNode->nodeValue;
             }
         }
-
 
         return $data;
     }

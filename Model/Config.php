@@ -143,6 +143,30 @@ class Config implements ConfigInterface
     }
 
     /**
+     * @return array|bool
+     */
+    public function getCmsPages()
+    {
+        if (isset($this->loadedConfig[$this->getCountry()]['pages'])) {
+            return $this->loadedConfig[$this->getCountry()]['pages'];
+        }
+
+        return false;
+    }
+
+    /**
+     * @return array|bool
+     */
+    public function getCmsBlocks()
+    {
+        if (isset($this->loadedConfig[$this->getCountry()]['blocks'])) {
+            return $this->loadedConfig[$this->getCountry()]['blocks'];
+        }
+
+        return false;
+    }
+
+    /**
      * Initialize the configuration
      */
     private function initialize()

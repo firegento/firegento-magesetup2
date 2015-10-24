@@ -24,10 +24,12 @@ class AgreementsSubProcessor extends AbstractSubProcessor
      * @var \Magento\Framework\Module\Dir\Reader
      */
     private $moduleReader;
+
     /**
      * @var \Magento\CheckoutAgreements\Model\AgreementFactory
      */
     private $agreementFactory;
+
     /**
      * @var \Magento\CheckoutAgreements\Model\CheckoutAgreementsRepository
      */

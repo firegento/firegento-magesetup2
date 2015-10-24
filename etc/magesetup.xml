@@ -148,6 +148,50 @@
                 <filename>revocation.html</filename>
             </revocation>
         </agreements>
+        <pages>
+            <magesetup_404>
+                <filename>404.html</filename>
+            </magesetup_404>
+            <magesetup_imprint>
+                <filename>imprint.html</filename>
+            </magesetup_imprint>
+            <magesetup_payment>
+                <filename>payment.html</filename>
+            </magesetup_payment>
+            <magesetup_privacy>
+                <filename>privacy.html</filename>
+            </magesetup_privacy>
+            <magesetup_shipping>
+                <filename>shipping.html</filename>
+                <config_option>catalog/price/cms_page_shipping</config_option>
+            </magesetup_shipping>
+            <magesetup_order>
+                <filename>order.html</filename>
+            </magesetup_order>
+            <magesetup_business_terms>
+                <filename>business_terms.html</filename>
+            </magesetup_business_terms>
+            <magesetup_revocation>
+                <filename>revocation.html</filename>
+            </magesetup_revocation>
+            <magesetup_revocation_form>
+                <filename>revocation_form.html</filename>
+            </magesetup_revocation_form>
+        </pages>
+        <blocks>
+            <business_terms>
+                <identifier>business_terms</identifier>
+                <filename>business_terms.html</filename>
+            </business_terms>
+            <revocation>
+                <identifier>revocation</identifier>
+                <filename>revocation.html</filename>
+            </revocation>
+            <revocation_form>
+                <identifier>revocation_form</identifier>
+                <filename>revocation_form.html</filename>
+            </revocation_form>
+        </blocks>
     </setup>
     <setup name="at"/>
     <setup name="ch"/>
