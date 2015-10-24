@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 FireGento e.V. - All rights reserved.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<magesetup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../FireGento/MageSetup/etc/magesetup.xsd">
+    <setup name="default">
+        <system_config>
+            <!-- general config -->
+            <customer__create_account__confirm>0</customer__create_account__confirm>
+            <newsletter__subscription__confirm>1</newsletter__subscription__confirm>
+            <general__region__state_required>CA,US</general__region__state_required>
+            <general__locale__firstday>1</general__locale__firstday>
+            <general__region__display_all>0</general__region__display_all>
+            <sales__reorder__allow>0</sales__reorder__allow>
+
+            <!-- general tax config -->
+            <tax__calculation__based_on>billing</tax__calculation__based_on>
+            <tax__calculation__price_includes_tax>1</tax__calculation__price_includes_tax>
+            <tax__calculation__shipping_includes_tax>1</tax__calculation__shipping_includes_tax>
+            <tax__calculation__apply_after_discount>1</tax__calculation__apply_after_discount>
+            <tax__calculation__discount_tax>1</tax__calculation__discount_tax>
+            <tax__display__type>2</tax__display__type>
+            <tax__display__shipping>2</tax__display__shipping>
+            <tax__cart_display__price>2</tax__cart_display__price>
+            <tax__cart_display__subtotal>2</tax__cart_display__subtotal>
+            <tax__cart_display__shipping>2</tax__cart_display__shipping>
+            <tax__cart_display__grandtotal>0</tax__cart_display__grandtotal>
+            <tax__cart_display__full_summary>1</tax__cart_display__full_summary>
+            <tax__cart_display__zero_tax>1</tax__cart_display__zero_tax>
+            <tax__sales_display__price>2</tax__sales_display__price>
+            <tax__sales_display__subtotal>2</tax__sales_display__subtotal>
+            <tax__sales_display__shipping>2</tax__sales_display__shipping>
+            <tax__sales_display__grandtotal>0</tax__sales_display__grandtotal>
+            <tax__sales_display__full_summary>1</tax__sales_display__full_summary>
+            <tax__sales_display__zero_tax>1</tax__sales_display__zero_tax>
+        </system_config>
+    </setup>
+    <setup name="de">
+        <system_config>
+            <general__country__default>DE</general__country__default>
+            <tax__defaults__country>DE</tax__defaults__country>
+            <tax__defaults__region>79</tax__defaults__region>
+            <tax__defaults__postcode>12345</tax__defaults__postcode>
+            <shipping__origin__country_id>DE</shipping__origin__country_id>
+            <shipping__origin__region_id>79</shipping__origin__region_id>
+            <shipping__origin__postcode>12345</shipping__origin__postcode>
+            <shipping__origin__city>Musterstadt</shipping__origin__city>
+        </system_config>
+        <tax>
+            <tax_calculation_rules>
+                <products_full_tax tax_rate="tax_calculation_rate_1"
+                                   tax_customer_class="customers_end_users,customers_companies"
+                                   tax_product_class="products_rate_1,shipping_rate_1">
+                    <code>Kunden kaufen vollbesteuerte Artikel</code>
+                    <priority>1</priority>
+                    <position>0</position>
+                    <calculate_subtotal>0</calculate_subtotal>
+                </products_full_tax>
+                <products_reduced_tax tax_rate="tax_calculation_rate_2"
+                                      tax_customer_class="customers_end_users,customers_companies"
+                                      tax_product_class="products_rate_2,shipping_rate_2">
+                    <code>Kunden kaufen ermäßigtbesteuerte Artikel</code>
+                    <priority>2</priority>
+                    <position>0</position>
+                    <calculate_subtotal>0</calculate_subtotal>
+                </products_reduced_tax>
+                <products_no_vat tax_rate="tax_calculation_rate_3"
+                                 tax_customer_class="customers_companies_no_vat"
+                                 tax_product_class="products_rate_1,products_rate_2,shipping_rate_1,shipping_rate_2">
+                    <code>Ust.-befreite Unternehmen kaufen voll- und ermäßigtbesteuerte Artikel</code>
+                    <priority>3</priority>
+                    <position>0</position>
+                    <calculate_subtotal>0</calculate_subtotal>
+                </products_no_vat>
+            </tax_calculation_rules>
+            <tax_classes>
+                <products_rate_1>
+                    <class_id>1</class_id>
+                    <class_name>Vollbesteuerte Artikel</class_name>
+                    <class_type>PRODUCT</class_type>
+                </products_rate_1>
+                <products_rate_2>
+                    <class_id>2</class_id>
+                    <class_name>Ermäßigtbesteuerte Artikel</class_name>
+                    <class_type>PRODUCT</class_type>
+                </products_rate_2>
+                <shipping_rate_1>
+                    <class_id>3</class_id>
+                    <class_name>Vollbesteuerter Versand</class_name>
+                    <class_type>PRODUCT</class_type>
+                </shipping_rate_1>
+                <shipping_rate_2>
+                    <class_id>4</class_id>
+                    <class_name>Ermäßigtbesteuerter Versand</class_name>
+                    <class_type>PRODUCT</class_type>
+                </shipping_rate_2>
+                <customers_end_users>
+                    <class_id>5</class_id>
+                    <class_name>Endkunden</class_name>
+                    <class_type>CUSTOMER</class_type>
+                </customers_end_users>
+                <customers_companies>
+                    <class_id>6</class_id>
+                    <class_name>USt.-pflichtige Unternehmen</class_name>
+                    <class_type>CUSTOMER</class_type>
+                </customers_companies>
+                <customers_companies_no_vat>
+                    <class_id>7</class_id>
+                    <class_name>USt.-befreite Unternehmen</class_name>
+                    <class_type>CUSTOMER</class_type>
+                </customers_companies_no_vat>
+            </tax_classes>
+            <tax_calculation_rates>
+                <tax_calculation_rate_1>
+                    <tax_region_id>0</tax_region_id>
+                    <tax_postcode>*</tax_postcode>
+                    <label>USt.</label>
+                    <rate>19</rate>
+                </tax_calculation_rate_1>
+                <tax_calculation_rate_2>
+                    <tax_region_id>0</tax_region_id>
+                    <tax_postcode>*</tax_postcode>
+                    <label>reduzierte USt.</label>
+                    <rate>7</rate>
+                </tax_calculation_rate_2>
+                <tax_calculation_rate_3>
+                    <tax_region_id>0</tax_region_id>
+                    <tax_postcode>*</tax_postcode>
+                    <label>ohne USt.</label>
+                    <rate>0</rate>
+                </tax_calculation_rate_3>
+            </tax_calculation_rates>
+        </tax>
+        <agreements>
+            <business_terms>
+                <is_active>1</is_active>
+                <is_html>1</is_html>
+                <mode>1</mode>
+                <filename>business_terms.html</filename>
+            </business_terms>
+            <revocation>
+                <is_active>1</is_active>
+                <is_html>1</is_html>
+                <mode>1</mode>
+                <filename>revocation.html</filename>
+            </revocation>
+        </agreements>
+    </setup>
+    <setup name="at"/>
+    <setup name="ch"/>
+    <setup name="es"/>
+    <setup name="fr"/>
+    <setup name="gb"/>
+    <setup name="it"/>
+    <setup name="nl"/>
+    <setup name="pl"/>
+    <setup name="ro"/>
+    <setup name="ru"/>
+</magesetup>

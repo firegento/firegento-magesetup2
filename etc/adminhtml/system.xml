@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 FireGento e.V. - All rights reserved.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <section id="catalog">
+            <group id="price">
+                <field id="display_block_below_price" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Block below Price</label>
+                    <comment>Display tax info and shipping cost link below the price on all pages</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cms_page_shipping" translate="label" type="select" sortOrder="105" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CMS Page for Shipping Info</label>
+                    <source_model>FireGento\MageSetup\Model\System\Config\Source\Cms\Page</source_model>
+                    <depends>
+                        <field id="display_block_below_price">1</field>
+                    </depends>
+                </field>
+                <field id="including_shipping_costs" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "incl. Shipping Cost" instead of "excl. Shipping Cost"</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="display_block_below_price">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

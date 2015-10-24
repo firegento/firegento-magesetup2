@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 FireGento e.V. - All rights reserved.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="FireGento\MageSetup\Model\Config\Reader">
+        <arguments>
+            <argument name="fileName" xsi:type="string">magesetup.xml</argument>
+            <argument name="converter" xsi:type="object">FireGento\MageSetup\Model\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">FireGento\MageSetup\Model\Config\SchemaLocator</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="MageSetupSetupRunCommand" xsi:type="object">FireGento\MageSetup\Command\SetupRunCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="FireGento\MageSetup\Model\Setup\SubProcessor\SubProcessorPool">
+        <arguments>
+            <argument name="subProcessors" xsi:type="array">
+                <item name="agreements" xsi:type="string">FireGento\MageSetup\Model\Setup\SubProcessor\AgreementsSubProcessor</item>
+                <item name="cms" xsi:type="string">FireGento\MageSetup\Model\Setup\SubProcessor\CmsSubProcessor</item>
+                <item name="email" xsi:type="string">FireGento\MageSetup\Model\Setup\SubProcessor\EmailSubProcessor</item>
+                <item name="systemConfig" xsi:type="string">FireGento\MageSetup\Model\Setup\SubProcessor\SystemConfigSubProcessor</item>
+                <item name="tax" xsi:type="string">FireGento\MageSetup\Model\Setup\SubProcessor\TaxSubProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Pricing\Render">
+        <plugin name="mageSetupAddPriceHints" type="FireGento\MageSetup\Model\Plugin\AroundRenderPlugin" sortOrder="1"/>
+    </type>
+
+    <type name="Magento\CheckoutAgreements\Model\Agreement">
+        <plugin name="mageSetupFilterAgreementContent" type="FireGento\MageSetup\Model\Plugin\AfterGetContent" sortOrder="1"/>
+    </type>
+</config>
