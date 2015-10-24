@@ -8,6 +8,7 @@ namespace FireGento\MageSetup\Service;
 use FireGento\MageSetup\Model\Setup\SubProcessor\SubProcessorPool;
 use FireGento\MageSetup\Model\Config;
 use Magento\Framework\App\Cache\Manager as CacheManager;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class SetupService
@@ -37,6 +38,11 @@ class SetupService implements SetupServiceInterface
     private $cacheManager;
 
     /**
+     * @var OutputInterface
+     */
+    private $output = null;
+
+    /**
      * @param Config           $config
      * @param CacheManager     $cacheManager
      * @param SubProcessorPool $subProcessorPool
@@ -64,10 +70,22 @@ class SetupService implements SetupServiceInterface
     public function execute()
     {
         foreach ($this->subProcessorCodes as $subProcessorCode) {
+            if (null !== $this->output) {
+                $this->output->writeln('<comment>Start processor:</comment> ' . $subProcessorCode);
+            }
+
             $subProcessor = $this->subProcessorPool->get($subProcessorCode);
             $subProcessor->process($this->config);
         }
 
         $this->cacheManager->clean(['config', 'full_page']);
+    }
+
+    /**
+     * @param OutputInterface $output
+     */
+    public function setOutput(OutputInterface $output)
+    {
+        $this->output = $output;
     }
 }

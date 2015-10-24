@@ -5,6 +5,8 @@
  */
 namespace FireGento\MageSetup\Service;
 
+use Symfony\Component\Console\Output\OutputInterface;
+
 /**
  * Interface SetupServiceInterface
  *
@@ -16,4 +18,9 @@ interface SetupServiceInterface
      * @return void
      */
     public function execute();
+
+    /**
+     * @param OutputInterface $output
+     */
+    public function setOutput(OutputInterface $output);
 }

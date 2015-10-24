@@ -151,6 +151,7 @@ class SetupRunCommand extends Command
 
             /** @var \FireGento\MageSetup\Service\SetupServiceInterface $service */
             $service = $this->setupService->create(['config' => $config, 'subProcessorCodes' => $subProcessorCodes]);
+            $service->setOutput($output);
             $service->execute();
 
             $output->writeln('<info>Setup finished</info>');
