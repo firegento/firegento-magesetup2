@@ -10,7 +10,7 @@
         <catalog>
             <price>
                 <display_block_below_price>1</display_block_below_price>
-                <including_shipping_costs>1</including_shipping_costs>
+                <including_shipping_costs>0</including_shipping_costs>
             </price>
         </catalog>
     </default>
