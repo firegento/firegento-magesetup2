@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 FireGento e.V. - All rights reserved.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="formKey" />
+    <body>
+        <referenceContainer name="content">
+            <block class="FireGento\MageSetup\Adminhtml\MageSetup" name="magesetup.run" as="magesetup_run" template="FireGento_MageSetup::run/form.phtml" />
+        </referenceContainer>
+    </body>
+</page>

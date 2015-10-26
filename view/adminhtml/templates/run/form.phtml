@@ -1,0 +1,342 @@
+<?php
+/**
+ * This file is part of a FireGento e.V. module.
+ *
+ * This FireGento e.V. module is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * @category  FireGento
+ * @package   FireGento_MageSetup
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2013-2015 FireGento Team (http://www.firegento.com)
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
+?>
+<?php
+/**
+ * @var $this FireGento_MageSetup_Block_Adminhtml_Magesetup
+ */
+?>
+
+<div class="content-header">
+    <h3><?php echo __('MageSetup') ?></h3>
+    <p class="form-buttons">
+        <?php echo $this->getButtonHtml(__('Run MageSetup'), 'setupForm.submit();', 'save'); ?>
+    </p>
+</div>
+
+<p><?php echo __('Please choose the requested setups:') ?></p>
+
+<div class="entry-edit">
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="setup_form">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo __('Configuration Settings') ?></h4>
+            <div class="form-buttons"></div>
+        </div>
+
+        <div class="fieldset fieldset-wide" id="group_fields7">
+            <div class="hor-scroll">
+                <table cellspacing="0" class="form-list">
+                    <tbody>
+                        <tr>
+                            <td class="label"><label for="select_country"><?php echo __('Shipping from') ?></label></td>
+                            <td class="value" style="width:160px !important;">
+                                <select name="country" id="select_country" style="width:150px !important;">
+                                    <?php foreach ($this->getAvailableCountriesForSetup() as $countryCode => $countryName): ?>
+                                    <option value="<?php echo $countryCode ?>"<?php if (strtolower(Mage::getStoreConfig('general/country/default')) == $countryCode): ?> selected="selected"<?php endif ?>><?php echo $countryName ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </td>
+                            <td class="value">
+                                <img src="<?php echo $this->getSkinUrl('images/error_msg_icon.gif') ?>" alt="Notification" />
+                                <?php echo __('This setting is base for the tax rate setup!') ?>
+                            </td>
+                        </tr>
+                        <tr><td colspan="3">&nbsp;</td></tr>
+                        <tr>
+                            <td class="label"><label for="checkbox_systemconfig"><?php echo __('Update System Config Settings') ?></label></td>
+                            <td class="value">
+                                <input type="checkbox" name="systemconfig" id="checkbox_systemconfig" value="1" checked="checked" />
+                            </td>
+                            <td class="value">
+                                <?php echo __('i.e. newsletter confirmation, account confirmation, ..') ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo __('Tax Settings') ?></h4>
+            <div class="form-buttons"></div>
+        </div>
+
+        <div class="fieldset fieldset-wide" id="group_fields10">
+            <div class="hor-scroll">
+                <table cellspacing="0" class="form-list">
+                    <tbody>
+                    <tr>
+                        <td class="label"><label for="checkbox_tax"><?php echo __('Configure Tax') ?></label></td>
+                        <td class="value">
+                            <input type="checkbox" name="tax" id="checkbox_tax" value="1" checked="checked" />
+                        </td>
+                        <td class="value">
+                            <img src="<?php echo $this->getSkinUrl('images/error_msg_icon.gif') ?>" alt="Notification" />
+                            <?php echo __('All tax settings will be overwritten!') ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label><?php echo __('Update Product Tax Classes') ?></label></td>
+                        <td class="value"></td>
+                        <td class="value">
+                            <table cellspacing="5" class="">
+                                <tbody>
+                                <?php foreach($this->getProductTaxClasses() as $oldTaxClass): ?>
+                                    <tr>
+                                        <td><?php echo __('Old') ?>: </td>
+                                        <td><strong><?php echo $oldTaxClass['label'] ?></strong></td>
+                                        <td><?php echo __('New') ?>: </td>
+                                        <td>
+                                            <select id="product_tax_classes_new_<?php echo $oldTaxClass['value'] ?>" name="product_tax_class_target[<?php echo $oldTaxClass['value'] ?>]">
+                                                <?php foreach($this->getNewProductTaxClasses() as $newTaxClass): ?>
+                                                    <option
+                                                        value="<?php echo $newTaxClass['value'] ?>"
+                                                        <?php if ($this->getDefaultProductTaxClass() == $newTaxClass['value']): ?>selected="selected"<?php endif ?>
+                                                        >
+                                                        <?php echo $newTaxClass['label'] ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label><?php echo __('Update Customer Tax Classes') ?></label></td>
+                        <td class="value"></td>
+                        <td class="value">
+                            <table cellspacing="5" class="">
+                                <tbody>
+                                <?php foreach($this->getCustomerTaxClasses() as $oldTaxClass): ?>
+                                    <tr>
+                                        <td><?php echo __('Old') ?>: </td>
+                                        <td><strong><?php echo $oldTaxClass['label'] ?></strong></td>
+                                        <td><?php echo __('New') ?>: </td>
+                                        <td>
+                                            <select id="customer_tax_classes_new_<?php echo $oldTaxClass['value'] ?>" name="customer_tax_class_target[<?php echo $oldTaxClass['value'] ?>]">
+                                                <?php foreach($this->getNewCustomerTaxClasses() as $newTaxClass): ?>
+                                                    <option value="<?php echo $newTaxClass['value'] ?>">
+                                                        <?php echo $newTaxClass['label'] ?>
+                                                    </option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo __('CMS Settings') ?></h4>
+            <div class="form-buttons"></div>
+        </div>
+
+        <div class="fieldset fieldset-wide" id="group_fields8">
+            <div class="hor-scroll">
+                <table cellspacing="0" class="form-list">
+                    <tbody>
+                        <tr>
+                            <td class="label"><label for="checkbox_cms"><?php echo __('Create CMS Pages and Blocks') ?></label></td>
+                            <td class="value">
+                                <input type="checkbox" name="cms" id="checkbox_cms" value="1" checked="checked" />
+                            </td>
+                            <td class="value">
+                                <?php echo __('i.e. shipping, conditions, revocation') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label for="checkbox_agreements"><?php echo __('Create Checkout Agreements') ?></label></td>
+                            <td class="value">
+                                <input type="checkbox" name="agreements" id="checkbox_agreements" value="1" checked="checked" />
+                            </td>
+                            <td class="value">
+                                <?php echo __('Conditions') ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label for="select_cms_locale"><?php echo __('Default Setting') ?>:</label></td>
+                            <td class="value">
+                                <select name="cms_locale[default]" id="select_cms_locale">
+                                    <?php foreach($this->getLocaleOptionsForCmsContent() as $_option): ?>
+                                        <?php $isSelected = ($_option['value'] == Mage::app()->getLocale()->getLocaleCode()) ?>
+                                        <option value="<?php echo $_option['value'] ?>"<?php if ($isSelected): ?> selected="selected"<?php endif ?>><?php echo $_option['label']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </td>
+                            <td class="value">
+                                <?php echo __('Language Package for CMS Pages/Blocks/Agreements') ?><br />
+                                <img src="<?php echo $this->getSkinUrl('images/error_msg_icon.gif') ?>" alt="<?php echo __('Notification') ?>" />
+                                <?php echo __('If your desired locale is missing, it is not supported yet by MageSetup.') ?>
+                            </td>
+                        </tr>
+                        <?php if ($this->isMultiStore()): ?>
+                            <tr>
+                                <td class="label"><label for="select_cms_locale"><?php echo __('Store Views') ?>:</label></td>
+                                <td class="value">
+                                    <table>
+                                        <?php foreach(Mage::app()->getWebsites(false) as $website): ?>
+                                            <?php /** @var Mage_Core_Model_Website $website  */ ?>
+                                            <?php foreach($website->getStores() as $store): ?>
+                                                <?php /** @var Mage_Core_Model_Store $store  */ ?>
+                                                <tr>
+                                                    <td class="value"><?php echo $website->getName() ?> &gt; <?php echo $store->getName() ?></td>
+                                                    <td class="value">
+                                                        <select name="cms_locale[<?php echo $store->getId() ?>]" id="select_cms_locale_<?php echo $store->getId() ?>">
+                                                            <option value=""><?php echo __('Use Default Setting') ?></option>
+                                                            <?php foreach($this->getLocaleOptionsForCmsContent() as $_option): ?>
+                                                                <option value="<?php echo $_option['value'] ?>"><?php echo $_option['label']; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach ?>
+                                        <?php endforeach ?>
+                                    </table>
+                                </td>
+                                <td class="value"></td>
+                            </tr>
+                        <?php endif ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend"><?php echo __('Email Settings') ?></h4>
+            <div class="form-buttons"></div>
+        </div>
+
+        <div class="fieldset fieldset-wide" id="group_fields9">
+            <div class="hor-scroll">
+                <table cellspacing="0" class="form-list">
+                    <tbody>
+                        <tr>
+                            <td class="label"><label for="checkbox_email"><?php echo __('Create Email Templates') ?></label></td>
+                            <td class="value">
+                                <input type="checkbox" name="email" id="checkbox_email" value="1" checked="checked" />
+                            </td>
+                            <td class="value"><?php echo __('Create Transational Email Templates to be managed in the Magento admin area') ?></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label for="select_email_locale"><?php echo __('Default Setting') ?>:</label></td>
+                            <td class="value">
+                                <select name="email_locale[default]" id="select_email_locale">
+                                    <?php foreach($this->getLocaleOptionsForEmailTemplates() as $_option): ?>
+                                        <?php $isSelected = ($_option['value'] == Mage::app()->getLocale()->getLocaleCode()) ?>
+                                        <option value="<?php echo $_option['value'] ?>"<?php if ($isSelected): ?> selected="selected"<?php endif ?>><?php echo $_option['label']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </td>
+                            <td class="value">
+                                <?php echo __('Language Package for Email Templates') ?><br />
+                                <img src="<?php echo $this->getSkinUrl('images/error_msg_icon.gif') ?>" alt="<?php echo __('Notification') ?>" />
+                                <?php echo __('If your desired locale is missing, please check if it installed.') ?>
+                            </td>
+                        </tr>
+                        <?php if ($this->isMultiStore()): ?>
+                        <tr>
+                            <td class="label"><label for="select_email_locale"><?php echo __('Store Views') ?>:</label></td>
+                            <td class="value">
+                                <table>
+                                <?php foreach(Mage::app()->getWebsites(false) as $website): ?>
+                                    <?php /** @var Mage_Core_Model_Website $website  */ ?>
+                                    <?php foreach($website->getStores() as $store): ?>
+                                        <?php /** @var Mage_Core_Model_Store $store  */ ?>
+                                        <tr>
+                                            <td class="value"><?php echo $website->getName() ?> &gt; <?php echo $store->getName() ?></td>
+                                            <td class="value">
+                                                <select name="email_locale[<?php echo $store->getId() ?>]" id="select_email_locale_<?php echo $store->getId() ?>">
+                                                    <option value=""><?php echo __('Use Default Setting') ?></option>
+                                                    <?php foreach($this->getLocaleOptionsForEmailTemplates() as $_option): ?>
+                                                        <option value="<?php echo $_option['value'] ?>"><?php echo $_option['label']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                <?php endforeach ?>
+                                </table>
+                            </td>
+                            <td class="value"></td>
+                        </tr>
+                        <?php endif ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    setupForm = new varienForm('setup_form', '');
+
+    Object.prototype.foreach = function( callback ) {
+        for( var k in this ) {
+            if(this.hasOwnProperty(k)) {
+                callback( k, this[ k ] );
+            }
+        }
+    }
+
+    var newProductTaxClassesByCountry = <?php echo $this->getNewProductTaxClassesJson() ?>;
+    var newCustomerTaxClassesByCountry = <?php echo $this->getNewCustomerTaxClassesJson() ?>;
+
+    updateNewTaxClassSelect = function(countryId) {
+        if (newProductTaxClassesByCountry[countryId]) {
+            var optionsHtml = '';
+            newProductTaxClassesByCountry[countryId].foreach(function(countryId, countryName) {
+                optionsHtml += '<option value="' + countryId + '">' + countryName + '</option>';
+            });
+            <?php foreach($this->getProductTaxClasses() as $oldTaxClass): ?>
+            $('product_tax_classes_new_<?php echo $oldTaxClass['value'] ?>').innerHTML = optionsHtml;
+            <?php endforeach ?>
+        }
+        if (newCustomerTaxClassesByCountry[countryId]) {
+            var optionsHtml = '';
+            newCustomerTaxClassesByCountry[countryId].foreach(function(countryId, countryName) {
+                optionsHtml += '<option value="' + countryId + '">' + countryName + '</option>';
+            });
+            <?php foreach($this->getCustomerTaxClasses() as $oldTaxClass): ?>
+            $('customer_tax_classes_new_<?php echo $oldTaxClass['value'] ?>').innerHTML = optionsHtml;
+            <?php endforeach ?>
+        }
+    }
+
+    updateNewTaxClassSelect($F('select_country'));
+
+    $('select_country').observe('change', function(event) {
+        updateNewTaxClassSelect($F('select_country'));
+    });
+</script>
+
+<div class="content-footer right">
+    <p class="form-buttons">
+        <?php echo $this->getButtonHtml(__('Run MageSetup'), 'setupForm.submit();', 'save'); ?>
+    </p>
+</div>

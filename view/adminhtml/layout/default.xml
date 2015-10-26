@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 FireGento e.V. - All rights reserved.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root">
+        <block class="FireGento\MageSetup\Adminhtml\Notifications" name="magesetup.notifications" template="FireGento_MageSetup::default/notifications.phtml"/>
+    </container>
+</layout>

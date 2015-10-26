@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="FireGento_MageSetup::system" title="MageSetup" module="FireGento_MageSetup" sortOrder="60" resource="FireGento_MageSetup::system" parent="Magento_Backend::system"/>
+
+        <add id="FireGento_MageSetup::run" title="Run Installation" module="FireGento_MageSetup" sortOrder="10" resource="FireGento_MageSetup::run" parent="FireGento_MageSetup::system" action="magesetup/run" />
+    </menu>
+</config>
