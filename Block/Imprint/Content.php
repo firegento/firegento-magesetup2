@@ -23,17 +23,15 @@ class Content extends \Magento\Framework\View\Element\Template
 
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param ScopeConfigInterface                             $scopeConfig
      * @param array                                            $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
-        ScopeConfigInterface $scopeConfig,
         array $data = []
     )
     {
         parent::__construct($context, $data);
-        $this->scopeConfig = $scopeConfig;
+        $this->scopeConfig = $context->getScopeConfig();
     }
 
     /**
@@ -90,7 +88,7 @@ class Content extends \Magento\Framework\View\Element\Template
             return;
         }
 
-        $html = '<a href="#" onclick="javascript:toRecipient();">';
+        $html = '<a href="#" onclick="toRecipient();">';
         $html .= $parts[0] . '<span class="no-display">nospamplease</span>@<span class="no-display">nospamplease</span>' . $parts[1];
         $html .= '</a>';
         $html .= $this->getEmailJs($parts);
