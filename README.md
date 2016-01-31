@@ -24,6 +24,18 @@ Requirements
 ------------
 - PHP >= 5.5.0
 
+Installation
+------------
+- Add the repository to your composer.json
+
+```json
+"repositories": [
+        { "type": "vcs", "url": "git@github.com:mwr/firegento-magesetup2.git" }
+]
+```
+- Run bin/magento setup:upgrade in console to activate the module
+- Check Activity in the backend under store -> configuration -> advanced -> advanced
+
 Support
 -------
 If you encounter any problems or bugs, please create an issue on [GitHub](https://github.com/firegento/firegento-magesetup2/issues).
