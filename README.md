@@ -24,6 +24,17 @@ Requirements
 ------------
 - PHP >= 5.5.0
 
+
+Quick Installation
+------------------
+
+        composer config repositories.firegento_magesetup vcs git@github.com:firegento/firegento-magesetup2.git
+        composer require firegento/magesetup2:dev-develop
+        bin/magento module:enable FireGento_MageSetup
+        bin/magento setup:upgrade
+        
+
+
 Support
 -------
 If you encounter any problems or bugs, please create an issue on [GitHub](https://github.com/firegento/firegento-magesetup2/issues).
