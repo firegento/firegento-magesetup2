@@ -6,6 +6,8 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface" type="FireGento\MageSetup\Service\GetVisibleCheckoutAttributesService"/>
+
     <type name="FireGento\MageSetup\Model\Config\Reader">
         <arguments>
             <argument name="fileName" xsi:type="string">magesetup.xml</argument>
