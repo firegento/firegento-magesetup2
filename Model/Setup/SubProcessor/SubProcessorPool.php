@@ -55,7 +55,9 @@ class SubProcessorPool
     }
 
     /**
-     * @return \ArrayIterator|Traversable
+     * Retrieve the subprocessor codes
+     *
+     * @return array
      */
     public function getSubProcessorCodes()
     {
