@@ -11,7 +11,6 @@ use Magento\Framework\App\ObjectManager\ConfigLoader;
 use Magento\Framework\App\State as AppState;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Registry;
-use Magento\Ui\Component\Form\Element\Input;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -99,10 +98,9 @@ class SetupRunCommand extends Command
      */
     protected function configure()
     {
-        $this->setName(self::COMMAND_NAME);
-        $this->setDescription('Run MageSetup setup');
-        $this->addArgument('country', InputArgument::REQUIRED, 'Country');
-        $this->addArgument('processors', InputArgument::OPTIONAL | InputArgument::IS_ARRAY, 'Processors');
+        $this->setName(self::COMMAND_NAME)
+            ->setDescription('Run MageSetup setup')
+            ->setDefinition($this->getInputList());
 
         parent::configure();
     }
@@ -114,8 +112,15 @@ class SetupRunCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->appState->setAreaCode('adminhtml');
-        $this->objectManager->configure($this->configLoader->load('adminhtml'));
+        try {
+            $area = $this->appState->getAreaCode();
+        } catch (\Magento\Framework\Exception\LocalizedException $e) {
+            $this->appState->setAreaCode('adminhtml');
+            $area = $this->appState->getAreaCode();
+        }
+
+        $configLoader = $this->objectManager->get('Magento\Framework\ObjectManager\ConfigLoaderInterface');
+        $this->objectManager->configure($configLoader->load($area));
         $this->registry->register('isSecureArea', true);
 
         try {
@@ -164,5 +169,25 @@ class SetupRunCommand extends Command
 
         return 0;
     }
-}
 
+    /**
+     * Get list of options and arguments for the command
+     *
+     * @return array
+     */
+    public function getInputList()
+    {
+        return [
+            new InputArgument(
+                'country',
+                InputArgument::REQUIRED,
+                'Country'
+            ),
+            new InputArgument(
+                'processors',
+                InputArgument::OPTIONAL | InputArgument::IS_ARRAY,
+                'Processors'
+            ),
+        ];
+    }
+}
