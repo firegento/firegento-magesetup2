@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2015 FireGento e.V. - All rights reserved.
+ * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
 namespace FireGento\MageSetup\Block\Imprint;
@@ -78,14 +78,17 @@ class Content extends \Magento\Framework\View\Element\Template
     public function getEmail($antispam = false)
     {
         $email = $this->getImprintValue('email');
-        $parts = explode('@', $email);
+        if (!$email) {
+            return '';
+        }
 
         if (!$antispam) {
             return $email;
         }
 
-        if (count($parts) == 0) {
-            return;
+        $parts = explode('@', $email);
+        if (count($parts) != 2) {
+            return $email;
         }
 
         $html = '<a href="#" onclick="toRecipient();">';

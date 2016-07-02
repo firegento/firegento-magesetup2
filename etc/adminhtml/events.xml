@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="adminhtml_catalog_product_attribute_edit_frontend_prepare_form">
+        <observer name="product_attribute_form" instance="FireGento\MageSetup\Observer\AddProductAttributeVisibleCheckoutObserver" />
+    </event>
+</config>

@@ -5,22 +5,15 @@
  */
 namespace FireGento\MageSetup\Service;
 
-use Symfony\Component\Console\Output\OutputInterface;
-
 /**
- * Interface SetupServiceInterface
+ * Interface GetVisibleCheckoutAttributesServiceInterface
  *
  * @package FireGento\MageSetup\Service
  */
-interface SetupServiceInterface
+interface GetVisibleCheckoutAttributesServiceInterface
 {
     /**
-     * @return void
+     * @return array|bool
      */
     public function execute();
-
-    /**
-     * @param OutputInterface $output
-     */
-    public function setOutput(OutputInterface $output);
 }
