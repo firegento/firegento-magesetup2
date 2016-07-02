@@ -78,14 +78,17 @@ class Content extends \Magento\Framework\View\Element\Template
     public function getEmail($antispam = false)
     {
         $email = $this->getImprintValue('email');
-        $parts = explode('@', $email);
+        if (!$email) {
+            return '';
+        }
 
         if (!$antispam) {
             return $email;
         }
 
-        if (count($parts) == 0) {
-            return;
+        $parts = explode('@', $email);
+        if (count($parts) != 2) {
+            return $email;
         }
 
         $html = '<a href="#" onclick="toRecipient();">';
