@@ -160,6 +160,10 @@ class SetupRunCommand extends Command
             $service->execute();
 
             $output->writeln('<info>Setup finished</info>');
+        } catch (\InvalidArgumentException $e) {
+            $output->writeln('<error>' . $e->getMessage() . '</error>');
+
+            return 1;
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
             $output->writeln($e->getTraceAsString());
