@@ -13,6 +13,19 @@ namespace FireGento\MageSetup\Plugin\Pricing;
 class AroundRenderPlugin
 {
     /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    protected $_scopeConfig;
+
+    /**
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     */
+    public function __construct(\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig)
+    {
+        $this->_scopeConfig = $scopeConfig;
+    }
+
+    /**
      * @param \Magento\Framework\Pricing\Render            $subject
      * @param \Closure                                     $proceed
      * @param string                                       $priceCode

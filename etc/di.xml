@@ -47,4 +47,8 @@
     <type name="Magento\Tax\Model\Config">
         <plugin name="mageSetupDynamicShippingTaxClass" type="FireGento\MageSetup\Plugin\Tax\Config\AroundGetShippingTaxClassPlugin" sortOrder="1"/>
     </type>
+
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="mageSetupProductDetailsHtml" type="FireGento\MageSetup\Plugin\Catalog\ListProductPlugin" sortOrder="1" />
+    </type>
 </config>
