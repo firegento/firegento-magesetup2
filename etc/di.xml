@@ -43,4 +43,8 @@
     <type name="Magento\CheckoutAgreements\Model\Agreement">
         <plugin name="mageSetupFilterAgreementContent" type="FireGento\MageSetup\Plugin\Agreements\AfterGetContent" sortOrder="1"/>
     </type>
+
+    <type name="Magento\Tax\Model\Config">
+        <plugin name="mageSetupDynamicShippingTaxClass" type="FireGento\MageSetup\Plugin\Tax\Config\AroundGetShippingTaxClassPlugin" sortOrder="1"/>
+    </type>
 </config>

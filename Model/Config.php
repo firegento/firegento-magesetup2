@@ -15,6 +15,9 @@ use FireGento\MageSetup\Model\Config\Reader;
  */
 class Config implements ConfigInterface
 {
+    const DYNAMIC_TYPE_DEFAULT = 0;
+    const DYNAMIC_TYPE_HIGHEST_PRODUCT_TAX = 1;
+
     /**
      * Configuration reader
      *

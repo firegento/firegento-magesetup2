@@ -136,5 +136,13 @@
                 </field>
             </group>
         </section>
+        <section id="tax">
+            <group id="classes">
+                <field id="dynamic_shipping_tax_class" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Dynamic Shipping Tax Class</label>
+                    <source_model>FireGento\MageSetup\Model\System\Config\Source\Tax\Dynamic</source_model>
+                </field>
+            </group>
+        </section>
     </system>
 </config>
