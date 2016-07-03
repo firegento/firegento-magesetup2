@@ -104,4 +104,12 @@ class Config
 
         return $this->context->getUrlBuilder()->getUrl(null, ['_direct' => $page->getIdentifier()]);
     }
+
+    /**
+     * @return bool
+     */
+    public function isDisplayDeliveryTimeOnProductListing()
+    {
+        return (bool)$this->scopeConfig->getValue('catalog/frontend/display_delivery_time');
+    }
 }

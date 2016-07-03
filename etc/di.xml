@@ -43,4 +43,9 @@
     <type name="Magento\CheckoutAgreements\Model\Agreement">
         <plugin name="mageSetupFilterAgreementContent" type="FireGento\MageSetup\Plugin\Agreements\AfterGetContent" sortOrder="1"/>
     </type>
+
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="mageSetupProductDetailsHtml" type="FireGento\MageSetup\Plugin\Catalog\ListProductPlugin" sortOrder="1" />
+    </type>
+
 </config>
