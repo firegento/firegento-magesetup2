@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
 namespace FireGento\MageSetup\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
@@ -16,15 +19,13 @@ class InstallSchema implements InstallSchemaInterface
 {
     /**
      * {@inheritdoc}
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        $installer = $setup;
-        $installer->startSetup();
+        $setup->startSetup();
 
-        $installer->getConnection()->addColumn(
-            $installer->getTable('catalog_eav_attribute'),
+        $setup->getConnection()->addColumn(
+            $setup->getTable('catalog_eav_attribute'),
             'is_visible_on_checkout',
             [
                 'type'     => \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
@@ -35,6 +36,6 @@ class InstallSchema implements InstallSchemaInterface
             ]
         );
 
-        $installer->endSetup();
+        $setup->endSetup();
     }
 }
