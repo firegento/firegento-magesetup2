@@ -36,6 +36,7 @@ composer config repositories.firegento_magesetup vcs git@github.com:firegento/fi
 composer require firegento/magesetup2:dev-develop
 bin/magento module:enable FireGento_MageSetup
 bin/magento setup:upgrade
+bin/magento magesetup:setup:run <countrycode>
 ```
 
 ### Manually
@@ -45,6 +46,7 @@ Please create the directory *app/code/FireGento/MageSetup* and copy the files fr
 ```
 bin/magento module:enable FireGento_MageSetup
 bin/magento setup:upgrade
+bin/magento magesetup:setup:run <countrycode>
 ```
 
 
