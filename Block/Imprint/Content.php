@@ -5,6 +5,7 @@
  */
 namespace FireGento\MageSetup\Block\Imprint;
 
+use Magento\Directory\Api\CountryInformationAcquirerInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
@@ -15,6 +16,11 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 class Content extends \Magento\Framework\View\Element\Template
 {
     const XML_PATH_IMPRINT = 'general/imprint/';
+
+    /**
+     * @var CountryInformationAcquirerInterface
+     */
+    private $countryInformation;
 
     /**
      * @var ScopeConfigInterface
@@ -43,9 +49,9 @@ class Content extends \Magento\Framework\View\Element\Template
     {
         $countryCode = $this->getImprintValue('country');
 
-        // TODO: Get country name
+        $countryInfo = $this->countryInformation->getCountryInfo($countryCode);
 
-        return $countryCode;
+        return $countryInfo->getFullNameLocale();
     }
 
     /**
