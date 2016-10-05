@@ -15,6 +15,21 @@ use FireGento\MageSetup\Plugin\Email\Model\Source\Variables;
 class Form
 {
     /**
+     * Additional config variables
+     *
+     * @var \FireGento\MageSetup\Plugin\Email\Model\Source\Variables
+     */
+    private $variables;
+
+    /**
+     * Constructor
+     */
+    public function __construct(\FireGento\MageSetup\Plugin\Email\Model\Source\Variables $variables)
+    {
+        $this->variables = $variables;
+    }
+
+    /**
      * Retrieve variables to insert into email
      *
      * @param \Magento\Email\Block\Adminhtml\Template\Edit\Form $subject
@@ -24,7 +39,7 @@ class Form
      */
     public function afterGetVariables(\Magento\Email\Block\Adminhtml\Template\Edit\Form $subject, $result)
     {
-        $additionalConfigValues = Variables::getAdditionalConfigVariables();
+        $additionalConfigValues = $this->variables->getAdditionalConfigVariables();
         $optionArray = [];
         foreach ($additionalConfigValues as $variable) {
             $optionArray[] = [

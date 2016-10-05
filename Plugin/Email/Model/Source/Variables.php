@@ -10,16 +10,21 @@ namespace FireGento\MageSetup\Plugin\Email\Model\Source;
  *
  * @package FireGento\MageSetup\Plugin\Email\Model\Source
  */
-class Variables {
+class Variables
+{
+    /**
+     * Assoc array of configuration variables
+     *
+     * @var array
+     */
+    private $additionalConfigVariables = [];
 
     /**
-     * Returns additional config config variables
-     *
-     * @return array
+     * Constructor
      */
-    public static function getAdditionalConfigVariables()
+    public function __construct()
     {
-        return [
+        $this->additionalConfigVariables = [
             ['value' => 'general/imprint/shop_name', 'label' => __('Shop Name')],
             ['value' => 'general/imprint/company_first', 'label' => __('Company First')],
             ['value' => 'general/imprint/company_second', 'label' => __('Company Second')],
@@ -75,6 +80,16 @@ class Variables {
     }
 
     /**
+     * Returns additional config config variables
+     *
+     * @return array
+     */
+    public function getAdditionalConfigVariables()
+    {
+        return $this->additionalConfigVariables;
+    }
+
+    /**
      * Return available config variables
      *
      * @param \Magento\Email\Model\Source\Variables $subject
@@ -85,6 +100,6 @@ class Variables {
      */
     public function afterGetData(\Magento\Email\Model\Source\Variables $subject, $result)
     {
-        return array_merge($result, self::getAdditionalConfigVariables());
+        return array_merge($result, $this->getAdditionalConfigVariables());
     }
 }
