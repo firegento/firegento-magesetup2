@@ -48,4 +48,12 @@
         <plugin name="mageSetupProductDetailsHtml" type="FireGento\MageSetup\Plugin\Catalog\ListProductPlugin" sortOrder="1" />
     </type>
 
+    <type name="Magento\Email\Model\Source\Variables">
+        <plugin name="mageSetupEmailSourceVariables" type="FireGento\MageSetup\Plugin\Email\Model\Source\Variables"/>
+    </type>
+
+    <type name="Magento\Email\Block\Adminhtml\Template\Edit\Form">
+        <plugin name="mageSetupEmailAdminhtmlTemplateEditForm" type="FireGento\MageSetup\Plugin\Email\Block\Adminhtml\Template\Edit\Form"/>
+    </type>
+
 </config>
