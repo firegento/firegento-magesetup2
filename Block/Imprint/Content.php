@@ -6,6 +6,8 @@
 namespace FireGento\MageSetup\Block\Imprint;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Directory\Api\CountryInformationAcquirerInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * Class Content
@@ -22,16 +24,23 @@ class Content extends \Magento\Framework\View\Element\Template
     private $scopeConfig;
 
     /**
+     * @var CountryInformationAcquirerInterface
+     */
+    private $countryInformationAcquirer;
+
+    /**
+     * @param CountryInformationAcquirerInterface $countryInformationAcquirer
      * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param array                                            $data
+     * @param array $data
      */
     public function __construct(
+        \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformationAcquirer,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
         $this->scopeConfig = $context->getScopeConfig();
+        $this->countryInformationAcquirer = $countryInformationAcquirer;
     }
 
     /**
@@ -42,10 +51,18 @@ class Content extends \Magento\Framework\View\Element\Template
     public function getCountry()
     {
         $countryCode = $this->getImprintValue('country');
+        if (!$countryCode) {
+            return '';
+        }
 
-        // TODO: Get country name
+        try {
+            $countryInfo = $this->countryInformationAcquirer->getCountryInfo($countryCode);
+            $countryName = $countryInfo->getFullNameLocale();
+        } catch (NoSuchEntityException $e) {
+            $countryName = '';
+        }
 
-        return $countryCode;
+        return $countryName;
     }
 
     /**
