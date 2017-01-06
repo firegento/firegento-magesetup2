@@ -46,9 +46,9 @@ class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttribute
         $options = [];
         if (count($attributes->getItems()) > 0) {
             foreach ($attributes->getItems() as $attribute) {
-                /** @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute $handle */
+                /** @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute $attribute */
 
-                $options[$attribute->getAttributeCode()] = $attribute->getDefaultFrontendLabel();
+                $options[$attribute->getAttributeCode()] = $attribute;
             }
         }
 

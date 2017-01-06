@@ -41,7 +41,7 @@ class AroundGetAttributeNamesPlugin
 
         if ($groupName == 'quote_item') {
             $attributes = $this->getVisibleCheckoutAttributesService->execute();
-            foreach ($attributes as $attributeCode => $attributeLabel) {
+            foreach ($attributes as $attributeCode => $attribute) {
                 $attributeNames[] = $attributeCode;
             }
         }
