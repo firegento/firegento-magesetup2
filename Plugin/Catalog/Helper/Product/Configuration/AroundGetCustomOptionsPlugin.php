@@ -45,14 +45,14 @@ class AroundGetCustomOptionsPlugin
 
         $attributes = $this->getVisibleCheckoutAttributesService->execute();
         if (count($attributes) > 0) {
-            foreach ($attributes as $attributeCode => $attributeLabel) {
-                $value = $item->getProduct()->getData($attributeCode);
+            foreach ($attributes as $attributeCode => $attribute) {
+                $value = $attribute->getFrontend()->getValue($item->getProduct());
                 if (!$value) {
                     continue;
                 }
 
                 $options[] = [
-                    'label'       => $attributeLabel,
+                    'label'       => $attribute->getStoreLabel(),
                     'value'       => $value,
                     'print_value' => $value
                 ];
