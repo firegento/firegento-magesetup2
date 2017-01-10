@@ -33,21 +33,21 @@ class ListProductPlugin
         \Closure $proceed,
         \Magento\Catalog\Model\Product $product)
     {
+        $result = $proceed($product);
+
         $deliveryBlock = $subject->getLayout()->getBlock('product.info.delivery');
 
-        // Carry on with the default processing chain if the block does not exist.
-        if (!$deliveryBlock) {
-            return $proceed($product);
-        }
+        if ($deliveryBlock) {
+            $deliveryBlock->setProduct($product);
 
-        $deliveryBlock->setProduct($product);
-        $result = $proceed($product);
-        if ((bool)$this->_scopeConfig->getValue(
+            if ((bool) $this->_scopeConfig->getValue(
                 'catalog/frontend/display_delivery_time',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
             )) {
-;
-            return $deliveryBlock->toHtml() . $result;
+                $result = $deliveryBlock->toHtml() . $result;
+            }
         }
+
+        return $result;
     }
 }
