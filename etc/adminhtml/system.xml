@@ -114,7 +114,7 @@
             </group>
         </section>
         <section id="catalog">
-            <group id="price">
+            <group id="price" showInDefault="1" showInWebsite="1" showInStore="1">
                 <field id="display_block_below_price" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Display Block below Price</label>
                     <comment>Display tax info and shipping cost link below the price on all pages</comment>
