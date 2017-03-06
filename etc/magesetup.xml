@@ -281,7 +281,7 @@
                 <tax_calculation_rate_3>
                     <tax_region_id>0</tax_region_id>
                     <tax_postcode>*</tax_postcode>
-                    <label>ohne UMwStSt.</label>
+                    <label>ohne MwSt.</label>
                     <rate>0</rate>
                 </tax_calculation_rate_3>
             </tax_calculation_rates>
