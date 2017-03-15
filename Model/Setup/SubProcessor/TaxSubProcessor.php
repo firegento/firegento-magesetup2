@@ -216,7 +216,7 @@ class TaxSubProcessor extends AbstractSubProcessor
             return $this->magesetupConfig->getEuCountries();
         }
 
-        return $this->config->getCountry();
+        return [$this->config->getCountry()];
     }
 
     /**
