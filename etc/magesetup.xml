@@ -193,7 +193,161 @@
             </revocation_form>
         </blocks>
     </setup>
-    <setup name="at"/>
+	<setup name="at">
+        <system_config>
+            <general__country__default>AT</general__country__default>
+            <tax__defaults__country>AT</tax__defaults__country>
+            <tax__defaults__region>95</tax__defaults__region>
+            <tax__defaults__postcode>1234</tax__defaults__postcode>
+            <shipping__origin__country_id>AT</shipping__origin__country_id>
+            <shipping__origin__region_id>95</shipping__origin__region_id>
+            <shipping__origin__postcode>1234</shipping__origin__postcode>
+            <shipping__origin__city>Musterstadt</shipping__origin__city>
+        </system_config>
+        <tax>
+            <tax_calculation_rules>
+                <products_full_tax tax_rate="tax_calculation_rate_1"
+                                   tax_customer_class="customers_end_users,customers_companies"
+                                   tax_product_class="products_rate_1,shipping_rate_1">
+                    <code>Kunden kaufen vollbesteuerte Artikel</code>
+                    <priority>1</priority>
+                    <position>0</position>
+                    <calculate_subtotal>0</calculate_subtotal>
+                </products_full_tax>
+                <products_reduced_tax tax_rate="tax_calculation_rate_2"
+                                      tax_customer_class="customers_end_users,customers_companies"
+                                      tax_product_class="products_rate_2,shipping_rate_2">
+                    <code>Kunden kaufen ermäßigtbesteuerte Artikel</code>
+                    <priority>2</priority>
+                    <position>0</position>
+                    <calculate_subtotal>0</calculate_subtotal>
+                </products_reduced_tax>
+                <products_no_vat tax_rate="tax_calculation_rate_3"
+                                 tax_customer_class="customers_companies_no_vat"
+                                 tax_product_class="products_rate_1,products_rate_2,shipping_rate_1,shipping_rate_2">
+                    <code>Ust.-befreite Unternehmen kaufen voll- und ermäßigtbesteuerte Artikel</code>
+                    <priority>3</priority>
+                    <position>0</position>
+                    <calculate_subtotal>0</calculate_subtotal>
+                </products_no_vat>
+            </tax_calculation_rules>
+            <tax_classes>
+                <products_rate_1>
+                    <class_id>1</class_id>
+                    <class_name>Vollbesteuerte Artikel</class_name>
+                    <class_type>PRODUCT</class_type>
+                </products_rate_1>
+                <products_rate_2>
+                    <class_id>2</class_id>
+                    <class_name>Ermäßigtbesteuerte Artikel</class_name>
+                    <class_type>PRODUCT</class_type>
+                </products_rate_2>
+                <shipping_rate_1>
+                    <class_id>3</class_id>
+                    <class_name>Vollbesteuerter Versand</class_name>
+                    <class_type>PRODUCT</class_type>
+                </shipping_rate_1>
+                <shipping_rate_2>
+                    <class_id>4</class_id>
+                    <class_name>Ermäßigtbesteuerter Versand</class_name>
+                    <class_type>PRODUCT</class_type>
+                </shipping_rate_2>
+                <customers_end_users>
+                    <class_id>5</class_id>
+                    <class_name>Endkunden</class_name>
+                    <class_type>CUSTOMER</class_type>
+                </customers_end_users>
+                <customers_companies>
+                    <class_id>6</class_id>
+                    <class_name>USt.-pflichtige Unternehmen</class_name>
+                    <class_type>CUSTOMER</class_type>
+                </customers_companies>
+                <customers_companies_no_vat>
+                    <class_id>7</class_id>
+                    <class_name>USt.-befreite Unternehmen</class_name>
+                    <class_type>CUSTOMER</class_type>
+                </customers_companies_no_vat>
+            </tax_classes>
+            <tax_calculation_rates>
+                <tax_calculation_rate_1>
+                    <tax_region_id>0</tax_region_id>
+                    <tax_postcode>*</tax_postcode>
+                    <label>USt.</label>
+                    <rate>20</rate>
+                </tax_calculation_rate_1>
+                <tax_calculation_rate_2>
+                    <tax_region_id>0</tax_region_id>
+                    <tax_postcode>*</tax_postcode>
+                    <label>reduzierte USt.</label>
+                    <rate>10</rate>
+                </tax_calculation_rate_2>
+                <tax_calculation_rate_3>
+                    <tax_region_id>0</tax_region_id>
+                    <tax_postcode>*</tax_postcode>
+                    <label>ohne USt.</label>
+                    <rate>0</rate>
+                </tax_calculation_rate_3>
+            </tax_calculation_rates>
+        </tax>
+        <agreements>
+            <business_terms>
+                <is_active>1</is_active>
+                <is_html>1</is_html>
+                <mode>1</mode>
+                <filename>business_terms.html</filename>
+            </business_terms>
+            <revocation>
+                <is_active>1</is_active>
+                <is_html>1</is_html>
+                <mode>1</mode>
+                <filename>revocation.html</filename>
+            </revocation>
+        </agreements>
+        <pages>
+            <magesetup_404>
+                <filename>404.html</filename>
+            </magesetup_404>
+            <magesetup_imprint>
+                <filename>imprint.html</filename>
+            </magesetup_imprint>
+            <magesetup_payment>
+                <filename>payment.html</filename>
+            </magesetup_payment>
+            <magesetup_privacy>
+                <filename>privacy.html</filename>
+            </magesetup_privacy>
+            <magesetup_shipping>
+                <filename>shipping.html</filename>
+                <config_option>catalog/price/cms_page_shipping</config_option>
+            </magesetup_shipping>
+            <magesetup_order>
+                <filename>order.html</filename>
+            </magesetup_order>
+            <magesetup_business_terms>
+                <filename>business_terms.html</filename>
+            </magesetup_business_terms>
+            <magesetup_revocation>
+                <filename>revocation.html</filename>
+            </magesetup_revocation>
+            <magesetup_revocation_form>
+                <filename>revocation_form.html</filename>
+            </magesetup_revocation_form>
+        </pages>
+        <blocks>
+            <business_terms>
+                <identifier>business_terms</identifier>
+                <filename>business_terms.html</filename>
+            </business_terms>
+            <revocation>
+                <identifier>revocation</identifier>
+                <filename>revocation.html</filename>
+            </revocation>
+            <revocation_form>
+                <identifier>revocation_form</identifier>
+                <filename>revocation_form.html</filename>
+            </revocation_form>
+        </blocks>
+    </setup>
     <setup name="ch">
         <system_config>
             <general__country__default>CH</general__country__default>
