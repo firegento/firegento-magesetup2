@@ -20,6 +20,33 @@ More countries to follow.
 
 Missing your country? Please open a pull request with the necessary configuration for your country and help us support more countries.
 
+Installation - Step by Step
+
+- Edit the composer.json in MagentoRoot... (Copy and paste)
+Should look like this:
+
+"repositories": [
+       {
+           "type": "composer",
+           "url": "https://repo.magento.com/"
+       },
+       {
+           "type": "vcs",
+           "url": "https://github.com/firegento/firegento-magesetup2"
+       }
+   ],
+
+Open your Terminal/CLI and type in the following commands line by line without the leading "-"
+- composer require firegento/magesetup2 @dev
+- php bin/magento module:enable FireGento_MageSetup
+- php bin/magento setup:upgrade
+- php bin/magento magesetup:setup:run "language Code" -> without ""
+- php bin/magento setup:static-content:deploy
+- php bin/magento cache:flush
+
+If you get the "Error 500" in Front/Backend you have to reset your file permission
+- chown -R www-data:www-data /var/www/html/
+
 Requirements
 ------------
 - PHP >= 5.5.0
