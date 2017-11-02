@@ -13,8 +13,8 @@
                     <argument name="at_call" xsi:type="string">getDeliveryTime</argument>
                     <argument name="at_code" xsi:type="string">delivery_time</argument>
                     <argument name="css_class" xsi:type="string">delivery_time</argument>
-                    <argument name="at_label" xsi:type="string">Delivery Time </argument>
-                    <argument name="add_attribute" xsi:type="string">itemprop="delivery_time "</argument>
+                    <argument name="at_label" xsi:type="string" translate="true">Delivery Time</argument>
+                    <argument name="add_attribute" xsi:type="string">itemprop="delivery_time"</argument>
                 </arguments>
             </block>
         </referenceContainer>

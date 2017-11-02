@@ -47,7 +47,6 @@ class ListProductPlugin
                 $result = $deliveryBlock->toHtml() . $result;
             }
         }
-
         return $result;
     }
 }
