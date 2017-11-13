@@ -6,8 +6,7 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-        <!-- Adding delivery information to the product list in search results. -->
-        <update handle="catalog_delivery_info"/>
-    </body>
+    <!-- Adding delivery information to the product list in search results. -->
+    <update handle="catalog_delivery_info"/>
+    <body/>
 </page>
