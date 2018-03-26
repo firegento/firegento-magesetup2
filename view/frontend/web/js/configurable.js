@@ -27,9 +27,11 @@ define([
                         'currencyFormat': this.options.spConfig.currencyFormat,
                         'priceUtils': priceUtils
                     });
-                    $(this.options.tierPriceBlockSelector).html(tierPriceHtml).show();
-                    //show the tax
-                    $(this.options.tierPriceBlockSelector).parent().next('.price-details').show();
+                    if (options.tierPrices.length > 0) {
+                        $(this.options.tierPriceBlockSelector).html(tierPriceHtml).show();
+                        //show the tax
+                        $(this.options.tierPriceBlockSelector).parent().next('.price-details').show();
+                    }
                 }
             } else {
                 $(this.options.tierPriceBlockSelector).hide();
