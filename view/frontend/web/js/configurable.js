@@ -2,7 +2,12 @@
  * Copyright © 2017 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
-define(['jquery'], function ($) {
+define([
+    'jquery',
+    'mage/template',
+    'mage/translate',
+    'priceUtils'
+], function ($, mageTemplate, $t, priceUtils) {
     'use strict';
 
     return function (target) {
