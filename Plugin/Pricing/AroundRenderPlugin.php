@@ -42,7 +42,17 @@ class AroundRenderPlugin
         array $arguments = []
     ) {
         $returnValue = $proceed($priceCode, $saleableItem, $arguments);
-        if (trim($returnValue) != '') {
+        // if there is anything returned we should render the price details
+        $shouldRender = trim($returnValue) != '';
+        // tier price returns JavaScript template, so check if item actually
+        // has tier prices
+        if ($priceCode === 'tier_price') {
+            $tierPrices = $saleableItem->getTierPrices();
+            $shouldRender = $tierPrices !== null &&
+                            is_array($tierPrices) &&
+                            count($tierPrices) > 0;
+        }
+        if ($shouldRender) {
             $block = $subject->getLayout()->getBlock('magesetup.product.price.details');
             if ($block) {
                 $block->setSaleableItem($saleableItem);
