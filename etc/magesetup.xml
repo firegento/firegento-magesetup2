@@ -42,10 +42,10 @@
         <system_config>
             <general__country__default>DE</general__country__default>
             <tax__defaults__country>DE</tax__defaults__country>
-            <tax__defaults__region>79</tax__defaults__region>
+            <tax__defaults__region></tax__defaults__region>
             <tax__defaults__postcode>12345</tax__defaults__postcode>
             <shipping__origin__country_id>DE</shipping__origin__country_id>
-            <shipping__origin__region_id>79</shipping__origin__region_id>
+            <shipping__origin__region_id></shipping__origin__region_id>
             <shipping__origin__postcode>12345</shipping__origin__postcode>
             <shipping__origin__city>Musterstadt</shipping__origin__city>
         </system_config>
@@ -197,10 +197,10 @@
         <system_config>
             <general__country__default>AT</general__country__default>
             <tax__defaults__country>AT</tax__defaults__country>
-            <tax__defaults__region>95</tax__defaults__region>
+            <tax__defaults__region></tax__defaults__region>
             <tax__defaults__postcode>1234</tax__defaults__postcode>
             <shipping__origin__country_id>AT</shipping__origin__country_id>
-            <shipping__origin__region_id>95</shipping__origin__region_id>
+            <shipping__origin__region_id></shipping__origin__region_id>
             <shipping__origin__postcode>1234</shipping__origin__postcode>
             <shipping__origin__city>Musterstadt</shipping__origin__city>
         </system_config>
@@ -352,10 +352,10 @@
         <system_config>
             <general__country__default>CH</general__country__default>
             <tax__defaults__country>CH</tax__defaults__country>
-            <tax__defaults__region>129</tax__defaults__region>
+            <tax__defaults__region></tax__defaults__region>
             <tax__defaults__postcode>8001</tax__defaults__postcode>
             <shipping__origin__country_id>CH</shipping__origin__country_id>
-            <shipping__origin__region_id>129</shipping__origin__region_id>
+            <shipping__origin__region_id></shipping__origin__region_id>
             <shipping__origin__postcode>8001</shipping__origin__postcode>
             <shipping__origin__city>Zürich</shipping__origin__city>
             <sales__reorder__allow>1</sales__reorder__allow>
