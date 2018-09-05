@@ -264,7 +264,12 @@ class TaxSubProcessor extends AbstractSubProcessor
                 /** @var Product $product */
 
                 $product->setData('tax_class_id', $productTaxClassId);
-                $product->save();
+
+                try {
+                    $product->save();
+                } catch (\Exception $exception) {
+                    echo __('Error by product with sku "' . $product->getSku() . '": ' . $exception->getMessage() . "\n");
+                }
             }
         }
 
