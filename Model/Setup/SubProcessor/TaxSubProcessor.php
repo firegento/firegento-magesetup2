@@ -259,12 +259,17 @@ class TaxSubProcessor extends AbstractSubProcessor
             $productTaxClassId = $taxClasses['products_rate_1'];
             $this->saveConfigValue('tax/classes/default_product_tax_class', $productTaxClassId);
 
-            $productCollection = $this->productCollectionFactory->create();
+            $productCollection = $this->productCollectionFactory->create()->addAttributeToSelect('url_key');
             foreach ($productCollection as $product) {
                 /** @var Product $product */
 
                 $product->setData('tax_class_id', $productTaxClassId);
-                $product->save();
+
+                try {
+                    $product->save();
+                } catch (\Exception $exception) {
+                    echo __('Error by product with sku "' . $product->getSku() . '": ' . $exception->getMessage() . "\n");
+                }
             }
         }
 
