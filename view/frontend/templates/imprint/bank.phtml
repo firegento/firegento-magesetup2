@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+/**
+ * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ */
+?>
+<?php if (strlen(trim($this->getImprintValue('bank_account'))) || strlen(trim($this->getImprintValue('swift')))): ?>
+    <h3><?php echo __('Bank Information'); ?></h3>
+    <?php if ($accountOwner = $this->getImprintValue('bank_account_owner')): ?>
+        <?php echo __('Account owner') ?>: <?php echo $accountOwner ?><br/>
+    <?php endif ?>
+    <?php if ($bankAccount = $this->getImprintValue('bank_account')): ?>
+        <?php echo __('Account') ?>: <?php echo $bankAccount ?><br/>
+    <?php endif ?>
+    <?php if ($bankCodeNumber = $this->getImprintValue('bank_code_number')): ?>
+        <?php echo __('Bank number') ?>: <?php echo $bankCodeNumber ?><br/>
+    <?php endif ?>
+    <?php if ($bankName = $this->getImprintValue('bank_name')): ?>
+        <?php echo __('Bank name') ?>: <?php echo $bankName ?><br/>
+    <?php endif ?>
+    <?php if ($swift = $this->getImprintValue('swift')): ?>
+        <?php echo __('BIC/Swift-Code') ?>: <?php echo $swift ?><br/>
+    <?php endif ?>
+    <?php if ($iban = $this->getImprintValue('iban')): ?>
+        <?php echo __('IBAN') ?>: <?php echo $iban ?><br/>
+    <?php endif ?>
+    <?php if ($clearing = $this->getImprintValue('clearing')): ?>
+        <?php echo __('Clearing') ?>: <?php echo $clearing ?><br/>
+    <?php endif ?>
+<?php endif ?>
+

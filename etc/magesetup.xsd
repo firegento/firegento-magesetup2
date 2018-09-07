@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="magesetup">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="setup" maxOccurs="unbounded" minOccurs="1">
+                    <xs:complexType mixed="true">
+                        <xs:sequence>
+                            <xs:element name="system_config" minOccurs="0"/>
+                            <xs:element name="tax" minOccurs="0"/>
+                            <xs:element name="agreements" minOccurs="0"/>
+                            <xs:element name="pages" minOccurs="0"/>
+                            <xs:element name="blocks" minOccurs="0"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="name" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

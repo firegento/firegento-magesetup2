@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="general">
+            <group id="imprint" translate="label" type="text" sortOrder="900" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Imprint</label>
+                <field id="shop_name" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shop Name</label>
+                </field>
+                <field id="company_first" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Company First</label>
+                </field>
+                <field id="company_second" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Company Second</label>
+                </field>
+                <field id="street" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Street</label>
+                </field>
+                <field id="zip" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Zip</label>
+                </field>
+                <field id="city" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>City</label>
+                </field>
+                <field id="country" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+                <field id="telephone" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Telephone</label>
+                </field>
+                <field id="telephone_additional" translate="label" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Supplementary Information for Telephone</label>
+                </field>
+                <field id="fax" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Fax</label>
+                </field>
+                <field id="email" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                </field>
+                <field id="web" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Website</label>
+                </field>
+                <field id="tax_number" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tax number</label>
+                </field>
+                <field id="vat_id" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>VAT-ID</label>
+                </field>
+                <field id="court" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Register Court</label>
+                </field>
+                <field id="financial_office" translate="label" type="text" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Financial Office</label>
+                </field>
+                <field id="ceo" translate="label" type="text" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CEO</label>
+                </field>
+                <field id="owner" translate="label" type="text" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Owner</label>
+                </field>
+                <field id="content_responsable_name" translate="label" type="text" sortOrder="19" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Responsible for content</label>
+                </field>
+                <field id="content_responsable_address" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Responsible for content address</label>
+                </field>
+                <field id="content_responsable_press_law" translate="label" type="text" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Responsible in the interests of the press law</label>
+                </field>
+                <field id="register_number" translate="label" type="text" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Register Number</label>
+                </field>
+                <field id="business_rules" translate="label" type="text" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reference for business rules (physician, ...)</label>
+                </field>
+                <field id="authority" translate="label" type="text" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Authority (ECG)</label>
+                </field>
+                <field id="shareholdings" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shareholdings</label>
+                </field>
+                <field id="editorial_concept" translate="label comment" type="text" sortOrder="26" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Editorial Concept</label>
+                    <comment>Relevant for Austrian shops</comment>
+                </field>
+                <field id="bank_account_owner" translate="label" type="text" sortOrder="27" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Account owner</label>
+                </field>
+                <field id="bank_account" translate="label" type="text" sortOrder="28" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Account</label>
+                </field>
+                <field id="bank_code_number" translate="label" type="text" sortOrder="29" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bank number</label>
+                </field>
+                <field id="bank_name" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bank name</label>
+                </field>
+                <field id="swift" translate="label" type="text" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>BIC/Swift-Code</label>
+                </field>
+                <field id="iban" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>IBAN</label>
+                </field>
+                <field id="clearing" translate="label" type="text" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Clearing</label>
+                </field>
+            </group>
+        </section>
+        <section id="catalog">
+            <group id="price" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="display_block_below_price" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Block below Price</label>
+                    <comment>Display tax info and shipping cost link below the price on all pages</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="cms_page_shipping" translate="label" type="select" sortOrder="105" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CMS Page for Shipping Info</label>
+                    <source_model>FireGento\MageSetup\Model\System\Config\Source\Cms\Page</source_model>
+                    <depends>
+                        <field id="display_block_below_price">1</field>
+                    </depends>
+                </field>
+                <field id="including_shipping_costs" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show "incl. Shipping Cost" instead of "excl. Shipping Cost"</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="display_block_below_price">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="frontend">
+                <field id="display_delivery_time" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Delivery Time on Product Listing</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

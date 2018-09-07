@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+/**
+ * @var $this \FireGento\MageSetup\Block\Price\Details
+ */
+?>
+<?php
+$shippingCostUrl = $this->getShippingCostUrl();
+$taxRate = $this->getFormattedTaxRate();
+?>
+<div class="price-details">
+    <?php if ($shippingCostUrl && $this->canShowShippingLink()): ?>
+        <?php if ($this->getPriceDisplayType() == \Magento\Tax\Model\Config::DISPLAY_TYPE_EXCLUDING_TAX): ?>
+            <?php if ($this->isIncludingShippingCosts()): ?>
+                <span class="tax-details"><?php echo __('Excl. %1 VAT', $taxRate) ?><span class="tax-separator">, </span><span class="shipping-cost-details"><?php echo __('incl. <a href="%1">Shipping Cost</a>', $shippingCostUrl) ?></span></span>
+            <?php else: ?>
+                <span class="tax-details"><?php echo __('Excl. %1 VAT', $taxRate) ?><span class="tax-separator">, </span><span class="shipping-cost-details"><?php echo __('excl. <a href="%1">Shipping Cost</a>', $shippingCostUrl) ?></span></span>
+            <?php endif ?>
+        <?php elseif ($this->getPriceDisplayType() == \Magento\Tax\Model\Config::DISPLAY_TYPE_INCLUDING_TAX): ?>
+            <?php if ($this->isIncludingShippingCosts()): ?>
+                <span class="tax-details"><?php echo __('Incl. %1 VAT', $taxRate) ?><span class="tax-separator">, </span><span class="shipping-cost-details"><?php echo __('incl. <a href="%1">Shipping Cost</a>', $shippingCostUrl) ?></span></span>
+            <?php else: ?>
+                <span class="tax-details"><?php echo __('Incl. %1 VAT', $taxRate) ?><span class="tax-separator">, </span><span class="shipping-cost-details"><?php echo __('excl. <a href="%1">Shipping Cost</a>', $shippingCostUrl) ?></span></span>
+            <?php endif ?>
+        <?php elseif ($this->getPriceDisplayType() == \Magento\Tax\Model\Config::DISPLAY_TYPE_BOTH): ?>
+            <?php if ($this->isIncludingShippingCosts()): ?>
+                <span class="tax-details"><?php echo __('incl. <a href="%1">Shipping Cost</a>', $shippingCostUrl) ?></span>
+            <?php else: ?>
+                <span class="tax-details"><?php echo __('excl. <a href="%1">Shipping Cost</a>', $shippingCostUrl) ?></span>
+            <?php endif ?>
+        <?php endif ?>
+    <?php else: ?>
+        <?php if ($this->getPriceDisplayType() == \Magento\Tax\Model\Config::DISPLAY_TYPE_EXCLUDING_TAX): ?>
+            <span class="tax-details"><?php echo __('Excl. %1 VAT', $taxRate) ?></span>
+        <?php elseif ($this->getPriceDisplayType() == \Magento\Tax\Model\Config::DISPLAY_TYPE_INCLUDING_TAX): ?>
+            <span class="tax-details"><?php echo __('Incl. %1 VAT', $taxRate) ?></span>
+        <?php endif ?>
+    <?php endif ?>
+</div>

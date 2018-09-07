@@ -1,0 +1,26 @@
+{
+  "name": "firegento/magesetup2",
+  "description": "MageSetup provides the necessary configuration (system config, tax, agreements, etc. for a national market.",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0",
+    "magento/module-store": "*",
+    "magento/module-backend": "*",
+    "magento/framework": "*"
+  },
+  "type": "magento2-module",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Team FireGento",
+      "email": "team@firegento.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "FireGento\\MageSetup\\": ""
+    }
+  }
+}

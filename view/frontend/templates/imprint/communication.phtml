@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+/**
+ * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ */
+?>
+<?php if ($telephone = $this->getImprintValue('telephone')): ?>
+    <?php echo __('Telephone') ?>: <?php echo $this->getImprintValue('telephone') ?>
+    <?php if ($telephoneAdditional = $this->getImprintValue('telephone_additional')): ?>
+        (<?php echo $telephoneAdditional ?>)
+    <?php endif ?>
+    <br />
+<?php endif ?>
+<?php if ($fax = $this->getImprintValue('fax')): ?>
+    <?php echo __('Fax') ?>: <?php echo $fax ?><br />
+<?php endif ?>
+<?php if (strlen(trim($this->getWeb()))): ?>
+    <?php echo __('Web') ?>: <a href="<?php echo $this->getWeb(true) ?>" title="<?php echo $this->getImprintValue('company_first') ?>"><?php echo $this->getWeb() ?></a><br />
+<?php endif ?>
+<?php if (strlen(trim($this->getEmail()))): ?>
+    <?php echo __('E-Mail') ?>: <?php echo $this->getEmail(true) ?>
+<?php endif; ?>

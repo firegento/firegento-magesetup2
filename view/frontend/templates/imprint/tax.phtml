@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+/**
+ * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ */
+?>
+<?php if ($financialOffice = $this->getImprintValue('financial_office')): ?>
+    <?php echo __('Financial office') ?>: <?php echo $financialOffice ?><br/>
+<?php endif ?>
+<?php if ($taxNumber = $this->getImprintValue('tax_number')): ?>
+    <?php echo __('Tax number') ?>: <?php echo $taxNumber ?><br/>
+<?php endif ?>
+<?php if ($vatId = $this->getImprintValue('vat_id')): ?>
+    <?php echo __('VAT-ID') ?>: <?php echo $vatId ?><br/>
+<?php endif ?>

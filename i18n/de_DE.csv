@@ -1,0 +1,11 @@
+"Incl. %1 VAT","Inkl. %1 MwSt."
+"incl. <a href=""%1"">Shipping Cost</a>","inkl. <a href=""%1"">Versandkosten</a>"
+"Excl. %1 VAT","Exkl. %1 MwSt."
+"excl. <a href=""%1"">Shipping Cost</a>","exkl. <a href=""%1"">Versandkosten</a>"
+
+"Display Block below Price","Zeige Preis-Details unter Preis"
+"Display tax info and shipping cost link below the price on all pages","Zeige Steuersatz und Versandkosten-Link unterhalb des Preises auf allen Seiten"
+"CMS Page for Shipping Info","CMS-Seite für Versandkosten"
+"-- No Page --","-- Keine Seite --"
+"Show ""incl. Shipping Cost"" instead of ""excl. Shipping Cost""","Zeige ""inkl. Versandkosten"" anstatt ""exkl. Versandkosten"""
+"Delivery Time","Lieferzeit"

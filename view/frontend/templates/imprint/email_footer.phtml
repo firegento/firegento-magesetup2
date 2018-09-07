@@ -1,0 +1,90 @@
+<?php
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+/**
+ * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ */
+?>
+<p><strong><?php echo $this->getShopName() ?></strong></p>
+
+<p>
+    <?php echo $this->getCompanyFirst() ?><br />
+    <?php if(strlen(trim($this->getCompanySecond()))): ?>
+        <?php echo $this->getCompanySecond() ?><br />
+    <?php endif ?>
+    <?php echo $this->getStreet() ?><br />
+    <?php echo $this->getZip() ?> <?php echo $this->getCity() ?>
+</p>
+
+<p>
+    <?php if (strlen(trim($this->getTelephone()))): ?>
+        <?php echo $this->__('Telephone') ?>: <?php echo $this->getTelephone() ?>
+        <?php if (strlen(trim($this->getTelephoneAdditional()))): ?>
+            (<?php echo $this->getTelephoneAdditional() ?>)
+        <?php endif ?>
+        <br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getFax()))): ?>
+        <?php echo $this->__('Fax') ?>: <?php echo $this->getFax() ?><br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getWeb()))): ?>
+        <?php echo $this->__('Web') ?>: <a href="http://<?php echo $this->getWeb() ?>" title="<?php echo $this->getCompanyFirst() ?>"><?php echo $this->getWeb() ?></a><br />
+    <?php endif ?>
+    <?php echo $this->__('E-Mail') ?>: <?php echo $this->getEmail(false) ?>
+</p>
+
+<p>
+    <?php if (strlen(trim($this->getFinancialOffice()))): ?>
+        <?php echo $this->__('Financial office') ?>: <?php echo $this->getFinancialOffice() ?><br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getTaxNumber()))): ?>
+        <?php echo $this->__('Tax number') ?>: <?php echo $this->getTaxNumber() ?><br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getVatId()))): ?>
+        <?php echo $this->__('VAT-ID') ?>: <?php echo $this->getVatId() ?><br />
+    <?php endif ?>
+</p>
+
+<p>
+    <?php if (strlen(trim($this->getCeo()))): ?>
+        <?php echo $this->__('CEO') ?>: <?php echo $this->getCeo() ?><br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getOwner()))): ?>
+        <?php echo $this->__('Owner') ?>: <?php echo $this->getOwner() ?><br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getCourt()))): ?>
+        <?php echo $this->__('Register court') ?>: <?php echo $this->getCourt() ?><br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getRegisterNumber()))): ?>
+        <?php echo $this->__('Register number') ?>: <?php echo $this->getRegisterNumber() ?><br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getBusinessRules()))): ?>
+        <?php echo $this->__('Reference for business rules') ?>: <?php echo $this->getBusinessRules() ?>
+    <?php endif ?>
+</p>
+
+<p>
+    <?php if (strlen(trim($this->getBankAccountOwner()))): ?>
+        <?php echo $this->__('Account owner') ?>: <?php echo $this->getBankAccountOwner() ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($this->getBankAccount()))): ?>
+        <?php echo $this->__('Account') ?>: <?php echo $this->getBankAccount() ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($this->getBankCodeNumber()))): ?>
+        <?php echo $this->__('Bank number') ?>: <?php echo $this->getBankCodeNumber() ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($this->getBankName()))): ?>
+        <?php echo $this->__('Bank name') ?>: <?php echo $this->getBankName() ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($this->getSwift()))): ?>
+        <?php echo $this->__('SWIFT') ?>: <?php echo $this->getSwift() ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($this->getIban()))): ?>
+        <?php echo $this->__('IBAN') ?>: <?php echo $this->getIban() ?><br />
+    <?php endif ?>
+    <?php if (strlen(trim($this->getClearing()))): ?>
+        <?php echo $this->__('Clearing') ?>: <?php echo $this->getClearing() ?><br />
+    <?php endif ?>
+</p>

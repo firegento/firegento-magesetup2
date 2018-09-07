@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+/**
+ * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ */
+?>
+<?php if ($ceo = $this->getImprintValue('ceo')): ?>
+    <?php echo __('CEO') ?>: <?php echo $ceo ?><br/>
+<?php endif ?>
+<?php if ($owner = $this->getImprintValue('owner')): ?>
+    <?php echo __('Owner') ?>: <?php echo $owner ?><br/>
+<?php endif ?>
+<?php if (strlen(trim($this->getImprintValue('content_responsable_name'))) || strlen(trim($this->getImprintValue('content_responsable_address')))): ?>
+    <h4><?php echo __('Responsible according to § 5 TMG'); ?>:</h4>
+<?php endif; ?>
+<?php if ($contentResponsableName = $this->getImprintValue('content_responsable_name')): ?>
+    <?php echo __('Responsible for content') ?>: <?php echo $contentResponsableName ?><br/>
+<?php endif ?>
+<?php if ($contentResponsableAddress = $this->getImprintValue('content_responsable_address')): ?>
+    <?php echo __('Responsible for content address') ?>: <?php echo $contentResponsableAddress ?><br/>
+<?php endif ?>
+<br/>
+<?php if ($contentResponsablePressLaw = $this->getImprintValue('content_responsable_press_law')): ?>
+    <?php echo __('Responsible in the interests of the press law') ?>: <?php echo $contentResponsablePressLaw ?><br/>
+<?php endif ?>
+<?php if ($court = $this->getImprintValue('court')): ?>
+    <?php echo __('Register Court') ?>: <?php echo $court ?><br/>
+<?php endif ?>
+<?php if ($registerNumber = $this->getImprintValue('register_number')): ?>
+    <?php echo __('Register Number') ?>: <?php echo $registerNumber ?><br/>
+<?php endif ?>
+<?php if ($businessRules = $this->getImprintValue('business_rules')): ?>
+    <?php echo __('Reference for business rules') ?>: <?php echo $businessRules ?><br/>
+<?php endif ?>
+<?php if ($authority = $this->getImprintValue('authority')): ?>
+    <?php echo __('Authority (ECG)') ?>: <?php echo $authority ?><br/>
+<?php endif ?>
+<?php if ($shareholdings = $this->getImprintValue('shareholdings')): ?>
+    <?php echo __('Shareholdings') ?>: <?php echo $shareholdings ?><br/>
+<?php endif ?>
+<?php if ($editorialConcept = $this->getImprintValue('editorial_concept')): ?>
+    <?php echo __('Editorial Concept') ?>: <?php echo $editorialConcept ?><br/>
+<?php endif ?>
