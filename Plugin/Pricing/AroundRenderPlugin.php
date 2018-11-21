@@ -27,6 +27,7 @@ class AroundRenderPlugin
 
     /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     * @param \FireGento\MageSetup\Helper\Data $helper
      */
     public function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
