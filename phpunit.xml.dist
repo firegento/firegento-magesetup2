@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
          colors="true"
          bootstrap="./Test/Unit/bootstrap.php"
->
+         printerClass="Sempro\PHPUnitPrettyPrinter\PrettyPrinter">
     <testsuite name="Firegento Unit Tests">
         <directory suffix="Test.php">Test/Unit</directory>
         <exclude>Test/Unit/Model/System/ConfigTest.php</exclude>

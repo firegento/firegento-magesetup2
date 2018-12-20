@@ -10,7 +10,7 @@
   "require-dev": {
     "phpunit/phpunit": "^6.5",
     "magento-ecg/coding-standard": "^3.0",
-    "roave/security-advisories": "dev-master"
+    "sempro/phpunit-pretty-print": "^1.0"
   },
   "repositories": [
     {
