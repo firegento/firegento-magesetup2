@@ -1,0 +1,30 @@
+env:
+  global:
+  - secure: XnlIej4ZmEX8CGleIMdgSe/KMEc1PTYbpS6tlgpnb83OollHn6uh/NgDIe/ijxo8dOqi4COcz+3xGmeb5bBxu3mbP/59lYh/DcJMtyymY+Ev7+3BM/LjVAhA5fpIU2a9sItFeHz/IW1bp0mzX/seKqks3rp7kltNKAre+zC81eFz3MkNaLa6hfdr+jF7aJKhA5e3KwBCGGjXkSnKaFrb7or4EkaDJn9/Ga/vX9iEhCuzPlJyNydgwdCJjskg06djYeTpB8D0tt1G9Iss0Gwd4edS2FcYWJYReebN1vtju5kSlD/0CFXfNNCdWjBUkyI0CpMNTeiKsRITdStFYA86Lu3jGDCYmeG++YFkNhzK7MOZGFbkzlmh5sc+s/j3oycoc3oGZP8YtBQbBTtGWx+xrwwEz9FYxYS+mtOOSNiKuSMPR3kwU/OciHMPIbv/LiduCJyb8bn+vpdJSVUwjxvYKhTsU4ZN4tMhsB3HlUM4fzyj3mftUbfTghlIldgXaJ749JyBTsz5lFdnGiSgyCNvJBJ4l4LKLWbWKiW23/SS3rN2cZCynUFY61Qz0BXLmeFMO7sW2VN2WYD+hU65p/CwpFlGfJGjfjUL8DFgeLuYvsmcMf99TG0GyBb4YZLzKNiwynw9i9MVzXi0YQDX3bQTM8bselVmWNFHgp4/FAzsa48=
+  - secure: R0mDRxGHZivJvGmIbSk0325LaBWjdf04RJkdFgQImTc5SvtYkDbmbTG2o0KHmzr7GrQvy/xzq5L99Mp7mC8UxXv5mOSiYuu3a3kcBvf6btlkc27YDkZZUSHQK4btwE212hEEznwXQ1OYyXQ1hxBUayIjLARoEXyTf+LK7PNCgJgVRE1UMA/4m0Cg8T+i9zCWMlAOjDQTBzgfqjhp+BTzHWPzW802JLluxtj/BbXhxrCKWgP7rvMSPBHR656R4k5mJY9+FpEacnHbTNbphYwVBdISnj+EtgNlsYF27VqTk1uPq/xQKYs4N4JdRS82GorIKECxV+hR7VnFLgCuX2WIT/wz+UC8x0EbI28Kli7TV5tgePg8GnajoHdKlwUF2mQvvYYcByys4wRNmh1yOLfymqm32WRmbhxjwgGM8/SSpuErRSkzS4ZCGPwSMk4o1P+6Onln3hngc+cgIb3nRpSd/vR5tBMveMV98bVwRJclV5122R7x/FZMRw99jMcxqjGiF5LkHQ+LvUaYa2/nytW5f4NckbwaPUguGO0DTdIdY5WfSkZWXjh6PxnBS7WbCOwcC+Ml1i9HxzxaXr1w68g+G6bnyRFS8fZDn1u0mltor3LSDoovnUTnzW3Ge0O3HDKWCiJ5YjzPqMLgOJPuA3Kvebz+J6h/j2lEJ5Ik0IwxuVo=
+
+language: php
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+  - "$HOME/.php-cs-fixer"
+  - "$HOME/.local"
+matrix:
+  fast_finish: true
+  include:
+  - php: 7.0
+    env: deps=codeSniffer
+  - php: 7.0
+    env: deps=high
+  - php: 7.1
+    env: deps=high
+
+before_install:
+- "./Test/script/travis_before_install.sh"
+
+install:
+- echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > auth.json
+- composer install --prefer-dist
+
+script:
+- "./Test/script/travis_script.sh"
