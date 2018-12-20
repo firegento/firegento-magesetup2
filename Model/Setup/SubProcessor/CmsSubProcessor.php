@@ -107,6 +107,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         // Check if template filename exists
         $filename = $pageData['filename'];
         $template = $this->getTemplatePath('pages') . $filename;
+        // phpcs:ignore
         if (!file_exists($template)) {
             return;
         }
@@ -115,6 +116,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         unset($pageData['filename']);
 
         // Fetch template content
+        // phpcs:ignore
         $templateContent = @file_get_contents($template);
 
         $data = array(
@@ -171,6 +173,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         // Check if template filename exists
         $filename = $blockData['filename'];
         $template = $this->getTemplatePath('blocks') . $filename;
+        // phpcs:ignore
         if (!file_exists($template)) {
             return;
         }
@@ -179,6 +182,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         unset($blockData['filename']);
 
         // Fetch template content
+        // phpcs:ignore
         $templateContent = @file_get_contents($template);
 
         $data = array(
