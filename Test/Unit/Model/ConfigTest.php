@@ -5,6 +5,7 @@
  */
 namespace FireGento\MageSetup\Test\Unit\Model;
 
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -37,16 +38,20 @@ class Config extends TestCase
             'at'      => []
         ];
 
-        $readerMock = $this->getMock('FireGento\MageSetup\Model\Config\Reader', ['read'], [], '', false);
+        $readerMock = $this->createMock(\FireGento\MageSetup\Model\Config\Reader::class);
         $readerMock->expects($this->once())->method('read')->will($this->returnValue($readerData));
 
-        $cacheMock = $this->getMock('Magento\Framework\Config\CacheInterface');
+        $cacheMock = $this->getMockBuilder(\Magento\Framework\Config\CacheInterface::class)
+            ->disableOriginalConstructor()->getMockForAbstractClass();
 
-        $this->config = new \FireGento\MageSetup\Model\Config(
-            $readerMock,
-            $cacheMock,
-            'de'
-        );
+
+        $objectManager = new ObjectManager($this);
+
+        $this->config = $objectManager->getObject(\FireGento\MageSetup\Model\Config::class,[
+            'reader' => $readerMock,
+            'cache' => $cacheMock,
+            'country' => 'de'
+        ]);
     }
 
     /**
