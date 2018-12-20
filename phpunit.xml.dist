@@ -6,6 +6,7 @@
 >
     <testsuite name="Firegento Unit Tests">
         <directory suffix="Test.php">Test/Unit</directory>
+        <exclude>Test/Unit/Model/System/ConfigTest.php</exclude>
     </testsuite>
     <filter>
         <whitelist>
@@ -14,5 +15,6 @@
             <directory suffix=".php">./Model</directory>
             <directory suffix=".php">./Observer</directory>
         </whitelist>
+
     </filter>
 </phpunit>
