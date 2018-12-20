@@ -13,11 +13,11 @@ matrix:
   fast_finish: true
   include:
   - php: 7.0
-    env: deps=codeSniffer
-  - php: 7.0
-    env: deps=high
-  - php: 7.1
-    env: deps=high
+    env: deps=cs-phpunit
+#  - php: 7.0
+#    env: deps=high
+#  - php: 7.1
+#    env: deps=high
 
 before_install:
 - "./Test/script/travis_before_install.sh"
