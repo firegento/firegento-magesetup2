@@ -11,8 +11,9 @@ use Magento\Catalog\Block\Product\ListProduct;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\LayoutInterface;
+use PHPUnit\Framework\TestCase;
 
-class ListProductPluginTest extends \PHPUnit_Framework_TestCase
+class ListProductPluginTest extends TestCase
 {
     /** @var ScopeConfigInterface | \PHPUnit_Framework_MockObject_MockObject */
     protected $scopeConfigMock;

@@ -5,12 +5,14 @@
  */
 namespace FireGento\MageSetup\Test\Unit\Model;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Class Config
  *
  * @package FireGento\MageSetup\Test\Unit\Model
  */
-class Config extends \PHPUnit_Framework_TestCase
+class Config extends TestCase
 {
     /**
      * @var \FireGento\MageSetup\Model\Config
