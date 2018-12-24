@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright © 2016 FireGento e.V.
+# See LICENSE.md bundled with this module for license details.
 
 set -e
 trap '>&2 echo Error: Command \`$BASH_COMMAND\` on line $LINENO failed with exit code $?' ERR
@@ -8,4 +10,13 @@ echo "backup and disable xdebug"
 cp ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ~/.phpenv/versions/$(phpenv version-name)/xdebug.ini.bak
 echo > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
 phpenv rehash
+
+# create database and move db config into place
+mysql -uroot -e '
+  SET @@global.sql_mode = NO_ENGINE_SUBSTITUTION;
+  CREATE DATABASE magento_integration_tests;
+'
+sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('new_password') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+sudo mysql_upgrade -u root -p2389423443224
+sudo service mysql restart
 

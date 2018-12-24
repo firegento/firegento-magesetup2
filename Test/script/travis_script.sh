@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright © 2016 FireGento e.V.
+# See LICENSE.md bundled with this module for license details.
 
 set -e
 trap '>&2 echo Error: Command \`$BASH_COMMAND\` on line $LINENO failed with exit code $?' ERR
