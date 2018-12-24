@@ -16,7 +16,7 @@ env:
     fast_finish: true
     include:
     - php: 7.1
-      env: TEST_SUITE=unit_cs
+      env: TEST_SUITE=unit_cs VERSION=2.2.*
 
 
 language: php
@@ -32,7 +32,7 @@ before_install:
 install:
   - echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > $HOME/.composer/auth.json
   - composer install --prefer-dist
-  - "./Test/script/travis_install_magento.sh"
+  - "./Test/script/travis_install_magento.sh $VERSION"
 
 script:
   - "./Test/script/travis_script.sh"

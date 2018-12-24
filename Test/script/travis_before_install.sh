@@ -16,7 +16,3 @@ mysql -uroot -e '
   SET @@global.sql_mode = NO_ENGINE_SUBSTITUTION;
   CREATE DATABASE magento_integration_tests;
 '
-sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('new_password') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
-sudo mysql_upgrade -u root -p2389423443224
-sudo service mysql restart
-
