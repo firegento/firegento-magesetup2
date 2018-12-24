@@ -18,7 +18,9 @@ class Data extends AbstractHelper
     public function getConfigValue($field, $storeId = null)
     {
         return $this->scopeConfig->getValue(
-            $field, ScopeInterface::SCOPE_STORE, $storeId
+            $field,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
         );
     }
 }

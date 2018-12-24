@@ -17,4 +17,6 @@ composer config repositories.local path $TRAVIS_BUILD_DIR
 
 composer require "firegento/magesetup2":"@dev"
 
-vendor/bin/php-cs-fixer fix --config=.php_cs.dist --dry-run --diff vendor/firegento/magesetup2/
+vendor/bin/php-cs-fixer fix --config=.php_cs.dist --dry-run --diff $MAGENTO_ROOT/vendor/firegento/magesetup2/
+
+vendor/bin/phpcs -p --colors --extensions=php/php --standard=dev/tests/static/framework/Magento/ $MAGENTO_ROOT/vendor/firegento/magesetup2/
