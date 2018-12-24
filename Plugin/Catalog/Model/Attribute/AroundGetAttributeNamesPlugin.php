@@ -5,7 +5,7 @@
  */
 namespace FireGento\MageSetup\Plugin\Catalog\Model\Attribute;
 
-use \FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
+use FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
 
 /**
  * Class AroundGetAttributeNamesPlugin

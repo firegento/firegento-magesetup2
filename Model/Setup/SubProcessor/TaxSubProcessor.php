@@ -6,14 +6,14 @@
 namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 
 use FireGento\MageSetup\Model\Config;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Tax\Api\TaxRuleRepositoryInterface;
-use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
+use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
+use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Model\ResourceModel\Group\CollectionFactory as CustomerGroupCollectionFactory;
 use Magento\Framework\App\Config\Storage\WriterInterface;
-use Magento\Catalog\Model\Product;
-use Magento\Customer\Api\Data\GroupInterface;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
+use Magento\Tax\Api\TaxRuleRepositoryInterface;
 
 /**
  * Class TaxSubProcessor
@@ -147,7 +147,7 @@ class TaxSubProcessor extends AbstractSubProcessor
 
                 foreach ($mapping as $mappingKey => $mappingValues) {
                     if (is_array($mappingValues)) {
-                        $classes = array();
+                        $classes = [];
                         foreach ($mappingValues as $value) {
                             if (isset($taxClasses[$value])) {
                                 $classes[] = $taxClasses[$value];
@@ -238,11 +238,11 @@ class TaxSubProcessor extends AbstractSubProcessor
         // add labels to all store views
         if ($label) {
             foreach ($this->storeManager->getStores() as $storeId => $store) {
-                $bind = array(
+                $bind = [
                     'tax_calculation_rate_id' => $rateId,
                     'store_id'                => $storeId,
                     'value'                   => $label,
-                );
+                ];
                 $this->insertIntoTable('tax_calculation_rate_title', $bind);
             }
         }

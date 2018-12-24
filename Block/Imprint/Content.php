@@ -5,8 +5,8 @@
  */
 namespace FireGento\MageSetup\Block\Imprint;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Directory\Api\CountryInformationAcquirerInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\ScopeInterface;
 

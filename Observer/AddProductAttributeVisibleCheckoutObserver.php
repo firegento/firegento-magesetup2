@@ -5,8 +5,8 @@
  */
 namespace FireGento\MageSetup\Observer;
 
-use Magento\Framework\Event\ObserverInterface;
 use Magento\Config\Model\Config\Source\Yesno;
+use Magento\Framework\Event\ObserverInterface;
 
 /**
  * Class AddProductAttributeVisibleCheckoutObserver

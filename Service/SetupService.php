@@ -5,8 +5,8 @@
  */
 namespace FireGento\MageSetup\Service;
 
-use FireGento\MageSetup\Model\Setup\SubProcessor\SubProcessorPool;
 use FireGento\MageSetup\Model\Config;
+use FireGento\MageSetup\Model\Setup\SubProcessor\SubProcessorPool;
 use Magento\Framework\App\Cache\Manager as CacheManager;
 use Symfony\Component\Console\Output\OutputInterface;
 

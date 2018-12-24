@@ -5,9 +5,9 @@
  */
 namespace FireGento\MageSetup\Setup;
 
-use Magento\Framework\Setup\UpgradeSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
+use Magento\Framework\Setup\UpgradeSchemaInterface;
 
 /**
  * Class UpgradeSchema
@@ -25,7 +25,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
         $setup->startSetup();
 
         if (version_compare($context->getVersion(), '2.0.1', '<')) {
-
             $setup->getConnection()->addColumn(
                 $setup->getTable('catalog_eav_attribute'),
                 'is_visible_on_checkout',
@@ -37,7 +36,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment'  => 'Is Visible On Checkout'
                 ]
             );
-
         }
 
         $setup->endSetup();

@@ -86,5 +86,4 @@ class ListProductPluginTest extends TestCase
         $closure = $this->proceedMock;
         $this->assertSame($result, $closure());
     }
-
 }

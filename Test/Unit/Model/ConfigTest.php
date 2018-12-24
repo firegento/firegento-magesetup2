@@ -44,10 +44,9 @@ class Config extends TestCase
         $cacheMock = $this->getMockBuilder(\Magento\Framework\Config\CacheInterface::class)
             ->disableOriginalConstructor()->getMockForAbstractClass();
 
-
         $objectManager = new ObjectManager($this);
 
-        $this->config = $objectManager->getObject(\FireGento\MageSetup\Model\Config::class,[
+        $this->config = $objectManager->getObject(\FireGento\MageSetup\Model\Config::class, [
             'reader' => $readerMock,
             'cache' => $cacheMock,
             'country' => 'de'

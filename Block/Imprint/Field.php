@@ -5,8 +5,6 @@
  */
 namespace FireGento\MageSetup\Block\Imprint;
 
-use Magento\Framework\View\Element\Template;
-
 /**
  * Class Field
  *

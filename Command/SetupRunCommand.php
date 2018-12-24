@@ -7,6 +7,7 @@ namespace FireGento\MageSetup\Command;
 
 use FireGento\MageSetup\Model\ConfigFactory;
 use FireGento\MageSetup\Model\Setup\SubProcessor\SubProcessorPool;
+use FireGento\MageSetup\Service\SetupServiceFactory;
 use Magento\Framework\App\ObjectManager\ConfigLoader;
 use Magento\Framework\App\State as AppState;
 use Magento\Framework\ObjectManagerInterface;
@@ -15,7 +16,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use FireGento\MageSetup\Service\SetupServiceFactory;
 
 /**
  * Class SetupRunCommand
