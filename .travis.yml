@@ -16,10 +16,22 @@ env:
 matrix:
   fast_finish: true
   include:
+  - php: 5.9
+    env: MAGENTO_VERSION=2.0.0
+  - php: 5.9
+    env: MAGENTO_VERSION=2.0.*
+  - php: 7.0
+    env: MAGENTO_VERSION=2.1.0
+  - php: 7.0
+    env: MAGENTO_VERSION=2.1.*
   - php: 7.1
     env: MAGENTO_VERSION=2.2.0
   - php: 7.1
     env: MAGENTO_VERSION=2.2.* CODE_QUALITY=true
+  - php: 7.2
+    env: MAGENTO_VERSION=2.3.0
+  - php: 7.2
+    env: MAGENTO_VERSION=2.3.* CODE_QUALITY=true
 
 
 language: php
