@@ -6,7 +6,7 @@ set -e
 trap '>&2 echo Error: Command \`$BASH_COMMAND\` on line $LINENO failed with exit code $?' ERR
 
 ## setup magento installation
-export MAGENTO_ROOT=`mktemp -d /tmp/mageteststand.XXXXXXXX`
+
 echo "Install magento version $1 into $MAGENTO_ROOT"
 composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition:$1 $MAGENTO_ROOT
 cd $MAGENTO_ROOT
