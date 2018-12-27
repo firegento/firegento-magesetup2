@@ -119,7 +119,7 @@ class Details extends \Magento\Framework\View\Element\Template
     public function canShowShippingLink()
     {
         $productTypeId = $this->saleableItem->getTypeId();
-        $ignoreTypeIds = ['virtual', 'downloadable'];
+        $ignoreTypeIds = array('virtual', 'downloadable');
         if (in_array($productTypeId, $ignoreTypeIds)) {
             return false;
         }

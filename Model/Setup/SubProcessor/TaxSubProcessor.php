@@ -147,7 +147,7 @@ class TaxSubProcessor extends AbstractSubProcessor
 
                 foreach ($mapping as $mappingKey => $mappingValues) {
                     if (is_array($mappingValues)) {
-                        $classes = [];
+                        $classes = array();
                         foreach ($mappingValues as $value) {
                             if (isset($taxClasses[$value])) {
                                 $classes[] = $taxClasses[$value];
@@ -238,11 +238,11 @@ class TaxSubProcessor extends AbstractSubProcessor
         // add labels to all store views
         if ($label) {
             foreach ($this->storeManager->getStores() as $storeId => $store) {
-                $bind = [
+                $bind = array(
                     'tax_calculation_rate_id' => $rateId,
                     'store_id'                => $storeId,
                     'value'                   => $label,
-                ];
+                );
                 $this->insertIntoTable('tax_calculation_rate_title', $bind);
             }
         }

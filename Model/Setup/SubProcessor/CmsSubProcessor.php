@@ -118,10 +118,10 @@ class CmsSubProcessor extends AbstractSubProcessor
         // phpcs:ignore
         $templateContent = @file_get_contents($template);
 
-        $data = [
+        $data = array(
             'stores'    => [0],
             'is_active' => 1,
-        ];
+        );
 
         if (preg_match('/<!--@title\s*(.*?)\s*@-->/u', $templateContent, $matches)) {
             $data['title'] = $matches[1];
@@ -184,10 +184,10 @@ class CmsSubProcessor extends AbstractSubProcessor
         // phpcs:ignore
         $templateContent = @file_get_contents($template);
 
-        $data = [
+        $data = array(
             'stores'    => [0],
             'is_active' => 1,
-        ];
+        );
 
         // Find title
         if (preg_match('/<!--@title\s*(.*?)\s*@-->/u', $templateContent, $matches)) {
