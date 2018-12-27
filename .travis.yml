@@ -19,7 +19,7 @@ matrix:
   - php: 7.1
     env: MAGENTO_VERSION=2.2.0
   - php: 7.1
-    env: TEST_SUITE=unit_cs MAGENTO_VERSION=2.2.*
+    env: MAGENTO_VERSION=2.2.* CODE_QUALITY=true
 
 
 language: php
