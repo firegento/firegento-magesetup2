@@ -120,7 +120,8 @@ class SetupRunCommand extends Command
             $area = $this->appState->getAreaCode();
         }
 
-        $configLoader = $this->objectManager->get(Magento\Framework\ObjectManager\ConfigLoaderInterface::class);
+        // phpcs:ignore
+        $configLoader = $this->objectManager->get('Magento\Framework\ObjectManager\ConfigLoaderInterface');
         $this->objectManager->configure($configLoader->load($area));
         $this->registry->register('isSecureArea', true);
 

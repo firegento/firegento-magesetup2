@@ -31,5 +31,12 @@ php bin/magento module:enable FireGento_MageSetup
 php bin/magento setup:upgrade
 
 
+echo -e "\e[32m###########################"
+echo -e "Run magesetup2 de"
+echo -e "\e[32m###########################"
+php bin/magento magesetup:setup:run de agreements
+php bin/magento magesetup:setup:run de cms
+php bin/magento magesetup:setup:run de email
+php bin/magento magesetup:setup:run de systemConfig
+php bin/magento magesetup:setup:run de tax
 
-php bin/magento magesetup:setup:run de
