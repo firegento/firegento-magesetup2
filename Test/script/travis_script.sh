@@ -7,8 +7,8 @@ trap '>&2 echo Error: Command \`$BASH_COMMAND\` on line $LINENO failed with exit
 
 if [ "$CODE_QUALITY" == "true" ]; then
 
-    echo "Check code quality"
-    echo "####################"
+    echo -e "\e[32mCheck code quality"
+    echo -e "\e[32m####################"
 
 
 
@@ -19,16 +19,21 @@ if [ "$CODE_QUALITY" == "true" ]; then
     composer require "magento-ecg/coding-standard":"^3.0"
     vendor/bin/phpcs -p -n --colors --extensions=php,phtml --standard=vendor/magento-ecg/coding-standard/EcgM2 --ignore=./vendor,/Test $TRAVIS_BUILD_DIR
 
-    echo -e "\e[32m- checking magento cs"
-
-    cd $MAGENTO_ROOT
-    vendor/bin/phpcs -p --colors --extensions=php/php --standard=dev/tests/static/framework/Magento/ $TRAVIS_BUILD_DIR
-
     echo -e "\e[32m- checking php-cs"
 
     cd $MAGENTO_ROOT
     composer require "friendsofphp/php-cs-fixer":"^2.2"
     vendor/bin/php-cs-fixer fix --config=.php_cs.dist --dry-run --diff $TRAVIS_BUILD_DIR
+
+    echo -e "\e[32m- checking magento cs"
+
+    cd $MAGENTO_ROOT
+    ls -la .
+    ls -la dev
+    ls -la dev/tests
+    #vendor/bin/phpcs -p --colors --extensions=php/php --standard=dev/tests/static/framework/Magento/ $TRAVIS_BUILD_DIR
+
+
 
 
 
