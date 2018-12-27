@@ -10,6 +10,8 @@ if [ "$CODE_QUALITY" == "true" ]; then
     echo -e "\e[32mCheck code quality"
     echo -e "\e[32m####################"
 
+    echo -e  "\e[32m$MAGENTO_ROOT"
+
 
 
 
