@@ -141,7 +141,7 @@ class Details extends \Magento\Framework\View\Element\Template
     private function getTaxPercentBySaleableItem()
     {
         $taxPercent = $this->saleableItem->getTaxPercent();
-        if (is_null($taxPercent)) {
+        if ($taxPercent === null) {
             $productTaxClassId = $this->saleableItem->getTaxClassId();
             if ($productTaxClassId) {
                 $store = $this->storeManager->getStore();

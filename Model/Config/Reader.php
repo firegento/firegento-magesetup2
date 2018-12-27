@@ -17,6 +17,7 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
      *
      * @var array
      */
+    // phpcs:ignore
     protected $_idAttributes = [
         '/magesetup/setup' => 'name',
     ];

@@ -267,8 +267,8 @@ class TaxSubProcessor extends AbstractSubProcessor
 
                 try {
                     $product->save();
-                } catch (\Exception $exception) {
-                    echo __('Error by product with sku "' . $product->getSku() . '": ' . $exception->getMessage() . "\n");
+                } catch (\Exception $e) {
+                    echo __('Error by product with sku "' . $product->getSku() . '": ' . $e->getMessage() . "\n");
                 }
             }
         }

@@ -18,12 +18,12 @@ class AroundRenderPlugin
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
-    protected $_scopeConfig;
+    protected $scopeConfig;
 
     /**
      * @var \FireGento\MageSetup\Helper\Data
      */
-    protected $_helper;
+    protected $helper;
 
     /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
@@ -33,8 +33,8 @@ class AroundRenderPlugin
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \FireGento\MageSetup\Helper\Data $helper
     ) {
-        $this->_scopeConfig = $scopeConfig;
-        $this->_helper = $helper;
+        $this->scopeConfig = $scopeConfig;
+        $this->helper = $helper;
     }
 
     /**
@@ -54,7 +54,7 @@ class AroundRenderPlugin
         array $arguments = []
     ) {
         $returnValue = $proceed($priceCode, $saleableItem, $arguments);
-        if (!$this->_helper->getConfigValue(self::ENABLED_DISPLAY_BELOW_PRICE_XML)) {
+        if (!$this->helper->getConfigValue(self::ENABLED_DISPLAY_BELOW_PRICE_XML)) {
             return $returnValue;
         }
         if (trim($returnValue) != '') {

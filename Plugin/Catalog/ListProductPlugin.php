@@ -10,6 +10,7 @@ class ListProductPlugin
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
+    // phpcs:ignore
     protected $_scopeConfig;
 
     /**

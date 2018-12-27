@@ -110,7 +110,9 @@ class Content extends \Magento\Framework\View\Element\Template
         }
 
         $html = '<a href="#" onclick="toRecipient();">';
-        $html .= $parts[0] . '<span class="no-display">nospamplease</span>@<span class="no-display">nospamplease</span>' . $parts[1];
+        $html .= $parts[0];
+        $html .= '<span class="no-display">nospamplease</span>@<span class="no-display">nospamplease</span>';
+        $html .= $parts[1];
         $html .= '</a>';
         $html .= $this->getEmailJs($parts);
 

@@ -17,6 +17,7 @@ class Field extends \FireGento\MageSetup\Block\Imprint\Content
      *
      * @return string
      */
+    // phpcs:ignore
     protected function _toHtml()
     {
         if ($this->getField() == 'email') {

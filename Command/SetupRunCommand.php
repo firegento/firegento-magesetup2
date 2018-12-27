@@ -3,6 +3,7 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 namespace FireGento\MageSetup\Command;
 
 use FireGento\MageSetup\Model\ConfigFactory;
@@ -65,12 +66,12 @@ class SetupRunCommand extends Command
     private $subProcessorPool;
 
     /**
-     * @param SetupServiceFactory    $setupService
-     * @param ConfigFactory          $magesetupConfig
-     * @param SubProcessorPool       $subProcessorPool
-     * @param Registry               $registry
-     * @param AppState               $appState
-     * @param ConfigLoader           $configLoader
+     * @param SetupServiceFactory $setupService
+     * @param ConfigFactory $magesetupConfig
+     * @param SubProcessorPool $subProcessorPool
+     * @param Registry $registry
+     * @param AppState $appState
+     * @param ConfigLoader $configLoader
      * @param ObjectManagerInterface $objectManager
      */
     public function __construct(
@@ -106,7 +107,7 @@ class SetupRunCommand extends Command
     }
 
     /**
-     * @param InputInterface  $input
+     * @param InputInterface $input
      * @param OutputInterface $output
      * @return int Non zero if invalid type, 0 otherwise
      */
@@ -119,7 +120,7 @@ class SetupRunCommand extends Command
             $area = $this->appState->getAreaCode();
         }
 
-        $configLoader = $this->objectManager->get('Magento\Framework\ObjectManager\ConfigLoaderInterface');
+        $configLoader = $this->objectManager->get(Magento\Framework\ObjectManager\ConfigLoaderInterface::class);
         $this->objectManager->configure($configLoader->load($area));
         $this->registry->register('isSecureArea', true);
 
@@ -131,7 +132,10 @@ class SetupRunCommand extends Command
             $config = $this->magesetupConfig->create(['country' => $country]);
             $allowedCountries = $config->getAllowedCountries();
             if (!in_array($country, $allowedCountries)) {
-                throw new \InvalidArgumentException('Country code "' . $country . '" is not allowed. Supported countries are: ' . implode(', ', $allowedCountries));
+                throw new \InvalidArgumentException(
+                    'Country code "' . $country . '" is not allowed. Supported countries are: '
+                    . implode(', ', $allowedCountries)
+                );
             }
 
             /*
