@@ -9,7 +9,11 @@ if [ "$TEST_SUITE" == "unit_cs" ]; then
 
     echo "Check EcgM2 standard"
     echo "####################"
-    vendor/bin/phpcs -p -n --colors --extensions=php,phtml --standard=vendor/magento-ecg/coding-standard/EcgM2 --ignore=./vendor,/Test $TRAVIS_BUILD_DIR
+    $MAGENTO_ROOT/vendor/bin/phpcs -p -n --colors --extensions=php,phtml --standard=vendor/magento-ecg/coding-standard/EcgM2 --ignore=./vendor,/Test $TRAVIS_BUILD_DIR
+
+    $MAGENTO_ROOT/vendor/bin/php-cs-fixer fix --config=.php_cs.dist --dry-run --diff $TRAVIS_BUILD_DIR
+
+    ${MAGENTO_ROOT}vendor/bin/phpcs -p --colors --extensions=php/php --standard=dev/tests/static/framework/Magento/ $MAGENTO_ROOT/vendor/firegento/magesetup2/
 
     echo "Run unit tests"
     echo "###############"
