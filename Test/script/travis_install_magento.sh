@@ -29,3 +29,7 @@ composer config repositories.local path $TRAVIS_BUILD_DIR
 composer require "firegento/magesetup2":"@dev"
 php bin/magento module:enable FireGento_MageSetup
 php bin/magento setup:upgrade
+
+
+
+php bin/magento magesetup:setup:run de

@@ -22,7 +22,7 @@ Missing your country? Please open a pull request with the necessary configuratio
 
 Requirements
 ------------
-- PHP >= 5.5.0
+- PHP >= 5.6.0
 
 Installation
 ------------

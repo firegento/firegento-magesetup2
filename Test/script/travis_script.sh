@@ -36,7 +36,7 @@ fi
 ## due to issue with the magento unit test framework version below 2.2.2 are not working properly
 ## see https://github.com/magento/magento2/issues/3901 for more information
 
-if [ "$MAGENTO_VERSION" > "2.2.0" ]; then
+if [ "$UNIT_TEST" == "true" ]; then
 
     echo -e "\e[32m##############"
     echo -e "Run unit tests"

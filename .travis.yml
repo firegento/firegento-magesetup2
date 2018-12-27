@@ -27,11 +27,11 @@ matrix:
   - php: 7.1
     env: MAGENTO_VERSION=2.2.0
   - php: 7.1
-    env: MAGENTO_VERSION=2.2.* CODE_QUALITY=true
+    env: MAGENTO_VERSION=2.2.* UNIT_TEST=true CODE_QUALITY=true
   - php: 7.2
-    env: MAGENTO_VERSION=2.3.0
+    env: MAGENTO_VERSION=2.3.0 UNIT_TEST=true
   - php: 7.2
-    env: MAGENTO_VERSION=2.3.*
+    env: MAGENTO_VERSION=2.3.* UNIT_TEST=true
 
 
 language: php
