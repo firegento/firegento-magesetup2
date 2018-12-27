@@ -13,7 +13,7 @@ cd $MAGENTO_ROOT
 if [ "$CODE_QUALITY" == "true" ]; then
 
     echo -e "\e[32m##################"
-    echo -e "\e[32mCheck code quality"
+    echo -e "Check code quality"
     echo -e "\e[32m##################"
 
     echo -e "\e[32m- checking ecgM2"
@@ -35,7 +35,7 @@ fi
 ## Run unit tests
 
 echo -e "\e[32m##############"
-echo -e "\e[32mRun unit tests"
+echo -e "Run unit tests"
 echo -e "\e[32m##############"
 
 ## cp phpunit config
