@@ -10,7 +10,7 @@ if [ "$CODE_QUALITY" == "true" ]; then
     echo "Check code quality"
     echo "####################"
 
-    composer require "magento-ecg/coding-standard": "^3.0"
+    composer require "magento-ecg/coding-standard":"^3.0"
 
     echo "- checking ecgM2"
 
@@ -27,5 +27,5 @@ fi
 
 echo "Run unit tests"
 echo "###############"
-
+cp $TRAVIS_BUILD_DIR/phpunit.unittest.xml $MAGENTO_ROOT/dev/tests/unit/phpunit.xml
 php bin/magento dev:tests:run unit
