@@ -10,7 +10,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 if (version_compare(PHP_VERSION, '7.1.0') >= 0) {
     class_alias('PHPUnit\Framework\TestCase', '\FireGento\MageSetup\TestCase');
 } else {
-    class_alias('PHPUnit_Framework_TestCase', '\FireGento\MageSetup\TestCase');
+    class_alias('\PHPUnit_Framework_TestCase', '\FireGento\MageSetup\TestCase');
 }
 
 /**
