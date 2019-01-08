@@ -42,6 +42,6 @@ fi
     cp $TRAVIS_BUILD_DIR/phpunit.unittest.xml dev/tests/unit/phpunit.xml
     cd dev/tests/unit
 
-    ../../../vendor/bin/phpunit --debug --coverage-text --colors=never
+    ../../../vendor/bin/phpunit --debug
 
     cd $MAGENTO_ROOT
