@@ -6,14 +6,19 @@
 namespace FireGento\MageSetup\Test\Unit\Model;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
+
+if (version_compare(PHP_VERSION, '7.1.0') >= 0) {
+    class_alias('PHPUnit\Framework\TestCase', '\FireGento\MageSetup\TestCase');
+} else {
+    class_alias('PHPUnit_Framework_TestCase', '\FireGento\MageSetup\TestCase');
+}
 
 /**
  * Class Config
  *
  * @package FireGento\MageSetup\Test\Unit\Model
  */
-class Config extends TestCase
+class Config extends \FireGento\MageSetup\TestCase
 {
     /**
      * @var \FireGento\MageSetup\Model\Config

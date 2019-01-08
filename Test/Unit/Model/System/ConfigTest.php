@@ -6,14 +6,15 @@
 namespace FireGento\MageSetup\Test\Unit\Model\System;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
-use PHPUnit\Framework\TestCase;
+
+
 
 /**
  * Class Config
  *
  * @package FireGento\MageSetup\Test\Unit\Model\System
  */
-class Config extends TestCase
+class Config extends \FireGento\MageSetup\TestCase
 {
     /**
      * @var \FireGento\MageSetup\Model\Config
@@ -48,6 +49,7 @@ class Config extends TestCase
      */
     public function isCountryInEu()
     {
+        echo PHP_VERSION ;
         $this->assertTrue($this->config->isCountryInEu('DE'));
         $this->assertFalse($this->config->isCountryInEu('CH'));
     }
