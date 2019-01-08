@@ -33,10 +33,6 @@ if [ "$CODE_QUALITY" == "true" ]; then
 fi
 
 ## Run unit tests
-## due to issue with the magento unit test framework version below 2.2.2 are not working properly
-## see https://github.com/magento/magento2/issues/3901 for more information
-
-if [ "$UNIT_TEST" == "true" ]; then
 
     echo -e "\e[32m##############"
     echo -e "Run unit tests"
@@ -44,6 +40,8 @@ if [ "$UNIT_TEST" == "true" ]; then
 
     ## cp phpunit config
     cp $TRAVIS_BUILD_DIR/phpunit.unittest.xml dev/tests/unit/phpunit.xml
+    cd dev/tests/unit
 
-    php bin/magento dev:tests:run unit
-fi
+    ../../../vendor/bin/phpunit --debug --coverage-text --colors=never
+
+    cd $MAGENTO_ROOT
