@@ -14,6 +14,6 @@ class Delivery extends \Magento\Catalog\Block\Product\View\Description
      */
     public function getProduct()
     {
-        return $this->getData('product');;
+        return $this->getData('product');
     }
 }

@@ -8,7 +8,6 @@ namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\ObjectManager\TMap;
 use Magento\Framework\ObjectManager\TMapFactory;
-use Traversable;
 
 /**
  * Class SubProcessorPool

@@ -6,11 +6,11 @@
 namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 
 use FireGento\MageSetup\Model\Config;
-use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Cms\Model\BlockFactory;
 use Magento\Cms\Model\BlockRepository;
 use Magento\Cms\Model\PageFactory;
 use Magento\Cms\Model\PageRepository;
+use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
  * Class CmsSubProcessor
@@ -64,8 +64,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         PageRepository $pageRepository,
         BlockFactory $blockFactory,
         BlockRepository $blockRepository
-    )
-    {
+    ) {
         $this->moduleReader = $moduleReader;
         $this->pageFactory = $pageFactory;
         $this->pageRepository = $pageRepository;
@@ -107,6 +106,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         // Check if template filename exists
         $filename = $pageData['filename'];
         $template = $this->getTemplatePath('pages') . $filename;
+        // phpcs:ignore
         if (!file_exists($template)) {
             return;
         }
@@ -115,12 +115,13 @@ class CmsSubProcessor extends AbstractSubProcessor
         unset($pageData['filename']);
 
         // Fetch template content
+        // phpcs:ignore
         $templateContent = @file_get_contents($template);
 
-        $data = array(
+        $data = [
             'stores'    => [0],
             'is_active' => 1,
-        );
+        ];
 
         if (preg_match('/<!--@title\s*(.*?)\s*@-->/u', $templateContent, $matches)) {
             $data['title'] = $matches[1];
@@ -171,6 +172,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         // Check if template filename exists
         $filename = $blockData['filename'];
         $template = $this->getTemplatePath('blocks') . $filename;
+        // phpcs:ignore
         if (!file_exists($template)) {
             return;
         }
@@ -179,12 +181,13 @@ class CmsSubProcessor extends AbstractSubProcessor
         unset($blockData['filename']);
 
         // Fetch template content
+        // phpcs:ignore
         $templateContent = @file_get_contents($template);
 
-        $data = array(
+        $data = [
             'stores'    => [0],
             'is_active' => 1,
-        );
+        ];
 
         // Find title
         if (preg_match('/<!--@title\s*(.*?)\s*@-->/u', $templateContent, $matches)) {

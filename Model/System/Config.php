@@ -5,8 +5,8 @@
  */
 namespace FireGento\MageSetup\Model\System;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Cms\Model\PageFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
  * Class Config
@@ -44,8 +44,7 @@ class Config
         \Magento\Framework\App\Helper\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         PageFactory $pageFactory
-    )
-    {
+    ) {
         $this->context = $context;
         $this->storeManager = $storeManager;
         $this->scopeConfig = $context->getScopeConfig();

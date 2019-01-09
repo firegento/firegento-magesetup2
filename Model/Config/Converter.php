@@ -114,6 +114,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                     if ($subSubChildNode->nodeType != XML_ELEMENT_NODE) {
                         continue;
                     }
+                    // phpcs:ignore
                     $data[$childNode->nodeName][$subChildNode->nodeName][$subSubChildNode->nodeName] = $subSubChildNode->nodeValue;
                 }
             }

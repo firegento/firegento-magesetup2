@@ -71,6 +71,8 @@ class AgreementsSubProcessor extends AbstractSubProcessor
             // Check if template filename exists
             $filename = $agreementData['filename'];
             $template = $this->getTemplatePath() . $filename;
+
+            // phpcs:ignore
             if (!file_exists($template)) {
                 continue;
             }
@@ -79,6 +81,7 @@ class AgreementsSubProcessor extends AbstractSubProcessor
             unset($agreementData['filename']);
 
             // Fetch template content
+            // phpcs:ignore
             $templateContent = @file_get_contents($template);
 
             // Fetch agreement name

@@ -27,6 +27,7 @@ class SchemaLocator implements \Magento\Framework\Config\SchemaLocatorInterface
      *
      * @var string
      */
+    // phpcs:ignore
     protected $_schema = null;
 
     /**
@@ -34,6 +35,7 @@ class SchemaLocator implements \Magento\Framework\Config\SchemaLocatorInterface
      *
      * @var string
      */
+    // phpcs:ignore
     protected $_perFileSchema = null;
 
     /**

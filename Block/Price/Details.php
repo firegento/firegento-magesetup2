@@ -6,7 +6,6 @@
 namespace FireGento\MageSetup\Block\Price;
 
 use Magento\Customer\Model\ResourceModel\GroupRepository;
-use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class Details
@@ -120,7 +119,7 @@ class Details extends \Magento\Framework\View\Element\Template
     public function canShowShippingLink()
     {
         $productTypeId = $this->saleableItem->getTypeId();
-        $ignoreTypeIds = array('virtual', 'downloadable');
+        $ignoreTypeIds = ['virtual', 'downloadable'];
         if (in_array($productTypeId, $ignoreTypeIds)) {
             return false;
         }
@@ -142,7 +141,7 @@ class Details extends \Magento\Framework\View\Element\Template
     private function getTaxPercentBySaleableItem()
     {
         $taxPercent = $this->saleableItem->getTaxPercent();
-        if (is_null($taxPercent)) {
+        if ($taxPercent === null) {
             $productTaxClassId = $this->saleableItem->getTaxClassId();
             if ($productTaxClassId) {
                 $store = $this->storeManager->getStore();

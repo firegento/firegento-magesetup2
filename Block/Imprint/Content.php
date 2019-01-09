@@ -5,8 +5,8 @@
  */
 namespace FireGento\MageSetup\Block\Imprint;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Directory\Api\CountryInformationAcquirerInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\ScopeInterface;
 
@@ -110,7 +110,9 @@ class Content extends \Magento\Framework\View\Element\Template
         }
 
         $html = '<a href="#" onclick="toRecipient();">';
-        $html .= $parts[0] . '<span class="no-display">nospamplease</span>@<span class="no-display">nospamplease</span>' . $parts[1];
+        $html .= $parts[0];
+        $html .= '<span class="no-display">nospamplease</span>@<span class="no-display">nospamplease</span>';
+        $html .= $parts[1];
         $html .= '</a>';
         $html .= $this->getEmailJs($parts);
 
