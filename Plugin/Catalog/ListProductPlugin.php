@@ -10,6 +10,7 @@ class ListProductPlugin
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
+    // phpcs:ignore
     protected $_scopeConfig;
 
     /**
@@ -31,8 +32,8 @@ class ListProductPlugin
     public function aroundGetProductDetailsHtml(
         \Magento\Catalog\Block\Product\ListProduct $subject,
         \Closure $proceed,
-        \Magento\Catalog\Model\Product $product)
-    {
+        \Magento\Catalog\Model\Product $product
+    ) {
         $result = $proceed($product);
 
         $deliveryBlock = $subject->getLayout()->getBlock('product.info.delivery');

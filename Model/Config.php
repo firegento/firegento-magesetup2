@@ -5,8 +5,8 @@
  */
 namespace FireGento\MageSetup\Model;
 
-use Magento\Framework\Config\CacheInterface;
 use FireGento\MageSetup\Model\Config\Reader;
+use Magento\Framework\Config\CacheInterface;
 
 /**
  * Class Config
@@ -48,8 +48,7 @@ class Config implements ConfigInterface
         Reader $reader,
         CacheInterface $cache,
         $country
-    )
-    {
+    ) {
         $this->reader = $reader;
         $this->cache = $cache;
         $this->country = $country;

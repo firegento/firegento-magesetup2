@@ -5,7 +5,7 @@
  */
 namespace FireGento\MageSetup\Plugin\Catalog\Helper\Product\Configuration;
 
-use \FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
+use FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
 
 /**
  * Class AroundGetCustomOptionsPlugin
@@ -39,8 +39,7 @@ class AroundGetCustomOptionsPlugin
         \Magento\Catalog\Helper\Product\Configuration $subject,
         \Closure $proceed,
         \Magento\Catalog\Model\Product\Configuration\Item\ItemInterface $item
-    )
-    {
+    ) {
         $options = $proceed($item);
 
         $attributes = $this->getVisibleCheckoutAttributesService->execute();
