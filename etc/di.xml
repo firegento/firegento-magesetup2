@@ -48,12 +48,50 @@
         <plugin name="mageSetupProductDetailsHtml" type="FireGento\MageSetup\Plugin\Catalog\ListProductPlugin" sortOrder="1" />
     </type>
 
-    <type name="Magento\Email\Model\Source\Variables">
-        <plugin name="mageSetupEmailSourceVariables" type="FireGento\MageSetup\Plugin\Email\Model\Source\Variables"/>
-    </type>
-
     <type name="Magento\Email\Block\Adminhtml\Template\Edit\Form">
         <plugin name="mageSetupEmailAdminhtmlTemplateEditForm" type="FireGento\MageSetup\Plugin\Email\Block\Adminhtml\Template\Edit\Form"/>
+    </type>
+
+    <type name="Magento\Variable\Model\Source\Variables">
+        <arguments>
+            <argument name="configPaths" xsi:type="array">
+                <item name="general/imprint" xsi:type="array">
+                    <item name="general/imprint/shop_name" xsi:type="string">1</item>
+                    <item name="general/imprint/company_first" xsi:type="string">1</item>
+                    <item name="general/imprint/company_second" xsi:type="string">1</item>
+                    <item name="general/imprint/street" xsi:type="string">1</item>
+                    <item name="general/imprint/zip" xsi:type="string">1</item>
+                    <item name="general/imprint/city" xsi:type="string">1</item>
+                    <item name="general/imprint/country" xsi:type="string">1</item>
+                    <item name="general/imprint/telephone" xsi:type="string">1</item>
+                    <item name="general/imprint/telephone_additional" xsi:type="string">1</item>
+                    <item name="general/imprint/fax" xsi:type="string">1</item>
+                    <item name="general/imprint/email" xsi:type="string">1</item>
+                    <item name="general/imprint/web" xsi:type="string">1</item>
+                    <item name="general/imprint/tax_number" xsi:type="string">1</item>
+                    <item name="general/imprint/vat_id" xsi:type="string">1</item>
+                    <item name="general/imprint/court" xsi:type="string">1</item>
+                    <item name="general/imprint/financial_office" xsi:type="string">1</item>
+                    <item name="general/imprint/ceo" xsi:type="string">1</item>
+                    <item name="general/imprint/owner" xsi:type="string">1</item>
+                    <item name="general/imprint/content_responsable_name" xsi:type="string">1</item>
+                    <item name="general/imprint/content_responsable_address" xsi:type="string">1</item>
+                    <item name="general/imprint/content_responsable_press_law" xsi:type="string">1</item>
+                    <item name="general/imprint/register_number" xsi:type="string">1</item>
+                    <item name="general/imprint/business_rules" xsi:type="string">1</item>
+                    <item name="general/imprint/authority" xsi:type="string">1</item>
+                    <item name="general/imprint/shareholdings" xsi:type="string">1</item>
+                    <item name="general/imprint/editorial_concept" xsi:type="string">1</item>
+                    <item name="general/imprint/bank_account_owner" xsi:type="string">1</item>
+                    <item name="general/imprint/bank_account" xsi:type="string">1</item>
+                    <item name="general/imprint/bank_code_number" xsi:type="string">1</item>
+                    <item name="general/imprint/bank_name" xsi:type="string">1</item>
+                    <item name="general/imprint/swift" xsi:type="string">1</item>
+                    <item name="general/imprint/iban" xsi:type="string">1</item>
+                    <item name="general/imprint/clearing" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </arguments>
     </type>
 
 </config>
