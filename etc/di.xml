@@ -52,6 +52,11 @@
         <plugin name="mageSetupEmailAdminhtmlTemplateEditForm" type="FireGento\MageSetup\Plugin\Email\Block\Adminhtml\Template\Edit\Form"/>
     </type>
 
+    <type name="Magento\Email\Model\Source\Variables">
+        <plugin name="mageSetupEmailSourceVariables" type="FireGento\MageSetup\Plugin\Email\Model\Source\Variables"/>
+    </type>
+
+    <!-- Email variables for versions >= 2.3.0-->
     <type name="Magento\Variable\Model\Source\Variables">
         <arguments>
             <argument name="configPaths" xsi:type="array">
