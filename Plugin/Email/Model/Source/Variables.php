@@ -2,6 +2,8 @@
 /**
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
+ *
+ * Can be removed after Magento 2.2 EOL
  */
 namespace FireGento\MageSetup\Plugin\Email\Model\Source;
 /**
