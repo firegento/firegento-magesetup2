@@ -65,6 +65,12 @@ FireGento Team
 * Website: [http://firegento.com](http://firegento.com)
 * Twitter: [@firegento](https://twitter.com/firegento)
 
+Maintainer
+----------
+* @sprankhub
+* @frostblogNet
+* @Schrank
+
 Licence
 -------
 [GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
