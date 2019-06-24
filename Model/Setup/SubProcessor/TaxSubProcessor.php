@@ -256,6 +256,12 @@ class TaxSubProcessor extends AbstractSubProcessor
     private function saveTaxClassRelations($taxClasses)
     {
         if (isset($taxClasses['products_rate_1'])) {
+        	$bootstrap = \Magento\Framework\App\Bootstrap::create(BP, $_SERVER);
+        	$objectManager = $bootstrap->getObjectManager();
+        	$state = $objectManager->get('Magento\Framework\App\State');
+        	$state->setAreaCode('frontend');
+        	$productResource = $objectManager->create('\Magento\Catalog\Model\ResourceModel\Product');
+        	
             $productTaxClassId = $taxClasses['products_rate_1'];
             $this->saveConfigValue('tax/classes/default_product_tax_class', $productTaxClassId);
 
@@ -266,7 +272,7 @@ class TaxSubProcessor extends AbstractSubProcessor
                 $product->setData('tax_class_id', $productTaxClassId);
 
                 try {
-                    $product->save();
+                	$productResource->saveAttribute($product, 'tax_class_id');
                 } catch (\Exception $e) {
                     echo __('Error by product with sku "' . $product->getSku() . '": ' . $e->getMessage() . "\n");
                 }
