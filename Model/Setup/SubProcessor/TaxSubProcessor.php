@@ -68,6 +68,13 @@ class TaxSubProcessor extends AbstractSubProcessor
     private $magesetupConfig;
 
     /**
+     * @var \Magento\Framework\App\Bootstrap
+     */
+    private $magentoBootstrap;
+    
+    
+    
+    /**
      * @param WriterInterface                           $configWriter
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param StoreManagerInterface                     $storeManager
@@ -76,28 +83,32 @@ class TaxSubProcessor extends AbstractSubProcessor
      * @param ProductCollectionFactory                  $productCollectionFactory
      * @param CustomerGroupCollectionFactory            $customerGroupCollectionFactory
      * @param \FireGento\MageSetup\Model\System\Config  $magesetupConfig
+     * @param \Magento\Framework\App\Bootstrap			$bootstrap
      */
     public function __construct(
-        WriterInterface $configWriter,
-        \Magento\Framework\App\ResourceConnection $resource,
-        StoreManagerInterface $storeManager,
-        TaxRuleRepositoryInterface $ruleService,
-        TaxRuleInterfaceFactory $taxRuleDataObjectFactory,
-        ProductCollectionFactory $productCollectionFactory,
-        CustomerGroupCollectionFactory $customerGroupCollectionFactory,
-        \FireGento\MageSetup\Model\System\Config $magesetupConfig
-    ) {
-        $this->resource = $resource;
-        $this->connection = $resource->getConnection('write');
-        $this->storeManager = $storeManager;
-        $this->ruleService = $ruleService;
-        $this->taxRuleDataObjectFactory = $taxRuleDataObjectFactory;
-        $this->productCollectionFactory = $productCollectionFactory;
-        $this->customerGroupCollectionFactory = $customerGroupCollectionFactory;
-        $this->magesetupConfig = $magesetupConfig;
-
-        parent::__construct($configWriter);
+    		WriterInterface $configWriter,
+    		\Magento\Framework\App\ResourceConnection $resource,
+    		StoreManagerInterface $storeManager,
+    		TaxRuleRepositoryInterface $ruleService,
+    		TaxRuleInterfaceFactory $taxRuleDataObjectFactory,
+    		ProductCollectionFactory $productCollectionFactory,
+    		CustomerGroupCollectionFactory $customerGroupCollectionFactory,
+    		\FireGento\MageSetup\Model\System\Config $magesetupConfig,
+    		\Magento\Framework\App\Bootstrap $bootstrap
+    		) {
+    			$this->resource = $resource;
+    			$this->connection = $resource->getConnection('write');
+    			$this->storeManager = $storeManager;
+    			$this->ruleService = $ruleService;
+    			$this->taxRuleDataObjectFactory = $taxRuleDataObjectFactory;
+    			$this->productCollectionFactory = $productCollectionFactory;
+    			$this->customerGroupCollectionFactory = $customerGroupCollectionFactory;
+    			$this->magesetupConfig = $magesetupConfig;
+    			$this->magentoBootstrap = $bootstrap;
+    			
+    			parent::__construct($configWriter);
     }
+    
 
     /**
      * @param Config $config
@@ -256,7 +267,7 @@ class TaxSubProcessor extends AbstractSubProcessor
     private function saveTaxClassRelations($taxClasses)
     {
         if (isset($taxClasses['products_rate_1'])) {
-        	$bootstrap = \Magento\Framework\App\Bootstrap::create(BP, $_SERVER);
+        	$bootstrap = $this->magentoBootstrap::create(BP, $_SERVER);
         	$objectManager = $bootstrap->getObjectManager();
         	$state = $objectManager->get('Magento\Framework\App\State');
         	$state->setAreaCode('frontend');
