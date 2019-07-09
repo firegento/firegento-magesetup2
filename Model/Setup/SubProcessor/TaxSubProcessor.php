@@ -14,6 +14,7 @@ use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
 use Magento\Tax\Api\TaxRuleRepositoryInterface;
+use Magento\Eav\Setup\EavSetup;
 
 /**
  * Class TaxSubProcessor
