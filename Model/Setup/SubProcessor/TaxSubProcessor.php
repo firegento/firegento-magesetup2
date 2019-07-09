@@ -69,14 +69,21 @@ class TaxSubProcessor extends AbstractSubProcessor
     private $magesetupConfig;
 
     /**
-     * @param WriterInterface                           $configWriter
+     * @var \Magento\Eav\Setup\EavSetup
+     */
+    protected $eavSetup;
+
+    /**
+     * TaxSubProcessor constructor.
+     * @param WriterInterface $configWriter
      * @param \Magento\Framework\App\ResourceConnection $resource
-     * @param StoreManagerInterface                     $storeManager
-     * @param TaxRuleRepositoryInterface                $ruleService
-     * @param TaxRuleInterfaceFactory                   $taxRuleDataObjectFactory
-     * @param ProductCollectionFactory                  $productCollectionFactory
-     * @param CustomerGroupCollectionFactory            $customerGroupCollectionFactory
-     * @param \FireGento\MageSetup\Model\System\Config  $magesetupConfig
+     * @param StoreManagerInterface $storeManager
+     * @param TaxRuleRepositoryInterface $ruleService
+     * @param TaxRuleInterfaceFactory $taxRuleDataObjectFactory
+     * @param ProductCollectionFactory $productCollectionFactory
+     * @param CustomerGroupCollectionFactory $customerGroupCollectionFactory
+     * @param \FireGento\MageSetup\Model\System\Config $magesetupConfig
+     * @param \Magento\Eav\Setup\EavSetup $eavSetup
      */
     public function __construct(
         WriterInterface $configWriter,
@@ -86,8 +93,10 @@ class TaxSubProcessor extends AbstractSubProcessor
         TaxRuleInterfaceFactory $taxRuleDataObjectFactory,
         ProductCollectionFactory $productCollectionFactory,
         CustomerGroupCollectionFactory $customerGroupCollectionFactory,
-        \FireGento\MageSetup\Model\System\Config $magesetupConfig
+        \FireGento\MageSetup\Model\System\Config $magesetupConfig,
+        EavSetup $eavSetup
     ) {
+        $this->eavSetup = $eavSetup;
         $this->resource = $resource;
         $this->connection = $resource->getConnection('write');
         $this->storeManager = $storeManager;
@@ -263,11 +272,8 @@ class TaxSubProcessor extends AbstractSubProcessor
             $productCollection = $this->productCollectionFactory->create()->addAttributeToSelect('url_key');
             foreach ($productCollection as $product) {
                 /** @var Product $product */
-
-                $product->setData('tax_class_id', $productTaxClassId);
-
                 try {
-                    $product->save();
+                    $this->eavSetup->updateAttribute(4, $product->getId(), 'tax_class_id', $productTaxClassId, null);
                 } catch (\Exception $e) {
                     echo __('Error by product with sku "' . $product->getSku() . '": ' . $e->getMessage() . "\n");
                 }
