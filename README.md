@@ -22,8 +22,8 @@ Missing your country? Please open a pull request with the necessary configuratio
 
 Requirements
 ------------
-- PHP     >= 5.6
-- Magento >= 2.0.12
+- PHP     >= 7.1
+- Magento >= 2.2.*
 
 Installation
 ------------
@@ -33,8 +33,7 @@ Installation
 Please go to the Magento2 root directory and run the following commands in the shell:
 
 ```
-composer config repositories.firegento_magesetup vcs git@github.com:firegento/firegento-magesetup2.git
-composer require firegento/magesetup2:dev-develop
+composer require firegento/magesetup2
 bin/magento module:enable FireGento_MageSetup
 bin/magento setup:upgrade
 bin/magento magesetup:setup:run <countrycode>
