@@ -2,9 +2,10 @@
 /**
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
+ *
+ * Can be removed after Magento 2.2 EOL
  */
 namespace FireGento\MageSetup\Plugin\Email\Model\Source;
-
 /**
  * Class Variables
  *
@@ -18,7 +19,6 @@ class Variables
      * @var array
      */
     private $additionalConfigVariables = [];
-
     /**
      * Constructor
      */
@@ -78,7 +78,6 @@ class Variables
             ['value' => 'general/imprint/clearing', 'label' => __('Clearing')],
         ];
     }
-
     /**
      * Returns additional config config variables
      *
@@ -88,7 +87,6 @@ class Variables
     {
         return $this->additionalConfigVariables;
     }
-
     /**
      * Return available config variables
      *
