@@ -1,5 +1,3 @@
-# Copyright © 2016 FireGento e.V.
-# See LICENSE.md bundled with this module for license details.
 sudo: required
 dist: trusty
 addons:
@@ -8,10 +6,11 @@ addons:
     - mysql-server-5.6
     - mysql-client-core-5.6
     - mysql-client-5.6
-
 env:
   global:
-  - COVERAGE: FALSE
+  - COVERAGE: false
+  - secure: kzy6bq6k3Ri+tZMtdmaTk+B4f9XlmGVOegtb8QpizLCOP6AhNgSuOxGLfbeocDfBqNlnX0OtE7obkFVtdSnyzaospibOt0ypPkOaFaIJuYqdqW6WtEDw9/zIZpcIx5XPv95Gyf6Fedqn6jOKV5ilQCN/xbG8yhlkhckNlPaQLbB8KbGNCgrDKfjjJwdHOcw3mp8fLTqFA3AWS+Rkc5tQFluPRkZSuQa23+kytjY2O0+RducJcNNmi/NM2NH8TCO1MXopUHzZbfDy7eYtSXcpvVlIOlqnn3HT6PXN53I3YlfCXluzf7D2p++2BXluxmZxOa9Dn335YdrLYGPKDWmb6kbMjovYuUmtgYO4iY3PoWQKb3P03bajfUZrFBmCJX7Q45TB2sjhowS0YZ4cr9cFvsCI1jQmSn4GOIgrmoUlo6Gk3NKuylv9A5FeIgxyAj4JwgFYhO3jtMrHjg9j4q5kKiKiPQcX/2TMinyJNhmLTnlGVmNVyVy3stG3HQZ2p8U/C5oyVInXxMb18fcslUKU/b/46yKLwKSJmem5p0bcpPrHwEswOqd+mBdbVoGqm7bxKjWMK/q7Ab0kFK4SdnrB8JI0tYxjrck3ppyxFN96lQRkRL4f55Z03PxVgenTDsUTq0yVUh/xMPgCxHA4B8Nr5RSNlZnhw7Zo1Xkfb0j8NRE=
+  - secure: vPrz2nVDzSIxgm9Nvwa+BQFyuDKDEYe7wiDvLuVJUF6OZNp4Od5uDeexPr3zLPXMXKfUqCF2PnVB6cdM6SBE2aZ5NMW2Xa+1JkeUkTAMg1qeZ54dG6CGBI2O+lhanWCEOSyn4/zRB69GzUNITFqMf0XjY9mK8EykWpbivlxltrug2V/5Y9i28WOgsFqReVitdqyvGuMcP5S4QMjZ+AWsI/vHDH25tdA1D8oyxrk/JSjpaVU+GATmZPwE1k4IV3TKYZC2kFWdKHchqYL2WR/HXTtPBU3xNewvkqBUIHv++QI4LXnRy0YhGRh97MuJPX9PN8a7izHreL70gxIR02WtVQAYz0V343t3X8axWMhU7pvOn8+lUiuRe8AHEVuRDDzH3mOeZ36bjlzJbAZ30Cp4mkTkWjUiVIIP28EmrG59EY3HTQnq/jJ6+3dMb6tzPekHM76rm0Rfk1JOxaPOf69DUXbz+pfo7HC9Mh85+787AvD5yMQaErpN+HKf6AxEaNlEygB84NT1WQDckJ64xBWjVqELdz9GtUUbk8mk96lBwH3Yda3hh+WRNf62KJKVol2UzD1mQqZ8zmaxOehtDK/U/Tt+LNWQ34y8kjcupKfp4Oxrq/7vw1hBeYsAbL6r6h6ljzGOiyzbSVA/9vIJn++u3HlhdWz+4rbEWukmxAyhQf4=
 
 matrix:
   fast_finish: true
@@ -35,6 +34,7 @@ matrix:
 
 
 language: php
+
 cache:
   directories:
   - "$HOME/.composer/cache"
@@ -45,7 +45,8 @@ before_install:
 - "./Test/script/travis_before_install.sh"
 
 install:
-- echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > $HOME/.composer/auth.json
+- echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}"
+  > $HOME/.composer/auth.json
 - export MAGENTO_ROOT=`mktemp -d /tmp/mage.XXXXXXXX`
 - "./Test/script/travis_install_magento.sh $MAGENTO_VERSION"
 
