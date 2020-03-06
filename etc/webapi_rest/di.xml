@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 FireGento e.V.
+ * See LICENSE.md bundled with this module for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Helper\Product\Configuration">
+        <plugin name="mageSetupCustomOptions" type="FireGento\MageSetup\Plugin\Catalog\Helper\Product\Configuration\AroundGetCustomOptionsPlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Model\Attribute\Config">
+        <plugin name="mageSetupAddCustomQuoteItemAttributes" type="FireGento\MageSetup\Plugin\Catalog\Model\Attribute\AroundGetAttributeNamesPlugin" sortOrder="1"/>
+    </type>
+</config>
