@@ -26,7 +26,7 @@ matrix:
     env: MAGENTO_VERSION=2.3.*
   - php: 7.3
     env: MAGENTO_VERSION=2.3.0 CODE_QUALITY=true
-  - php: 7.4
+  - php: 7.3
     env: MAGENTO_VERSION=2.3.*
 
 language: php
