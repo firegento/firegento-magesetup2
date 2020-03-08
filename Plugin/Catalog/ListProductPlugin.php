@@ -5,6 +5,11 @@
  */
 namespace FireGento\MageSetup\Plugin\Catalog;
 
+/**
+ * Class ListProductPlugin
+ *
+ * @package FireGento\MageSetup\Plugin\Catalog
+ */
 class ListProductPlugin
 {
     /**
@@ -14,6 +19,8 @@ class ListProductPlugin
     protected $_scopeConfig;
 
     /**
+     * ListProductPlugin constructor.
+     *
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      */
     public function __construct(\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig)
@@ -24,10 +31,10 @@ class ListProductPlugin
     /**
      * Retrieve product details html
      *
-     * @param \Magento\Catalog\Block\Product\ListProduct
+     * @param \Magento\Catalog\Block\Product\ListProduct $subject
      * @param \Closure $proceed
      * @param \Magento\Catalog\Model\Product $product
-     * @return string
+     * @return mixed|string
      */
     public function aroundGetProductDetailsHtml(
         \Magento\Catalog\Block\Product\ListProduct $subject,

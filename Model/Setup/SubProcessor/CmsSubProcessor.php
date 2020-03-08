@@ -50,12 +50,14 @@ class CmsSubProcessor extends AbstractSubProcessor
     private $blockRepository;
 
     /**
-     * @param WriterInterface                      $configWriter
+     * CmsSubProcessor constructor.
+     *
+     * @param WriterInterface $configWriter
      * @param \Magento\Framework\Module\Dir\Reader $moduleReader
-     * @param PageFactory                          $pageFactory
-     * @param PageRepository                       $pageRepository
-     * @param BlockFactory                         $blockFactory
-     * @param BlockRepository                      $blockRepository
+     * @param PageFactory $pageFactory
+     * @param PageRepository $pageRepository
+     * @param BlockFactory $blockFactory
+     * @param BlockRepository $blockRepository
      */
     public function __construct(
         WriterInterface $configWriter,
@@ -74,6 +76,8 @@ class CmsSubProcessor extends AbstractSubProcessor
     }
 
     /**
+     * Process
+     *
      * @param Config $config
      * @return void
      */

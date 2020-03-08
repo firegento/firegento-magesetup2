@@ -25,7 +25,7 @@ class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttribute
      * GetVisibleCheckoutAttributesService constructor.
      *
      * @param \Magento\Catalog\Api\ProductAttributeRepositoryInterface $productAttributeRepository
-     * @param \Magento\Framework\Api\SearchCriteriaBuilder             $searchCriteriaBuilder
+     * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         \Magento\Catalog\Api\ProductAttributeRepositoryInterface $productAttributeRepository,
@@ -36,6 +36,8 @@ class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttribute
     }
 
     /**
+     * Get visible checkout attributes
+     *
      * @return array|bool
      */
     public function execute()

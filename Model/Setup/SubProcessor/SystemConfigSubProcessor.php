@@ -16,6 +16,8 @@ use Magento\Framework\App\Config\Storage\WriterInterface;
 class SystemConfigSubProcessor extends AbstractSubProcessor
 {
     /**
+     * SystemConfigSubProcessor constructor.
+     *
      * @param WriterInterface $configWriter
      */
     public function __construct(WriterInterface $configWriter)
@@ -24,6 +26,8 @@ class SystemConfigSubProcessor extends AbstractSubProcessor
     }
 
     /**
+     * Process
+     *
      * @param Config $config
      * @return void
      */

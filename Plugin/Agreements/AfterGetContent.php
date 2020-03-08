@@ -20,6 +20,8 @@ class AfterGetContent
     private $templateFilter;
 
     /**
+     * AfterGetContent constructor.
+     *
      * @param TemplateFilter $templateFilter
      */
     public function __construct(TemplateFilter $templateFilter)
@@ -28,9 +30,11 @@ class AfterGetContent
     }
 
     /**
+     * After get content
+     *
      * @param \Magento\CheckoutAgreements\Model\Agreement $agreement
-     * @param string                                      $result
-     * @return string
+     * @param string $result
+     * @return mixed
      */
     public function afterGetContent(\Magento\CheckoutAgreements\Model\Agreement $agreement, $result)
     {

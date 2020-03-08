@@ -36,9 +36,11 @@ class Config
     private $pageFactory;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context      $context
+     * Config constructor.
+     *
+     * @param \Magento\Framework\App\Helper\Context $context
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param PageFactory                                $pageFactory
+     * @param PageFactory $pageFactory
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
@@ -75,6 +77,8 @@ class Config
     }
 
     /**
+     * Including shipping costs
+     *
      * @return bool
      */
     public function isIncludingShippingCosts()
@@ -83,6 +87,8 @@ class Config
     }
 
     /**
+     * Get shipping cost url
+     *
      * @return string|bool
      */
     public function getShippingCostUrl()
@@ -105,6 +111,8 @@ class Config
     }
 
     /**
+     * Display delivery time in product listing
+     *
      * @return bool
      */
     public function isDisplayDeliveryTimeOnProductListing()

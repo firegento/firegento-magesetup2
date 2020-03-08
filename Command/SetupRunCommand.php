@@ -66,6 +66,8 @@ class SetupRunCommand extends Command
     private $subProcessorPool;
 
     /**
+     * SetupRunCommand constructor.
+     *
      * @param SetupServiceFactory $setupService
      * @param ConfigFactory $magesetupConfig
      * @param SubProcessorPool $subProcessorPool
@@ -95,7 +97,7 @@ class SetupRunCommand extends Command
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function configure()
     {
@@ -107,6 +109,8 @@ class SetupRunCommand extends Command
     }
 
     /**
+     * Setup command
+     *
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int Non zero if invalid type, 0 otherwise

@@ -1,5 +1,3 @@
-# Copyright © 2016 FireGento e.V.
-# See LICENSE.md bundled with this module for license details.
 sudo: required
 dist: trusty
 addons:
@@ -8,10 +6,9 @@ addons:
     - mysql-server-5.6
     - mysql-client-core-5.6
     - mysql-client-5.6
-
 env:
   global:
-  - COVERAGE: FALSE
+  - COVERAGE: false
 
 matrix:
   fast_finish: true
@@ -21,15 +18,15 @@ matrix:
   - php: 7.1
     env: MAGENTO_VERSION=2.2.*
   - php: 7.2
-    env: MAGENTO_VERSION=2.3.0
+    env: MAGENTO_VERSION=2.3.0 CODE_QUALITY=true
   - php: 7.2
     env: MAGENTO_VERSION=2.3.*
   - php: 7.3
-    env: MAGENTO_VERSION=2.3.0 CODE_QUALITY=true
-  - php: 7.3
     env: MAGENTO_VERSION=2.3.*
 
+
 language: php
+
 cache:
   directories:
   - "$HOME/.composer/cache"
@@ -37,12 +34,13 @@ cache:
   - "$HOME/.local"
 
 before_install:
-- "./Test/script/travis_before_install.sh"
+  - echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - "./Test/script/travis_before_install.sh"
 
 install:
-- echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > $HOME/.composer/auth.json
-- export MAGENTO_ROOT=`mktemp -d /tmp/mage.XXXXXXXX`
-- "./Test/script/travis_install_magento.sh $MAGENTO_VERSION"
+  - echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > $HOME/.composer/auth.json
+  - export MAGENTO_ROOT=`mktemp -d /tmp/mage.XXXXXXXX`
+  - "./Test/script/travis_install_magento.sh $MAGENTO_VERSION"
 
 script:
-- "./Test/script/travis_script.sh"
+  - "./Test/script/travis_script.sh"

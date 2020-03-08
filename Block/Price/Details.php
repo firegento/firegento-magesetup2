@@ -45,13 +45,15 @@ class Details extends \Magento\Framework\View\Element\Template
     private $taxHelper;
 
     /**
+     * Details constructor.
+     *
      * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \FireGento\MageSetup\Model\System\Config         $magesetupConfig
-     * @param \Magento\Customer\Model\Session                  $customerSession
-     * @param GroupRepository                                  $groupRepository
-     * @param \Magento\Tax\Model\Calculation\Proxy             $taxCalculation
-     * @param \Magento\Tax\Helper\Data                         $taxHelper
-     * @param array                                            $data
+     * @param \FireGento\MageSetup\Model\System\Config $magesetupConfig
+     * @param \Magento\Customer\Model\Session $customerSession
+     * @param GroupRepository $groupRepository
+     * @param \Magento\Tax\Model\Calculation\Proxy $taxCalculation
+     * @param \Magento\Tax\Helper\Data $taxHelper
+     * @param array $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
@@ -73,6 +75,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Se saleable item
+     *
      * @param \Magento\Framework\Pricing\SaleableInterface $saleableItem
      */
     public function setSaleableItem(\Magento\Framework\Pricing\SaleableInterface $saleableItem)
@@ -82,6 +86,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get formatted tax rate
+     *
      * @return string
      */
     public function getFormattedTaxRate()
@@ -94,6 +100,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get price display type
+     *
      * @return int
      */
     public function getPriceDisplayType()
@@ -102,6 +110,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Inclunding shipping coast
+     *
      * @return bool
      */
     public function isIncludingShippingCosts()
@@ -114,6 +124,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Show Shipping link
+     *
      * @return bool
      */
     public function canShowShippingLink()
@@ -128,6 +140,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get shipping cost url
+     *
      * @return string|bool
      */
     public function getShippingCostUrl()
@@ -136,6 +150,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get tax percent by saleable item
+     *
      * @return float|int
      */
     private function getTaxPercentBySaleableItem()

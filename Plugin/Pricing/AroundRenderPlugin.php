@@ -8,6 +8,7 @@ namespace FireGento\MageSetup\Plugin\Pricing;
 
 /**
  * Class AroundRenderPlugin
+ *
  * @package FireGento\MageSetup\Model\Plugin
  */
 class AroundRenderPlugin
@@ -26,6 +27,8 @@ class AroundRenderPlugin
     protected $helper;
 
     /**
+     * AroundRenderPlugin constructor.
+     *
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \FireGento\MageSetup\Helper\Data $helper
      */
@@ -38,13 +41,14 @@ class AroundRenderPlugin
     }
 
     /**
-     * @param \Magento\Framework\Pricing\Render            $subject
-     * @param \Closure                                     $proceed
-     * @param string                                       $priceCode
+     * Around render
+     *
+     * @param \Magento\Framework\Pricing\Render $subject
+     * @param \Closure $proceed
+     * @param mixed $priceCode
      * @param \Magento\Framework\Pricing\SaleableInterface $saleableItem
-     * @param array                                        $arguments
-     * @return string
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param array $arguments
+     * @return mixed|string
      */
     public function aroundRender(
         \Magento\Framework\Pricing\Render $subject,

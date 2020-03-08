@@ -33,6 +33,8 @@ class UpgradeData implements UpgradeDataInterface
     private $eavSetupFactory;
 
     /**
+     * UpgradeData constructor.
+     *
      * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(EavSetupFactory $eavSetupFactory)
@@ -40,6 +42,12 @@ class UpgradeData implements UpgradeDataInterface
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
+    /**
+     * Upgrade method
+     *
+     * @param ModuleDataSetupInterface $setup
+     * @param ModuleContextInterface $context
+     */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
