@@ -67,6 +67,8 @@ class Content extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     *  Get Website
+     *
      * Retrieve the setting "website". If parameter checkForProtocol is true,
      * check if there is a valid protocol given, otherwise add http:// manually.
      *
@@ -90,8 +92,8 @@ class Content extends \Magento\Framework\View\Element\Template
     /**
      * Try to limit spam by generating a javascript email link
      *
-     * @param boolean true
-     * @return string
+     * @param bool $antispam
+     * @return mixed|string
      */
     public function getEmail($antispam = false)
     {
@@ -122,7 +124,7 @@ class Content extends \Magento\Framework\View\Element\Template
     /**
      * Generate JS code
      *
-     * @param $parts
+     * @param mixed $parts
      * @return string
      */
     public function getEmailJs($parts)
@@ -135,6 +137,8 @@ JS;
     }
 
     /**
+     * Get Imprint Value
+     *
      * @param string $field
      * @return mixed
      */

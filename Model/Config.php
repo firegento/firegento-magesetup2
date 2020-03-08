@@ -40,9 +40,11 @@ class Config implements ConfigInterface
     private $loadedConfig;
 
     /**
-     * @param Reader         $reader
+     * Config constructor.
+     *
+     * @param Reader $reader
      * @param CacheInterface $cache
-     * @param string         $country
+     * @param mixed $country
      */
     public function __construct(
         Reader $reader,
@@ -57,6 +59,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get country
+     *
      * @return string
      */
     public function getCountry()
@@ -65,6 +69,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get allowed countries
+     *
      * @return array
      */
     public function getAllowedCountries()
@@ -81,6 +87,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get system config
+     *
      * @return array
      */
     public function getSystemConfig()
@@ -94,6 +102,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get tax classes
+     *
      * @return array|bool
      */
     public function getTaxClasses()
@@ -106,6 +116,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get tax calculation rates
+     *
      * @return array|bool
      */
     public function getTaxCalculationRates()
@@ -118,6 +130,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get tax calculation rules
+     *
      * @return array|bool
      */
     public function getTaxCalculationRules()
@@ -130,6 +144,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get agreements
+     *
      * @return array|bool
      */
     public function getAgreements()
@@ -142,6 +158,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get cms pages
+     *
      * @return array|bool
      */
     public function getCmsPages()
@@ -154,6 +172,8 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get cms blocks
+     *
      * @return array|bool
      */
     public function getCmsBlocks()

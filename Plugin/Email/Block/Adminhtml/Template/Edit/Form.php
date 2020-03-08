@@ -22,7 +22,9 @@ class Form
     private $variables;
 
     /**
-     * Constructor
+     * Form constructor.
+     *
+     * @param Variables $variables
      */
     public function __construct(\FireGento\MageSetup\Plugin\Email\Model\Source\Variables $variables)
     {

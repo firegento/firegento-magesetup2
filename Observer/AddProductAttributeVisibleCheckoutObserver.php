@@ -31,7 +31,7 @@ class AddProductAttributeVisibleCheckoutObserver implements ObserverInterface
     }
 
     /**
-     * lala
+     * Add product attribute visible checkout observer
      *
      * @param \Magento\Framework\Event\Observer $observer
      * @return void

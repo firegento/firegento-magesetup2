@@ -36,9 +36,11 @@ class AgreementsSubProcessor extends AbstractSubProcessor
     private $agreementsRepository;
 
     /**
-     * @param WriterInterface                                                $configWriter
-     * @param \Magento\Framework\Module\Dir\Reader                           $moduleReader
-     * @param \Magento\CheckoutAgreements\Model\AgreementFactory             $agreementFactory
+     * AgreementsSubProcessor constructor.
+     *
+     * @param WriterInterface $configWriter
+     * @param \Magento\Framework\Module\Dir\Reader $moduleReader
+     * @param \Magento\CheckoutAgreements\Model\AgreementFactory $agreementFactory
      * @param \Magento\CheckoutAgreements\Model\CheckoutAgreementsRepository $agreementsRepository
      */
     public function __construct(
@@ -54,6 +56,8 @@ class AgreementsSubProcessor extends AbstractSubProcessor
     }
 
     /**
+     * Process
+     *
      * @param Config $config
      * @return void
      */
@@ -123,6 +127,8 @@ class AgreementsSubProcessor extends AbstractSubProcessor
     }
 
     /**
+     * Get template path
+     *
      * @return string
      */
     private function getTemplatePath()

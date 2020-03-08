@@ -15,6 +15,8 @@ use FireGento\MageSetup\Model\Config;
 interface SubProcessorInterface
 {
     /**
+     * Process
+     *
      * @param Config $config
      * @return void
      */

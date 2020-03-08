@@ -13,6 +13,8 @@ namespace FireGento\MageSetup\Model\Config;
 class Converter implements \Magento\Framework\Config\ConverterInterface
 {
     /**
+     * Convert
+     *
      * @param \DOMDocument $source
      * @return array
      */
@@ -57,6 +59,8 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     }
 
     /**
+     * Get one tier config
+     *
      * @param \DOMElement $node
      * @return array
      */
@@ -76,6 +80,8 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     }
 
     /**
+     * Get tax config
+     *
      * @param \DOMElement $node
      * @return array
      */
@@ -124,6 +130,8 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     }
 
     /**
+     * Get two tier config
+     *
      * @param \DOMElement $node
      * @return array
      */

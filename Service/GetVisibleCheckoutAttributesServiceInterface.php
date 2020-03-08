@@ -13,6 +13,8 @@ namespace FireGento\MageSetup\Service;
 interface GetVisibleCheckoutAttributesServiceInterface
 {
     /**
+     * Get visible checkout attributes
+     *
      * @return array|bool
      */
     public function execute();

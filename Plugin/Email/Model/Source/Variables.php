@@ -6,6 +6,7 @@
  * Can be removed after Magento 2.2 EOL
  */
 namespace FireGento\MageSetup\Plugin\Email\Model\Source;
+
 /**
  * Class Variables
  *

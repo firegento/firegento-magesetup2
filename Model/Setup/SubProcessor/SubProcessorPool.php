@@ -22,8 +22,10 @@ class SubProcessorPool
     private $subProcessors = [];
 
     /**
-     * @param array       $subProcessors
+     * SubProcessorPool constructor.
+     *
      * @param TMapFactory $tmapFactory
+     * @param array $subProcessors
      */
     public function __construct(
         TMapFactory $tmapFactory,

@@ -43,10 +43,12 @@ class SetupService implements SetupServiceInterface
     private $output = null;
 
     /**
-     * @param Config           $config
-     * @param CacheManager     $cacheManager
+     * SetupService constructor.
+     *
+     * @param Config $config
+     * @param CacheManager $cacheManager
      * @param SubProcessorPool $subProcessorPool
-     * @param array            $subProcessorCodes
+     * @param array $subProcessorCodes
      */
     public function __construct(
         Config $config,
@@ -65,6 +67,8 @@ class SetupService implements SetupServiceInterface
     }
 
     /**
+     * Setup service
+     *
      * @return void
      */
     public function execute()
@@ -82,6 +86,8 @@ class SetupService implements SetupServiceInterface
     }
 
     /**
+     * Set output
+     *
      * @param OutputInterface $output
      */
     public function setOutput(OutputInterface $output)

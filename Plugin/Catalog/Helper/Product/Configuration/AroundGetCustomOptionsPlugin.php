@@ -30,10 +30,12 @@ class AroundGetCustomOptionsPlugin
     }
 
     /**
-     * @param \Magento\Catalog\Helper\Product\Configuration                   $subject
-     * @param \Closure                                                        $proceed
+     * Around get custom options
+     *
+     * @param \Magento\Catalog\Helper\Product\Configuration $subject
+     * @param \Closure $proceed
      * @param \Magento\Catalog\Model\Product\Configuration\Item\ItemInterface $item
-     * @return array
+     * @return array|mixed
      */
     public function aroundGetCustomOptions(
         \Magento\Catalog\Helper\Product\Configuration $subject,

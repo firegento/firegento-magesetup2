@@ -15,11 +15,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 interface SetupServiceInterface
 {
     /**
+     * Setup service
+     *
      * @return void
      */
     public function execute();
 
     /**
+     * Set output
+     *
      * @param OutputInterface $output
      */
     public function setOutput(OutputInterface $output);

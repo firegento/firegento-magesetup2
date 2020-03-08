@@ -10,11 +10,11 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
 use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Model\ResourceModel\Group\CollectionFactory as CustomerGroupCollectionFactory;
+use Magento\Eav\Setup\EavSetup;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
 use Magento\Tax\Api\TaxRuleRepositoryInterface;
-use Magento\Eav\Setup\EavSetup;
 
 /**
  * Class TaxSubProcessor
@@ -75,6 +75,7 @@ class TaxSubProcessor extends AbstractSubProcessor
 
     /**
      * TaxSubProcessor constructor.
+     *
      * @param WriterInterface $configWriter
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param StoreManagerInterface $storeManager
@@ -83,7 +84,7 @@ class TaxSubProcessor extends AbstractSubProcessor
      * @param ProductCollectionFactory $productCollectionFactory
      * @param CustomerGroupCollectionFactory $customerGroupCollectionFactory
      * @param \FireGento\MageSetup\Model\System\Config $magesetupConfig
-     * @param \Magento\Eav\Setup\EavSetup $eavSetup
+     * @param EavSetup $eavSetup
      */
     public function __construct(
         WriterInterface $configWriter,
@@ -110,6 +111,8 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
+     * Process
+     *
      * @param Config $config
      * @return void
      */
@@ -179,7 +182,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $tableAlias
+     * Get table
+     *
+     * @param string $tableAlias
      * @return string
      */
     private function getTable($tableAlias)
@@ -188,7 +193,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $table
+     * Truncate table
+     *
+     * @param string $table
      */
     private function truncateTable($table)
     {
@@ -197,8 +204,10 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $table
-     * @param $data
+     * Insert into table
+     *
+     * @param string $table
+     * @param mixed $data
      */
     private function insertIntoTable($table, $data)
     {
@@ -207,7 +216,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $table
+     * Get last insert id
+     *
+     * @param string $table
      * @return mixed
      */
     private function getLastInsertId($table)
@@ -218,6 +229,8 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
+     * Get countries
+     *
      * @return array|string
      */
     private function getCountries()
@@ -230,7 +243,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $rateData
+     * Create tax calculation rate
+     *
+     * @param mixed $rateData
      * @return mixed
      */
     private function createTaxCalculationRate($rateData)
@@ -261,7 +276,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $taxClasses
+     * Save tax class relations
+     *
+     * @param mixed $taxClasses
      */
     private function saveTaxClassRelations($taxClasses)
     {

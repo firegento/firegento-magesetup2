@@ -33,6 +33,8 @@ class InstallData implements InstallDataInterface
     private $eavSetupFactory;
 
     /**
+     * InstallData constructor.
+     *
      * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(EavSetupFactory $eavSetupFactory)
@@ -41,8 +43,10 @@ class InstallData implements InstallDataInterface
     }
 
     /**
+     * Install method
+     *
      * @param ModuleDataSetupInterface $setup
-     * @param ModuleContextInterface   $context
+     * @param ModuleContextInterface $context
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
