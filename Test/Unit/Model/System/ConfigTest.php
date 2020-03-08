@@ -6,13 +6,14 @@
 namespace FireGento\MageSetup\Test\Unit\Model\System;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class Config
  *
  * @package FireGento\MageSetup\Test\Unit\Model\System
  */
-class Config extends \FireGento\MageSetup\TestCase
+class Config extends TestCase
 {
     /**
      * @var \FireGento\MageSetup\Model\Config
