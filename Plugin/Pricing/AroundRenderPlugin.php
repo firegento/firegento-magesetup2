@@ -61,7 +61,7 @@ class AroundRenderPlugin
         if (!$this->helper->getConfigValue(self::ENABLED_DISPLAY_BELOW_PRICE_XML)) {
             return $returnValue;
         }
-        if (trim($returnValue) != '') {
+        if (trim($returnValue) != '' && $saleableItem->getTypeId() !== 'grouped') {
             $block = $subject->getLayout()->getBlock('magesetup.product.price.details');
             if ($block) {
                 $block->setSaleableItem($saleableItem);
