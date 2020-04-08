@@ -164,8 +164,11 @@ class Details extends \Magento\Framework\View\Element\Template
                 $groupId = $this->customerSession->getCustomerGroupId();
                 $group = $this->groupRepository->getById($groupId);
                 $customerTaxClassId = $group->getTaxClassId();
-
-                $request = $this->taxCalculation->getRateRequest(null, null, $customerTaxClassId, $store);
+                $customerId = null;
+                if($this->customerSession->isLoggedIn())
+                    $customerId = $this->customerSession->getCustomerId();
+                    
+                $request = $this->taxCalculation->getRateRequest(null, null, $customerTaxClassId, $store, $customerId);
                 $request->setData('product_class_id', $productTaxClassId);
 
                 $taxPercent = $this->taxCalculation->getRate($request);
