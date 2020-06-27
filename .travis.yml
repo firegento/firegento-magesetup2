@@ -20,6 +20,8 @@ matrix:
   - php: 7.2
     env: MAGENTO_VERSION=2.3.* INTEGRATION_TEST=true
   - php: 7.3
+    env: MAGENTO_VERSION=2.3.3 INTEGRATION_TEST=true
+  - php: 7.3
     env: MAGENTO_VERSION=2.3.* INTEGRATION_TEST=true
 
 
