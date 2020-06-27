@@ -1,8 +1,10 @@
 FireGento_MageSetup
+===================
+[![Build Status](https://travis-ci.com/firegento/firegento-magesetup2.svg?branch=develop)](https://travis-ci.com/firegento/firegento-magesetup2)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-===================
+
 MageSetup configures a shop for a national market. 
 
 Currently supported countries are:
