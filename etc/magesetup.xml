@@ -41,6 +41,7 @@
     <setup name="de">
         <system_config>
             <general__country__default>DE</general__country__default>
+            <general__locale__weight_unit>kgs</general__locale__weight_unit>
             <tax__defaults__country>DE</tax__defaults__country>
             <tax__defaults__region></tax__defaults__region>
             <tax__defaults__postcode>12345</tax__defaults__postcode>
@@ -196,6 +197,7 @@
 	<setup name="at">
         <system_config>
             <general__country__default>AT</general__country__default>
+            <general__locale__weight_unit>kgs</general__locale__weight_unit>
             <tax__defaults__country>AT</tax__defaults__country>
             <tax__defaults__region></tax__defaults__region>
             <tax__defaults__postcode>1234</tax__defaults__postcode>
@@ -351,6 +353,7 @@
     <setup name="ch">
         <system_config>
             <general__country__default>CH</general__country__default>
+            <general__locale__weight_unit>kgs</general__locale__weight_unit>
             <tax__defaults__country>CH</tax__defaults__country>
             <tax__defaults__region></tax__defaults__region>
             <tax__defaults__postcode>8001</tax__defaults__postcode>
@@ -479,6 +482,7 @@
     <setup name="it">
         <system_config>
             <general__country__default>IT</general__country__default>
+            <general__locale__weight_unit>kgs</general__locale__weight_unit>
             <tax__defaults__country>IT</tax__defaults__country>
             <tax__defaults__region></tax__defaults__region>
             <tax__defaults__postcode>00100</tax__defaults__postcode>
@@ -604,6 +608,7 @@
     <setup name="nl">
         <system_config>
             <general__country__default>NL</general__country__default>
+            <general__locale__weight_unit>kgs</general__locale__weight_unit>
             <tax__defaults__country>NL</tax__defaults__country>
             <tax__defaults__region></tax__defaults__region>
             <tax__defaults__postcode>1011</tax__defaults__postcode>
