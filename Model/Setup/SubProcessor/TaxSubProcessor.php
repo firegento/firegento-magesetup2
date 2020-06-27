@@ -287,8 +287,10 @@ class TaxSubProcessor extends AbstractSubProcessor
             $this->saveConfigValue('tax/classes/default_product_tax_class', $productTaxClassId);
 
             $productIds = $this->productCollectionFactory->create()->getAllIds();
-            $this->productAction
-                ->updateAttributes($productIds, ['tax_class_id' => $productTaxClassId], Store::DEFAULT_STORE_ID);
+            if (count($productIds) > 0) {
+                $this->productAction
+                    ->updateAttributes($productIds, ['tax_class_id' => $productTaxClassId], Store::DEFAULT_STORE_ID);
+            }
         }
 
         if (isset($taxClasses['customers_end_users'])) {
