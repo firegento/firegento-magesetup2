@@ -39,3 +39,22 @@ fi
     ../../../vendor/bin/phpunit --debug
 
     cd $MAGENTO_ROOT
+
+if [ "$INTEGRATION_TEST" == "true" ]; then
+## Run integration tests
+
+    echo -e "\e[32m##############"
+    echo -e "Run integration tests"
+    echo -e "\e[32m##############"
+
+    ## cp phpunit config
+    cp $TRAVIS_BUILD_DIR/install-config-mysql.php dev/tests/integration/etc/install-config-mysql.php
+    cp $TRAVIS_BUILD_DIR/phpunit.integration.xml.dist dev/tests/integration/phpunit.integration.xml.dist
+    cd dev/tests/integration
+
+
+    ../../../vendor/bin/phpunit --configuration=phpunit.integration.xml.dist --debug --verbose --testsuit  "Project Integration Tests"
+
+    cd $MAGENTO_ROOT
+
+fi
