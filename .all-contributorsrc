@@ -18,6 +18,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "frostblogNet",
+      "name": "Jens Richter",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19548641?v=4",
+      "profile": "https://frostblog.net/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
