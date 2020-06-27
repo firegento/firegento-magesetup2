@@ -61,26 +61,6 @@ Contribution
 ------------
 Any contribution to the development of MageSetup is highly welcome. The best possibility to provide any code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
-Developer
----------
-FireGento Team
-* Website: [http://firegento.com](http://firegento.com)
-* Twitter: [@firegento](https://twitter.com/firegento)
-
-Maintainer
-----------
-* @sprankhub
-* @frostblogNet
-* @Schrank
-
-Licence
--------
-[GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
-
-Copyright
----------
-(c) 2015 FireGento Team
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -103,9 +83,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://webvisum.de/"><img src="https://avatars2.githubusercontent.com/u/12797503?v=4" width="100px;" alt=""/><br /><sub><b>Andreas Mautz</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=mautz-et-tong" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/latenzio"><img src="https://avatars0.githubusercontent.com/u/8480072?v=4" width="100px;" alt=""/><br /><sub><b>Latenzio Gonzales</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=latenzio" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/benedikt-g"><img src="https://avatars3.githubusercontent.com/u/29483104?v=4" width="100px;" alt=""/><br /><sub><b>benedikt-g</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=benedikt-g" title="Code">💻</a></td>
-    <td align="center"><a href="http://www.jeroenvermeulen.eu/"><img src="https://avatars1.githubusercontent.com/u/658024?v=4" width="100px;" alt=""/><br /><sub><b>Jeroen Vermeulen</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=jeroenvermeulen" title="Code">💻</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/david-verholen-14aa23aa/"><img src="https://avatars0.githubusercontent.com/u/2813693?v=4" width="100px;" alt=""/><br /><sub><b>David Verholen</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=davidverholen" title="Code">💻</a></td>
     <td align="center"><a href="https://gordonlesti.com/"><img src="https://avatars0.githubusercontent.com/u/1677744?v=4" width="100px;" alt=""/><br /><sub><b>Gordon Lesti</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=GordonLesti" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.fabian-blechschmidt.de/"><img src="https://avatars1.githubusercontent.com/u/379680?v=4" width="100px;" alt=""/><br /><sub><b>Fabian Blechschmidt</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=Schrank" title="Code">💻</a></td>
   </tr>
   <tr>
     <td align="center"><a href="https://www.diglin.com/"><img src="https://avatars2.githubusercontent.com/u/1337461?v=4" width="100px;" alt=""/><br /><sub><b>Sylvain Rayé</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=sylvainraye" title="Code">💻</a></td>
@@ -117,7 +97,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/aeno"><img src="https://avatars2.githubusercontent.com/u/598616?v=4" width="100px;" alt=""/><br /><sub><b>aeno</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=aeno" title="Code">💻</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="http://www.fabian-blechschmidt.de/"><img src="https://avatars1.githubusercontent.com/u/379680?v=4" width="100px;" alt=""/><br /><sub><b>Fabian Blechschmidt</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=Schrank" title="Code">💻</a></td>
     <td align="center"><a href="https://www.webzap.eu/"><img src="https://avatars1.githubusercontent.com/u/563328?v=4" width="100px;" alt=""/><br /><sub><b>Lennart Schreiber</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=Kipperlenny" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/HenKun"><img src="https://avatars0.githubusercontent.com/u/18382633?v=4" width="100px;" alt=""/><br /><sub><b>Henning Kuntzschmann</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=HenKun" title="Code">💻</a></td>
   </tr>
@@ -128,3 +107,24 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+Developer
+---------
+FireGento Team
+* Website: [http://firegento.com](http://firegento.com)
+* Twitter: [@firegento](https://twitter.com/firegento)
+
+Maintainer
+----------
+* @sprankhub
+* @frostblogNet
+* @Schrank
+
+Licence
+-------
+[GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
+
+Copyright
+---------
+(c) 2015 FireGento Team
+
