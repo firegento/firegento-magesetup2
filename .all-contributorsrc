@@ -144,6 +144,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "pixelhed",
+      "name": "Andre Flitsch",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1169770?v=4",
+      "profile": "https://github.com/pixelhed",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
