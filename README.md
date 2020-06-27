@@ -1,6 +1,6 @@
 FireGento_MageSetup
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ===================
 MageSetup configures a shop for a national market. 
@@ -106,6 +106,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.jeroenvermeulen.eu/"><img src="https://avatars1.githubusercontent.com/u/658024?v=4" width="100px;" alt=""/><br /><sub><b>Jeroen Vermeulen</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=jeroenvermeulen" title="Code">💻</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/david-verholen-14aa23aa/"><img src="https://avatars0.githubusercontent.com/u/2813693?v=4" width="100px;" alt=""/><br /><sub><b>David Verholen</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=davidverholen" title="Code">💻</a></td>
     <td align="center"><a href="https://gordonlesti.com/"><img src="https://avatars0.githubusercontent.com/u/1677744?v=4" width="100px;" alt=""/><br /><sub><b>Gordon Lesti</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=GordonLesti" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.diglin.com/"><img src="https://avatars2.githubusercontent.com/u/1337461?v=4" width="100px;" alt=""/><br /><sub><b>Sylvain Rayé</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=sylvainraye" title="Code">💻</a></td>
   </tr>
 </table>
 
