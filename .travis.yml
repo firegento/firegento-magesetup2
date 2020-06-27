@@ -13,10 +13,6 @@ env:
 matrix:
   fast_finish: true
   include:
-  - php: 7.1
-    env: MAGENTO_VERSION=2.2.0
-  - php: 7.1
-    env: MAGENTO_VERSION=2.2.*
   - php: 7.2
     env: MAGENTO_VERSION=2.3.0 CODE_QUALITY=true
   - php: 7.2
