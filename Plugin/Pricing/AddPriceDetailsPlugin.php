@@ -18,15 +18,33 @@ class AddPriceDetailsPlugin
     const ENABLED_DISPLAY_BELOW_PRICE_XML = 'catalog/price/display_block_below_price';
 
     /**
+     * Helper
+     *
      * @var Data
      */
     protected $helper;
 
+    /**
+     * AddPriceDetailsPlugin constructor.
+     *
+     * @param Data $helper
+     */
     public function __construct(Data $helper)
     {
         $this->helper = $helper;
     }
 
+    /**
+     * Adds price details to price block.
+     *
+     * @param Render $subject
+     * @param string $result
+     * @param string $priceCode
+     * @param SaleableInterface $saleableItem
+     *
+     * @return string
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     public function afterRender(Render $subject, $result, $priceCode, SaleableInterface $saleableItem)
     {
         if (!$this->shouldAddPriceDetails($result, $priceCode, $saleableItem)) {
@@ -41,6 +59,15 @@ class AddPriceDetailsPlugin
         return $result;
     }
 
+    /**
+     * Checks if price details should be added.
+     *
+     * @param bool $result
+     * @param string $priceCode
+     * @param SaleableInterface $saleableItem
+     *
+     * @return bool
+     */
     private function shouldAddPriceDetails($result, $priceCode, SaleableInterface $saleableItem): bool
     {
         if (!$this->helper->getConfigValue(self::ENABLED_DISPLAY_BELOW_PRICE_XML)) {
