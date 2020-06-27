@@ -40,6 +40,7 @@ fi
 
     cd $MAGENTO_ROOT
 
+if [ "$INTEGRATION_TEST" == "true" ]; then
 ## Run integration tests
 
     echo -e "\e[32m##############"
@@ -56,3 +57,4 @@ fi
 
     cd $MAGENTO_ROOT
 
+fi
