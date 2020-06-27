@@ -50,7 +50,11 @@ echo -e "\e[32m##############"
     ## cp phpunit config
 cp $TRAVIS_BUILD_DIR/install-config-mysql.php dev/tests/integration/etc/install-config-mysql.php
 cp $TRAVIS_BUILD_DIR/phpunit.integration.xml.dist dev/tests/integration/phpunit.integration.xml.dist
+
+cd $MAGENTO_ROOT
+bin/magento module:disable Magento_Amqp
 cd dev/tests/integration
+
 
 ../../../vendor/bin/phpunit --configuration=phpunit.integration.xml.dist --debug --verbose --testsuit  "Project Integration Tests"
 
