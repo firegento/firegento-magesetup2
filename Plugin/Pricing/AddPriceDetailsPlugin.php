@@ -7,6 +7,11 @@ use Magento\Catalog\Pricing\Price\TierPrice;
 use Magento\Framework\Pricing\Render;
 use Magento\Framework\Pricing\SaleableInterface;
 
+/**
+ * Class AddPriceDetailsPlugin
+ *
+ * @package FireGento\MageSetup\Plugin\Pricing
+ */
 class AddPriceDetailsPlugin
 {
     /** @const settings string to enable the block below price */
