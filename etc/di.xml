@@ -37,7 +37,7 @@
     </type>
 
     <type name="Magento\Framework\Pricing\Render">
-        <plugin name="mageSetupAddPriceHints" type="FireGento\MageSetup\Plugin\Pricing\AroundRenderPlugin" sortOrder="1"/>
+        <plugin name="mageSetupAddPriceHints" type="FireGento\MageSetup\Plugin\Pricing\AddPriceDetailsPlugin" sortOrder="1"/>
     </type>
 
     <type name="Magento\CheckoutAgreements\Model\Agreement">
