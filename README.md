@@ -1,6 +1,6 @@
 FireGento_MageSetup
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-21-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-22-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ===================
 MageSetup configures a shop for a national market. 
@@ -115,6 +115,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/arioch1984"><img src="https://avatars3.githubusercontent.com/u/5476141?v=4" width="100px;" alt=""/><br /><sub><b>Fabio Brunelli</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=arioch1984" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/aliuosio"><img src="https://avatars2.githubusercontent.com/u/2536788?v=4" width="100px;" alt=""/><br /><sub><b>Osiozekhai Aliu</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=aliuosio" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/aeno"><img src="https://avatars2.githubusercontent.com/u/598616?v=4" width="100px;" alt=""/><br /><sub><b>aeno</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=aeno" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://www.fabian-blechschmidt.de/"><img src="https://avatars1.githubusercontent.com/u/379680?v=4" width="100px;" alt=""/><br /><sub><b>Fabian Blechschmidt</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=Schrank" title="Code">💻</a></td>
   </tr>
 </table>
 
