@@ -3,6 +3,7 @@
 namespace FireGento\MageSetup\Plugin\Pricing;
 
 use FireGento\MageSetup\Helper\Data;
+use Magento\Catalog\Pricing\Price\TierPrice;
 use Magento\Framework\Pricing\Render;
 use Magento\Framework\Pricing\SaleableInterface;
 
@@ -51,7 +52,7 @@ class AddPriceDetailsPlugin
         }
 
         // do not show the price details after the tier prices again - they are already added to the final price
-        if ($priceCode === 'tier_price') {
+        if ($priceCode === TierPrice::PRICE_CODE) {
             return false;
         }
 
