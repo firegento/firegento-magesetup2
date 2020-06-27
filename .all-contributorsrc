@@ -126,6 +126,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "GordonLesti",
+      "name": "Gordon Lesti",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1677744?v=4",
+      "profile": "https://gordonlesti.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
