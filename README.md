@@ -1,6 +1,6 @@
 FireGento_MageSetup
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-22-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-23-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ===================
 MageSetup configures a shop for a national market. 
@@ -118,6 +118,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
   <tr>
     <td align="center"><a href="http://www.fabian-blechschmidt.de/"><img src="https://avatars1.githubusercontent.com/u/379680?v=4" width="100px;" alt=""/><br /><sub><b>Fabian Blechschmidt</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=Schrank" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.webzap.eu/"><img src="https://avatars1.githubusercontent.com/u/563328?v=4" width="100px;" alt=""/><br /><sub><b>Lennart Schreiber</b></sub></a><br /><a href="https://github.com/firegento/firegento-magesetup2/commits?author=Kipperlenny" title="Code">💻</a></td>
   </tr>
 </table>
 
