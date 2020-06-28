@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Plugin\Catalog;
 
 /**
- * Class ListProductPlugin
- *
- * @package FireGento\MageSetup\Plugin\Catalog
+ * Plugin for adding the price details block to the price blocks on the product listing pages.
  */
 class ListProductPlugin
 {

@@ -21,9 +21,7 @@ use Magento\Framework\Setup\UpgradeDataInterface;
 use Magento\GroupedProduct\Model\Product\Type\Grouped;
 
 /**
- * Class UpgradeData
- *
- * @package FireGento\MageSetup\Setup
+ * Adds necessary attributes.
  */
 class UpgradeData implements UpgradeDataInterface
 {

@@ -17,9 +17,7 @@ use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
 use Magento\Tax\Api\TaxRuleRepositoryInterface;
 
 /**
- * Class TaxSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the tax setup step.
  */
 class TaxSubProcessor extends AbstractSubProcessor
 {
@@ -148,34 +146,7 @@ class TaxSubProcessor extends AbstractSubProcessor
                 }
             }
 
-            foreach ($configTaxCalculationRules as $calculationRuleData) {
-                $mapping = $calculationRuleData['mapping'];
-                unset($calculationRuleData['mapping']);
-
-                $rule = $this->taxRuleDataObjectFactory->create();
-                $rule->setCode($calculationRuleData['code']);
-                $rule->setPriority($calculationRuleData['priority']);
-                $rule->setPosition($calculationRuleData['position']);
-                $rule->setCalculateSubtotal($calculationRuleData['calculate_subtotal']);
-
-                foreach ($mapping as $mappingKey => $mappingValues) {
-                    if (is_array($mappingValues)) {
-                        $classes = [];
-                        foreach ($mappingValues as $value) {
-                            if (isset($taxClasses[$value])) {
-                                $classes[] = $taxClasses[$value];
-                            }
-                        }
-                        $rule->setData($mappingKey, $classes);
-                    } else {
-                        if (isset($taxRates[$mappingValues])) {
-                            $rule->setData($mappingKey, $taxRates[$mappingValues]);
-                        }
-                    }
-                }
-
-                $this->ruleService->save($rule);
-            }
+            $this->setupTaxCalculationRules($configTaxCalculationRules, $taxClasses, $taxRates);
 
             $this->saveTaxClassRelations($taxClasses);
         }
@@ -308,6 +279,47 @@ class TaxSubProcessor extends AbstractSubProcessor
 
         if (isset($taxClasses['shipping_rate_1'])) {
             $this->saveConfigValue('tax/classes/shipping_tax_class', $taxClasses['shipping_rate_1']);
+        }
+    }
+
+    /**
+     * Sets up the tax calculation rules.
+     *
+     * @param array $configTaxCalculationRules
+     * @param array $taxClasses
+     * @param array $taxRates
+     *
+     * @throws \Magento\Framework\Exception\InputException
+     */
+    private function setupTaxCalculationRules(array $configTaxCalculationRules, array $taxClasses, array $taxRates)
+    {
+        foreach ($configTaxCalculationRules as $calculationRuleData) {
+            $mapping = $calculationRuleData['mapping'];
+            unset($calculationRuleData['mapping']);
+
+            $rule = $this->taxRuleDataObjectFactory->create();
+            $rule->setCode($calculationRuleData['code']);
+            $rule->setPriority($calculationRuleData['priority']);
+            $rule->setPosition($calculationRuleData['position']);
+            $rule->setCalculateSubtotal($calculationRuleData['calculate_subtotal']);
+
+            foreach ($mapping as $mappingKey => $mappingValues) {
+                if (is_array($mappingValues)) {
+                    $classes = [];
+                    foreach ($mappingValues as $value) {
+                        if (isset($taxClasses[$value])) {
+                            $classes[] = $taxClasses[$value];
+                        }
+                    }
+                    $rule->setData($mappingKey, $classes);
+                } else {
+                    if (isset($taxRates[$mappingValues])) {
+                        $rule->setData($mappingKey, $taxRates[$mappingValues]);
+                    }
+                }
+            }
+
+            $this->ruleService->save($rule);
         }
     }
 }

@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Service;
 
 /**
- * Class GetVisibleCheckoutAttributesService
- *
- * @package FireGento\MageSetup\Service
+ * Class to retrieve the visible in checkout attributes.
  */
 class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttributesServiceInterface
 {

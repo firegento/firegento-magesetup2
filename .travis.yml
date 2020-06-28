@@ -13,8 +13,13 @@ env:
 matrix:
   fast_finish: true
   include:
+  # make sure it is running on the oldest supported version
   - php: 7.2
-    env: MAGENTO_VERSION=2.3.0 CODE_QUALITY=true
+    env: MAGENTO_VERSION=2.3.0
+  # fix the code quality check to a specific, but rather new version
+  - php: 7.2
+    env: MAGENTO_VERSION=2.3.5-p1 CODE_QUALITY=true
+  # make sure it is running on the latest version
   - php: 7.2
     env: MAGENTO_VERSION=2.3.1 INTEGRATION_TEST=true
   - php: 7.2

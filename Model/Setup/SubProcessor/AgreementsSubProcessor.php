@@ -9,9 +9,7 @@ use FireGento\MageSetup\Model\Config;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
- * Class AgreementsSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the agreements setup step.
  */
 class AgreementsSubProcessor extends AbstractSubProcessor
 {

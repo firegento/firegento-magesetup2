@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Plugin\Catalog\Helper\Product\Configuration;
 use FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
 
 /**
- * Class AroundGetCustomOptionsPlugin
- *
- * @package FireGento\MageSetup\Plugin\Catalog\Helper\Product\Configuration
+ * Plugin to add visible in checkout attributes to the custom option list.
  */
 class AroundGetCustomOptionsPlugin
 {

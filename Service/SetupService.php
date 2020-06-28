@@ -11,9 +11,7 @@ use Magento\Framework\App\Cache\Manager as CacheManager;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class SetupService
- *
- * @package FireGento\MageSetup\Service
+ * Class for running the setup steps.
  */
 class SetupService implements SetupServiceInterface
 {

@@ -8,9 +8,7 @@
 namespace FireGento\MageSetup\Plugin\Email\Model\Source;
 
 /**
- * Class Variables
- *
- * @package FireGento\MageSetup\Plugin\Email\Model\Source
+ * Plugin to add additional config variables to be inserted into emails.
  */
 class Variables
 {

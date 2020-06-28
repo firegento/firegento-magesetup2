@@ -10,10 +10,7 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\UpgradeSchemaInterface;
 
 /**
- * Class UpgradeSchema
- *
- * @package FireGento\MageSetup\Setup
- * @codeCoverageIgnore
+ * Adds a new column to the EAV attribute table.
  */
 class UpgradeSchema implements UpgradeSchemaInterface
 {

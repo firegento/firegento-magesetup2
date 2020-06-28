@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Plugin\Email\Block\Adminhtml\Template\Edit;
 use FireGento\MageSetup\Plugin\Email\Model\Source\Variables;
 
 /**
- * Class Variables
- *
- * @package FireGento\MageSetup\Plugin\Email\Block\Adminhtml\Template\Edit
+ * Plugin to add additional config variables to be inserted into emails.
  */
 class Form
 {

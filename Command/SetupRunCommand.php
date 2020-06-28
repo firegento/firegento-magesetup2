@@ -19,15 +19,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class SetupRunCommand
- *
- * @package FireGento\MageSetup\Command
+ * Console command for executing MageSetup.
  */
 class SetupRunCommand extends Command
 {
-    /**
-     * command name
-     */
     const COMMAND_NAME = 'magesetup:setup:run';
 
     /**
@@ -169,13 +164,8 @@ class SetupRunCommand extends Command
             $service->execute();
 
             $output->writeln('<info>Setup finished</info>');
-        } catch (\InvalidArgumentException $e) {
-            $output->writeln('<error>' . $e->getMessage() . '</error>');
-
-            return 1;
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
-            $output->writeln($e->getTraceAsString());
 
             return 1;
         }

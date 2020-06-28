@@ -8,9 +8,7 @@ use Magento\Framework\Pricing\Render;
 use Magento\Framework\Pricing\SaleableInterface;
 
 /**
- * Class AddPriceDetailsPlugin
- *
- * @package FireGento\MageSetup\Plugin\Pricing
+ * Plugin for adding the price details block to the price blocks on the product pages.
  */
 class AddPriceDetailsPlugin
 {
