@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Service;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Interface SetupServiceInterface
- *
- * @package FireGento\MageSetup\Service
+ * Interface for running the setup steps.
  */
 interface SetupServiceInterface
 {

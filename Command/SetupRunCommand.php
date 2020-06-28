@@ -19,15 +19,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class SetupRunCommand
- *
- * @package FireGento\MageSetup\Command
+ * Console command for executing MageSetup.
  */
 class SetupRunCommand extends Command
 {
-    /**
-     * command name
-     */
     const COMMAND_NAME = 'magesetup:setup:run';
 
     /**

@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Model;
 
 /**
- * Interface ConfigInterface
- *
- * @package FireGento\MageSetup\Model
+ * Interface for retrieving the XML configuration.
  */
 interface ConfigInterface
 {

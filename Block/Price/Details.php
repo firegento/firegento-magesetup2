@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Block\Price;
 use Magento\Customer\Model\ResourceModel\GroupRepository;
 
 /**
- * Class Details
- *
- * @package FireGento\MageSetup\Block\Price
+ * Block for showing price details like tax rate and delivery information.
  */
 class Details extends \Magento\Framework\View\Element\Template
 {

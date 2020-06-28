@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 use FireGento\MageSetup\Model\Config;
 
 /**
- * Interface SubProcessorInterface
- *
- * @package Seat\IntegrationKM\Model\Product\SubProcessor
+ * Interface for the different steps.
  */
 interface SubProcessorInterface
 {

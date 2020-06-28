@@ -7,9 +7,7 @@
 namespace FireGento\MageSetup\Plugin\Pricing;
 
 /**
- * Class AroundRenderPlugin
- *
- * @package FireGento\MageSetup\Model\Plugin
+ * Plugin for adding the price details block to the price blocks on the product pages.
  */
 class AroundRenderPlugin
 {

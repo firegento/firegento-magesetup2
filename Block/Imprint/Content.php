@@ -11,9 +11,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\ScopeInterface;
 
 /**
- * Class Content
- *
- * @package FireGento\MageSetup\Block\Imprint
+ * Block for showing imprint contents.
  */
 class Content extends \Magento\Framework\View\Element\Template
 {

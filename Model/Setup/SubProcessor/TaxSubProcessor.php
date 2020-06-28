@@ -17,9 +17,7 @@ use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
 use Magento\Tax\Api\TaxRuleRepositoryInterface;
 
 /**
- * Class TaxSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the tax setup step.
  */
 class TaxSubProcessor extends AbstractSubProcessor
 {

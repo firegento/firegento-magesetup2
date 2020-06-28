@@ -9,9 +9,7 @@ use Magento\Cms\Model\PageFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 
 /**
- * Class Config
- *
- * @package FireGento\MageSetup\Model\System
+ * Class for retrieving configuration values.
  */
 class Config
 {

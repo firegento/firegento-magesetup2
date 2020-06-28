@@ -21,9 +21,7 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\GroupedProduct\Model\Product\Type\Grouped;
 
 /**
- * Class InstallData
- *
- * @package FireGento\MageSetup\Setup
+ * Adds necessary attributes.
  */
 class InstallData implements InstallDataInterface
 {

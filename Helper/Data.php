@@ -10,9 +10,7 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Store\Model\ScopeInterface;
 
 /**
- * Class AroundRenderPlugin
- *
- * @package FireGento\MageSetup\Helper
+ * Helper for retrieving configuration values.
  */
 class Data extends AbstractHelper
 {

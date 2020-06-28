@@ -9,9 +9,7 @@ use FireGento\MageSetup\Model\Config;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
- * Class EmailSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the email setup step.
  */
 class EmailSubProcessor extends AbstractSubProcessor
 {

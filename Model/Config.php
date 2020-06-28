@@ -9,9 +9,7 @@ use FireGento\MageSetup\Model\Config\Reader;
 use Magento\Framework\Config\CacheInterface;
 
 /**
- * Class Config
- *
- * @package FireGento\MageSetup\Model
+ * Class for retrieving the XML configuration.
  */
 class Config implements ConfigInterface
 {

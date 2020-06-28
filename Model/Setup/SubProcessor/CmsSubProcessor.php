@@ -13,9 +13,7 @@ use Magento\Cms\Model\PageRepository;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
- * Class CmsSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the CMS setup step.
  */
 class CmsSubProcessor extends AbstractSubProcessor
 {

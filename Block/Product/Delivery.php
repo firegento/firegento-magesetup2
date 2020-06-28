@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Block\Product;
 
 /**
- * Class Delivery
- *
- * @package FireGento\MageSetup\Block\Product
+ * Block for showing delivery information.
  */
 class Delivery extends \Magento\Catalog\Block\Product\View\Description
 {

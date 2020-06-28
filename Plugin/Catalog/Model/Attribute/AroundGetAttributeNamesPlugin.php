@@ -10,9 +10,7 @@ use FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
 use Magento\Catalog\Model\Attribute\Config;
 
 /**
- * Class AroundGetAttributeNamesPlugin
- *
- * @package FireGento\MageSetup\Plugin\Catalog\Model\Attribute
+ * Plugin to add visible in checkout attributes to the attribute names.
  */
 class AroundGetAttributeNamesPlugin
 {

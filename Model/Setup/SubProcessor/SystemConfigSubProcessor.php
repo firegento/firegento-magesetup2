@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 use FireGento\MageSetup\Model\Config;
 
 /**
- * Class SystemConfigSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the system config setup step.
  */
 class SystemConfigSubProcessor extends AbstractSubProcessor
 {
