@@ -14,18 +14,9 @@ use Magento\Framework\App\Config\Storage\WriterInterface;
 class EmailSubProcessor extends AbstractSubProcessor
 {
     /**
-     * EmailSubProcessor constructor.
-     *
-     * @param WriterInterface $configWriter
-     */
-    public function __construct(WriterInterface $configWriter)
-    {
-        parent::__construct($configWriter);
-    }
-
-    /**
      * Proccess
      *
+     * phpcs:disable
      * @param Config $config
      * @return void
      */
