@@ -10,6 +10,6 @@
         <plugin name="mageSetupCustomOptions" type="FireGento\MageSetup\Plugin\Catalog\Helper\Product\Configuration\AddVisibleInCheckoutAttributesToCustomOptionsPlugin" sortOrder="1"/>
     </type>
     <type name="Magento\Catalog\Model\Attribute\Config">
-        <plugin name="mageSetupAddCustomQuoteItemAttributes" type="FireGento\MageSetup\Plugin\Catalog\Model\Attribute\AroundGetAttributeNamesPlugin" sortOrder="1"/>
+        <plugin name="mageSetupAddCustomQuoteItemAttributes" type="FireGento\MageSetup\Plugin\Catalog\Model\Attribute\AddVisibleInCheckoutAttributesToAttributeNamesPlugin" sortOrder="1"/>
     </type>
 </config>
