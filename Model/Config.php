@@ -3,6 +3,7 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 namespace FireGento\MageSetup\Model;
 
 use FireGento\MageSetup\Model\Config\Reader;
@@ -13,8 +14,7 @@ use Magento\Framework\Config\CacheInterface;
  */
 class Config implements ConfigInterface
 {
-    public const DYNAMIC_TYPE_DEFAULT = 0;
-    public const DYNAMIC_TYPE_HIGHEST_PRODUCT_TAX = 1;
+    public const CONFIG_PATH_DYNAMIC_SHIPPING_TAX_CLASS = 'tax/classes/dynamic_shipping_tax_class';
 
     /**
      * Configuration reader
@@ -43,17 +43,17 @@ class Config implements ConfigInterface
     /**
      * Config constructor.
      *
-     * @param Reader $reader
+     * @param Reader         $reader
      * @param CacheInterface $cache
-     * @param mixed $country
+     * @param mixed          $country
      */
     public function __construct(
         Reader $reader,
         CacheInterface $cache,
         $country
     ) {
-        $this->reader = $reader;
-        $this->cache = $cache;
+        $this->reader  = $reader;
+        $this->cache   = $cache;
         $this->country = $country;
 
         $this->initialize();
@@ -191,7 +191,17 @@ class Config implements ConfigInterface
      */
     private function initialize()
     {
-        $data = $this->reader->read();
+        $data               = $this->reader->read();
         $this->loadedConfig = $data;
+    }
+
+    /**
+     * Method for retrieving dynamic config shipping path
+     *
+     * @return string
+     */
+    public function getDynamicShippingConfigPath(): string
+    {
+        return self::CONFIG_PATH_DYNAMIC_SHIPPING_TAX_CLASS;
     }
 }

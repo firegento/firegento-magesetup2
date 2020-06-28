@@ -2,7 +2,7 @@
   "name": "firegento/magesetup2",
   "description": "MageSetup provides the necessary configuration (system config, tax, agreements, etc. for a national market.",
   "require": {
-    "php": "~7.1.0|~7.2.0|~7.3.0",
+    "php": "~7.2.0|~7.3.0",
       "magento/framework": "*",
       "magento/module-backend": "*",
       "magento/module-catalog": "*",
