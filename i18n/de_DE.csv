@@ -1,11 +1,57 @@
-"Incl. %1 VAT","Inkl. %1 MwSt."
-"incl. <a href=""%1"">Shipping Cost</a>","inkl. <a href=""%1"">Versandkosten</a>"
+%1%,%1%
+"SubProcessor %1 does not exist.","Bearbeiter %1 existiert nicht."
+"-- No Page --","-- Keine Seite --"
+"Visible in Checkout","Im Checkout sichtbar"
+Imprint,Impressum
+"Shop Name","Name des Shops"
+"Company First","Firma (erste Zeile)"
+"Company Second","Firma (zweite Zeile)"
+Street,Straße
+Zip,PLZ
+City,Stadt
+"Default Country","Standardland"
+Telephone,Telefon
+"Supplementary Information for Telephone","Zusatzinformation für Telefon"
+Fax,Fax
+Email,E-Mail
+Website,Website
+"Tax number","Steuernummer"
+VAT-ID,Umsatzsteuer-ID
+"Register Court","Registergericht"
+"Financial Office","Finanzamt"
+CEO,Geschäftsführer
+Owner,Inhaber
+"Responsible for content","Inhalt. Verantwortlicher"
+"Responsible for content address","Adresse des inhalt. Verantwortlichen"
+"Responsible in the interests of the press law","Verantwortlich im Sinne des Presserechts (V.i.S.d.P.)"
+"Register Number","Registernummer"
+"Reference for business rules (physician, ...)","Verweis auf berufliche Regelungen (z.B. für Ärzte, Apotheker)"
+"Authority (ECG)","Behörde gem. ECG (E-Commerce-Gesetz)"
+Shareholdings,Beteiligungen
+"Editorial Concept","Blattlinie"
+"Account owner","Kontoinhaber"
+Account,Kontonummer
+"Bank number","BLZ"
+"Bank name","Kreditinstitut"
+BIC/Swift-Code,BIC/SWIFT
+IBAN,IBAN
+Clearing,Clearing
+"Bank Information","Bankverbindung"
+Web,Web
+E-Mail,E-Mail
+"Financial office","Zuständiges Finanzamt"
+"Register court","Registergericht"
+"Register number","Registernummer"
+"Reference for business rules","Verweis auf berufliche Regelungen (z.B. für Ärzte, Apotheker)"
+SWIFT,SWIFT
+"Responsible according to § 5 TMG","Inhaltlich verantwortlich gemäß § 5 TMG"
 "Excl. %1 VAT","Exkl. %1 MwSt."
+"incl. <a href=""%1"">Shipping Cost</a>","inkl. <a href=""%1"">Versandkosten</a>"
 "excl. <a href=""%1"">Shipping Cost</a>","exkl. <a href=""%1"">Versandkosten</a>"
-
+"Incl. %1 VAT","Inkl. %1 MwSt."
+"Relevant for Austrian shops","relevant für österreichische Shops"
 "Display Block below Price","Zeige Preis-Details unter Preis"
 "Display tax info and shipping cost link below the price on all pages","Zeige Steuersatz und Versandkosten-Link unterhalb des Preises auf allen Seiten"
 "CMS Page for Shipping Info","CMS-Seite für Versandkosten"
-"-- No Page --","-- Keine Seite --"
 "Show ""incl. Shipping Cost"" instead of ""excl. Shipping Cost""","Zeige ""inkl. Versandkosten"" anstatt ""exkl. Versandkosten"""
-"Delivery Time","Lieferzeit"
+"Display Delivery Time on Product Listing","Lieferzeit auf Produktübersichtsseiten anzeigen"
