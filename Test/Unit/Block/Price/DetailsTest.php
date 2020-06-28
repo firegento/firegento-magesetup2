@@ -95,13 +95,14 @@ class DetailsTest extends TestCase
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $this->sut->setSaleableItem($saleableItemMock);
-        $this->assertSame(null, $this->sut->getData('tax_rate'));
+        $this->assertNull($this->sut->getData('tax_rate'));
     }
 
     public function testGetFormattedTaxRate(): void
     {
         $this->sut->setData('tax_rate', '19');
-        $this->assertInstanceOf(Phrase::class, $this->sut->getFormattedTaxRate());
+        $expected = new Phrase('%1%', ['19']);
+        $this->assertEquals($expected, $this->sut->getFormattedTaxRate());
     }
 
     public function testGetFormattedTaxRateIsZero(): void
@@ -116,7 +117,8 @@ class DetailsTest extends TestCase
             ->willReturn(7);
 
         $this->sut->setSaleableItem($saleableItemMock);
-        $this->assertInstanceOf(Phrase::class, $this->sut->getFormattedTaxRate());
+        $expected = new Phrase('%1%', ['7']);
+        $this->assertEquals($expected, $this->sut->getFormattedTaxRate());
     }
 
     public function testGetFormattedTaxRateIsFive(): void
@@ -179,7 +181,8 @@ class DetailsTest extends TestCase
             ->willReturn(5);
 
         $this->sut->setSaleableItem($saleableItem2Mock);
-        $this->assertInstanceOf(Phrase::class, $this->sut->getFormattedTaxRate());
+        $expected = new Phrase('%1%', ['5']);
+        $this->assertEquals($expected, $this->sut->getFormattedTaxRate());
     }
 
     public function testGetPriceDisplayType(): void
