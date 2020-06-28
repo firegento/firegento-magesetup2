@@ -22,6 +22,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class DetailsTest
  *
+ * Unit tests for price details block
  */
 class DetailsTest extends TestCase
 {

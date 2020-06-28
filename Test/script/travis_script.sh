@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright © 2016 FireGento e.V.
+# Copyright © FireGento e.V.
 # See LICENSE.md bundled with this module for license details.
 
 set -e
