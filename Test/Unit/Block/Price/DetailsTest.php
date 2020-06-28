@@ -15,6 +15,7 @@ use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\StoreManagement;
+use Magento\Tax\Model\Calculation;
 use Magento\Tax\Model\Calculation\Proxy;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +42,7 @@ class DetailsTest extends TestCase
     /** @var \Magento\Customer\Model\ResourceModel\GroupRepository|MockObject */
     protected $groupRepositoryMock;
 
-    /** @var \Magento\Tax\Model\Calculation\Proxy|MockObject */
+    /** @var \Magento\Tax\Model\Calculation|MockObject */
     protected $taxCalculationMock;
 
     /** @var \Magento\Tax\Helper\Data|MockObject */
@@ -72,7 +73,7 @@ class DetailsTest extends TestCase
 
         $this->groupRepositoryMock = $this->createMock(GroupRepository::class);
 
-        $this->taxCalculationMock = $this->createMock(Proxy::class);
+        $this->taxCalculationMock = $this->createMock(Calculation::class);
 
         $this->taxHelperMock = $this->createMock(\Magento\Tax\Helper\Data::class);
 
