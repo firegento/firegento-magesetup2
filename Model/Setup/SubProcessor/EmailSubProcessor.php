@@ -6,7 +6,6 @@
 namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 
 use FireGento\MageSetup\Model\Config;
-use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
  * Class for processing the email setup step.
