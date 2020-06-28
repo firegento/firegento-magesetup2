@@ -3,6 +3,7 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 namespace FireGento\MageSetup\Block\Price;
 
 use Magento\Customer\Model\ResourceModel\GroupRepository;
@@ -61,7 +62,8 @@ class Details extends \Magento\Framework\View\Element\Template
         \Magento\Tax\Model\Calculation $taxCalculation,
         \Magento\Tax\Helper\Data $taxHelper,
         array $data = []
-    ) {
+    )
+    {
         $this->storeManager = $context->getStoreManager();
         $this->magesetupConfig = $magesetupConfig;
         $this->customerSession = $customerSession;
@@ -115,10 +117,13 @@ class Details extends \Magento\Framework\View\Element\Template
     public function isIncludingShippingCosts()
     {
         if (!$this->getData('is_including_shipping_costs')) {
-            $this->setData('is_including_shipping_costs', $this->magesetupConfig->isIncludingShippingCosts());
+            $this->setData(
+                'is_including_shipping_costs',
+                $this->magesetupConfig->isIncludingShippingCosts()
+            );
         }
 
-        return $this->getData('is_including_shipping_costs');
+        return (bool)$this->getData('is_including_shipping_costs');
     }
 
     /**
