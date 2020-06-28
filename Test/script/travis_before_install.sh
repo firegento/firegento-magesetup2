@@ -14,5 +14,6 @@ phpenv rehash
 # create database and move db config into place
 mysql -uroot -e '
   SET @@global.sql_mode = NO_ENGINE_SUBSTITUTION;
-  CREATE DATABASE magento
+  CREATE DATABASE magento;
+  CREATE DATABASE magento-integration-tests;
 '
