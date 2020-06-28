@@ -36,7 +36,7 @@ class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttribute
     /**
      * Get visible checkout attributes
      *
-     * @return array|bool
+     * @return array
      */
     public function execute()
     {
