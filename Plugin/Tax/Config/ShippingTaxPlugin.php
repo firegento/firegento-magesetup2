@@ -50,23 +50,31 @@ class ShippingTaxPlugin
     private $taxCalculation;
 
     /**
+     * @var FireGentoConfig
+     */
+    private $config;
+
+    /**
      * Constructor class
      *
      * @param ScopeConfigInterface $scopeConfig
      * @param Cart                 $cart
      * @param Session              $customerSession
      * @param GroupRepository      $groupRepository
+     * @param FireGentoConfig      $config
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         Cart $cart,
         Session $customerSession,
-        GroupRepository $groupRepository
+        GroupRepository $groupRepository,
+        FireGentoConfig $config
     ) {
         $this->scopeConfig     = $scopeConfig;
         $this->cart            = $cart;
         $this->customerSession = $customerSession;
         $this->groupRepository = $groupRepository;
+        $this->config          = $config;
     }
 
     /**
@@ -81,7 +89,7 @@ class ShippingTaxPlugin
     public function afterGetShippingTaxClass(Config $config, int $shippingTaxClass, $store = null)
     {
         $dynamicType = (int)$this->scopeConfig->getValue(
-            FireGentoConfig::CONFIG_PATH_DYNAMIC_SHIPPING_TAX_CLASS,
+            $this->config->getDynamicShippingConfigPath(),
             ScopeInterface::SCOPE_STORE,
             $store
         );
