@@ -35,7 +35,7 @@ class Details extends \Magento\Framework\View\Element\Template
     private $groupRepository;
 
     /**
-     * @var \Magento\Tax\Model\Calculation\Proxy
+     * @var \Magento\Tax\Model\Calculation
      */
     private $taxCalculation;
 
@@ -51,7 +51,7 @@ class Details extends \Magento\Framework\View\Element\Template
      * @param \FireGento\MageSetup\Model\System\Config $magesetupConfig
      * @param \Magento\Customer\Model\Session $customerSession
      * @param GroupRepository $groupRepository
-     * @param \Magento\Tax\Model\Calculation\Proxy $taxCalculation
+     * @param \Magento\Tax\Model\Calculation $taxCalculation
      * @param \Magento\Tax\Helper\Data $taxHelper
      * @param array $data
      */
@@ -60,7 +60,7 @@ class Details extends \Magento\Framework\View\Element\Template
         \FireGento\MageSetup\Model\System\Config $magesetupConfig,
         \Magento\Customer\Model\Session $customerSession,
         GroupRepository $groupRepository,
-        \Magento\Tax\Model\Calculation\Proxy $taxCalculation,
+        \Magento\Tax\Model\Calculation $taxCalculation,
         \Magento\Tax\Helper\Data $taxHelper,
         array $data = []
     ) {

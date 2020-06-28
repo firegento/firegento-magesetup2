@@ -48,7 +48,6 @@ class Config extends TestCase
      */
     public function isCountryInEu()
     {
-        echo PHP_VERSION;
         $this->assertTrue($this->config->isCountryInEu('DE'));
         $this->assertFalse($this->config->isCountryInEu('CH'));
     }

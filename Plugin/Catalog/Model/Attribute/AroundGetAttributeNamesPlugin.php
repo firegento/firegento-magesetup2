@@ -36,7 +36,7 @@ class AroundGetAttributeNamesPlugin
      *
      * @param \Magento\Catalog\Model\Attribute\Config $subject
      * @param \Closure $proceed
-     * @param  string $groupName
+     * @param string $groupName
      * @return array
      */
     public function aroundGetAttributeNames(Config $subject, \Closure $proceed, $groupName)
