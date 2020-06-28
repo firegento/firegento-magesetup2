@@ -213,7 +213,6 @@ class DetailsTest extends TestCase
             ->method('isIncludingShippingCosts')
             ->willReturn(true);
         $this->assertTrue($this->sut->isIncludingShippingCosts());
-
     }
 
     public function testCanShowShippingLink(): void
@@ -237,7 +236,6 @@ class DetailsTest extends TestCase
 
         $this->sut->setSaleableItem($saleableItemMock);
         $this->assertTrue($this->sut->canShowShippingLink());
-
     }
 
     public function testGetShippingCostUrl()
@@ -249,5 +247,4 @@ class DetailsTest extends TestCase
             ->willReturn($shippingCostUrl);
         $this->assertSame($shippingCostUrl, $this->sut->getShippingCostUrl());
     }
-
 }

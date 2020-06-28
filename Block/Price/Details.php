@@ -62,8 +62,7 @@ class Details extends \Magento\Framework\View\Element\Template
         \Magento\Tax\Model\Calculation $taxCalculation,
         \Magento\Tax\Helper\Data $taxHelper,
         array $data = []
-    )
-    {
+    ) {
         $this->storeManager = $context->getStoreManager();
         $this->magesetupConfig = $magesetupConfig;
         $this->customerSession = $customerSession;
