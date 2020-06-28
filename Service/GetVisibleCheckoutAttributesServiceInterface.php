@@ -13,7 +13,7 @@ interface GetVisibleCheckoutAttributesServiceInterface
     /**
      * Get visible checkout attributes
      *
-     * @return array|bool
+     * @return array
      */
     public function execute();
 }
