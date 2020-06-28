@@ -13,6 +13,9 @@ use Magento\Framework\Config\CacheInterface;
  */
 class Config implements ConfigInterface
 {
+    public const DYNAMIC_TYPE_DEFAULT = 0;
+    public const DYNAMIC_TYPE_HIGHEST_PRODUCT_TAX = 1;
+
     /**
      * Configuration reader
      *

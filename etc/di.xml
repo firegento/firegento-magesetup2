@@ -57,6 +57,10 @@
         <plugin name="mageSetupEmailSourceVariables" type="FireGento\MageSetup\Plugin\Email\Model\Source\Variables"/>
     </type>
 
+    <type name="Magento\Tax\Model\Config">
+        <plugin name="mageSetupDynamicShippingTaxClass" type="FireGento\MageSetup\Plugin\Tax\Config\ShippingTaxPlugin" sortOrder="1"/>
+    </type>
+
     <!-- Email variables for versions >= M2.3.0-->
     <type name="Magento\Variable\Model\Source\Variables">
         <arguments>
