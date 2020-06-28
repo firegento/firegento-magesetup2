@@ -16,7 +16,6 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\StoreManagement;
 use Magento\Tax\Model\Calculation;
-use Magento\Tax\Model\Calculation\Proxy;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
