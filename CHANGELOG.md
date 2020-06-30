@@ -23,7 +23,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Add integration test for visible in checkout property (thanks @sprankhub)
  
 
-## Removed
+### Removed
 - Remove price details from tier prices [#87](https://github.com/firegento/firegento-magesetup2/issues/87) (thanks @sprankhub)
 - Drop support for magento 2.2.x and php 7.1.x (thanks @sprankhub,@frostblogNet)
 - Remove unused Dutch translation (thanks @sprankhub)
