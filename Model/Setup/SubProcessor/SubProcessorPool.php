@@ -10,9 +10,7 @@ use Magento\Framework\ObjectManager\TMap;
 use Magento\Framework\ObjectManager\TMapFactory;
 
 /**
- * Class SubProcessorPool
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for collecting the processors for the different setup steps.
  */
 class SubProcessorPool
 {

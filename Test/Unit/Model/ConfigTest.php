@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 FireGento e.V.
+ * Copyright © FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
 namespace FireGento\MageSetup\Test\Unit\Model;
@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class Config
  *
- * @package FireGento\MageSetup\Test\Unit\Model
+ * Unit tests for imprint config block
  */
 class Config extends TestCase
 {

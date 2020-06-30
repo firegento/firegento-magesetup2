@@ -37,7 +37,7 @@
     </type>
 
     <type name="Magento\Framework\Pricing\Render">
-        <plugin name="mageSetupAddPriceHints" type="FireGento\MageSetup\Plugin\Pricing\AroundRenderPlugin" sortOrder="1"/>
+        <plugin name="mageSetupAddPriceHints" type="FireGento\MageSetup\Plugin\Pricing\AddPriceDetailsPlugin" sortOrder="1"/>
     </type>
 
     <type name="Magento\CheckoutAgreements\Model\Agreement">
@@ -45,7 +45,7 @@
     </type>
 
     <type name="Magento\Catalog\Block\Product\ListProduct">
-        <plugin name="mageSetupProductDetailsHtml" type="FireGento\MageSetup\Plugin\Catalog\ListProductPlugin" sortOrder="1" />
+        <plugin name="mageSetupProductDetailsHtml" type="FireGento\MageSetup\Plugin\Catalog\Block\Product\ListProduct\AddDeliveryTimePlugin" sortOrder="1"/>
     </type>
 
     <type name="Magento\Email\Block\Adminhtml\Template\Edit\Form">

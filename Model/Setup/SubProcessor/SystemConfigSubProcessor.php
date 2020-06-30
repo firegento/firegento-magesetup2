@@ -6,25 +6,12 @@
 namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 
 use FireGento\MageSetup\Model\Config;
-use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
- * Class SystemConfigSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the system config setup step.
  */
 class SystemConfigSubProcessor extends AbstractSubProcessor
 {
-    /**
-     * SystemConfigSubProcessor constructor.
-     *
-     * @param WriterInterface $configWriter
-     */
-    public function __construct(WriterInterface $configWriter)
-    {
-        parent::__construct($configWriter);
-    }
-
     /**
      * Process
      *

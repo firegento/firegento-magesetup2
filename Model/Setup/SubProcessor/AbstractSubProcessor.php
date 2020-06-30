@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
- * Class AbstractSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Abstract class for processing certain setup steps.
  */
 abstract class AbstractSubProcessor implements SubProcessorInterface
 {

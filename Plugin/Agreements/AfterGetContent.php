@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Plugin\Agreements;
 use Magento\Cms\Model\Template\Filter as TemplateFilter;
 
 /**
- * Class AfterGetContent
- *
- * @package FireGento\MageSetup\Model\Plugin
+ * Plugin for filtering the checkout agreements with the CMS template filter.
  */
 class AfterGetContent
 {

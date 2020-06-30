@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Model\System\Config\Source\Cms;
 use Magento\Cms\Model\ResourceModel\Page\CollectionFactory;
 
 /**
- * Class Page
- *
- * @package FireGento\MageSetup\Model\System\Config\Source\Cms
+ * Source model for CMS pages.
  */
 class Page implements \Magento\Framework\Option\ArrayInterface
 {

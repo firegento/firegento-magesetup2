@@ -10,11 +10,9 @@ use FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
 use Magento\Catalog\Model\Attribute\Config;
 
 /**
- * Class AroundGetAttributeNamesPlugin
- *
- * @package FireGento\MageSetup\Plugin\Catalog\Model\Attribute
+ * Plugin to add visible in checkout attributes to the attribute names.
  */
-class AroundGetAttributeNamesPlugin
+class AddVisibleInCheckoutAttributesToAttributeNamesPlugin
 {
     /**
      * @var GetVisibleCheckoutAttributesServiceInterface
@@ -34,16 +32,18 @@ class AroundGetAttributeNamesPlugin
     /**
      *  Around get attribute names
      *
-     * @param \Magento\Catalog\Model\Attribute\Config $subject
-     * @param \Closure $proceed
-     * @param  string $groupName
+     * @param Config $config
+     * @param array $attributeNames
+     * @param string $groupName
      * @return array
      */
-    public function aroundGetAttributeNames(Config $subject, \Closure $proceed, $groupName)
+    public function afterGetAttributeNames(Config $config, $attributeNames, $groupName)
     {
-        $attributeNames = $proceed($groupName);
+        if (!is_array($attributeNames)) {
+            return $attributeNames;
+        }
 
-        if ($groupName == 'quote_item') {
+        if ($groupName === 'quote_item') {
             $attributes = $this->getVisibleCheckoutAttributesService->execute();
             foreach ($attributes as $attributeCode => $attribute) {
                 $attributeNames[] = $attributeCode;

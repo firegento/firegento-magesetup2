@@ -1,0 +1,222 @@
+{
+  "projectName": "firegento-magesetup2",
+  "projectOwner": "firegento",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "kkrieger85",
+      "name": "Kevin Krieger",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4435523?v=4",
+      "profile": "https://github.com/kkrieger85",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "frostblogNet",
+      "name": "Jens Richter",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19548641?v=4",
+      "profile": "https://frostblog.net/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "therouv",
+      "name": "Rouven Alexander Rieker",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/393419?v=4",
+      "profile": "https://rouven.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "demtaric",
+      "name": "demtaric",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5658592?v=4",
+      "profile": "https://github.com/demtaric",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sprankhub",
+      "name": "Simon Sprankel",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/930199?v=4",
+      "profile": "https://www.simonsprankel.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "roman204",
+      "name": "Roman Hutterer",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/584168?v=4",
+      "profile": "https://copex.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "avstudnitz",
+      "name": "Andreas von Studnitz",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/662059?v=4",
+      "profile": "http://www.integer-net.de/agentur/andreas-von-studnitz/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "dh1984",
+      "name": "Daniel",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6348686?v=4",
+      "profile": "https://github.com/dh1984",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mautz-et-tong",
+      "name": "Andreas Mautz",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12797503?v=4",
+      "profile": "https://webvisum.de/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "latenzio",
+      "name": "Latenzio Gonzales",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8480072?v=4",
+      "profile": "https://github.com/latenzio",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "benedikt-g",
+      "name": "benedikt-g",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/29483104?v=4",
+      "profile": "https://github.com/benedikt-g",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "davidverholen",
+      "name": "David Verholen",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2813693?v=4",
+      "profile": "https://www.linkedin.com/in/david-verholen-14aa23aa/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "GordonLesti",
+      "name": "Gordon Lesti",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1677744?v=4",
+      "profile": "https://gordonlesti.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sylvainraye",
+      "name": "Sylvain Rayé",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1337461?v=4",
+      "profile": "https://www.diglin.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "pixelhed",
+      "name": "Andre Flitsch",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1169770?v=4",
+      "profile": "https://github.com/pixelhed",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "leptoquark1",
+      "name": "David Fecke",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/13577480?v=4",
+      "profile": "http://www.eyecook.net/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jwundrak",
+      "name": "Julian Wundrak",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/2864042?v=4",
+      "profile": "https://github.com/jwundrak",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "arioch1984",
+      "name": "Fabio Brunelli",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5476141?v=4",
+      "profile": "https://github.com/arioch1984",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aliuosio",
+      "name": "Osiozekhai Aliu",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2536788?v=4",
+      "profile": "https://github.com/aliuosio",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aeno",
+      "name": "aeno",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/598616?v=4",
+      "profile": "https://github.com/aeno",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Schrank",
+      "name": "Fabian Blechschmidt",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/379680?v=4",
+      "profile": "http://www.fabian-blechschmidt.de/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Kipperlenny",
+      "name": "Lennart Schreiber",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/563328?v=4",
+      "profile": "https://www.webzap.eu/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "HenKun",
+      "name": "Henning Kuntzschmann",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/18382633?v=4",
+      "profile": "https://github.com/HenKun",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

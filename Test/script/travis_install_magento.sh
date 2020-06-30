@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright © 2016 FireGento e.V.
+# Copyright © FireGento e.V.
 # See LICENSE.md bundled with this module for license details.
 
 set -e
@@ -19,7 +19,7 @@ echo -e "Setup magento"
 echo -e "\e[32m############"
 
 php bin/magento setup:install --base-url="http://dummy.local/" --db-host="localhost" --db-name="magento" --db-user="root" --admin-firstname="admin"  --admin-lastname="admin" --admin-email="user@example.com" --admin-user="admin" --admin-password="admin123" --language="en_US" --backend-frontname="admin"
-
+php bin/magento --version
 
 echo -e "\e[32m###########################"
 echo -e "Install magesetup2 extension"
@@ -39,4 +39,3 @@ php bin/magento magesetup:setup:run de cms
 php bin/magento magesetup:setup:run de email
 php bin/magento magesetup:setup:run de systemConfig
 php bin/magento magesetup:setup:run de tax
-

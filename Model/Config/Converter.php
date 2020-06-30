@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Model\Config;
 
 /**
- * Class Converter
- *
- * @package FireGento\MageSetup\Model\Config
+ * Class for converting XMLs.
  */
 class Converter implements \Magento\Framework\Config\ConverterInterface
 {

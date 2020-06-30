@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Model\Config;
 
 /**
- * Class SchemaLocator
- *
- * @package FireGento\MageSetup\Model\Config
+ * Class for locating the MageSetup XSD schema.
  */
 class SchemaLocator implements \Magento\Framework\Config\SchemaLocatorInterface
 {

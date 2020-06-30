@@ -9,9 +9,7 @@ use Magento\Config\Model\Config\Source\Yesno;
 use Magento\Framework\Event\ObserverInterface;
 
 /**
- * Class AddProductAttributeVisibleCheckoutObserver
- *
- * @package FireGento\MageSetup\Observer
+ * Class for adding the visible in checkout property to the attributes edit page.
  */
 class AddProductAttributeVisibleCheckoutObserver implements ObserverInterface
 {

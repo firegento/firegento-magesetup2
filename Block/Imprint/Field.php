@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Block\Imprint;
 
 /**
- * Class Field
- *
- * @package FireGento\MageSetup\Block\Imprint
+ * Block for showing imprint fields.
  */
 class Field extends \FireGento\MageSetup\Block\Imprint\Content
 {
