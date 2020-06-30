@@ -1,0 +1,29 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+
+## v0.3.0
+### Fixed
+- Fix imprint blocks in mails [#149](https://github.com/firegento/firegento-magesetup2/issues/149) (thanks @sprankhub)
+- Hide tax details for grouped product [#150](https://github.com/firegento/firegento-magesetup2/issues/150) (thanks @sprankhub)
+- Fix setting of tax class ID on products (thanks @sprankhub)
+- Configure kg as weight unit during setup [#31](https://github.com/firegento/firegento-magesetup2/issues/31) (thanks @sprankhub)
+- Use delivery time label from attribute config (Note you have to configure the attribute lable in the admin area) [#124](https://github.com/firegento/firegento-magesetup2/issues/124) (thanks @sprankhub)
+- Use newer coding magento standard (thanks @sprankhub) 
+- Update English translation (thanks @sprankhub)
+- Update German translation (thanks @sprankhub)
+- Replace around with after plugin (thanks @sprankhub)
+
+### Added
+- Add all contributors and bot config (thanks @kkrieger85)
+- Add integration test (thanks @sprankhub,@BorisovskiP)
+- Add integration test to travis ci [#166](https://github.com/firegento/firegento-magesetup2/issues/166) (thanks @frostblogNet) 
+- Add unit test form blocks (thanks @frostblogNet)
+- Add integration test for visible in checkout property (thanks @sprankhub)
+ 
+
+## Removed
+- Remove price details from tier prices [#87](https://github.com/firegento/firegento-magesetup2/issues/87) (thanks @sprankhub)
+- Drop support for magento 2.2.x and php 7.1.x (thanks @sprankhub,@frostblogNet)
+- Remove unused Dutch translation (thanks @sprankhub)
