@@ -55,3 +55,5 @@ SWIFT,SWIFT
 "CMS Page for Shipping Info","CMS-Seite für Versandkosten"
 "Show ""incl. Shipping Cost"" instead of ""excl. Shipping Cost""","Zeige ""inkl. Versandkosten"" anstatt ""exkl. Versandkosten"""
 "Display Delivery Time on Product Listing","Lieferzeit auf Produktübersichtsseiten anzeigen"
+"No dynamic shipping tax calculation","Keine dynamische Versandsteuerberechnung"
+"Use the highest product tax","Verwenden Sie die höchste Produktsteuer"
