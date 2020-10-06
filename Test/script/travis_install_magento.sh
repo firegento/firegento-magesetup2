@@ -11,7 +11,7 @@ echo -e "\e[32m##############################"
 echo -e "Install magento version $1"
 echo -e "\e[32m##############################"
 
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition:$1 $MAGENTO_ROOT
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition:$1 $MAGENTO_ROOT -vvv
 cd $MAGENTO_ROOT
 
 echo -e "\e[32m############"
