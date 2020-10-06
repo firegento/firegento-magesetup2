@@ -1,16 +1,11 @@
-sudo: required
-dist: trusty
-addons:
-  apt:
-    packages:
-    - mysql-server-5.6
-    - mysql-client-core-5.6
-    - mysql-client-5.6
+dist: bionic
+services:
+    - mysql
 env:
   global:
   - COVERAGE: false
 
-matrix:
+jobs:
   fast_finish: true
   include:
   # make sure it is running on the oldest supported version
