@@ -43,7 +43,7 @@ before_install:
   - "./Test/script/travis_before_install.sh"
 
 install:
-  - echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > $HOME/.composer/auth.json
+  - composer config -g http-basic.repo.magento.com "$MAGENTO_USERNAME" "$MAGENTO_PASSWORD"
   - export MAGENTO_ROOT=`mktemp -d /tmp/mage.XXXXXXXX`
   - "./Test/script/travis_install_magento.sh $MAGENTO_VERSION"
 
