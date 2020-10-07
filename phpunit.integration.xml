@@ -12,6 +12,8 @@
          beStrictAboutTestsThatDoNotTestAnything="false"
          bootstrap="./framework/bootstrap.php"
          stderr="true"
+         testSuiteLoaderClass="Magento\TestFramework\SuiteLoader"
+         testSuiteLoaderFile="framework/Magento/TestFramework/SuiteLoader.php"
 >
     <!-- Test suites definition -->
     <testsuites>
@@ -29,7 +31,7 @@
             <exclude>testsuite/Magento/IntegrationTest.php</exclude>
         </testsuite>
         <testsuite name="FireGento_MageSetup">
-            <directory suffix="Test.php">../../../vendor/firegento/magesetup2/Test/Integration/</directory>
+            <directory suffix="Test.php">../../../vendor/firegento/magesetup2/Test/Integration</directory>
         </testsuite>
     </testsuites>
     <!-- Code coverage filters -->
