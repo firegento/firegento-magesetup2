@@ -12,8 +12,6 @@
          beStrictAboutTestsThatDoNotTestAnything="false"
          bootstrap="./framework/bootstrap.php"
          stderr="true"
-         testSuiteLoaderClass="Magento\TestFramework\SuiteLoader"
-         testSuiteLoaderFile="framework/Magento/TestFramework/SuiteLoader.php"
 >
     <!-- Test suites definition -->
     <testsuites>
