@@ -26,6 +26,7 @@ if [ "$CODE_QUALITY" == "true" ]; then
 
 fi
 
+if [ "$UNIT_TEST" == "true" ]; then
 ## Run unit tests
 
     echo -e "\e[32m##############"
@@ -39,6 +40,8 @@ fi
     ../../../vendor/bin/phpunit --debug
 
     cd $MAGENTO_ROOT
+
+fi
 
 if [ "$INTEGRATION_TEST" == "true" ]; then
 ## Run integration tests
