@@ -20,6 +20,6 @@ class AddProductAttributeVisibleCheckoutObserverTest extends AbstractBackendCont
         $attribute                  = $productAttributeRepository->get('name');
         $this->getRequest()->setParam('attribute_id', $attribute->getAttributeId());
         $this->dispatch($this->uri);
-        self::assertContains('Visible in Checkout', $this->getResponse()->getBody());
+        self::assertStringContainsString('Visible in Checkout', $this->getResponse()->getBody());
     }
 }
