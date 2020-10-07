@@ -47,7 +47,7 @@ if [ "$INTEGRATION_TEST" == "true" ]; then
     # execute in integration test dir to avoid "Could not use "Magento\TestFramework\SuiteLoader" as loader." error
     cd dev/tests/integration
 
-    vendor/bin/phpunit -c phpunit.xml --testsuite FireGento_MageSetup --debug --verbose
+    ../../../vendor/bin/phpunit -c phpunit.xml --testsuite FireGento_MageSetup --debug --verbose
 
     cd $MAGENTO_ROOT
 
