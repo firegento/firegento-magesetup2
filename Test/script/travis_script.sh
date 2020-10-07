@@ -5,9 +5,6 @@
 set -e
 trap '>&2 echo Error: Command \`$BASH_COMMAND\` on line $LINENO failed with exit code $?' ERR
 
-
-## Check code quality
-
 cd $MAGENTO_ROOT
 
 if [ "$CODE_QUALITY" == "true" ]; then
@@ -27,37 +24,26 @@ if [ "$CODE_QUALITY" == "true" ]; then
 fi
 
 if [ "$UNIT_TEST" == "true" ]; then
-## Run unit tests
 
     echo -e "\e[32m##############"
     echo -e "Run unit tests"
     echo -e "\e[32m##############"
 
-    ## cp phpunit config
     cp $TRAVIS_BUILD_DIR/phpunit.unittest.xml dev/tests/unit/phpunit.xml
-    cd dev/tests/unit
 
-    ../../../vendor/bin/phpunit --debug
-
-    cd $MAGENTO_ROOT
+    vendor/bin/phpunit -c dev/tests/unit/phpunit.xml --testsuite FireGento_MageSetup --debug --verbose
 
 fi
 
 if [ "$INTEGRATION_TEST" == "true" ]; then
-## Run integration tests
 
     echo -e "\e[32m##############"
     echo -e "Run integration tests"
     echo -e "\e[32m##############"
 
-    ## cp phpunit config
     cp $TRAVIS_BUILD_DIR/install-config-mysql.php dev/tests/integration/etc/install-config-mysql.php
-    cp $TRAVIS_BUILD_DIR/phpunit.integration.xml.dist dev/tests/integration/phpunit.integration.xml.dist
-    cd dev/tests/integration
+    cp $TRAVIS_BUILD_DIR/phpunit.integration.xml.dist dev/tests/integration/phpunit.xml
 
-
-    ../../../vendor/bin/phpunit --configuration=phpunit.integration.xml.dist --debug --verbose --testsuit  "Project Integration Tests"
-
-    cd $MAGENTO_ROOT
+    vendor/bin/phpunit -c dev/tests/integration/phpunit.xml --testsuite FireGento_MageSetup --debug --verbose
 
 fi
