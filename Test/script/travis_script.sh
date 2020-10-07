@@ -44,6 +44,11 @@ if [ "$INTEGRATION_TEST" == "true" ]; then
     cp $TRAVIS_BUILD_DIR/install-config-mysql.php dev/tests/integration/etc/install-config-mysql.php
     cp $TRAVIS_BUILD_DIR/phpunit.integration.xml dev/tests/integration/phpunit.xml
 
-    vendor/bin/phpunit -c dev/tests/integration/phpunit.xml --testsuite FireGento_MageSetup --debug --verbose
+    # execute in integration test dir to avoid "Could not use "Magento\TestFramework\SuiteLoader" as loader." error
+    cd dev/tests/integration
+
+    vendor/bin/phpunit -c phpunit.xml --testsuite FireGento_MageSetup --debug --verbose
+
+    cd $MAGENTO_ROOT
 
 fi
