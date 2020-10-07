@@ -13,14 +13,14 @@ use PHPUnit\Framework\TestCase;
  *
  * Unit tests for imprint config block
  */
-class Config extends TestCase
+class ConfigTest extends TestCase
 {
     /**
      * @var \FireGento\MageSetup\Model\Config
      */
     private $config;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -39,7 +39,7 @@ class Config extends TestCase
         ];
 
         $readerMock = $this->createMock(\FireGento\MageSetup\Model\Config\Reader::class);
-        $readerMock->expects($this->once())->method('read')->will($this->returnValue($readerData));
+        $readerMock->expects(self::once())->method('read')->willReturn($readerData);
 
         $cacheMock = $this->getMockBuilder(\Magento\Framework\Config\CacheInterface::class)
             ->disableOriginalConstructor()->getMockForAbstractClass();
@@ -58,7 +58,7 @@ class Config extends TestCase
      */
     public function getCountry()
     {
-        $this->assertEquals('de', $this->config->getCountry());
+        self::assertEquals('de', $this->config->getCountry());
     }
 
     /**
@@ -66,7 +66,7 @@ class Config extends TestCase
      */
     public function getAllowedCountries()
     {
-        $this->assertEquals([1 => 'de', 2 => 'at'], $this->config->getAllowedCountries());
+        self::assertEquals([1 => 'de', 2 => 'at'], $this->config->getAllowedCountries());
     }
 
     /**
@@ -79,6 +79,6 @@ class Config extends TestCase
             'general__country__default'         => 'DE'
         ];
 
-        $this->assertEquals($expectedResult, $this->config->getSystemConfig());
+        self::assertEquals($expectedResult, $this->config->getSystemConfig());
     }
 }
