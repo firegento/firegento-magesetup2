@@ -1,9 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
-## v0.3.0
+## [Unreleased]
+### Fixed
+- ...
+
+### Added
+- ...
+
+### Removed
+- ...
+
+## [v0.4.0] - 2020-10-08
+### Added
+- Support for Magento 2.4 (thanks @sprankhub)
+- Support for PHP 7.4 (thanks @sprankhub)
+
+## [v0.3.0] - 2020-06-30
 ### Fixed
 - Fix imprint blocks in mails [#149](https://github.com/firegento/firegento-magesetup2/issues/149) (thanks @sprankhub)
 - Hide tax details for grouped product [#150](https://github.com/firegento/firegento-magesetup2/issues/150) (thanks @sprankhub)
@@ -21,7 +36,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 - Add integration test to travis ci [#166](https://github.com/firegento/firegento-magesetup2/issues/166) (thanks @frostblogNet) 
 - Add unit test form blocks (thanks @frostblogNet)
 - Add integration test for visible in checkout property (thanks @sprankhub)
- 
 
 ### Removed
 - Remove price details from tier prices [#87](https://github.com/firegento/firegento-magesetup2/issues/87) (thanks @sprankhub)
