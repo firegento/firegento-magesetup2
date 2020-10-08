@@ -31,20 +31,20 @@ class ModuleConfigTest extends TestCase
     public function testTheModuleIsRegistered(): void
     {
         $registrar = new ComponentRegistrar();
-        $this->assertArrayHasKey($this->subjectModuleName, $registrar->getPaths(ComponentRegistrar::MODULE));
+        self::assertArrayHasKey($this->subjectModuleName, $registrar->getPaths(ComponentRegistrar::MODULE));
     }
 
     public function testModuleIsListed(): void
     {
         /** @var ModuleList $moduleList */
         $moduleList = $this->objectManager->create(ModuleList::class);
-        $this->assertTrue($moduleList->has($this->subjectModuleName));
+        self::assertTrue($moduleList->has($this->subjectModuleName));
     }
 
     public function testTheModuleIsConfiguredInTheTestEnvironment(): void
     {
         /** @var ModuleList $moduleList */
         $moduleList = $this->objectManager->create(ModuleList::class);
-        $this->assertTrue($moduleList->has($this->subjectModuleName));
+        self::assertTrue($moduleList->has($this->subjectModuleName));
     }
 }

@@ -34,7 +34,7 @@ class AddDeliveryTimePluginTest extends TestCase
     /** @var Product | \PHPUnit_Framework_MockObject_MockObject */
     protected $productMock;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->scopeConfigMock = $this->getMockBuilder(Config::class)
             ->disableOriginalConstructor()
@@ -81,6 +81,6 @@ class AddDeliveryTimePluginTest extends TestCase
         $result = $this->plugin->afterGetProductDetailsHtml($this->listProductMock, '', $this->productMock);
 
         // Make sure that the plugin does not modify the result.
-        $this->assertSame($result, $result);
+        self::assertSame($result, $result);
     }
 }
