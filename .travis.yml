@@ -1,33 +1,34 @@
-sudo: required
-dist: trusty
-addons:
-  apt:
-    packages:
-    - mysql-server-5.6
-    - mysql-client-core-5.6
-    - mysql-client-5.6
+dist: bionic
+services:
+    - mysql
+    - elasticsearch
 env:
   global:
   - COVERAGE: false
 
-matrix:
+jobs:
   fast_finish: true
   include:
-  # make sure it is running on the oldest supported version
-  - php: 7.2
-    env: MAGENTO_VERSION=2.3.0
-  # fix the code quality check to a specific, but rather new version
+  # fix the code quality check to a specific version
   - php: 7.2
     env: MAGENTO_VERSION=2.3.5-p1 CODE_QUALITY=true
-  # make sure it is running on the latest version
+  # make sure it is running on the oldest and latest version for each release line
   - php: 7.2
-    env: MAGENTO_VERSION=2.3.1 INTEGRATION_TEST=true
+    env: MAGENTO_VERSION=2.3.0
   - php: 7.2
-    env: MAGENTO_VERSION=2.3.* INTEGRATION_TEST=true
+    env: MAGENTO_VERSION=2.3.*
   - php: 7.3
-    env: MAGENTO_VERSION=2.3.3 INTEGRATION_TEST=true
+    env: MAGENTO_VERSION=2.3.3
   - php: 7.3
-    env: MAGENTO_VERSION=2.3.* INTEGRATION_TEST=true
+    env: MAGENTO_VERSION=2.3.*
+  - php: 7.3
+    env: MAGENTO_VERSION=2.4.0 UNIT_TEST=true INTEGRATION_TEST=true
+  - php: 7.3
+    env: MAGENTO_VERSION=2.4.* UNIT_TEST=true INTEGRATION_TEST=true
+  - php: 7.4
+    env: MAGENTO_VERSION=2.4.0 UNIT_TEST=true INTEGRATION_TEST=true
+  - php: 7.4
+    env: MAGENTO_VERSION=2.4.* UNIT_TEST=true INTEGRATION_TEST=true
 
 
 language: php
@@ -43,7 +44,7 @@ before_install:
   - "./Test/script/travis_before_install.sh"
 
 install:
-  - echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > $HOME/.composer/auth.json
+  - composer config -g http-basic.repo.magento.com "$MAGENTO_USERNAME" "$MAGENTO_PASSWORD"
   - export MAGENTO_ROOT=`mktemp -d /tmp/mage.XXXXXXXX`
   - "./Test/script/travis_install_magento.sh $MAGENTO_VERSION"
 

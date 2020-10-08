@@ -27,8 +27,8 @@ Missing your country? Please open a pull request with the necessary configuratio
 
 Requirements
 ------------
-- PHP     >= 7.2
-- Magento >= 2.3.*
+- PHP >= 7.2
+- Magento 2.3.* / 2.4.*
 
 Installation
 ------------

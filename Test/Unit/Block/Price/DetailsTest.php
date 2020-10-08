@@ -50,7 +50,7 @@ class DetailsTest extends TestCase
     /** @var  \Magento\Store\Model\StoreManagement|MockObject */
     protected $storeManagerMock;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -62,7 +62,7 @@ class DetailsTest extends TestCase
         $this->contextMock = $this->createMock(Context::class);
 
         $this->contextMock
-            ->expects($this->atLeastOnce())
+            ->expects(self::atLeastOnce())
             ->method('getStoreManager')
             ->willReturn($this->storeManagerMock);
 
@@ -95,14 +95,14 @@ class DetailsTest extends TestCase
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $this->sut->setSaleableItem($saleableItemMock);
-        $this->assertNull($this->sut->getData('tax_rate'));
+        self::assertNull($this->sut->getData('tax_rate'));
     }
 
     public function testGetFormattedTaxRate(): void
     {
         $this->sut->setData('tax_rate', '19');
         $expected = new Phrase('%1%', ['19']);
-        $this->assertEquals($expected, $this->sut->getFormattedTaxRate());
+        self::assertEquals($expected, $this->sut->getFormattedTaxRate());
     }
 
     public function testGetFormattedTaxRateIsZero(): void
@@ -112,13 +112,13 @@ class DetailsTest extends TestCase
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $saleableItemMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getTaxPercent')
             ->willReturn(7);
 
         $this->sut->setSaleableItem($saleableItemMock);
         $expected = new Phrase('%1%', ['7']);
-        $this->assertEquals($expected, $this->sut->getFormattedTaxRate());
+        self::assertEquals($expected, $this->sut->getFormattedTaxRate());
     }
 
     public function testGetFormattedTaxRateIsFive(): void
@@ -128,12 +128,12 @@ class DetailsTest extends TestCase
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $saleableItem2Mock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getTaxPercent')
             ->willReturn(null);
 
         $saleableItem2Mock
-            ->expects($this->at(1))
+            ->expects(self::at(1))
             ->method('getTaxClassId')
             ->willReturn('simple');
 
@@ -142,23 +142,23 @@ class DetailsTest extends TestCase
             ->getMockForAbstractClass();
 
         $this->storeManagerMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getStore')
             ->willReturn($storeMock);
 
         $this->customerSessionMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getCustomerGroupId')
             ->willReturn(10);
         $groupMock = $this->createMock(\Magento\Customer\Model\Data\Group::class);
 
         $groupMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getTaxClassId')
             ->willReturn(20);
 
         $this->groupRepositoryMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getById')
             ->withAnyParameters(10)
             ->willReturn($groupMock);
@@ -166,57 +166,57 @@ class DetailsTest extends TestCase
         $dataMock = $this->createMock(\Magento\Framework\DataObject::class);
 
         $dataMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('setData')
             ->willReturn($dataMock);
 
         $this->taxCalculationMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getRateRequest')
             ->willReturn($dataMock);
 
         $this->taxCalculationMock
-            ->expects($this->at(1))
+            ->expects(self::at(1))
             ->method('getRate')
             ->willReturn(5);
 
         $this->sut->setSaleableItem($saleableItem2Mock);
         $expected = new Phrase('%1%', ['5']);
-        $this->assertEquals($expected, $this->sut->getFormattedTaxRate());
+        self::assertEquals($expected, $this->sut->getFormattedTaxRate());
     }
 
     public function testGetPriceDisplayType(): void
     {
         $this->taxHelperMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getPriceDisplayType')
             ->willReturn(4);
-        $this->assertSame(4, $this->sut->getPriceDisplayType());
+        self::assertSame(4, $this->sut->getPriceDisplayType());
     }
 
     public function testIsIncludingShippingCosts(): void
     {
-        $this->assertFalse($this->sut->isIncludingShippingCosts());
+        self::assertFalse($this->sut->isIncludingShippingCosts());
 
         $this->sut->setData('is_including_shipping_costs', null);
-        $this->assertFalse($this->sut->isIncludingShippingCosts());
+        self::assertFalse($this->sut->isIncludingShippingCosts());
 
         $this->sut->setData('is_including_shipping_costs', 1);
-        $this->assertTrue($this->sut->isIncludingShippingCosts());
+        self::assertTrue($this->sut->isIncludingShippingCosts());
 
         $this->sut->unsetData('is_including_shipping_costs');
         $this->magesetupConfigMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('isIncludingShippingCosts')
             ->willReturn(false);
-        $this->assertFalse($this->sut->isIncludingShippingCosts());
+        self::assertFalse($this->sut->isIncludingShippingCosts());
 
         $this->sut->unsetData('is_including_shipping_costs');
         $this->magesetupConfigMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('isIncludingShippingCosts')
             ->willReturn(true);
-        $this->assertTrue($this->sut->isIncludingShippingCosts());
+        self::assertTrue($this->sut->isIncludingShippingCosts());
     }
 
     public function testCanShowShippingLink(): void
@@ -226,29 +226,29 @@ class DetailsTest extends TestCase
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $saleableItemMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getTypeId')
             ->willReturn('virtual');
 
         $this->sut->setSaleableItem($saleableItemMock);
-        $this->assertFalse($this->sut->canShowShippingLink());
+        self::assertFalse($this->sut->canShowShippingLink());
 
         $saleableItemMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getTypeId')
             ->willReturn('configurable');
 
         $this->sut->setSaleableItem($saleableItemMock);
-        $this->assertTrue($this->sut->canShowShippingLink());
+        self::assertTrue($this->sut->canShowShippingLink());
     }
 
     public function testGetShippingCostUrl()
     {
         $shippingCostUrl = "http://shop.firegento.com/shipping";
         $this->magesetupConfigMock
-            ->expects($this->at(0))
+            ->expects(self::at(0))
             ->method('getShippingCostUrl')
             ->willReturn($shippingCostUrl);
-        $this->assertSame($shippingCostUrl, $this->sut->getShippingCostUrl());
+        self::assertSame($shippingCostUrl, $this->sut->getShippingCostUrl());
     }
 }

@@ -14,6 +14,9 @@ echo -e "\e[32m##############################"
 composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition:$1 $MAGENTO_ROOT
 cd $MAGENTO_ROOT
 
+# see https://support.magento.com/hc/en-us/articles/360046906191-Magento-2-4-0-known-issue-integration-tests-fail
+rm -r vendor/dotmailer/dotmailer-magento2-extension/Test/Integration/
+
 echo -e "\e[32m############"
 echo -e "Setup magento"
 echo -e "\e[32m############"
