@@ -17,3 +17,6 @@ mysql -uroot -e '
   CREATE DATABASE `magento`;
   CREATE DATABASE `magento-integration-tests`;
 '
+
+# make sure to use Composer 1, because Magento does not support Composer 2 yet
+composer self-update --1
