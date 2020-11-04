@@ -13,10 +13,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Removed
 - ...
 
+## [v0.4.1] - 2020-11-04
+### Fixed
+- Registry key already exists error for HTTPS sites [#186](https://github.com/firegento/firegento-magesetup2/pull/186) (thanks @sprankhub)
+- Wrong attribute group name in setup scripts [#187](https://github.com/firegento/firegento-magesetup2/pull/187) (thanks @norgeindian)
+
 ## [v0.4.0] - 2020-10-08
 ### Added
-- Support for Magento 2.4 (thanks @sprankhub)
-- Support for PHP 7.4 (thanks @sprankhub)
+- Support for Magento 2.4 [#183](https://github.com/firegento/firegento-magesetup2/pull/183) (thanks @sprankhub)
+- Support for PHP 7.4 [#183](https://github.com/firegento/firegento-magesetup2/pull/183) (thanks @sprankhub)
 
 ## [v0.3.0] - 2020-06-30
 ### Fixed

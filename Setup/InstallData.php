@@ -72,7 +72,7 @@ class InstallData implements InstallDataInterface
                 'required'                => false,
                 'used_in_product_listing' => true,
                 'apply_to'                => $productTypes,
-                'group'                   => 'General',
+                'group'                   => 'Product Details',
                 'unique'                  => false,
                 'is_html_allowed_on_front'=> true,
                 'visible_on_front'        => true,

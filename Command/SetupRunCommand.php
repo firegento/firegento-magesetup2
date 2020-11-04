@@ -122,7 +122,9 @@ class SetupRunCommand extends Command
         // phpcs:ignore
         $configLoader = $this->objectManager->get('Magento\Framework\ObjectManager\ConfigLoaderInterface');
         $this->objectManager->configure($configLoader->load($area));
-        $this->registry->register('isSecureArea', true);
+        if (!$this->registry->registry('isSecureArea')) {
+            $this->registry->register('isSecureArea', true);
+        }
 
         try {
             /*
