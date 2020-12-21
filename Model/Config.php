@@ -14,8 +14,6 @@ use Magento\Framework\Config\CacheInterface;
  */
 class Config implements ConfigInterface
 {
-    public const CONFIG_PATH_DYNAMIC_SHIPPING_TAX_CLASS = 'tax/classes/dynamic_shipping_tax_class';
-
     /**
      * Configuration reader
      *
@@ -193,15 +191,5 @@ class Config implements ConfigInterface
     {
         $data               = $this->reader->read();
         $this->loadedConfig = $data;
-    }
-
-    /**
-     * Method for retrieving dynamic config shipping path
-     *
-     * @return string
-     */
-    public function getDynamicShippingConfigPath(): string
-    {
-        return self::CONFIG_PATH_DYNAMIC_SHIPPING_TAX_CLASS;
     }
 }

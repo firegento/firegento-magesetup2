@@ -80,21 +80,16 @@ class ShippingTaxPlugin
     /**
      * After plugin for \Magento\Tax\Model\Config::getShippingTaxClass
      *
-     * @param Config $config
-     * @param int    $shippingTaxClass
-     * @param null   $store
+     * @param Config                     $config
+     * @param int                        $shippingTaxClass
+     * @param null|string|bool|int|Store $store
      *
      * @return bool|int|mixed
      */
     public function afterGetShippingTaxClass(Config $config, int $shippingTaxClass, $store = null)
     {
-        $dynamicType = (int)$this->scopeConfig->getValue(
-            $this->config->getDynamicShippingConfigPath(),
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-
-        $quoteItems = $this->cart->getItems();
+        $dynamicType = $this->getDynamicShippingConfigPath($store);
+        $quoteItems  = $this->cart->getItems();
 
         // If the default behaviour was configured or there are no products in cart, use default tax class id
         if ($dynamicType === FireGentoSource::DYNAMIC_TYPE_SHIPPING_TAX_DEFAULT || count($quoteItems) === 0) {
@@ -122,13 +117,12 @@ class ShippingTaxPlugin
      * @param array                      $quoteItems
      * @param null|string|bool|int|Store $store
      *
-     * @return bool|mixed|null
+     * @return bool|int
      */
-
-    private function getHighestProductTaxClassId($quoteItems, $store)
+    private function getHighestProductTaxClassId(array $quoteItems, $store)
     {
-        $taxClassIds    = [];
-        $highestTaxRate = null;
+        $taxClassIds       = [];
+        $highestTaxClassId = false;
 
         foreach ($quoteItems as $quoteItem) {
 
@@ -154,13 +148,13 @@ class ShippingTaxPlugin
          */
         ksort($taxClassIds);
         if (count($taxClassIds) > 0) {
-            $highestTaxRate = array_pop($taxClassIds);
+            $highestTaxClassId = array_pop($taxClassIds);
         }
-        if (!$highestTaxRate || $highestTaxRate === null) {
+        if (!$highestTaxClassId || $highestTaxClassId === null) {
             return false;
         }
 
-        return $highestTaxRate;
+        return $highestTaxClassId;
     }
 
     /**
@@ -188,5 +182,21 @@ class ShippingTaxPlugin
         }
 
         return $taxPercent;
+    }
+
+    /**
+     * Method for retrieving dynamic config shipping path
+     *
+     * @param null|string|bool|int|Store $store
+     *
+     * @return int
+     */
+    private function getDynamicShippingConfigPath($store = null): int
+    {
+        return (int)$this->scopeConfig->getValue(
+            'tax/classes/dynamic_shipping_tax_class',
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 }
