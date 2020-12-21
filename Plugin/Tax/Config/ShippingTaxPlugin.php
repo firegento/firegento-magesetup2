@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace FireGento\MageSetup\Plugin\Tax\Config;
 
 use FireGento\MageSetup\Model\System\Config\Source\Tax\Dynamic as FireGentoSource;
-use Magento\Checkout\Model\Cart;
 use Magento\Customer\Model\ResourceModel\GroupRepository;
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Quote\Api\Data\ShippingAssignmentInterface;
 use Magento\Quote\Model\Quote\Item;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\Store;
+use Magento\Tax\Api\Data\TaxClassKeyInterface;
 use Magento\Tax\Model\Calculation\Proxy;
-use Magento\Tax\Model\Config;
 
 /**
  * Class ShippingTaxPlugin
@@ -27,11 +27,6 @@ class ShippingTaxPlugin
      * @var ScopeConfigInterface
      */
     private $scopeConfig;
-
-    /**
-     * @var Cart
-     */
-    private $cart;
 
     /**
      * @var Session
@@ -49,68 +44,96 @@ class ShippingTaxPlugin
     private $taxCalculation;
 
     /**
+     * @var \Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory
+     */
+    private $taxClassKeyDataObjectFactory;
+
+    /**
      * Constructor class
      *
-     * @param ScopeConfigInterface $scopeConfig
-     * @param Cart                 $cart
-     * @param Session              $customerSession
-     * @param GroupRepository      $groupRepository
+     * @param ScopeConfigInterface                              $scopeConfig
+     * @param Session                                           $customerSession
+     * @param GroupRepository                                   $groupRepository
+     * @param \Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory $taxClassKeyDataObjectFactory
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
-        Cart $cart,
         Session $customerSession,
-        GroupRepository $groupRepository
+        GroupRepository $groupRepository,
+        \Magento\Tax\Api\Data\TaxClassKeyInterfaceFactory $taxClassKeyDataObjectFactory
     ) {
-        $this->scopeConfig     = $scopeConfig;
-        $this->cart            = $cart;
-        $this->customerSession = $customerSession;
-        $this->groupRepository = $groupRepository;
+        $this->scopeConfig                  = $scopeConfig;
+        $this->customerSession              = $customerSession;
+        $this->groupRepository              = $groupRepository;
+        $this->taxClassKeyDataObjectFactory = $taxClassKeyDataObjectFactory;
     }
 
     /**
-     * After plugin for \Magento\Tax\Model\Config::getShippingTaxClass
+     * After plugin for \Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector::getShippingDataObject
      *
-     * @param Config                     $config
-     * @param int                        $shippingTaxClass
-     * @param null|string|bool|int|Store $store
+     * @param                                          $subject
+     * @param                                          $result
+     * @param ShippingAssignmentInterface              $shippingAssignment
+     * @param \Magento\Quote\Model\Quote\Address\Total $total
+     * @param                                          $useBaseCurrency
      *
-     * @return bool|int|mixed
+     * @return null
+     *
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function afterGetShippingTaxClass(Config $config, int $shippingTaxClass, $store = null)
-    {
-        $dynamicType = $this->getDynamicShippingConfigPath($store);
-        $quoteItems  = $this->cart->getItems();
+    public function afterGetShippingDataObject(
+        $subject,
+        $result,
+        ShippingAssignmentInterface $shippingAssignment,
+        \Magento\Quote\Model\Quote\Address\Total $total,
+        $useBaseCurrency
+    ) {
+        if ($result === null) {
+            return $result; // no shipping tax calculation
+        }
 
-        // If the default behaviour was configured or there are no products in cart, use default tax class id
-        if ($dynamicType === FireGentoSource::DYNAMIC_TYPE_SHIPPING_TAX_DEFAULT || count($quoteItems) === 0) {
-            return $shippingTaxClass;
+        $quoteItems = $shippingAssignment->getItems();
+        if (count($quoteItems) === 0) {
+            return $result;  // no products -> no shipping -> nothing to do
+        }
+
+        $store       = $quoteItems[0]->getQuote()->getStore();
+        $dynamicType = $this->getDynamicShippingConfigPath($store);
+
+        if ($dynamicType === FireGentoSource::DYNAMIC_TYPE_SHIPPING_TAX_DEFAULT) {
+            return $result;  // If the default behaviour was configured -> use default tax class id
         }
 
         $taxClassId = false;
-
-        // Retrieve the highest product tax class
         if ($dynamicType === FireGentoSource::DYNAMIC_TYPE_HIGHEST_PRODUCT_TAX) {
             $taxClassId = $this->getHighestProductTaxClassId($quoteItems, $store);
         }
 
         // If no tax class id was found, use default one
         if (!$taxClassId) {
-            $taxClassId = $shippingTaxClass;
+            return $result;
         }
 
-        return $taxClassId;
+        return $result->setTaxClassKey(
+            $this->taxClassKeyDataObjectFactory->create()
+                ->setType(TaxClassKeyInterface::TYPE_ID)
+                ->setValue($taxClassId)
+        );
     }
 
     /**
      * Method for getting highest product tax class id
      *
-     * @param array                      $quoteItems
+     * @param                            $quoteItems
      * @param null|string|bool|int|Store $store
      *
      * @return bool|int
+     *
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    private function getHighestProductTaxClassId(array $quoteItems, $store)
+    private function getHighestProductTaxClassId($quoteItems, $store)
     {
         $taxClassIds       = [];
         $highestTaxClassId = false;
@@ -130,7 +153,7 @@ class ShippingTaxPlugin
 
             // Add the tax class
             if (($taxPercent) && !in_array($taxPercent, $taxClassIds)) {
-                $taxClassIds[$taxPercent] = $quoteItem->getTaxClassId();
+                $taxClassIds[$taxPercent] = (int)$quoteItem->getTaxClassId();
             }
         }
 
