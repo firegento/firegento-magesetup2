@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace FireGento\MageSetup\Plugin\Tax\Config;
 
-use FireGento\MageSetup\Model\Config as FireGentoConfig;
 use FireGento\MageSetup\Model\System\Config\Source\Tax\Dynamic as FireGentoSource;
 use Magento\Checkout\Model\Cart;
 use Magento\Customer\Model\ResourceModel\GroupRepository;
@@ -50,31 +49,23 @@ class ShippingTaxPlugin
     private $taxCalculation;
 
     /**
-     * @var FireGentoConfig
-     */
-    private $config;
-
-    /**
      * Constructor class
      *
      * @param ScopeConfigInterface $scopeConfig
      * @param Cart                 $cart
      * @param Session              $customerSession
      * @param GroupRepository      $groupRepository
-     * @param FireGentoConfig      $config
      */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         Cart $cart,
         Session $customerSession,
-        GroupRepository $groupRepository,
-        FireGentoConfig $config
+        GroupRepository $groupRepository
     ) {
         $this->scopeConfig     = $scopeConfig;
         $this->cart            = $cart;
         $this->customerSession = $customerSession;
         $this->groupRepository = $groupRepository;
-        $this->config          = $config;
     }
 
     /**
