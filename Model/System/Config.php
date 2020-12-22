@@ -7,6 +7,7 @@ namespace FireGento\MageSetup\Model\System;
 
 use Magento\Cms\Model\PageFactory;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class for retrieving configuration values.
@@ -69,7 +70,7 @@ class Config
      */
     public function getEuCountries()
     {
-        $euCountries = $this->scopeConfig->getValue('general/country/eu_countries');
+        $euCountries = $this->scopeConfig->getValue('general/country/eu_countries', ScopeInterface::SCOPE_STORE);
 
         return explode(',', $euCountries);
     }
@@ -81,7 +82,7 @@ class Config
      */
     public function isIncludingShippingCosts()
     {
-        return (bool)$this->scopeConfig->getValue('catalog/price/including_shipping_costs');
+        return (bool)$this->scopeConfig->getValue('catalog/price/including_shipping_costs', ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -91,7 +92,7 @@ class Config
      */
     public function getShippingCostUrl()
     {
-        $identifier = $this->scopeConfig->getValue('catalog/price/cms_page_shipping');
+        $identifier = $this->scopeConfig->getValue('catalog/price/cms_page_shipping', ScopeInterface::SCOPE_STORE);
         if (!$identifier) {
             return false;
         }
@@ -115,6 +116,6 @@ class Config
      */
     public function isDisplayDeliveryTimeOnProductListing()
     {
-        return (bool)$this->scopeConfig->getValue('catalog/frontend/display_delivery_time');
+        return (bool)$this->scopeConfig->getValue('catalog/frontend/display_delivery_time', ScopeInterface::SCOPE_STORE);
     }
 }

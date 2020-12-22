@@ -142,6 +142,6 @@ JS;
      */
     public function getImprintValue($field)
     {
-        return $this->scopeConfig->getValue(self::XML_PATH_IMPRINT . $field, ScopeInterface::SCOPE_STORES);
+        return $this->scopeConfig->getValue(self::XML_PATH_IMPRINT . $field, ScopeInterface::SCOPE_STORE);
     }
 }
