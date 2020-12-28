@@ -135,7 +135,7 @@ class ShippingPreprocessor extends CommonTaxCollector
 
     private function getDefaultCustomerTaxClassId(): int
     {
-        /** todo read from store config */
+        /** todo read from store config, actually $this->calculationTool->getDefaultCustomerTaxClass() seem to be proper call here */
         return 7;
         return $this->calculationTool->getDefaultCustomerTaxClass();
     }

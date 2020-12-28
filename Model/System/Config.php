@@ -118,4 +118,16 @@ class Config
     {
         return (bool)$this->scopeConfig->getValue('catalog/frontend/display_delivery_time', ScopeInterface::SCOPE_STORE);
     }
+
+    /**
+     * Display delivery time in product listing
+     *
+     * TODO: actually this is not needed, we use $this->calculationTool->getDefaultCustomerTaxClass() instead.
+     *
+     * @return int
+     */
+    public function getDefaultCustomerTaxClass()
+    {
+        return (int)$this->scopeConfig->getValue('tax/classes/default_customer_tax_class');
+    }
 }

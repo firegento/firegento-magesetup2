@@ -61,6 +61,10 @@
         <plugin name="mageSetupDynamicShippingTaxClass" type="FireGento\MageSetup\Plugin\Tax\Config\ShippingTaxPlugin" sortOrder="1"/>
     </type>
 
+    <preference for="Magento\Tax\Model\Calculation\RowBaseCalculator" type="FireGento\MageSetup\Plugin\Tax\Calculation\RowBaseCalculator" />
+    <preference for="Magento\Tax\Model\Calculation\UnitBaseCalculator" type="FireGento\MageSetup\Plugin\Tax\Calculation\UnitBaseCalculator" />
+    <preference for="Magento\Tax\Model\Calculation\TotalBaseCalculator" type="FireGento\MageSetup\Plugin\Tax\Calculation\TotalBaseCalculator" />
+
     <!-- Email variables for versions >= M2.3.0-->
     <type name="Magento\Variable\Model\Source\Variables">
         <arguments>
