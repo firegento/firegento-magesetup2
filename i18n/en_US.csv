@@ -1,8 +1,6 @@
 %1%,%1%
 "SubProcessor %1 does not exist.","SubProcessor %1 does not exist."
 "-- No Page --","-- No Page --"
-"No dynamic shipping tax calculation","No dynamic shipping tax calculation"
-"Use the highest product tax","Use the highest product tax"
 "Visible in Checkout","Visible in Checkout"
 Imprint,Imprint
 "Shop Name","Shop Name"
@@ -57,4 +55,5 @@ SWIFT,SWIFT
 "CMS Page for Shipping Info","CMS Page for Shipping Info"
 "Show ""incl. Shipping Cost"" instead of ""excl. Shipping Cost""","Show ""incl. Shipping Cost"" instead of ""excl. Shipping Cost"""
 "Display Delivery Time on Product Listing","Display Delivery Time on Product Listing"
-"Dynamic Shipping Tax Class","Dynamic Shipping Tax Class"
+"Shipping Tax Class based on cart items.","Shipping Tax Class based on cart items."
+"Enable Cross Border Trade Advanced","Enable Cross Border Trade Advanced"

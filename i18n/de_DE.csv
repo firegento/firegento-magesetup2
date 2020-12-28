@@ -1,8 +1,6 @@
 %1%,%1%
 "SubProcessor %1 does not exist.","Bearbeiter %1 existiert nicht."
 "-- No Page --","-- Keine Seite --"
-"No dynamic shipping tax calculation","Keine dynamische Versandsteuerberechnung"
-"Use the highest product tax","Verwenden Sie die höchste Produktsteuer"
 "Visible in Checkout","Im Checkout sichtbar"
 Imprint,Impressum
 "Shop Name","Name des Shops"
@@ -57,4 +55,5 @@ SWIFT,SWIFT
 "CMS Page for Shipping Info","CMS-Seite für Versandkosten"
 "Show ""incl. Shipping Cost"" instead of ""excl. Shipping Cost""","Zeige ""inkl. Versandkosten"" anstatt ""exkl. Versandkosten"""
 "Display Delivery Time on Product Listing","Lieferzeit auf Produktübersichtsseiten anzeigen"
-"Dynamic Shipping Tax Class","dynamische Versandsteuerklasse"
+"Shipping Tax Class based on cart items.","Versandsteuerklasse entsprechend der höchsten Produktsteuerklasse in Warenkorb."
+"Enable Cross Border Trade Advanced","Erweiteten Grenzüberschreitenden Handel aktivieren"
