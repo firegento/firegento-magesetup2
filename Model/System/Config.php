@@ -120,14 +120,27 @@ class Config
     }
 
     /**
-     * Display delivery time in product listing
+     * Checks if dynamic shipping tax class is active.
+     * It means shop will take product tax class with highest rate from current cart product items
+     * and then use it as shipping tax class for this cart/quote during checkout.
      *
-     * TODO: actually this is not needed, we use $this->calculationTool->getDefaultCustomerTaxClass() instead.
-     *
-     * @return int
+     * @return bool
      */
-    public function getDefaultCustomerTaxClass()
+    public function isDynamicShippingTaxClassActive()
     {
-        return (int)$this->scopeConfig->getValue('tax/classes/default_customer_tax_class');
+        return (bool)$this->scopeConfig->getValue('tax/classes/dynamic_shipping_tax_class');
+    }
+
+    /**
+     * Checks if advanced cross-border trade is active.
+     * Advanced cross-border trade means:
+     *  * end prices are the same for end customers, no matter which tax rates are applied
+     *  * business customers receive different net prices depending on their tax address
+     *
+     * @return bool
+     */
+    public function isAdvancedCrossBorderTradeActive()
+    {
+        return (bool)$this->scopeConfig->getValue('tax/calculation/cross_border_trade_advanced_enabled');
     }
 }

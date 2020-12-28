@@ -13,5 +13,10 @@
                 <including_shipping_costs>0</including_shipping_costs>
             </price>
         </catalog>
+        <tax>
+            <calculation>
+                <cross_border_trade_advanced_enabled>0</cross_border_trade_advanced_enabled>
+            </calculation>
+        </tax>
     </default>
 </config>

@@ -145,8 +145,19 @@
         <section id="tax">
             <group id="classes">
                 <field id="dynamic_shipping_tax_class" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Dynamic Shipping Tax Class</label>
-                    <source_model>FireGento\MageSetup\Model\System\Config\Source\Tax\Dynamic</source_model>
+                    <label>Shipping Tax Class based on cart items.</label>
+                    <comment>Highest product tax rate from cart is used as shipping tax rate when this is active.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="calculation">
+                <field id="cross_border_trade_advanced_enabled" translate="label" type="select" sortOrder="71" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable Cross Border Trade Advanced</label>
+                    <comment>When catalog price includes tax, enable this setting to fix the price for end-customers, but allow business customers to have VAT substracted.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="cross_border_trade_enabled">1</field>
+                    </depends>
                 </field>
             </group>
         </section>

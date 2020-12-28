@@ -22,6 +22,8 @@
             <tax__calculation__shipping_includes_tax>1</tax__calculation__shipping_includes_tax>
             <tax__calculation__apply_after_discount>1</tax__calculation__apply_after_discount>
             <tax__calculation__discount_tax>1</tax__calculation__discount_tax>
+            <tax__calculation__cross_border_trade_enabled>0</tax__calculation__cross_border_trade_enabled>
+            <tax__calculation__cross_border_trade_advanced_enabled>0</tax__calculation__cross_border_trade_advanced_enabled>
             <tax__display__type>2</tax__display__type>
             <tax__display__shipping>2</tax__display__shipping>
             <tax__cart_display__price>2</tax__cart_display__price>

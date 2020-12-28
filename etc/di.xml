@@ -58,12 +58,12 @@
     </type>
 
     <type name="Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector">
-        <plugin name="mageSetupDynamicShippingTaxClass" type="FireGento\MageSetup\Plugin\Tax\Config\ShippingTaxPlugin" sortOrder="1"/>
+        <plugin name="mageSetupDynamicShippingTaxClass" type="FireGento\MageSetup\Plugin\Tax\Sales\Total\Quote\SetDynamicShippingTaxRate" sortOrder="1"/>
     </type>
 
-    <preference for="Magento\Tax\Model\Calculation\RowBaseCalculator" type="FireGento\MageSetup\Plugin\Tax\Calculation\RowBaseCalculator" />
-    <preference for="Magento\Tax\Model\Calculation\UnitBaseCalculator" type="FireGento\MageSetup\Plugin\Tax\Calculation\UnitBaseCalculator" />
-    <preference for="Magento\Tax\Model\Calculation\TotalBaseCalculator" type="FireGento\MageSetup\Plugin\Tax\Calculation\TotalBaseCalculator" />
+    <preference for="Magento\Tax\Model\Calculation\RowBaseCalculator" type="FireGento\MageSetup\Model\Tax\Calculation\RowBaseCalculator" />
+    <preference for="Magento\Tax\Model\Calculation\UnitBaseCalculator" type="FireGento\MageSetup\Model\Tax\Calculation\UnitBaseCalculator" />
+    <preference for="Magento\Tax\Model\Calculation\TotalBaseCalculator" type="FireGento\MageSetup\Model\Tax\Calculation\TotalBaseCalculator" />
 
     <!-- Email variables for versions >= M2.3.0-->
     <type name="Magento\Variable\Model\Source\Variables">
