@@ -29,13 +29,13 @@ use Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector;
 class ShippingPreprocessor extends CommonTaxCollector
 {
     /** @var Calculation */
-    private Calculation $calculationTool;
+    private $calculationTool;
 
     /** @var TaxClassManagementInterface */
-    private TaxClassManagementInterface $taxClassManagement;
+    private $taxClassManagement;
 
     /**  @var SystemConfig */
-    private SystemConfig $sysConfig;
+    private $sysConfig;
 
     public function __construct(
         Config $taxConfig,

@@ -20,7 +20,7 @@ use Magento\Tax\Model\Config;
 trait AdvancedCrossBorderCalculator
 {
     /** @var SystemConfig */
-    private SystemConfig $sysConfig;
+    private $sysConfig;
 
     /**
      * @param TaxClassManagementInterface    $taxClassService
