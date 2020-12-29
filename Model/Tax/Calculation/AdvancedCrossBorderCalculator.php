@@ -44,14 +44,16 @@ trait AdvancedCrossBorderCalculator
         SystemConfig $sysConfig,
         DataObject $addressRateRequest = null
     ) {
-        parent::__construct($taxClassService,
+        parent::__construct(
+            $taxClassService,
             $taxDetailsItemDataObjectFactory,
             $appliedTaxDataObjectFactory,
             $appliedTaxRateDataObjectFactory,
             $calculationTool,
             $config,
             $storeId,
-            $addressRateRequest = null);
+            $addressRateRequest = null
+        );
 
         $this->sysConfig = $sysConfig;
     }

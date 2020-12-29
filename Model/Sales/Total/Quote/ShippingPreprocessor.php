@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace FireGento\MageSetup\Model\Sales\Total\Quote;
 
+use FireGento\MageSetup\Model\System\Config as SystemConfig;
 use Magento\Customer\Api\Data\AddressInterfaceFactory as CustomerAddressFactory;
 use Magento\Customer\Api\Data\RegionInterfaceFactory as CustomerAddressRegionFactory;
 use Magento\Quote\Api\Data\ShippingAssignmentInterface;
@@ -24,7 +25,6 @@ use Magento\Tax\Helper\Data as TaxHelper;
 use Magento\Tax\Model\Calculation;
 use Magento\Tax\Model\Config;
 use Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector;
-use FireGento\MageSetup\Model\System\Config as SystemConfig;
 
 class ShippingPreprocessor extends CommonTaxCollector
 {
