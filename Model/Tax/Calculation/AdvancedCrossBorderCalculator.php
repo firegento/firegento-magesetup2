@@ -17,6 +17,11 @@ use Magento\Tax\Api\TaxClassManagementInterface;
 use Magento\Tax\Model\Calculation;
 use Magento\Tax\Model\Config;
 
+/**
+ * Trait AdvancedCrossBorderCalculator
+ *
+ * @package FireGento\MageSetup\Model\Tax\Calculation
+ */
 trait AdvancedCrossBorderCalculator
 {
     /** @var SystemConfig */
@@ -78,8 +83,10 @@ trait AdvancedCrossBorderCalculator
     }
 
     /**
+     * Re-Calculate price including destination tax, based on price including tax set in product config.
+     *
      * Given a store price that includes tax at the store rate, this function will back out the store's tax, and add in
-     * the customer's tax.  Returns this new price which is the customer's price including tax.
+     * the customer's tax. Returns this new price which is the customer's price including tax.
      *
      * @param float   $storePriceInclTax
      * @param float   $storeRate
@@ -98,8 +105,14 @@ trait AdvancedCrossBorderCalculator
 
         if ($this->config->crossBorderTradeEnabled($this->storeId)) {
             $defaultCustomerRate = $this->getDefaultCustomerRateForDestCountry();
-            $defaultCustomerTax  = $this->calculationTool->calcTaxAmount($storePriceInclTax, $defaultCustomerRate, true, false);
-            $priceExclTax        = $storePriceInclTax - $defaultCustomerTax;
+            $defaultCustomerTax  = $this->calculationTool->calcTaxAmount(
+                $storePriceInclTax,
+                $defaultCustomerRate,
+                true,
+                false
+            );
+
+            $priceExclTax = $storePriceInclTax - $defaultCustomerTax;
         } else {
             $storeTax     = $this->calculationTool->calcTaxAmount($storePriceInclTax, $storeRate, true, false);
             $priceExclTax = $storePriceInclTax - $storeTax;
@@ -114,7 +127,7 @@ trait AdvancedCrossBorderCalculator
     }
 
     /**
-     * simulate a customer with the same destination country as current customer but with default customer tax class.
+     * Simulates a customer with the same destination country as current customer, but with default customer tax class.
      *
      * This is assuming that default tax class is for end customers (i.e. with VAT) and we can calculate a default
      * tax that is applied to customers on this destination, later we can substract that tax from end-price.

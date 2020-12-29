@@ -82,7 +82,10 @@ class Config
      */
     public function isIncludingShippingCosts()
     {
-        return (bool)$this->scopeConfig->getValue('catalog/price/including_shipping_costs', ScopeInterface::SCOPE_STORE);
+        return (bool)$this->scopeConfig->getValue(
+            'catalog/price/including_shipping_costs',
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
@@ -116,11 +119,15 @@ class Config
      */
     public function isDisplayDeliveryTimeOnProductListing()
     {
-        return (bool)$this->scopeConfig->getValue('catalog/frontend/display_delivery_time', ScopeInterface::SCOPE_STORE);
+        return (bool)$this->scopeConfig->getValue(
+            'catalog/frontend/display_delivery_time',
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
      * Checks if dynamic shipping tax class is active.
+     *
      * It means shop will take product tax class with highest rate from current cart product items
      * and then use it as shipping tax class for this cart/quote during checkout.
      *
@@ -128,11 +135,15 @@ class Config
      */
     public function isDynamicShippingTaxClassActive()
     {
-        return (bool)$this->scopeConfig->getValue('tax/classes/dynamic_shipping_tax_class');
+        return (bool)$this->scopeConfig->getValue(
+            'tax/classes/dynamic_shipping_tax_class',
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
      * Checks if advanced cross-border trade is active.
+     *
      * Advanced cross-border trade means:
      *  * end prices are the same for end customers, no matter which tax rates are applied
      *  * business customers receive different net prices depending on their tax address
@@ -141,6 +152,9 @@ class Config
      */
     public function isAdvancedCrossBorderTradeActive()
     {
-        return (bool)$this->scopeConfig->getValue('tax/calculation/cross_border_trade_advanced_enabled');
+        return (bool)$this->scopeConfig->getValue(
+            'tax/calculation/cross_border_trade_advanced_enabled',
+            ScopeInterface::SCOPE_STORE
+        );
     }
 }

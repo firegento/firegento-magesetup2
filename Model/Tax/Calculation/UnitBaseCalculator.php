@@ -8,6 +8,11 @@ declare(strict_types=1);
 
 namespace FireGento\MageSetup\Model\Tax\Calculation;
 
+/**
+ * Class UnitBaseCalculator
+ *
+ * FireGento\MageSetup\Model\Tax\Calculation
+ */
 class UnitBaseCalculator extends \Magento\Tax\Model\Calculation\UnitBaseCalculator
 {
     use AdvancedCrossBorderCalculator;

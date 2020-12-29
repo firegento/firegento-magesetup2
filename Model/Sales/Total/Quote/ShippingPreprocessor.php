@@ -26,6 +26,11 @@ use Magento\Tax\Model\Calculation;
 use Magento\Tax\Model\Config;
 use Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector;
 
+/**
+ * Class ShippingPreprocessor
+ *
+ * FireGento\MageSetup\Model\Sales\Total\Quote
+ */
 class ShippingPreprocessor extends CommonTaxCollector
 {
     /** @var Calculation */
@@ -37,6 +42,20 @@ class ShippingPreprocessor extends CommonTaxCollector
     /**  @var SystemConfig */
     private $sysConfig;
 
+    /**
+     * @param Config                                         $taxConfig
+     * @param TaxCalculationInterface                        $taxCalculationService
+     * @param QuoteDetailsInterfaceFactory                   $quoteDetailsDataObjectFactory
+     * @param QuoteDetailsItemInterfaceFactory               $quoteDetailsItemDataObjectFactory
+     * @param TaxClassKeyInterfaceFactory                    $taxClassKeyDataObjectFactory
+     * @param CustomerAddressFactory                         $customerAddressFactory
+     * @param CustomerAddressRegionFactory                   $customerAddressRegionFactory
+     * @param Calculation                                    $calculationTool
+     * @param TaxClassManagementInterface                    $taxClassManagement
+     * @param SystemConfig                                   $sysConfig
+     * @param TaxHelper|null                                 $taxHelper
+     * @param QuoteDetailsItemExtensionInterfaceFactory|null $quoteDetailsItemExtensionInterfaceFactory
+     */
     public function __construct(
         Config $taxConfig,
         TaxCalculationInterface $taxCalculationService,
@@ -51,21 +70,36 @@ class ShippingPreprocessor extends CommonTaxCollector
         TaxHelper $taxHelper = null,
         QuoteDetailsItemExtensionInterfaceFactory $quoteDetailsItemExtensionInterfaceFactory = null
     ) {
-        parent::__construct($taxConfig, $taxCalculationService, $quoteDetailsDataObjectFactory, $quoteDetailsItemDataObjectFactory, $taxClassKeyDataObjectFactory, $customerAddressFactory, $customerAddressRegionFactory, $taxHelper, $quoteDetailsItemExtensionInterfaceFactory);
+        parent::__construct(
+            $taxConfig,
+            $taxCalculationService,
+            $quoteDetailsDataObjectFactory,
+            $quoteDetailsItemDataObjectFactory,
+            $taxClassKeyDataObjectFactory,
+            $customerAddressFactory,
+            $customerAddressRegionFactory,
+            $taxHelper,
+            $quoteDetailsItemExtensionInterfaceFactory
+        );
+
         $this->calculationTool    = $calculationTool;
         $this->taxClassManagement = $taxClassManagement;
         $this->sysConfig          = $sysConfig;
     }
 
     /**
-     * Calculate highest tax rate applied to product items.
+     * Finds the product tax class with highest tax rate applied to quote product items.
+     *
      * The result is saved to be used as shipping tax rate.
+     * The method is inspired by `Subtotal::collect()`
      *
      * @param Quote                       $quote
      * @param ShippingAssignmentInterface $shippingAssignment
      * @param AddressTotal                $total
      *
      * @return $this
+     *
+     * @see \Magento\Tax\Model\Sales\Total\Quote\Subtotal::collect()
      */
     public function collect(
         Quote $quote,
@@ -84,7 +118,6 @@ class ShippingPreprocessor extends CommonTaxCollector
         $store            = $quote->getStore();
         $priceIncludesTax = $this->_config->priceIncludesTax($store);
 
-        //Setup taxable items
         $itemDataObjects = $this->mapItems($shippingAssignment, $priceIncludesTax, false);
         $quoteDetails    = $this->prepareQuoteDetails($shippingAssignment, $itemDataObjects);
 
@@ -96,10 +129,16 @@ class ShippingPreprocessor extends CommonTaxCollector
     }
 
     /**
+     * Loops through quote items and finds the product tax class with highest tax rate applied to quote product items.
+     *
+     * This method is abridged version of calculation happening the original magento code.
+     *
      * @param QuoteDetailsInterface $quoteDetails
      * @param int                   $storeId
      *
      * @return int|null
+     *
+     * @see \Magento\Tax\Model\TaxCalculation::calculateTax()
      */
     protected function getHighestTaxRateClassId(QuoteDetailsInterface $quoteDetails, $storeId)
     {
@@ -130,6 +169,8 @@ class ShippingPreprocessor extends CommonTaxCollector
     }
 
     /**
+     * GetDefaultCustomerTaxClassId
+     *
      * @return int
      */
     private function getDefaultCustomerTaxClassId(): int
@@ -137,7 +178,14 @@ class ShippingPreprocessor extends CommonTaxCollector
         return (int)$this->calculationTool->getDefaultCustomerTaxClass();
     }
 
-    /** {@inheritDoc} */
+    /**
+     * Fetch (Retrieve data as array)
+     *
+     * @param Quote        $quote
+     * @param AddressTotal $total
+     *
+     * @return array|null
+     */
     public function fetch(Quote $quote, \Magento\Quote\Model\Quote\Address\Total $total)
     {
         return null;
