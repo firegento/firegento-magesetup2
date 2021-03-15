@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Model;
 
 /**
- * Interface ConfigInterface
- *
- * @package FireGento\MageSetup\Model
+ * Interface for retrieving the XML configuration.
  */
 interface ConfigInterface
 {
@@ -23,36 +21,50 @@ interface ConfigInterface
     const DEFAULT_NODE = 'default';
 
     /**
+     * Get country
+     *
      * @return string
      */
     public function getCountry();
 
     /**
+     * Get allowed countries
+     *
      * @return array
      */
     public function getAllowedCountries();
 
     /**
+     * Get system config
+     *
      * @return array
      */
     public function getSystemConfig();
 
     /**
+     * Get tax classes
+     *
      * @return array|bool
      */
     public function getTaxClasses();
 
     /**
+     * Get tax calculation rates
+     *
      * @return array|bool
      */
     public function getTaxCalculationRates();
 
     /**
+     * Get tax calculation rules
+     *
      * @return array|bool
      */
     public function getTaxCalculationRules();
 
     /**
+     * Get agreements
+     *
      * @return array|bool
      */
     public function getAgreements();

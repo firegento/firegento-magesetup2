@@ -5,13 +5,11 @@
  */
 namespace FireGento\MageSetup\Observer;
 
-use Magento\Framework\Event\ObserverInterface;
 use Magento\Config\Model\Config\Source\Yesno;
+use Magento\Framework\Event\ObserverInterface;
 
 /**
- * Class AddProductAttributeVisibleCheckoutObserver
- *
- * @package FireGento\MageSetup\Observer
+ * Class for adding the visible in checkout property to the attributes edit page.
  */
 class AddProductAttributeVisibleCheckoutObserver implements ObserverInterface
 {
@@ -31,7 +29,7 @@ class AddProductAttributeVisibleCheckoutObserver implements ObserverInterface
     }
 
     /**
-     * lala
+     * Add product attribute visible checkout observer
      *
      * @param \Magento\Framework\Event\Observer $observer
      * @return void

@@ -5,6 +5,9 @@
  */
 namespace FireGento\MageSetup\Block\Product;
 
+/**
+ * Block for showing delivery information.
+ */
 class Delivery extends \Magento\Catalog\Block\Product\View\Description
 {
     /**
@@ -14,6 +17,6 @@ class Delivery extends \Magento\Catalog\Block\Product\View\Description
      */
     public function getProduct()
     {
-        return $this->getData('product');;
+        return $this->getData('product');
     }
 }

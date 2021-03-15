@@ -5,13 +5,12 @@
  */
 namespace FireGento\MageSetup\Model\System;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Cms\Model\PageFactory;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
- * Class Config
- *
- * @package FireGento\MageSetup\Model\System
+ * Class for retrieving configuration values.
  */
 class Config
 {
@@ -36,16 +35,17 @@ class Config
     private $pageFactory;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context      $context
+     * Config constructor.
+     *
+     * @param \Magento\Framework\App\Helper\Context $context
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param PageFactory                                $pageFactory
+     * @param PageFactory $pageFactory
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         PageFactory $pageFactory
-    )
-    {
+    ) {
         $this->context = $context;
         $this->storeManager = $storeManager;
         $this->scopeConfig = $context->getScopeConfig();
@@ -70,25 +70,29 @@ class Config
      */
     public function getEuCountries()
     {
-        $euCountries = $this->scopeConfig->getValue('general/country/eu_countries');
+        $euCountries = $this->scopeConfig->getValue('general/country/eu_countries', ScopeInterface::SCOPE_STORE);
 
         return explode(',', $euCountries);
     }
 
     /**
+     * Including shipping costs
+     *
      * @return bool
      */
     public function isIncludingShippingCosts()
     {
-        return (bool)$this->scopeConfig->getValue('catalog/price/including_shipping_costs');
+        return (bool)$this->scopeConfig->getValue('catalog/price/including_shipping_costs', ScopeInterface::SCOPE_STORE);
     }
 
     /**
+     * Get shipping cost url
+     *
      * @return string|bool
      */
     public function getShippingCostUrl()
     {
-        $identifier = $this->scopeConfig->getValue('catalog/price/cms_page_shipping');
+        $identifier = $this->scopeConfig->getValue('catalog/price/cms_page_shipping', ScopeInterface::SCOPE_STORE);
         if (!$identifier) {
             return false;
         }
@@ -106,10 +110,12 @@ class Config
     }
 
     /**
+     * Display delivery time in product listing
+     *
      * @return bool
      */
     public function isDisplayDeliveryTimeOnProductListing()
     {
-        return (bool)$this->scopeConfig->getValue('catalog/frontend/display_delivery_time');
+        return (bool)$this->scopeConfig->getValue('catalog/frontend/display_delivery_time', ScopeInterface::SCOPE_STORE);
     }
 }

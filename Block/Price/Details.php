@@ -3,15 +3,13 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 namespace FireGento\MageSetup\Block\Price;
 
 use Magento\Customer\Model\ResourceModel\GroupRepository;
-use Magento\Store\Model\StoreManagerInterface;
 
 /**
- * Class Details
- *
- * @package FireGento\MageSetup\Block\Price
+ * Block for showing price details like tax rate and delivery information.
  */
 class Details extends \Magento\Framework\View\Element\Template
 {
@@ -36,7 +34,7 @@ class Details extends \Magento\Framework\View\Element\Template
     private $groupRepository;
 
     /**
-     * @var \Magento\Tax\Model\Calculation\Proxy
+     * @var \Magento\Tax\Model\Calculation
      */
     private $taxCalculation;
 
@@ -46,20 +44,22 @@ class Details extends \Magento\Framework\View\Element\Template
     private $taxHelper;
 
     /**
+     * Details constructor.
+     *
      * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \FireGento\MageSetup\Model\System\Config         $magesetupConfig
-     * @param \Magento\Customer\Model\Session                  $customerSession
-     * @param GroupRepository                                  $groupRepository
-     * @param \Magento\Tax\Model\Calculation\Proxy             $taxCalculation
-     * @param \Magento\Tax\Helper\Data                         $taxHelper
-     * @param array                                            $data
+     * @param \FireGento\MageSetup\Model\System\Config $magesetupConfig
+     * @param \Magento\Customer\Model\Session $customerSession
+     * @param GroupRepository $groupRepository
+     * @param \Magento\Tax\Model\Calculation $taxCalculation
+     * @param \Magento\Tax\Helper\Data $taxHelper
+     * @param array $data
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \FireGento\MageSetup\Model\System\Config $magesetupConfig,
         \Magento\Customer\Model\Session $customerSession,
         GroupRepository $groupRepository,
-        \Magento\Tax\Model\Calculation\Proxy $taxCalculation,
+        \Magento\Tax\Model\Calculation $taxCalculation,
         \Magento\Tax\Helper\Data $taxHelper,
         array $data = []
     ) {
@@ -74,6 +74,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Se saleable item
+     *
      * @param \Magento\Framework\Pricing\SaleableInterface $saleableItem
      */
     public function setSaleableItem(\Magento\Framework\Pricing\SaleableInterface $saleableItem)
@@ -83,6 +85,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get formatted tax rate
+     *
      * @return string
      */
     public function getFormattedTaxRate()
@@ -95,6 +99,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get price display type
+     *
      * @return int
      */
     public function getPriceDisplayType()
@@ -103,24 +109,31 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Inclunding shipping coast
+     *
      * @return bool
      */
     public function isIncludingShippingCosts()
     {
         if (!$this->getData('is_including_shipping_costs')) {
-            $this->setData('is_including_shipping_costs', $this->magesetupConfig->isIncludingShippingCosts());
+            $this->setData(
+                'is_including_shipping_costs',
+                $this->magesetupConfig->isIncludingShippingCosts()
+            );
         }
 
-        return $this->getData('is_including_shipping_costs');
+        return (bool)$this->getData('is_including_shipping_costs');
     }
 
     /**
+     * Show Shipping link
+     *
      * @return bool
      */
     public function canShowShippingLink()
     {
         $productTypeId = $this->saleableItem->getTypeId();
-        $ignoreTypeIds = array('virtual', 'downloadable');
+        $ignoreTypeIds = ['virtual', 'downloadable'];
         if (in_array($productTypeId, $ignoreTypeIds)) {
             return false;
         }
@@ -129,6 +142,8 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get shipping cost url
+     *
      * @return string|bool
      */
     public function getShippingCostUrl()
@@ -137,12 +152,14 @@ class Details extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Get tax percent by saleable item
+     *
      * @return float|int
      */
     private function getTaxPercentBySaleableItem()
     {
         $taxPercent = $this->saleableItem->getTaxPercent();
-        if (is_null($taxPercent)) {
+        if ($taxPercent === null) {
             $productTaxClassId = $this->saleableItem->getTaxClassId();
             if ($productTaxClassId) {
                 $store = $this->storeManager->getStore();

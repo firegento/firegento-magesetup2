@@ -3,10 +3,12 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 namespace FireGento\MageSetup\Command;
 
 use FireGento\MageSetup\Model\ConfigFactory;
 use FireGento\MageSetup\Model\Setup\SubProcessor\SubProcessorPool;
+use FireGento\MageSetup\Service\SetupServiceFactory;
 use Magento\Framework\App\ObjectManager\ConfigLoader;
 use Magento\Framework\App\State as AppState;
 use Magento\Framework\ObjectManagerInterface;
@@ -15,18 +17,12 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use FireGento\MageSetup\Service\SetupServiceFactory;
 
 /**
- * Class SetupRunCommand
- *
- * @package FireGento\MageSetup\Command
+ * Console command for executing MageSetup.
  */
 class SetupRunCommand extends Command
 {
-    /**
-     * command name
-     */
     const COMMAND_NAME = 'magesetup:setup:run';
 
     /**
@@ -65,12 +61,14 @@ class SetupRunCommand extends Command
     private $subProcessorPool;
 
     /**
-     * @param SetupServiceFactory    $setupService
-     * @param ConfigFactory          $magesetupConfig
-     * @param SubProcessorPool       $subProcessorPool
-     * @param Registry               $registry
-     * @param AppState               $appState
-     * @param ConfigLoader           $configLoader
+     * SetupRunCommand constructor.
+     *
+     * @param SetupServiceFactory $setupService
+     * @param ConfigFactory $magesetupConfig
+     * @param SubProcessorPool $subProcessorPool
+     * @param Registry $registry
+     * @param AppState $appState
+     * @param ConfigLoader $configLoader
      * @param ObjectManagerInterface $objectManager
      */
     public function __construct(
@@ -94,7 +92,7 @@ class SetupRunCommand extends Command
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function configure()
     {
@@ -106,7 +104,9 @@ class SetupRunCommand extends Command
     }
 
     /**
-     * @param InputInterface  $input
+     * Setup command
+     *
+     * @param InputInterface $input
      * @param OutputInterface $output
      * @return int Non zero if invalid type, 0 otherwise
      */
@@ -119,9 +119,12 @@ class SetupRunCommand extends Command
             $area = $this->appState->getAreaCode();
         }
 
+        // phpcs:ignore
         $configLoader = $this->objectManager->get('Magento\Framework\ObjectManager\ConfigLoaderInterface');
         $this->objectManager->configure($configLoader->load($area));
-        $this->registry->register('isSecureArea', true);
+        if (!$this->registry->registry('isSecureArea')) {
+            $this->registry->register('isSecureArea', true);
+        }
 
         try {
             /*
@@ -131,7 +134,10 @@ class SetupRunCommand extends Command
             $config = $this->magesetupConfig->create(['country' => $country]);
             $allowedCountries = $config->getAllowedCountries();
             if (!in_array($country, $allowedCountries)) {
-                throw new \InvalidArgumentException('Country code "' . $country . '" is not allowed. Supported countries are: ' . implode(', ', $allowedCountries));
+                throw new \InvalidArgumentException(
+                    'Country code "' . $country . '" is not allowed. Supported countries are: '
+                    . implode(', ', $allowedCountries)
+                );
             }
 
             /*
@@ -160,13 +166,8 @@ class SetupRunCommand extends Command
             $service->execute();
 
             $output->writeln('<info>Setup finished</info>');
-        } catch (\InvalidArgumentException $e) {
-            $output->writeln('<error>' . $e->getMessage() . '</error>');
-
-            return 1;
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
-            $output->writeln($e->getTraceAsString());
 
             return 1;
         }

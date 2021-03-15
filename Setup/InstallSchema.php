@@ -6,19 +6,16 @@
 namespace FireGento\MageSetup\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
-use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
- * Class InstallSchema
- *
- * @package FireGento\MageSetup\Setup
- * @codeCoverageIgnore
+ * Adds a new column to the EAV attribute table.
  */
 class InstallSchema implements InstallSchemaInterface
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {

@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Service;
 
 /**
- * Class GetVisibleCheckoutAttributesService
- *
- * @package FireGento\MageSetup\Service
+ * Class to retrieve the visible in checkout attributes.
  */
 class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttributesServiceInterface
 {
@@ -25,7 +23,7 @@ class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttribute
      * GetVisibleCheckoutAttributesService constructor.
      *
      * @param \Magento\Catalog\Api\ProductAttributeRepositoryInterface $productAttributeRepository
-     * @param \Magento\Framework\Api\SearchCriteriaBuilder             $searchCriteriaBuilder
+     * @param \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder
      */
     public function __construct(
         \Magento\Catalog\Api\ProductAttributeRepositoryInterface $productAttributeRepository,
@@ -36,7 +34,9 @@ class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttribute
     }
 
     /**
-     * @return array|bool
+     * Get visible checkout attributes
+     *
+     * @return array
      */
     public function execute()
     {

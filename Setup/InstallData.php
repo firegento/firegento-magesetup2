@@ -11,19 +11,17 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Downloadable\Model\Product\Type as Downloadable;
-use Magento\GroupedProduct\Model\Product\Type\Grouped;
-
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\GroupedProduct\Model\Product\Type\Grouped;
 
 /**
- * Class InstallData
- *
- * @package FireGento\MageSetup\Setup
+ * Adds necessary attributes.
  */
 class InstallData implements InstallDataInterface
 {
@@ -33,6 +31,8 @@ class InstallData implements InstallDataInterface
     private $eavSetupFactory;
 
     /**
+     * InstallData constructor.
+     *
      * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(EavSetupFactory $eavSetupFactory)
@@ -41,8 +41,10 @@ class InstallData implements InstallDataInterface
     }
 
     /**
+     * Install method
+     *
      * @param ModuleDataSetupInterface $setup
-     * @param ModuleContextInterface   $context
+     * @param ModuleContextInterface $context
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
@@ -56,7 +58,7 @@ class InstallData implements InstallDataInterface
             Grouped::TYPE_CODE
         ];
         $productTypes = join(',', $productTypes);
-        
+
         $eavSetup->addAttribute(
             Product::ENTITY,
             'delivery_time',
@@ -70,7 +72,7 @@ class InstallData implements InstallDataInterface
                 'required'                => false,
                 'used_in_product_listing' => true,
                 'apply_to'                => $productTypes,
-                'group'                   => 'General',
+                'group'                   => 'Product Details',
                 'unique'                  => false,
                 'is_html_allowed_on_front'=> true,
                 'visible_on_front'        => true,

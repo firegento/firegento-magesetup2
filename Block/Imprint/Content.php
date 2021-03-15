@@ -5,15 +5,13 @@
  */
 namespace FireGento\MageSetup\Block\Imprint;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Directory\Api\CountryInformationAcquirerInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\ScopeInterface;
 
 /**
- * Class Content
- *
- * @package FireGento\MageSetup\Block\Imprint
+ * Block for showing imprint contents.
  */
 class Content extends \Magento\Framework\View\Element\Template
 {
@@ -67,6 +65,8 @@ class Content extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     *  Get Website
+     *
      * Retrieve the setting "website". If parameter checkForProtocol is true,
      * check if there is a valid protocol given, otherwise add http:// manually.
      *
@@ -90,8 +90,8 @@ class Content extends \Magento\Framework\View\Element\Template
     /**
      * Try to limit spam by generating a javascript email link
      *
-     * @param boolean true
-     * @return string
+     * @param bool $antispam
+     * @return mixed|string
      */
     public function getEmail($antispam = false)
     {
@@ -110,7 +110,9 @@ class Content extends \Magento\Framework\View\Element\Template
         }
 
         $html = '<a href="#" onclick="toRecipient();">';
-        $html .= $parts[0] . '<span class="no-display">nospamplease</span>@<span class="no-display">nospamplease</span>' . $parts[1];
+        $html .= $parts[0];
+        $html .= '<span class="no-display">nospamplease</span>@<span class="no-display">nospamplease</span>';
+        $html .= $parts[1];
         $html .= '</a>';
         $html .= $this->getEmailJs($parts);
 
@@ -120,7 +122,7 @@ class Content extends \Magento\Framework\View\Element\Template
     /**
      * Generate JS code
      *
-     * @param $parts
+     * @param mixed $parts
      * @return string
      */
     public function getEmailJs($parts)
@@ -133,11 +135,13 @@ JS;
     }
 
     /**
+     * Get Imprint Value
+     *
      * @param string $field
      * @return mixed
      */
     public function getImprintValue($field)
     {
-        return $this->scopeConfig->getValue(self::XML_PATH_IMPRINT . $field, ScopeInterface::SCOPE_STORES);
+        return $this->scopeConfig->getValue(self::XML_PATH_IMPRINT . $field, ScopeInterface::SCOPE_STORE);
     }
 }

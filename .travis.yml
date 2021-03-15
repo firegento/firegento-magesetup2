@@ -1,0 +1,52 @@
+dist: bionic
+services:
+    - mysql
+    - elasticsearch
+env:
+  global:
+  - COVERAGE: false
+
+jobs:
+  fast_finish: true
+  include:
+  # fix the code quality check to a specific version
+  - php: 7.2
+    env: MAGENTO_VERSION=2.3.5-p1 CODE_QUALITY=true
+  # make sure it is running on the oldest and latest version for each release line
+  - php: 7.2
+    env: MAGENTO_VERSION=2.3.0
+  - php: 7.2
+    env: MAGENTO_VERSION=2.3.*
+  - php: 7.3
+    env: MAGENTO_VERSION=2.3.3
+  - php: 7.3
+    env: MAGENTO_VERSION=2.3.*
+  - php: 7.3
+    env: MAGENTO_VERSION=2.4.0 UNIT_TEST=true INTEGRATION_TEST=true
+  - php: 7.3
+    env: MAGENTO_VERSION=2.4.* UNIT_TEST=true INTEGRATION_TEST=true
+  - php: 7.4
+    env: MAGENTO_VERSION=2.4.0 UNIT_TEST=true INTEGRATION_TEST=true
+  - php: 7.4
+    env: MAGENTO_VERSION=2.4.* UNIT_TEST=true INTEGRATION_TEST=true
+
+
+language: php
+
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+  - "$HOME/.php-cs-fixer"
+  - "$HOME/.local"
+
+before_install:
+  - echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - "./Test/script/travis_before_install.sh"
+
+install:
+  - composer config -g http-basic.repo.magento.com "$MAGENTO_USERNAME" "$MAGENTO_PASSWORD"
+  - export MAGENTO_ROOT=`mktemp -d /tmp/mage.XXXXXXXX`
+  - "./Test/script/travis_install_magento.sh $MAGENTO_VERSION"
+
+script:
+  - "./Test/script/travis_script.sh"

@@ -6,19 +6,18 @@
 namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 
 use FireGento\MageSetup\Model\Config;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Tax\Api\TaxRuleRepositoryInterface;
-use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
+use Magento\Catalog\Model\Product\Action as ProductAction;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollectionFactory;
+use Magento\Customer\Api\Data\GroupInterface;
 use Magento\Customer\Model\ResourceModel\Group\CollectionFactory as CustomerGroupCollectionFactory;
 use Magento\Framework\App\Config\Storage\WriterInterface;
-use Magento\Catalog\Model\Product;
-use Magento\Customer\Api\Data\GroupInterface;
+use Magento\Store\Model\Store;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Tax\Api\Data\TaxRuleInterfaceFactory;
+use Magento\Tax\Api\TaxRuleRepositoryInterface;
 
 /**
- * Class TaxSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the tax setup step.
  */
 class TaxSubProcessor extends AbstractSubProcessor
 {
@@ -68,14 +67,22 @@ class TaxSubProcessor extends AbstractSubProcessor
     private $magesetupConfig;
 
     /**
-     * @param WriterInterface                           $configWriter
+     * @var ProductAction
+     */
+    private $productAction;
+
+    /**
+     * TaxSubProcessor constructor.
+     *
+     * @param WriterInterface $configWriter
      * @param \Magento\Framework\App\ResourceConnection $resource
-     * @param StoreManagerInterface                     $storeManager
-     * @param TaxRuleRepositoryInterface                $ruleService
-     * @param TaxRuleInterfaceFactory                   $taxRuleDataObjectFactory
-     * @param ProductCollectionFactory                  $productCollectionFactory
-     * @param CustomerGroupCollectionFactory            $customerGroupCollectionFactory
-     * @param \FireGento\MageSetup\Model\System\Config  $magesetupConfig
+     * @param StoreManagerInterface $storeManager
+     * @param TaxRuleRepositoryInterface $ruleService
+     * @param TaxRuleInterfaceFactory $taxRuleDataObjectFactory
+     * @param ProductCollectionFactory $productCollectionFactory
+     * @param CustomerGroupCollectionFactory $customerGroupCollectionFactory
+     * @param \FireGento\MageSetup\Model\System\Config $magesetupConfig
+     * @param ProductAction $productAction
      */
     public function __construct(
         WriterInterface $configWriter,
@@ -85,7 +92,8 @@ class TaxSubProcessor extends AbstractSubProcessor
         TaxRuleInterfaceFactory $taxRuleDataObjectFactory,
         ProductCollectionFactory $productCollectionFactory,
         CustomerGroupCollectionFactory $customerGroupCollectionFactory,
-        \FireGento\MageSetup\Model\System\Config $magesetupConfig
+        \FireGento\MageSetup\Model\System\Config $magesetupConfig,
+        ProductAction $productAction
     ) {
         $this->resource = $resource;
         $this->connection = $resource->getConnection('write');
@@ -95,11 +103,14 @@ class TaxSubProcessor extends AbstractSubProcessor
         $this->productCollectionFactory = $productCollectionFactory;
         $this->customerGroupCollectionFactory = $customerGroupCollectionFactory;
         $this->magesetupConfig = $magesetupConfig;
+        $this->productAction = $productAction;
 
         parent::__construct($configWriter);
     }
 
     /**
+     * Process
+     *
      * @param Config $config
      * @return void
      */
@@ -135,41 +146,16 @@ class TaxSubProcessor extends AbstractSubProcessor
                 }
             }
 
-            foreach ($configTaxCalculationRules as $calculationRuleData) {
-                $mapping = $calculationRuleData['mapping'];
-                unset($calculationRuleData['mapping']);
-
-                $rule = $this->taxRuleDataObjectFactory->create();
-                $rule->setCode($calculationRuleData['code']);
-                $rule->setPriority($calculationRuleData['priority']);
-                $rule->setPosition($calculationRuleData['position']);
-                $rule->setCalculateSubtotal($calculationRuleData['calculate_subtotal']);
-
-                foreach ($mapping as $mappingKey => $mappingValues) {
-                    if (is_array($mappingValues)) {
-                        $classes = array();
-                        foreach ($mappingValues as $value) {
-                            if (isset($taxClasses[$value])) {
-                                $classes[] = $taxClasses[$value];
-                            }
-                        }
-                        $rule->setData($mappingKey, $classes);
-                    } else {
-                        if (isset($taxRates[$mappingValues])) {
-                            $rule->setData($mappingKey, $taxRates[$mappingValues]);
-                        }
-                    }
-                }
-
-                $this->ruleService->save($rule);
-            }
+            $this->setupTaxCalculationRules($configTaxCalculationRules, $taxClasses, $taxRates);
 
             $this->saveTaxClassRelations($taxClasses);
         }
     }
 
     /**
-     * @param $tableAlias
+     * Get table
+     *
+     * @param string $tableAlias
      * @return string
      */
     private function getTable($tableAlias)
@@ -178,7 +164,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $table
+     * Truncate table
+     *
+     * @param string $table
      */
     private function truncateTable($table)
     {
@@ -187,8 +175,10 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $table
-     * @param $data
+     * Insert into table
+     *
+     * @param string $table
+     * @param mixed $data
      */
     private function insertIntoTable($table, $data)
     {
@@ -197,7 +187,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $table
+     * Get last insert id
+     *
+     * @param string $table
      * @return mixed
      */
     private function getLastInsertId($table)
@@ -208,6 +200,8 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
+     * Get countries
+     *
      * @return array|string
      */
     private function getCountries()
@@ -220,7 +214,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $rateData
+     * Create tax calculation rate
+     *
+     * @param mixed $rateData
      * @return mixed
      */
     private function createTaxCalculationRate($rateData)
@@ -238,11 +234,11 @@ class TaxSubProcessor extends AbstractSubProcessor
         // add labels to all store views
         if ($label) {
             foreach ($this->storeManager->getStores() as $storeId => $store) {
-                $bind = array(
+                $bind = [
                     'tax_calculation_rate_id' => $rateId,
                     'store_id'                => $storeId,
                     'value'                   => $label,
-                );
+                ];
                 $this->insertIntoTable('tax_calculation_rate_title', $bind);
             }
         }
@@ -251,7 +247,9 @@ class TaxSubProcessor extends AbstractSubProcessor
     }
 
     /**
-     * @param $taxClasses
+     * Save tax class relations
+     *
+     * @param mixed $taxClasses
      */
     private function saveTaxClassRelations($taxClasses)
     {
@@ -259,17 +257,10 @@ class TaxSubProcessor extends AbstractSubProcessor
             $productTaxClassId = $taxClasses['products_rate_1'];
             $this->saveConfigValue('tax/classes/default_product_tax_class', $productTaxClassId);
 
-            $productCollection = $this->productCollectionFactory->create()->addAttributeToSelect('url_key');
-            foreach ($productCollection as $product) {
-                /** @var Product $product */
-
-                $product->setData('tax_class_id', $productTaxClassId);
-
-                try {
-                    $product->save();
-                } catch (\Exception $exception) {
-                    echo __('Error by product with sku "' . $product->getSku() . '": ' . $exception->getMessage() . "\n");
-                }
+            $productIds = $this->productCollectionFactory->create()->getAllIds();
+            if (count($productIds) > 0) {
+                $this->productAction
+                    ->updateAttributes($productIds, ['tax_class_id' => $productTaxClassId], Store::DEFAULT_STORE_ID);
             }
         }
 
@@ -288,6 +279,47 @@ class TaxSubProcessor extends AbstractSubProcessor
 
         if (isset($taxClasses['shipping_rate_1'])) {
             $this->saveConfigValue('tax/classes/shipping_tax_class', $taxClasses['shipping_rate_1']);
+        }
+    }
+
+    /**
+     * Sets up the tax calculation rules.
+     *
+     * @param array $configTaxCalculationRules
+     * @param array $taxClasses
+     * @param array $taxRates
+     *
+     * @throws \Magento\Framework\Exception\InputException
+     */
+    private function setupTaxCalculationRules(array $configTaxCalculationRules, array $taxClasses, array $taxRates)
+    {
+        foreach ($configTaxCalculationRules as $calculationRuleData) {
+            $mapping = $calculationRuleData['mapping'];
+            unset($calculationRuleData['mapping']);
+
+            $rule = $this->taxRuleDataObjectFactory->create();
+            $rule->setCode($calculationRuleData['code']);
+            $rule->setPriority($calculationRuleData['priority']);
+            $rule->setPosition($calculationRuleData['position']);
+            $rule->setCalculateSubtotal($calculationRuleData['calculate_subtotal']);
+
+            foreach ($mapping as $mappingKey => $mappingValues) {
+                if (is_array($mappingValues)) {
+                    $classes = [];
+                    foreach ($mappingValues as $value) {
+                        if (isset($taxClasses[$value])) {
+                            $classes[] = $taxClasses[$value];
+                        }
+                    }
+                    $rule->setData($mappingKey, $classes);
+                } else {
+                    if (isset($taxRates[$mappingValues])) {
+                        $rule->setData($mappingKey, $taxRates[$mappingValues]);
+                    }
+                }
+            }
+
+            $this->ruleService->save($rule);
         }
     }
 }

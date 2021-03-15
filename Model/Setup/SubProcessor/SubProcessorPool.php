@@ -8,12 +8,9 @@ namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 use Magento\Framework\Exception\NotFoundException;
 use Magento\Framework\ObjectManager\TMap;
 use Magento\Framework\ObjectManager\TMapFactory;
-use Traversable;
 
 /**
- * Class SubProcessorPool
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for collecting the processors for the different setup steps.
  */
 class SubProcessorPool
 {
@@ -23,8 +20,10 @@ class SubProcessorPool
     private $subProcessors = [];
 
     /**
-     * @param array       $subProcessors
+     * SubProcessorPool constructor.
+     *
      * @param TMapFactory $tmapFactory
+     * @param array $subProcessors
      */
     public function __construct(
         TMapFactory $tmapFactory,

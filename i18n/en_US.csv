@@ -1,10 +1,57 @@
-"Incl. %1 VAT","Incl. %1 VAT"
-"incl. <a href=""%1"">Shipping Cost</a>","incl. <a href=""%1"">Shipping Cost</a>"
+%1%,%1%
+"SubProcessor %1 does not exist.","SubProcessor %1 does not exist."
+"-- No Page --","-- No Page --"
+"Visible in Checkout","Visible in Checkout"
+Imprint,Imprint
+"Shop Name","Shop Name"
+"Company First","Company First"
+"Company Second","Company Second"
+Street,Street
+Zip,Zip
+City,City
+"Default Country","Default Country"
+Telephone,Telephone
+"Supplementary Information for Telephone","Supplementary Information for Telephone"
+Fax,Fax
+Email,Email
+Website,Website
+"Tax number","Tax number"
+VAT-ID,VAT-ID
+"Register Court","Register Court"
+"Financial Office","Financial Office"
+CEO,CEO
+Owner,Owner
+"Responsible for content","Responsible for content"
+"Responsible for content address","Responsible for content address"
+"Responsible in the interests of the press law","Responsible in the interests of the press law"
+"Register Number","Register Number"
+"Reference for business rules (physician, ...)","Reference for business rules (physician, ...)"
+"Authority (ECG)","Authority (ECG)"
+Shareholdings,Shareholdings
+"Editorial Concept","Editorial Concept"
+"Account owner","Account owner"
+Account,Account
+"Bank number","Bank number"
+"Bank name","Bank name"
+BIC/Swift-Code,BIC/Swift-Code
+IBAN,IBAN
+Clearing,Clearing
+"Bank Information","Bank Information"
+Web,Web
+E-Mail,E-Mail
+"Financial office","Financial office"
+"Register court","Register court"
+"Register number","Register number"
+"Reference for business rules","Reference for business rules"
+SWIFT,SWIFT
+"Responsible according to § 5 TMG","Responsible according to § 5 TMG"
 "Excl. %1 VAT","Excl. %1 VAT"
+"incl. <a href=""%1"">Shipping Cost</a>","incl. <a href=""%1"">Shipping Cost</a>"
 "excl. <a href=""%1"">Shipping Cost</a>","excl. <a href=""%1"">Shipping Cost</a>"
-
+"Incl. %1 VAT","Incl. %1 VAT"
+"Relevant for Austrian shops","Relevant for Austrian shops"
 "Display Block below Price","Display Block below Price"
 "Display tax info and shipping cost link below the price on all pages","Display tax info and shipping cost link below the price on all pages"
 "CMS Page for Shipping Info","CMS Page for Shipping Info"
-"-- No Page --","-- No Page --"
 "Show ""incl. Shipping Cost"" instead of ""excl. Shipping Cost""","Show ""incl. Shipping Cost"" instead of ""excl. Shipping Cost"""
+"Display Delivery Time on Product Listing","Display Delivery Time on Product Listing"

@@ -3,16 +3,16 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 namespace FireGento\MageSetup\Plugin\Catalog\Model\Attribute;
 
-use \FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
+use FireGento\MageSetup\Service\GetVisibleCheckoutAttributesServiceInterface;
+use Magento\Catalog\Model\Attribute\Config;
 
 /**
- * Class AroundGetAttributeNamesPlugin
- *
- * @package FireGento\MageSetup\Plugin\Catalog\Model\Attribute
+ * Plugin to add visible in checkout attributes to the attribute names.
  */
-class AroundGetAttributeNamesPlugin
+class AddVisibleInCheckoutAttributesToAttributeNamesPlugin
 {
     /**
      * @var GetVisibleCheckoutAttributesServiceInterface
@@ -30,16 +30,20 @@ class AroundGetAttributeNamesPlugin
     }
 
     /**
-     * @param \Magento\Catalog\Model\Attribute\Config $subject
-     * @param \Closure                                $proceed
-     * @param  string                                 $groupName
+     *  Around get attribute names
+     *
+     * @param Config $config
+     * @param array $attributeNames
+     * @param string $groupName
      * @return array
      */
-    public function aroundGetAttributeNames(\Magento\Catalog\Model\Attribute\Config $subject, \Closure $proceed, $groupName)
+    public function afterGetAttributeNames(Config $config, $attributeNames, $groupName)
     {
-        $attributeNames = $proceed($groupName);
+        if (!is_array($attributeNames)) {
+            return $attributeNames;
+        }
 
-        if ($groupName == 'quote_item') {
+        if ($groupName === 'quote_item') {
             $attributes = $this->getVisibleCheckoutAttributesService->execute();
             foreach ($attributes as $attributeCode => $attribute) {
                 $attributeNames[] = $attributeCode;

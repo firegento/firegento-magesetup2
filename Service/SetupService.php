@@ -5,15 +5,13 @@
  */
 namespace FireGento\MageSetup\Service;
 
-use FireGento\MageSetup\Model\Setup\SubProcessor\SubProcessorPool;
 use FireGento\MageSetup\Model\Config;
+use FireGento\MageSetup\Model\Setup\SubProcessor\SubProcessorPool;
 use Magento\Framework\App\Cache\Manager as CacheManager;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class SetupService
- *
- * @package FireGento\MageSetup\Service
+ * Class for running the setup steps.
  */
 class SetupService implements SetupServiceInterface
 {
@@ -43,10 +41,12 @@ class SetupService implements SetupServiceInterface
     private $output = null;
 
     /**
-     * @param Config           $config
-     * @param CacheManager     $cacheManager
+     * SetupService constructor.
+     *
+     * @param Config $config
+     * @param CacheManager $cacheManager
      * @param SubProcessorPool $subProcessorPool
-     * @param array            $subProcessorCodes
+     * @param array $subProcessorCodes
      */
     public function __construct(
         Config $config,
@@ -65,6 +65,8 @@ class SetupService implements SetupServiceInterface
     }
 
     /**
+     * Setup service
+     *
      * @return void
      */
     public function execute()
@@ -82,6 +84,8 @@ class SetupService implements SetupServiceInterface
     }
 
     /**
+     * Set output
+     *
      * @param OutputInterface $output
      */
     public function setOutput(OutputInterface $output)

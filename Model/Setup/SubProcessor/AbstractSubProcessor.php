@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
- * Class AbstractSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Abstract class for processing certain setup steps.
  */
 abstract class AbstractSubProcessor implements SubProcessorInterface
 {
@@ -20,6 +18,8 @@ abstract class AbstractSubProcessor implements SubProcessorInterface
     private $configWriter;
 
     /**
+     * AbstractSubProcessor constructor.
+     *
      * @param WriterInterface $configWriter
      */
     public function __construct(WriterInterface $configWriter)
@@ -28,9 +28,11 @@ abstract class AbstractSubProcessor implements SubProcessorInterface
     }
 
     /**
+     * Save config value
+     *
      * @param string $path
      * @param string $value
-     * @param null   $storeId
+     * @param mixed $storeId
      */
     public function saveConfigValue($path, $value, $storeId = null)
     {

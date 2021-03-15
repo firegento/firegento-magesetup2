@@ -5,35 +5,34 @@
  */
 namespace FireGento\MageSetup\Test\Unit\Model\System;
 
-use Magento\Framework\TestFramework\Unit\BaseTestCase;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\TestCase;
 
-/**
- * Class Config
- *
- * @package FireGento\MageSetup\Test\Unit\Model\System
- */
-class Config extends BaseTestCase
+class ConfigTest extends TestCase
 {
     /**
      * @var \FireGento\MageSetup\Model\Config
      */
     private $config;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $scopeConfigMock = $this->getMock(\Magento\Framework\App\Config\ScopeConfigInterface::class);
+        $scopeConfigMock = $this->createMock(ScopeConfigInterface::class);
         $scopeConfigMock->expects($this->any())->method('getValue')
-            ->with($this->equalTo('general/country/eu_countries'))
-            ->will($this->returnValue('DE,AT'));
+            ->with(self::equalTo('general/country/eu_countries'))
+            ->willReturn('DE,AT');
 
-        $context = $this->getMock(\Magento\Framework\App\Helper\Context::class, [], [], '', false);
-        $context->expects($this->any())->method('getScopeConfig')->will($this->returnValue($scopeConfigMock));
-        /** @var \Magento\Framework\App\Helper\Context $context */
+        $context = $this->createMock(Context::class, [], [], '', false);
+        $context->expects(self::any())->method('getScopeConfig')->willReturn($scopeConfigMock);
+        /** @var Context $context */
 
-        // $this->config = new \FireGento\MageSetup\Model\System\Config($context);
-        $this->config = $this->objectManager->getObject(
+        $objectManager = new ObjectManager($this);
+
+        $this->config = $objectManager->getObject(
             \FireGento\MageSetup\Model\System\Config::class,
             [
                 'context' => $context
@@ -46,8 +45,8 @@ class Config extends BaseTestCase
      */
     public function isCountryInEu()
     {
-        $this->assertTrue($this->config->isCountryInEu('DE'));
-        $this->assertFalse($this->config->isCountryInEu('CH'));
+        self::assertTrue($this->config->isCountryInEu('DE'));
+        self::assertFalse($this->config->isCountryInEu('CH'));
     }
 
     /**
@@ -55,6 +54,6 @@ class Config extends BaseTestCase
      */
     public function getEuCountries()
     {
-        $this->assertEquals(['DE', 'AT'], $this->config->getEuCountries());
+        self::assertEquals(['DE', 'AT'], $this->config->getEuCountries());
     }
 }

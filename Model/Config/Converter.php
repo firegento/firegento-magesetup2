@@ -6,13 +6,13 @@
 namespace FireGento\MageSetup\Model\Config;
 
 /**
- * Class Converter
- *
- * @package FireGento\MageSetup\Model\Config
+ * Class for converting XMLs.
  */
 class Converter implements \Magento\Framework\Config\ConverterInterface
 {
     /**
+     * Convert
+     *
      * @param \DOMDocument $source
      * @return array
      */
@@ -57,6 +57,8 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     }
 
     /**
+     * Get one tier config
+     *
      * @param \DOMElement $node
      * @return array
      */
@@ -76,6 +78,8 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     }
 
     /**
+     * Get tax config
+     *
      * @param \DOMElement $node
      * @return array
      */
@@ -114,6 +118,7 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
                     if ($subSubChildNode->nodeType != XML_ELEMENT_NODE) {
                         continue;
                     }
+                    // phpcs:ignore
                     $data[$childNode->nodeName][$subChildNode->nodeName][$subSubChildNode->nodeName] = $subSubChildNode->nodeValue;
                 }
             }
@@ -123,6 +128,8 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     }
 
     /**
+     * Get two tier config
+     *
      * @param \DOMElement $node
      * @return array
      */

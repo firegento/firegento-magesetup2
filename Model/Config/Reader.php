@@ -6,9 +6,7 @@
 namespace FireGento\MageSetup\Model\Config;
 
 /**
- * Class Reader
- *
- * @package FireGento\MageSetup\Model\Config
+ * Class for reading XML configuration.
  */
 class Reader extends \Magento\Framework\Config\Reader\Filesystem
 {
@@ -17,6 +15,7 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
      *
      * @var array
      */
+    // phpcs:ignore
     protected $_idAttributes = [
         '/magesetup/setup' => 'name',
     ];

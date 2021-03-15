@@ -6,16 +6,14 @@
 namespace FireGento\MageSetup\Model\Setup\SubProcessor;
 
 use FireGento\MageSetup\Model\Config;
-use Magento\Framework\App\Config\Storage\WriterInterface;
 use Magento\Cms\Model\BlockFactory;
 use Magento\Cms\Model\BlockRepository;
 use Magento\Cms\Model\PageFactory;
 use Magento\Cms\Model\PageRepository;
+use Magento\Framework\App\Config\Storage\WriterInterface;
 
 /**
- * Class CmsSubProcessor
- *
- * @package FireGento\MageSetup\Model\Setup\SubProcessor
+ * Class for processing the CMS setup step.
  */
 class CmsSubProcessor extends AbstractSubProcessor
 {
@@ -50,12 +48,14 @@ class CmsSubProcessor extends AbstractSubProcessor
     private $blockRepository;
 
     /**
-     * @param WriterInterface                      $configWriter
+     * CmsSubProcessor constructor.
+     *
+     * @param WriterInterface $configWriter
      * @param \Magento\Framework\Module\Dir\Reader $moduleReader
-     * @param PageFactory                          $pageFactory
-     * @param PageRepository                       $pageRepository
-     * @param BlockFactory                         $blockFactory
-     * @param BlockRepository                      $blockRepository
+     * @param PageFactory $pageFactory
+     * @param PageRepository $pageRepository
+     * @param BlockFactory $blockFactory
+     * @param BlockRepository $blockRepository
      */
     public function __construct(
         WriterInterface $configWriter,
@@ -64,8 +64,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         PageRepository $pageRepository,
         BlockFactory $blockFactory,
         BlockRepository $blockRepository
-    )
-    {
+    ) {
         $this->moduleReader = $moduleReader;
         $this->pageFactory = $pageFactory;
         $this->pageRepository = $pageRepository;
@@ -75,6 +74,8 @@ class CmsSubProcessor extends AbstractSubProcessor
     }
 
     /**
+     * Process
+     *
      * @param Config $config
      * @return void
      */
@@ -107,6 +108,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         // Check if template filename exists
         $filename = $pageData['filename'];
         $template = $this->getTemplatePath('pages') . $filename;
+        // phpcs:ignore
         if (!file_exists($template)) {
             return;
         }
@@ -115,12 +117,13 @@ class CmsSubProcessor extends AbstractSubProcessor
         unset($pageData['filename']);
 
         // Fetch template content
+        // phpcs:ignore
         $templateContent = @file_get_contents($template);
 
-        $data = array(
+        $data = [
             'stores'    => [0],
             'is_active' => 1,
-        );
+        ];
 
         if (preg_match('/<!--@title\s*(.*?)\s*@-->/u', $templateContent, $matches)) {
             $data['title'] = $matches[1];
@@ -171,6 +174,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         // Check if template filename exists
         $filename = $blockData['filename'];
         $template = $this->getTemplatePath('blocks') . $filename;
+        // phpcs:ignore
         if (!file_exists($template)) {
             return;
         }
@@ -179,12 +183,13 @@ class CmsSubProcessor extends AbstractSubProcessor
         unset($blockData['filename']);
 
         // Fetch template content
+        // phpcs:ignore
         $templateContent = @file_get_contents($template);
 
-        $data = array(
+        $data = [
             'stores'    => [0],
             'is_active' => 1,
-        );
+        ];
 
         // Find title
         if (preg_match('/<!--@title\s*(.*?)\s*@-->/u', $templateContent, $matches)) {

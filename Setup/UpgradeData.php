@@ -11,19 +11,17 @@ use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
 use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 use Magento\Downloadable\Model\Product\Type as Downloadable;
-use Magento\GroupedProduct\Model\Product\Type\Grouped;
-
 use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
+
 use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
-use Magento\Framework\Setup\UpgradeDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\UpgradeDataInterface;
+use Magento\GroupedProduct\Model\Product\Type\Grouped;
 
 /**
- * Class UpgradeData
- *
- * @package FireGento\MageSetup\Setup
+ * Adds necessary attributes.
  */
 class UpgradeData implements UpgradeDataInterface
 {
@@ -33,6 +31,8 @@ class UpgradeData implements UpgradeDataInterface
     private $eavSetupFactory;
 
     /**
+     * UpgradeData constructor.
+     *
      * @param EavSetupFactory $eavSetupFactory
      */
     public function __construct(EavSetupFactory $eavSetupFactory)
@@ -40,10 +40,16 @@ class UpgradeData implements UpgradeDataInterface
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
+    /**
+     * Upgrade method
+     *
+     * @param ModuleDataSetupInterface $setup
+     * @param ModuleContextInterface $context
+     */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-        
+
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
 
@@ -69,7 +75,7 @@ class UpgradeData implements UpgradeDataInterface
                 'required'                => false,
                 'used_in_product_listing' => true,
                 'apply_to'                => $productTypes,
-                'group'                   => 'General',
+                'group'                   => 'Product Details',
                 'unique'                  => false,
                 'is_html_allowed_on_front'=> true,
                 'visible_on_front'        => true,

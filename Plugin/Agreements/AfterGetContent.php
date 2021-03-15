@@ -8,9 +8,7 @@ namespace FireGento\MageSetup\Plugin\Agreements;
 use Magento\Cms\Model\Template\Filter as TemplateFilter;
 
 /**
- * Class AfterGetContent
- *
- * @package FireGento\MageSetup\Model\Plugin
+ * Plugin for filtering the checkout agreements with the CMS template filter.
  */
 class AfterGetContent
 {
@@ -20,6 +18,8 @@ class AfterGetContent
     private $templateFilter;
 
     /**
+     * AfterGetContent constructor.
+     *
      * @param TemplateFilter $templateFilter
      */
     public function __construct(TemplateFilter $templateFilter)
@@ -28,9 +28,11 @@ class AfterGetContent
     }
 
     /**
+     * After get content
+     *
      * @param \Magento\CheckoutAgreements\Model\Agreement $agreement
-     * @param string                                      $result
-     * @return string
+     * @param string $result
+     * @return mixed
      */
     public function afterGetContent(\Magento\CheckoutAgreements\Model\Agreement $agreement, $result)
     {

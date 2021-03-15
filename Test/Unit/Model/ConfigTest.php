@@ -1,23 +1,26 @@
 <?php
 /**
- * Copyright © 2016 FireGento e.V.
+ * Copyright © FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
 namespace FireGento\MageSetup\Test\Unit\Model;
 
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
+use PHPUnit\Framework\TestCase;
+
 /**
  * Class Config
  *
- * @package FireGento\MageSetup\Test\Unit\Model
+ * Unit tests for imprint config block
  */
-class Config extends \PHPUnit_Framework_TestCase
+class ConfigTest extends TestCase
 {
     /**
      * @var \FireGento\MageSetup\Model\Config
      */
     private $config;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -35,16 +38,19 @@ class Config extends \PHPUnit_Framework_TestCase
             'at'      => []
         ];
 
-        $readerMock = $this->getMock('FireGento\MageSetup\Model\Config\Reader', ['read'], [], '', false);
-        $readerMock->expects($this->once())->method('read')->will($this->returnValue($readerData));
+        $readerMock = $this->createMock(\FireGento\MageSetup\Model\Config\Reader::class);
+        $readerMock->expects(self::once())->method('read')->willReturn($readerData);
 
-        $cacheMock = $this->getMock('Magento\Framework\Config\CacheInterface');
+        $cacheMock = $this->getMockBuilder(\Magento\Framework\Config\CacheInterface::class)
+            ->disableOriginalConstructor()->getMockForAbstractClass();
 
-        $this->config = new \FireGento\MageSetup\Model\Config(
-            $readerMock,
-            $cacheMock,
-            'de'
-        );
+        $objectManager = new ObjectManager($this);
+
+        $this->config = $objectManager->getObject(\FireGento\MageSetup\Model\Config::class, [
+            'reader' => $readerMock,
+            'cache' => $cacheMock,
+            'country' => 'de'
+        ]);
     }
 
     /**
@@ -52,7 +58,7 @@ class Config extends \PHPUnit_Framework_TestCase
      */
     public function getCountry()
     {
-        $this->assertEquals('de', $this->config->getCountry());
+        self::assertEquals('de', $this->config->getCountry());
     }
 
     /**
@@ -60,7 +66,7 @@ class Config extends \PHPUnit_Framework_TestCase
      */
     public function getAllowedCountries()
     {
-        $this->assertEquals([1 => 'de', 2 => 'at'], $this->config->getAllowedCountries());
+        self::assertEquals([1 => 'de', 2 => 'at'], $this->config->getAllowedCountries());
     }
 
     /**
@@ -73,6 +79,6 @@ class Config extends \PHPUnit_Framework_TestCase
             'general__country__default'         => 'DE'
         ];
 
-        $this->assertEquals($expectedResult, $this->config->getSystemConfig());
+        self::assertEquals($expectedResult, $this->config->getSystemConfig());
     }
 }
