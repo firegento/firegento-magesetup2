@@ -82,7 +82,10 @@ class Config
      */
     public function isIncludingShippingCosts()
     {
-        return (bool)$this->scopeConfig->getValue('catalog/price/including_shipping_costs', ScopeInterface::SCOPE_STORE);
+        return (bool)$this->scopeConfig->getValue(
+            'catalog/price/including_shipping_costs',
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
@@ -116,6 +119,9 @@ class Config
      */
     public function isDisplayDeliveryTimeOnProductListing()
     {
-        return (bool)$this->scopeConfig->getValue('catalog/frontend/display_delivery_time', ScopeInterface::SCOPE_STORE);
+        return (bool)$this->scopeConfig->getValue(
+            'catalog/frontend/display_delivery_time',
+            ScopeInterface::SCOPE_STORE
+        );
     }
 }

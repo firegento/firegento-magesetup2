@@ -3,44 +3,48 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 /**
- * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ * @var $block \FireGento\MageSetup\Block\Imprint\Content
  */
 ?>
-<?php if ($ceo = $this->getImprintValue('ceo')): ?>
-    <?php echo __('CEO') ?>: <?php echo $ceo ?><br/>
+<?php if ($ceo = $block->getImprintValue('ceo')): ?>
+    <?= $block->escapeHtml(__('CEO')) ?>: <?= $block->escapeHtml($ceo) ?><br/>
 <?php endif ?>
-<?php if ($owner = $this->getImprintValue('owner')): ?>
-    <?php echo __('Owner') ?>: <?php echo $owner ?><br/>
+<?php if ($owner = $block->getImprintValue('owner')): ?>
+    <?= $block->escapeHtml(__('Owner')) ?>: <?= $block->escapeHtml($owner) ?><br/>
 <?php endif ?>
-<?php if (strlen(trim($this->getImprintValue('content_responsable_name'))) || strlen(trim($this->getImprintValue('content_responsable_address')))): ?>
-    <h4><?php echo __('Responsible according to § 5 TMG'); ?>:</h4>
+<?php if (strlen(trim($block->getImprintValue('content_responsable_name')))
+    || strlen(trim($block->getImprintValue('content_responsable_address')))): ?>
+    <h4><?= $block->escapeHtml(__('Responsible according to § 5 TMG')) ?>:</h4>
 <?php endif; ?>
-<?php if ($contentResponsableName = $this->getImprintValue('content_responsable_name')): ?>
-    <?php echo __('Responsible for content') ?>: <?php echo $contentResponsableName ?><br/>
+<?php if ($contentResponsableName = $block->getImprintValue('content_responsable_name')): ?>
+    <?= $block->escapeHtml(__('Responsible for content')) ?>: <?= $block->escapeHtml($contentResponsableName) ?><br/>
 <?php endif ?>
-<?php if ($contentResponsableAddress = $this->getImprintValue('content_responsable_address')): ?>
-    <?php echo __('Responsible for content address') ?>: <?php echo $contentResponsableAddress ?><br/>
+<?php if ($contentResponsableAddress = $block->getImprintValue('content_responsable_address')): ?>
+    <?= $block->escapeHtml(__('Responsible for content address')) ?>:
+    <?= $block->escapeHtml($contentResponsableAddress) ?><br/>
 <?php endif ?>
 <br/>
-<?php if ($contentResponsablePressLaw = $this->getImprintValue('content_responsable_press_law')): ?>
-    <?php echo __('Responsible in the interests of the press law') ?>: <?php echo $contentResponsablePressLaw ?><br/>
+<?php if ($contentResponsablePressLaw = $block->getImprintValue('content_responsable_press_law')): ?>
+    <?= $block->escapeHtml(__('Responsible in the interests of the press law')) ?>:
+    <?= $block->escapeHtml($contentResponsablePressLaw) ?><br/>
 <?php endif ?>
-<?php if ($court = $this->getImprintValue('court')): ?>
-    <?php echo __('Register Court') ?>: <?php echo $court ?><br/>
+<?php if ($court = $block->getImprintValue('court')): ?>
+    <?= $block->escapeHtml(__('Register Court')) ?>: <?= $block->escapeHtml($court) ?><br/>
 <?php endif ?>
-<?php if ($registerNumber = $this->getImprintValue('register_number')): ?>
-    <?php echo __('Register Number') ?>: <?php echo $registerNumber ?><br/>
+<?php if ($registerNumber = $block->getImprintValue('register_number')): ?>
+    <?= $block->escapeHtml(__('Register Number')) ?>: <?= $block->escapeHtml($registerNumber) ?><br/>
 <?php endif ?>
-<?php if ($businessRules = $this->getImprintValue('business_rules')): ?>
-    <?php echo __('Reference for business rules') ?>: <?php echo $businessRules ?><br/>
+<?php if ($businessRules = $block->getImprintValue('business_rules')): ?>
+    <?= $block->escapeHtml(__('Reference for business rules')) ?>: <?= $block->escapeHtml($businessRules) ?><br/>
 <?php endif ?>
-<?php if ($authority = $this->getImprintValue('authority')): ?>
-    <?php echo __('Authority (ECG)') ?>: <?php echo $authority ?><br/>
+<?php if ($authority = $block->getImprintValue('authority')): ?>
+    <?= $block->escapeHtml(__('Authority (ECG)')) ?>: <?= $block->escapeHtml($authority) ?><br/>
 <?php endif ?>
-<?php if ($shareholdings = $this->getImprintValue('shareholdings')): ?>
-    <?php echo __('Shareholdings') ?>: <?php echo $shareholdings ?><br/>
+<?php if ($shareholdings = $block->getImprintValue('shareholdings')): ?>
+    <?= $block->escapeHtml(__('Shareholdings')) ?>: <?= $block->escapeHtml($shareholdings) ?><br/>
 <?php endif ?>
-<?php if ($editorialConcept = $this->getImprintValue('editorial_concept')): ?>
-    <?php echo __('Editorial Concept') ?>: <?php echo $editorialConcept ?><br/>
+<?php if ($editorialConcept = $block->getImprintValue('editorial_concept')): ?>
+    <?= $block->escapeHtml(__('Editorial Concept')) ?>: <?= $block->escapeHtml($editorialConcept) ?><br/>
 <?php endif ?>

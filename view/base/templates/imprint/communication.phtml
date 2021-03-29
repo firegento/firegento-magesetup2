@@ -3,23 +3,28 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 /**
- * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ * @var $block \FireGento\MageSetup\Block\Imprint\Content
  */
 ?>
-<?php if ($telephone = $this->getImprintValue('telephone')): ?>
-    <?php echo __('Telephone') ?>: <?php echo $this->getImprintValue('telephone') ?>
-    <?php if ($telephoneAdditional = $this->getImprintValue('telephone_additional')): ?>
-        (<?php echo $telephoneAdditional ?>)
+<?php if ($telephone = $block->getImprintValue('telephone')): ?>
+    <?= $block->escapeHtml(__('Telephone')) ?>: <?= $block->escapeHtml($block->getImprintValue('telephone')) ?>
+    <?php if ($telephoneAdditional = $block->getImprintValue('telephone_additional')): ?>
+        (<?= $block->escapeHtml($telephoneAdditional) ?>)
     <?php endif ?>
-    <br />
+    <br/>
 <?php endif ?>
-<?php if ($fax = $this->getImprintValue('fax')): ?>
-    <?php echo __('Fax') ?>: <?php echo $fax ?><br />
+<?php if ($fax = $block->getImprintValue('fax')): ?>
+    <?= $block->escapeHtml(__('Fax')) ?>: <?= $block->escapeHtml($fax) ?><br/>
 <?php endif ?>
-<?php if (strlen(trim($this->getWeb()))): ?>
-    <?php echo __('Web') ?>: <a href="<?php echo $this->getWeb(true) ?>" title="<?php echo $this->getImprintValue('company_first') ?>"><?php echo $this->getWeb() ?></a><br />
+<?php if (strlen(trim($block->getWeb()))): ?>
+    <?= $block->escapeHtml(__('Web')) ?>:
+    <a href="<?= $block->escapeHtmlAttr($block->getWeb(true)) ?>"
+       title="<?= $block->escapeHtmlAttr($block->getImprintValue('company_first')) ?>">
+        <?= $block->escapeHtml($block->getWeb()) ?>
+    </a><br/>
 <?php endif ?>
-<?php if (strlen(trim($this->getEmail()))): ?>
-    <?php echo __('E-Mail') ?>: <?php echo $this->getEmail(true) ?>
+<?php if (strlen(trim($block->getEmail()))): ?>
+    <?= $block->escapeHtml(__('E-Mail')) ?>: <?= /* @noEscape */ $block->getEmail(true) ?>
 <?php endif; ?>
