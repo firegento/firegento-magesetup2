@@ -4,9 +4,6 @@ on: [pull_request]
 jobs:
   integration-tests:
     name: Magento 2 Integration Tests
-    strategy:
-      matrix:
-        version: ['2.3.5-p2', '2.3.6-p1', '2.4.1-p1', '2.4.2' ]
     runs-on: ubuntu-latest
     services:
       mysql:
@@ -27,9 +24,44 @@ jobs:
         options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v2
-      - name: M2 Integration Tests with Magento 2 (Php7.4)
+      - name: M2 Integration Tests with Magento 2 Version 2.3.5-p2 (PHP 7.3)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.3@master
+        with:
+            module_name: FireGento_MageSetup
+            composer_name: firegento/magesetup2
+            ce_version: '2.3.5-p2'
+      - uses: actions/checkout@v2
+      - name: M2 Integration Tests with Magento 2 Version 2.3.6-p1 (PHP 7.3)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.3@master
+        with:
+            module_name: FireGento_MageSetup
+            composer_name: firegento/magesetup2
+            ce_version: '2.3.6-p1'
+      - uses: actions/checkout@v2
+      - name: M2 Integration Tests with Magento 2 Version 2.4.1-p1 (PHP 7.3)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.3@master
+        with:
+            module_name: FireGento_MageSetup
+            composer_name: firegento/magesetup2
+            ce_version: '2.4.1-p1'
+      - uses: actions/checkout@v2
+      - name: M2 Integration Tests with Magento 2 Version 2.4.2 (PHP 7.3)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.3@master
+        with:
+            module_name: FireGento_MageSetup
+            composer_name: firegento/magesetup2
+            ce_version: '2.4.2'
+      - uses: actions/checkout@v2
+      - name: M2 Integration Tests with Magento 2 Version 2.4.1-p1 (PHP 7.4)
         uses: extdn/github-actions-m2/magento-integration-tests/7.4@master
         with:
-          module_name: FireGento_MageSetup
-          composer_name: firegento/magesetup2
-          ce_version: ${{ matrix.version }}
+            module_name: FireGento_MageSetup
+            composer_name: firegento/magesetup2
+            ce_version: '2.4.1-p1'
+      - uses: actions/checkout@v2
+      - name: M2 Integration Tests with Magento 2 Version 2.4.2 (PHP 7.4)
+        uses: extdn/github-actions-m2/magento-integration-tests/7.4@master
+        with:
+            module_name: FireGento_MageSetup
+            composer_name: firegento/magesetup2
+            ce_version: '2.4.2'
