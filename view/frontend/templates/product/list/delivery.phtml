@@ -13,8 +13,8 @@
  */
 ?>
 <?php
-$_helper = $this->helper('Magento\Catalog\Helper\Output');
-$_product = $this->getProduct();
+$_helper = $block->helper('Magento\Catalog\Helper\Output');
+$_product = $block->getProduct();
 $_call = $block->getAtCall();
 $_code = $block->getAtCode();
 $_className = $block->getCssClass();

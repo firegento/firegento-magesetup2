@@ -20,6 +20,11 @@ class AddProductAttributeVisibleCheckoutObserverTest extends AbstractBackendCont
         $attribute                  = $productAttributeRepository->get('name');
         $this->getRequest()->setParam('attribute_id', $attribute->getAttributeId());
         $this->dispatch($this->uri);
-        self::assertStringContainsString('Visible in Checkout', $this->getResponse()->getBody());
+        // TODO switch to assertStringContainsString completely when we drop 2.3-support
+        if (method_exists(__CLASS__, 'assertStringContainsString')) {
+            self::assertStringContainsString('Visible in Checkout', $this->getResponse()->getBody());
+        } else {
+            self::assertContains('Visible in Checkout', $this->getResponse()->getBody());
+        }
     }
 }

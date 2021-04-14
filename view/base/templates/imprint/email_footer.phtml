@@ -3,88 +3,94 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 /**
- * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ * @var $block \FireGento\MageSetup\Block\Imprint\Content
  */
 ?>
-<p><strong><?php echo $this->getShopName() ?></strong></p>
+<p><strong><?= $block->escapeHtml($block->getShopName()) ?></strong></p>
 
 <p>
-    <?php echo $this->getCompanyFirst() ?><br />
-    <?php if (strlen(trim($this->getCompanySecond()))): ?>
-        <?php echo $this->getCompanySecond() ?><br />
+    <?= $block->escapeHtml($block->getCompanyFirst()) ?><br/>
+    <?php if (strlen(trim($block->getCompanySecond()))): ?>
+        <?= $block->escapeHtml($block->getCompanySecond()) ?><br/>
     <?php endif ?>
-    <?php echo $this->getStreet() ?><br />
-    <?php echo $this->getZip() ?> <?php echo $this->getCity() ?>
+    <?= $block->escapeHtml($block->getStreet()) ?><br/>
+    <?= $block->escapeHtml($block->getZip()) ?> <?= $block->escapeHtml($block->getCity()) ?>
 </p>
 
 <p>
-    <?php if (strlen(trim($this->getTelephone()))): ?>
-        <?php echo __('Telephone') ?>: <?php echo $this->getTelephone() ?>
-        <?php if (strlen(trim($this->getTelephoneAdditional()))): ?>
-            (<?php echo $this->getTelephoneAdditional() ?>)
+    <?php if (strlen(trim($block->getTelephone()))): ?>
+        <?= $block->escapeHtml(__('Telephone')) ?>: <?= $block->escapeHtml($block->getTelephone()) ?>
+        <?php if (strlen(trim($block->getTelephoneAdditional()))): ?>
+            (<?= $block->escapeHtml($block->getTelephoneAdditional()) ?>)
         <?php endif ?>
-        <br />
+        <br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getFax()))): ?>
-        <?php echo __('Fax') ?>: <?php echo $this->getFax() ?><br />
+    <?php if (strlen(trim($block->getFax()))): ?>
+        <?= $block->escapeHtml(__('Fax')) ?>: <?= $block->escapeHtml($block->getFax()) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getWeb()))): ?>
-        <?php echo __('Web') ?>: <a href="http://<?php echo $this->getWeb() ?>" title="<?php echo $this->getCompanyFirst() ?>"><?php echo $this->getWeb() ?></a><br />
+    <?php if (strlen(trim($block->getWeb()))): ?>
+        <?= $block->escapeHtml(__('Web')) ?>:
+        <a href="http://<?= $block->escapeHtmlAttr($block->getWeb()) ?>"
+           title="<?= $block->escapeHtmlAttr($block->getCompanyFirst()) ?>">
+            <?= $block->escapeHtml($block->getWeb()) ?>
+        </a><br/>
     <?php endif ?>
-    <?php echo __('E-Mail') ?>: <?php echo $this->getEmail(false) ?>
+    <?= $block->escapeHtml(__('E-Mail')) ?>: <?= /* @noEscape */ $block->getEmail(false) ?>
 </p>
 
 <p>
-    <?php if (strlen(trim($this->getFinancialOffice()))): ?>
-        <?php echo __('Financial office') ?>: <?php echo $this->getFinancialOffice() ?><br />
+    <?php if (strlen(trim($block->getFinancialOffice()))): ?>
+        <?= $block->escapeHtml(__('Financial office')) ?>: <?= $block->escapeHtml($block->getFinancialOffice()) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getTaxNumber()))): ?>
-        <?php echo __('Tax number') ?>: <?php echo $this->getTaxNumber() ?><br />
+    <?php if (strlen(trim($block->getTaxNumber()))): ?>
+        <?= $block->escapeHtml(__('Tax number')) ?>: <?= $block->escapeHtml($block->getTaxNumber()) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getVatId()))): ?>
-        <?php echo __('VAT-ID') ?>: <?php echo $this->getVatId() ?><br />
-    <?php endif ?>
-</p>
-
-<p>
-    <?php if (strlen(trim($this->getCeo()))): ?>
-        <?php echo __('CEO') ?>: <?php echo $this->getCeo() ?><br />
-    <?php endif ?>
-    <?php if (strlen(trim($this->getOwner()))): ?>
-        <?php echo __('Owner') ?>: <?php echo $this->getOwner() ?><br />
-    <?php endif ?>
-    <?php if (strlen(trim($this->getCourt()))): ?>
-        <?php echo __('Register court') ?>: <?php echo $this->getCourt() ?><br />
-    <?php endif ?>
-    <?php if (strlen(trim($this->getRegisterNumber()))): ?>
-        <?php echo __('Register number') ?>: <?php echo $this->getRegisterNumber() ?><br />
-    <?php endif ?>
-    <?php if (strlen(trim($this->getBusinessRules()))): ?>
-        <?php echo __('Reference for business rules') ?>: <?php echo $this->getBusinessRules() ?>
+    <?php if (strlen(trim($block->getVatId()))): ?>
+        <?= $block->escapeHtml(__('VAT-ID')) ?>: <?= $block->escapeHtml($block->getVatId()) ?><br/>
     <?php endif ?>
 </p>
 
 <p>
-    <?php if (strlen(trim($this->getBankAccountOwner()))): ?>
-        <?php echo __('Account owner') ?>: <?php echo $this->getBankAccountOwner() ?><br/>
+    <?php if (strlen(trim($block->getCeo()))): ?>
+        <?= $block->escapeHtml(__('CEO')) ?>: <?= $block->escapeHtml($block->getCeo()) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getBankAccount()))): ?>
-        <?php echo __('Account') ?>: <?php echo $this->getBankAccount() ?><br/>
+    <?php if (strlen(trim($block->getOwner()))): ?>
+        <?= $block->escapeHtml(__('Owner')) ?>: <?= $block->escapeHtml($block->getOwner()) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getBankCodeNumber()))): ?>
-        <?php echo __('Bank number') ?>: <?php echo $this->getBankCodeNumber() ?><br/>
+    <?php if (strlen(trim($block->getCourt()))): ?>
+        <?= $block->escapeHtml(__('Register court')) ?>: <?= $block->escapeHtml($block->getCourt()) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getBankName()))): ?>
-        <?php echo __('Bank name') ?>: <?php echo $this->getBankName() ?><br/>
+    <?php if (strlen(trim($block->getRegisterNumber()))): ?>
+        <?= $block->escapeHtml(__('Register number')) ?>: <?= $block->escapeHtml($block->getRegisterNumber()) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getSwift()))): ?>
-        <?php echo __('SWIFT') ?>: <?php echo $this->getSwift() ?><br/>
+    <?php if (strlen(trim($block->getBusinessRules()))): ?>
+        <?= $block->escapeHtml(__('Reference for business rules')) ?>:
+        <?= $block->escapeHtml($block->getBusinessRules()) ?>
     <?php endif ?>
-    <?php if (strlen(trim($this->getIban()))): ?>
-        <?php echo __('IBAN') ?>: <?php echo $this->getIban() ?><br />
+</p>
+
+<p>
+    <?php if (strlen(trim($block->getBankAccountOwner()))): ?>
+        <?= $block->escapeHtml(__('Account owner')) ?>: <?= $block->escapeHtml($block->getBankAccountOwner()) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($this->getClearing()))): ?>
-        <?php echo __('Clearing') ?>: <?php echo $this->getClearing() ?><br />
+    <?php if (strlen(trim($block->getBankAccount()))): ?>
+        <?= $block->escapeHtml(__('Account')) ?>: <?= $block->escapeHtml($block->getBankAccount()) ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($block->getBankCodeNumber()))): ?>
+        <?= $block->escapeHtml(__('Bank number')) ?>: <?= $block->escapeHtml($block->getBankCodeNumber()) ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($block->getBankName()))): ?>
+        <?= $block->escapeHtml(__('Bank name')) ?>: <?= $block->escapeHtml($block->getBankName()) ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($block->getSwift()))): ?>
+        <?= $block->escapeHtml(__('SWIFT')) ?>: <?= $block->escapeHtml($block->getSwift()) ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($block->getIban()))): ?>
+        <?= $block->escapeHtml(__('IBAN')) ?>: <?= $block->escapeHtml($block->getIban()) ?><br/>
+    <?php endif ?>
+    <?php if (strlen(trim($block->getClearing()))): ?>
+        <?= $block->escapeHtml(__('Clearing')) ?>: <?= $block->escapeHtml($block->getClearing()) ?><br/>
     <?php endif ?>
 </p>

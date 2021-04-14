@@ -3,32 +3,32 @@
  * Copyright © 2016 FireGento e.V.
  * See LICENSE.md bundled with this module for license details.
  */
+
 /**
- * @var $this \FireGento\MageSetup\Block\Imprint\Content
+ * @var $block \FireGento\MageSetup\Block\Imprint\Content
  */
 ?>
-<?php if (strlen(trim($this->getImprintValue('bank_account'))) || strlen(trim($this->getImprintValue('swift')))): ?>
-    <h3><?php echo __('Bank Information'); ?></h3>
-    <?php if ($accountOwner = $this->getImprintValue('bank_account_owner')): ?>
-        <?php echo __('Account owner') ?>: <?php echo $accountOwner ?><br/>
+<?php if (strlen(trim($block->getImprintValue('bank_account'))) || strlen(trim($block->getImprintValue('swift')))): ?>
+    <h3><?= $block->escapeHtml(__('Bank Information')) ?></h3>
+    <?php if ($accountOwner = $block->getImprintValue('bank_account_owner')): ?>
+        <?= $block->escapeHtml(__('Account owner')) ?>: <?= $block->escapeHtml($accountOwner) ?><br/>
     <?php endif ?>
-    <?php if ($bankAccount = $this->getImprintValue('bank_account')): ?>
-        <?php echo __('Account') ?>: <?php echo $bankAccount ?><br/>
+    <?php if ($bankAccount = $block->getImprintValue('bank_account')): ?>
+        <?= $block->escapeHtml(__('Account')) ?>: <?= $block->escapeHtml($bankAccount) ?><br/>
     <?php endif ?>
-    <?php if ($bankCodeNumber = $this->getImprintValue('bank_code_number')): ?>
-        <?php echo __('Bank number') ?>: <?php echo $bankCodeNumber ?><br/>
+    <?php if ($bankCodeNumber = $block->getImprintValue('bank_code_number')): ?>
+        <?= $block->escapeHtml(__('Bank number')) ?>: <?= $block->escapeHtml($bankCodeNumber) ?><br/>
     <?php endif ?>
-    <?php if ($bankName = $this->getImprintValue('bank_name')): ?>
-        <?php echo __('Bank name') ?>: <?php echo $bankName ?><br/>
+    <?php if ($bankName = $block->getImprintValue('bank_name')): ?>
+        <?= $block->escapeHtml(__('Bank name')) ?>: <?= $block->escapeHtml($bankName) ?><br/>
     <?php endif ?>
-    <?php if ($swift = $this->getImprintValue('swift')): ?>
-        <?php echo __('BIC/Swift-Code') ?>: <?php echo $swift ?><br/>
+    <?php if ($swift = $block->getImprintValue('swift')): ?>
+        <?= $block->escapeHtml(__('BIC/Swift-Code')) ?>: <?= $block->escapeHtml($swift) ?><br/>
     <?php endif ?>
-    <?php if ($iban = $this->getImprintValue('iban')): ?>
-        <?php echo __('IBAN') ?>: <?php echo $iban ?><br/>
+    <?php if ($iban = $block->getImprintValue('iban')): ?>
+        <?= $block->escapeHtml(__('IBAN')) ?>: <?= $block->escapeHtml($iban) ?><br/>
     <?php endif ?>
-    <?php if ($clearing = $this->getImprintValue('clearing')): ?>
-        <?php echo __('Clearing') ?>: <?php echo $clearing ?><br/>
+    <?php if ($clearing = $block->getImprintValue('clearing')): ?>
+        <?= $block->escapeHtml(__('Clearing')) ?>: <?= $block->escapeHtml($clearing) ?><br/>
     <?php endif ?>
 <?php endif ?>
-

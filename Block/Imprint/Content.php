@@ -95,7 +95,7 @@ class Content extends \Magento\Framework\View\Element\Template
      */
     public function getEmail($antispam = false)
     {
-        $email = $this->getImprintValue('email');
+        $email = $this->escapeHtml($this->getImprintValue('email'));
         if (!$email) {
             return '';
         }
