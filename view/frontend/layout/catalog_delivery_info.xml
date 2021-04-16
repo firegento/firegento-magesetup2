@@ -7,7 +7,7 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <block class="FireGento\MageSetup\Block\Product\Delivery" name="product.info.delivery" template="FireGento_MageSetup::product/list/delivery.phtml">
+        <block class="FireGento\MageSetup\Block\Product\Delivery" name="product.info.delivery" template="Magento_Catalog::product/view/attribute.phtml">
             <arguments>
                 <argument name="at_call" xsi:type="string">getDeliveryTime</argument>
                 <argument name="at_code" xsi:type="string">delivery_time</argument>
