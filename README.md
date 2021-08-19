@@ -127,5 +127,5 @@ Licence
 
 Copyright
 ---------
-(c) 2015 FireGento Team
+(c) 2015-2021 FireGento Team
 
