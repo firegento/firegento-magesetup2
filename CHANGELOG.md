@@ -13,6 +13,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Removed
 - ...
 
+## [v1.0.0] - 2021-08-19
+### Fixed
+- fatal error on all frontend pages [#199](https://github.com/firegento/firegento-magesetup2/issues/199) (thanks @sprankhub)
+
+### Added
+- support for Magento 2.4.3 [#200](https://github.com/firegento/firegento-magesetup2/pull/200) (thanks @sprankhub)
+
+### Removed
+- support for Magento < 2.4.3 [#200](https://github.com/firegento/firegento-magesetup2/pull/200) (thanks @sprankhub)
+
 ## [v0.4.1] - 2020-11-04
 ### Fixed
 - Registry key already exists error for HTTPS sites [#186](https://github.com/firegento/firegento-magesetup2/pull/186) (thanks @sprankhub)
