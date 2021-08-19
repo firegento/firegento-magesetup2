@@ -26,8 +26,10 @@ Missing your country? Please open a pull request with the necessary configuratio
 
 Requirements
 ------------
-- PHP >= 7.2
-- Magento 2.3.* / 2.4.*
+- PHP >= 7.3
+- Magento >= 2.4.3
+
+If you are using Magento < 2.4.3, you can still use version `0.4.*`.
 
 Installation
 ------------
@@ -127,5 +129,5 @@ Licence
 
 Copyright
 ---------
-(c) 2015 FireGento Team
+(c) 2015-2021 FireGento Team
 
