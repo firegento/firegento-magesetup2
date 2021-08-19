@@ -52,8 +52,8 @@
         <plugin name="mageSetupEmailAdminhtmlTemplateEditForm" type="FireGento\MageSetup\Plugin\Email\Block\Adminhtml\Template\Edit\Form"/>
     </type>
 
-    <!-- Email variables for versions >= M2.3.0-->
-    <type name="Magento\Variable\Model\Source\Variables">
+    <!-- Email variables for versions >= 2.4.3-->
+    <type name="Magento\Variable\Model\Config\Structure\AvailableVariables">
         <arguments>
             <argument name="configPaths" xsi:type="array">
                 <item name="general/imprint" xsi:type="array">
