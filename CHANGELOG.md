@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ### Removed
 - ...
 
+## [v1.1.0] - 2022-03-31
+
+### Added
+- support for PHP 8.1 [#207](https://github.com/firegento/firegento-magesetup2/pull/207) (thanks @domeglic)
+
 ## [v1.0.0] - 2021-08-19
 ### Fixed
 - fatal error on all frontend pages [#199](https://github.com/firegento/firegento-magesetup2/issues/199) (thanks @sprankhub)
