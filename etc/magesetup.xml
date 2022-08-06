@@ -5,7 +5,7 @@
  * See LICENSE.md bundled with this module for license details.
  */
 -->
-<magesetup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:FireGento/MageSetup/etc/magesetup.xsd">
+<magesetup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:FireGento_MageSetup:etc/magesetup.xsd">
     <setup name="default">
         <system_config>
             <!-- general config -->
