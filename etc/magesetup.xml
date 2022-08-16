@@ -194,7 +194,7 @@
             </revocation_form>
         </blocks>
     </setup>
-	<setup name="at">
+    <setup name="at">
         <system_config>
             <general__country__default>AT</general__country__default>
             <general__locale__weight_unit>kgs</general__locale__weight_unit>
