@@ -42,7 +42,6 @@ Please go to the Magento2 root directory and run the following commands in the s
 composer require firegento/magesetup2
 bin/magento module:enable FireGento_MageSetup
 bin/magento setup:upgrade
-bin/magento magesetup:setup:run <countrycode>
 ```
 
 ### Manually
@@ -52,9 +51,38 @@ Please create the directory *app/code/FireGento/MageSetup* and copy the files fr
 ```
 bin/magento module:enable FireGento_MageSetup
 bin/magento setup:upgrade
-bin/magento magesetup:setup:run <countrycode>
 ```
 
+Usage
+-----
+
+```bash
+bin/magento magesetup:setup:run <country_code> <processors>
+```
+
+Parameters:
+* `<country_code>` is a required argument. Please find available country codes in country list above (e.g. `de` for Germany).
+* `<processors>` is an optional argument. If no processor code is given, all processors will be run.
+
+Available processors:
+* `agreements` for setting up the terms and conditions
+* `cms` for setting up all required cms pages and cms blocks
+* `systemConfig` for setting up base configuration values.
+* `tax` for setting up the base tax rules / tax rates.
+
+Example:
+
+Run all processors for Germany:
+
+```bash
+bin/magento magesetup:setup:run de
+```
+
+Only run `agreements` and `cms` for Germany:
+
+```bash
+bin/magento magesetup:setup:run de agreements cms
+```
 
 Support
 -------
@@ -122,6 +150,7 @@ Maintainer
 * @sprankhub
 * @frostblogNet
 * @Schrank
+* @therouv
 
 Licence
 -------
@@ -129,5 +158,4 @@ Licence
 
 Copyright
 ---------
-(c) 2015-2021 FireGento Team
-
+(c) 2015-2022 FireGento Team
