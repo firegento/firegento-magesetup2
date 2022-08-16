@@ -14,6 +14,7 @@ class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttribute
      * @var \Magento\Catalog\Api\ProductAttributeRepository
      */
     private $productAttributeRepository;
+
     /**
      * @var \Magento\Framework\Api\SearchCriteriaBuilder
      */
@@ -41,15 +42,16 @@ class GetVisibleCheckoutAttributesService implements GetVisibleCheckoutAttribute
     public function execute()
     {
         $searchCriteria = $this->searchCriteriaBuilder->addFilter('is_visible_on_checkout', 1)->create();
+
         $attributes = $this->productAttributeRepository->getList($searchCriteria);
+        if ($attributes->getTotalCount() === 0) {
+            return [];
+        }
 
         $options = [];
-        if (count($attributes->getItems()) > 0) {
-            foreach ($attributes->getItems() as $attribute) {
-                /** @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute $attribute */
-
-                $options[$attribute->getAttributeCode()] = $attribute;
-            }
+        foreach ($attributes->getItems() as $attribute) {
+            /** @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute $attribute */
+            $options[$attribute->getAttributeCode()] = $attribute;
         }
 
         return $options;
