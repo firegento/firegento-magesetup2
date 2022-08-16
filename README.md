@@ -84,6 +84,12 @@ Only run `agreements` and `cms` for Germany:
 bin/magento magesetup:setup:run de agreements cms
 ```
 
+Hyvä Themes
+-----------
+
+If you're using [Hyvä](https://hyva.io/) as frontend in your Magento 2 instance, please install the corresponding
+compatibility module. You can find all detailed installation instructions in the compatibility module repository.
+
 Support
 -------
 If you encounter any problems or bugs, please create an issue on [GitHub](https://github.com/firegento/firegento-magesetup2/issues).
