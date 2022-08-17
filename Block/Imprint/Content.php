@@ -138,10 +138,10 @@ JS;
      * Get Imprint Value
      *
      * @param string $field
-     * @return mixed
+     * @return string
      */
     public function getImprintValue($field)
     {
-        return $this->scopeConfig->getValue(self::XML_PATH_IMPRINT . $field, ScopeInterface::SCOPE_STORE);
+        return (string) $this->scopeConfig->getValue(self::XML_PATH_IMPRINT . $field, ScopeInterface::SCOPE_STORE);
     }
 }
