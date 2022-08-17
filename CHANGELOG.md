@@ -18,6 +18,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 - ...
 
+## [v1.1.2] - 2022-08-17
+
+### Changed
+
+- PHP 8.1 compatibility: Prevent "trim(): Passing null to parameter 1 of type string is deprecated" error (thanks @therouv)
+
 ## [v1.1.1] - 2022-08-16
 
 ### Added
