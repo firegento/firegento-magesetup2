@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
         ports:
@@ -24,12 +24,19 @@ jobs:
         options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v2
-      - name: M2 Integration Tests with Magento 2 Version 2.4.3 (PHP 7.3)
-        uses: extdn/github-actions-m2/magento-integration-tests/7.3@master
+      - name: M2 Integration Tests with Magento 2 Version 2.4.5 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
         with:
             module_name: FireGento_MageSetup
             composer_name: firegento/magesetup2
-            ce_version: '2.4.3'
+            ce_version: '2.4.5'
+      - uses: actions/checkout@v2
+      - name: M2 Integration Tests with Magento 2 Version 2.4.4 (PHP 8.1)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.1@master
+        with:
+            module_name: FireGento_MageSetup
+            composer_name: firegento/magesetup2
+            ce_version: '2.4.4'       
       - uses: actions/checkout@v2
       - name: M2 Integration Tests with Magento 2 Version 2.4.3 (PHP 7.4)
         uses: extdn/github-actions-m2/magento-integration-tests/7.4@master
