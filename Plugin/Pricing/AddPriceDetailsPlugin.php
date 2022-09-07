@@ -66,7 +66,7 @@ class AddPriceDetailsPlugin
      *
      * @return bool
      */
-    private function shouldAddPriceDetails($result, $priceCode, SaleableInterface $saleableItem): bool
+    public function shouldAddPriceDetails($result, $priceCode, SaleableInterface $saleableItem): bool
     {
         if (!$this->helper->getConfigValue(self::ENABLED_DISPLAY_BELOW_PRICE_XML)) {
             return false;
