@@ -18,6 +18,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 - ...
 
+## [v1.2.1] - 2023-03-20
+
+### Added
+- PHP 8.2 compatibility (thanks @aweb3r)
+
 ## [v1.2.0] - 2022-09-07
 
 ### Changed
