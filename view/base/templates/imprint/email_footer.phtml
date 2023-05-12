@@ -32,7 +32,7 @@
     <?php endif ?>
     <?php if (strlen(trim($block->getImprintValue('web')))): ?>
         <?= $block->escapeHtml(__('Web')) ?>:
-        <a href="http://<?= $block->escapeHtmlAttr($block->getImprintValue('web')) ?>"
+        <a href="https://<?= $block->escapeHtmlAttr($block->getImprintValue('web')) ?>"
            title="<?= $block->escapeHtmlAttr($block->getImprintValue('company_first')) ?>">
             <?= $block->escapeHtml($block->getImprintValue('web')) ?>
         </a><br/>
