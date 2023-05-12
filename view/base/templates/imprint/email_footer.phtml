@@ -8,89 +8,89 @@
  * @var $block \FireGento\MageSetup\Block\Imprint\Content
  */
 ?>
-<p><strong><?= $block->escapeHtml($block->getShopName()) ?></strong></p>
+<p><strong><?= $block->escapeHtml($block->getImprintValue('shop_name')) ?></strong></p>
 
 <p>
-    <?= $block->escapeHtml($block->getCompanyFirst()) ?><br/>
-    <?php if (strlen(trim($block->getCompanySecond()))): ?>
-        <?= $block->escapeHtml($block->getCompanySecond()) ?><br/>
+    <?= $block->escapeHtml($block->getImprintValue('company_first')) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('company_second')))): ?>
+        <?= $block->escapeHtml($block->getImprintValue('company_second')) ?><br/>
     <?php endif ?>
-    <?= $block->escapeHtml($block->getStreet()) ?><br/>
-    <?= $block->escapeHtml($block->getZip()) ?> <?= $block->escapeHtml($block->getCity()) ?>
+    <?= $block->escapeHtml($block->getImprintValue('street')) ?><br/>
+    <?= $block->escapeHtml($block->getImprintValue('zip')) ?> <?= $block->escapeHtml($block->getImprintValue('city')) ?>
 </p>
 
 <p>
-    <?php if (strlen(trim($block->getTelephone()))): ?>
-        <?= $block->escapeHtml(__('Telephone')) ?>: <?= $block->escapeHtml($block->getTelephone()) ?>
-        <?php if (strlen(trim($block->getTelephoneAdditional()))): ?>
-            (<?= $block->escapeHtml($block->getTelephoneAdditional()) ?>)
+    <?php if (strlen(trim($block->getImprintValue('telephone')))): ?>
+        <?= $block->escapeHtml(__('Telephone')) ?>: <?= $block->escapeHtml($block->getImprintValue('telephone')) ?>
+        <?php if (strlen(trim($block->getImprintValue('telephone_additional')))): ?>
+            (<?= $block->escapeHtml($block->getImprintValue('telephone_additional')) ?>)
         <?php endif ?>
         <br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getFax()))): ?>
-        <?= $block->escapeHtml(__('Fax')) ?>: <?= $block->escapeHtml($block->getFax()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('fax')))): ?>
+        <?= $block->escapeHtml(__('Fax')) ?>: <?= $block->escapeHtml($block->getImprintValue('fax')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getWeb()))): ?>
+    <?php if (strlen(trim($block->getImprintValue('web')))): ?>
         <?= $block->escapeHtml(__('Web')) ?>:
-        <a href="http://<?= $block->escapeHtmlAttr($block->getWeb()) ?>"
-           title="<?= $block->escapeHtmlAttr($block->getCompanyFirst()) ?>">
-            <?= $block->escapeHtml($block->getWeb()) ?>
+        <a href="http://<?= $block->escapeHtmlAttr($block->getImprintValue('web')) ?>"
+           title="<?= $block->escapeHtmlAttr($block->getImprintValue('company_first')) ?>">
+            <?= $block->escapeHtml($block->getImprintValue('web')) ?>
         </a><br/>
     <?php endif ?>
     <?= $block->escapeHtml(__('E-Mail')) ?>: <?= /* @noEscape */ $block->getEmail(false) ?>
 </p>
 
 <p>
-    <?php if (strlen(trim($block->getFinancialOffice()))): ?>
-        <?= $block->escapeHtml(__('Financial office')) ?>: <?= $block->escapeHtml($block->getFinancialOffice()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('financial_office')))): ?>
+        <?= $block->escapeHtml(__('Financial office')) ?>: <?= $block->escapeHtml($block->getImprintValue('financial_office')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getTaxNumber()))): ?>
-        <?= $block->escapeHtml(__('Tax number')) ?>: <?= $block->escapeHtml($block->getTaxNumber()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('tax_number')))): ?>
+        <?= $block->escapeHtml(__('Tax number')) ?>: <?= $block->escapeHtml($block->getImprintValue('tax_number')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getVatId()))): ?>
-        <?= $block->escapeHtml(__('VAT-ID')) ?>: <?= $block->escapeHtml($block->getVatId()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('vat_id')))): ?>
+        <?= $block->escapeHtml(__('VAT-ID')) ?>: <?= $block->escapeHtml($block->getImprintValue('vat_id')) ?><br/>
     <?php endif ?>
 </p>
 
 <p>
-    <?php if (strlen(trim($block->getCeo()))): ?>
-        <?= $block->escapeHtml(__('CEO')) ?>: <?= $block->escapeHtml($block->getCeo()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('ceo')))): ?>
+        <?= $block->escapeHtml(__('CEO')) ?>: <?= $block->escapeHtml($block->getImprintValue('ceo')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getOwner()))): ?>
-        <?= $block->escapeHtml(__('Owner')) ?>: <?= $block->escapeHtml($block->getOwner()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('owner')))): ?>
+        <?= $block->escapeHtml(__('Owner')) ?>: <?= $block->escapeHtml($block->getImprintValue('owner')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getCourt()))): ?>
-        <?= $block->escapeHtml(__('Register court')) ?>: <?= $block->escapeHtml($block->getCourt()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('court')))): ?>
+        <?= $block->escapeHtml(__('Register court')) ?>: <?= $block->escapeHtml($block->getImprintValue('court')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getRegisterNumber()))): ?>
-        <?= $block->escapeHtml(__('Register number')) ?>: <?= $block->escapeHtml($block->getRegisterNumber()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('register_number')))): ?>
+        <?= $block->escapeHtml(__('Register number')) ?>: <?= $block->escapeHtml($block->getImprintValue('register_number')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getBusinessRules()))): ?>
+    <?php if (strlen(trim($block->getImprintValue('business_rules')))): ?>
         <?= $block->escapeHtml(__('Reference for business rules')) ?>:
-        <?= $block->escapeHtml($block->getBusinessRules()) ?>
+        <?= $block->escapeHtml($block->getImprintValue('business_rules')) ?>
     <?php endif ?>
 </p>
 
 <p>
-    <?php if (strlen(trim($block->getBankAccountOwner()))): ?>
-        <?= $block->escapeHtml(__('Account owner')) ?>: <?= $block->escapeHtml($block->getBankAccountOwner()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('bank_account_owner')))): ?>
+        <?= $block->escapeHtml(__('Account owner')) ?>: <?= $block->escapeHtml($block->getImprintValue('bank_account_owner')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getBankAccount()))): ?>
-        <?= $block->escapeHtml(__('Account')) ?>: <?= $block->escapeHtml($block->getBankAccount()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('bank_account')))): ?>
+        <?= $block->escapeHtml(__('Account')) ?>: <?= $block->escapeHtml($block->getImprintValue('bank_account')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getBankCodeNumber()))): ?>
-        <?= $block->escapeHtml(__('Bank number')) ?>: <?= $block->escapeHtml($block->getBankCodeNumber()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('bank_code_number')))): ?>
+        <?= $block->escapeHtml(__('Bank number')) ?>: <?= $block->escapeHtml($block->getImprintValue('bank_code_number')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getBankName()))): ?>
-        <?= $block->escapeHtml(__('Bank name')) ?>: <?= $block->escapeHtml($block->getBankName()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('bank_name')))): ?>
+        <?= $block->escapeHtml(__('Bank name')) ?>: <?= $block->escapeHtml($block->getImprintValue('bank_name')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getSwift()))): ?>
-        <?= $block->escapeHtml(__('SWIFT')) ?>: <?= $block->escapeHtml($block->getSwift()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('swift')))): ?>
+        <?= $block->escapeHtml(__('SWIFT')) ?>: <?= $block->escapeHtml($block->getImprintValue('swift')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getIban()))): ?>
-        <?= $block->escapeHtml(__('IBAN')) ?>: <?= $block->escapeHtml($block->getIban()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('iban')))): ?>
+        <?= $block->escapeHtml(__('IBAN')) ?>: <?= $block->escapeHtml($block->getImprintValue('iban')) ?><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getClearing()))): ?>
-        <?= $block->escapeHtml(__('Clearing')) ?>: <?= $block->escapeHtml($block->getClearing()) ?><br/>
+    <?php if (strlen(trim($block->getImprintValue('clearing')))): ?>
+        <?= $block->escapeHtml(__('Clearing')) ?>: <?= $block->escapeHtml($block->getImprintValue('clearing')) ?><br/>
     <?php endif ?>
 </p>
