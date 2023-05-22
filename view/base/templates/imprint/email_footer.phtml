@@ -39,8 +39,8 @@
             <?= $block->escapeHtml($block->getImprintValue('web')) ?>
         </a><br/>
     <?php endif ?>
-    <?php if (strlen(trim($block->getImprintValue('web')))): ?>
-        <?= $block->escapeHtml(__('E-Mail')) ?>: <?= /* @noEscape */ $block->getEmail(false) ?>
+    <?php if (strlen(trim($block->getImprintValue('email')))): ?>
+        <?= $block->escapeHtml(__('E-Mail')) ?>: <?= $block->escapeHtml($block->getImprintValue('email')) ?>
     <?php endif ?>
 </p>
 
