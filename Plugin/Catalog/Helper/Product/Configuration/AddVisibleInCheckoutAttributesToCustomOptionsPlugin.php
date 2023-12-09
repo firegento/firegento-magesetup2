@@ -57,7 +57,7 @@ class AddVisibleInCheckoutAttributesToCustomOptionsPlugin
             $attributeFrontend = $attribute->getFrontend();
             $value = $attributeFrontend->getValue($product);
 
-            if ($item instanceof AbstractItem && $product->getTypeId() == 'configurable') {
+            if ($item instanceof AbstractItem && $product->getTypeId() === 'configurable') {
                 if (in_array($attribute->getId(), $configurableAttributes) || !count($item->getChildren())) {
                     // attribute is a configurable attribute. Magento will print it separately
                     // or item has no children (but this should never occur)
