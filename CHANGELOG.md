@@ -18,6 +18,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 - ...
 
+## [v1.2.2] - 2024-08-08
+
+### Added
+- PHP 8.3 compatibility (thanks @jg-development and @sprankhub)
+
+### Changed
+- Update GitHub Actions (thanks @sprankhub)
+
 ## [v1.2.1] - 2023-03-20
 
 ### Added
@@ -26,7 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [v1.2.0] - 2022-09-07
 
 ### Changed
-- Make shouldAddPriceDetails public for customizations ( thanks @Cloudy777)
+- Make shouldAddPriceDetails public for customizations (thanks @Cloudy777)
 - PHP 8.1 compatibility: add integration tests (thanks @frostblogNet)
 
 ## [v1.1.2] - 2022-08-17
