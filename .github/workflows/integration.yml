@@ -1,5 +1,5 @@
 name: ExtDN M2 Integration Tests
-on: [ pull_request ]
+on: [ push, pull_request ]
 
 jobs:
   integration-tests-245:
