@@ -18,6 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 - ...
 
+## [v1.2.3] - 2025-05-24
+
+### Added
+- PHP 8.4 compatibility (thanks @sprankhub)
+
+### Changed
+- Update GitHub Actions (thanks @sprankhub)
+- Update CH tax rates (thanks @sprankhub)
+
 ## [v1.2.2] - 2024-08-08
 
 ### Added
