@@ -42,8 +42,13 @@ class AddVisibleInCheckoutAttributesToCustomOptionsPlugin
     public function afterGetCustomOptions(Configuration $configuration, array $customOptions, ItemInterface $item)
     {
         $attributes = $this->getVisibleCheckoutAttributesService->execute();
-        foreach ($attributes as $attribute) {
-            $value = $attribute->getFrontend()->getValue($item->getProduct());
+        foreach ($attributes as $attributeCode => $attribute) {
+            if ($attributeCode === 'sku') {
+                $value = $item->getProduct()->getSku();
+            } else {
+                $value = $attribute->getFrontend()->getValue($item->getProduct());
+            }
+
             if (!$value) {
                 continue;
             }
