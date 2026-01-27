@@ -84,7 +84,10 @@ class AddVisibleInCheckoutAttributesToCustomOptionsPlugin
                 $children = $item->getChildren();
                 if ($children[0] instanceof AbstractItem && $children[0]->getProduct()) {
                     // fetch the attribute value of the child
-                    $value = $attributeFrontend->getValue($children[0]->getProduct()) ?: $value;
+                    $childValue = $attributeFrontend->getValue($children[0]->getProduct());
+                    // Be careful: "0" is a valid value for setting a yes/no attribute to false, so the check must be
+                    // against explicit null
+                    $value = $childValue === null ? $value : $childValue;
                 }
             }
 
