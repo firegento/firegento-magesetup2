@@ -107,7 +107,7 @@ jobs:
         env:
           'discovery.type': single-node
           'plugins.security.disabled': 'true'
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: 'admin-Magento1234'
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: 'F1reGento!Setup'
           ES_JAVA_OPTS: "-Xms64m -Xmx512m"
         options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
