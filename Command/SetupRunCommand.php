@@ -110,7 +110,7 @@ class SetupRunCommand extends Command
      * @param OutputInterface $output
      * @return int Non zero if invalid type, 0 otherwise
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $area = $this->appState->getAreaCode();

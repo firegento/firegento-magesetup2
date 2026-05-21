@@ -23,13 +23,13 @@ jobs:
           ES_JAVA_OPTS: "-Xms64m -Xmx512m"
         options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v5
-      - name: M2 Integration Tests with Magento 2 Version 2.4.6-p13 (PHP 8.2)
+      - uses: actions/checkout@v6
+      - name: M2 Integration Tests with Magento 2 Version 2.4.6-p15 (PHP 8.2)
         uses: extdn/github-actions-m2/magento-integration-tests/8.2@master
         with:
           module_name: FireGento_MageSetup
           composer_name: firegento/magesetup2
-          magento_version: '2.4.6-p13'
+          magento_version: '2.4.6-p15'
           composer_version: '2'
   integration-tests-247:
     name: Magento 2 Integration Tests (Magento 2.4.7)
@@ -52,13 +52,13 @@ jobs:
           ES_JAVA_OPTS: "-Xms64m -Xmx512m"
         options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v5
-      - name: M2 Integration Tests with Magento 2 Version 2.4.7-p8 (PHP 8.3)
+      - uses: actions/checkout@v6
+      - name: M2 Integration Tests with Magento 2 Version 2.4.7-p10 (PHP 8.3)
         uses: extdn/github-actions-m2/magento-integration-tests/8.3@master
         with:
           module_name: FireGento_MageSetup
           composer_name: firegento/magesetup2
-          magento_version: '2.4.7-p8'
+          magento_version: '2.4.7-p10'
           composer_version: '2'
   integration-tests-248:
     name: Magento 2 Integration Tests (Magento 2.4.8)
@@ -81,10 +81,41 @@ jobs:
           ES_JAVA_OPTS: "-Xms64m -Xmx512m"
         options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - name: M2 Integration Tests with Magento 2 Version 2.4.8-p3 (PHP 8.4)
+      - uses: actions/checkout@v6
+      - name: M2 Integration Tests with Magento 2 Version 2.4.8-p5 (PHP 8.4)
         uses: extdn/github-actions-m2/magento-integration-tests/8.4@master
         with:
           module_name: FireGento_MageSetup
           composer_name: firegento/magesetup2
-          magento_version: '2.4.8-p3'
+          magento_version: '2.4.8-p5'
+          composer_version: '2'
+  integration-tests-249:
+    name: Magento 2 Integration Tests (Magento 2.4.9)
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --tmpfs /tmp:rw --tmpfs /var/lib/mysql:rw --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      es:
+        image: docker.io/wardenenv/opensearch:3.4
+        ports:
+          - 9200:9200
+        env:
+          'discovery.type': single-node
+          'plugins.security.disabled': 'true'
+          OPENSEARCH_INITIAL_ADMIN_PASSWORD: 'admin-Magento1234'
+          ES_JAVA_OPTS: "-Xms64m -Xmx512m"
+        options: --health-cmd="curl localhost:9200/_cluster/health?wait_for_status=yellow&timeout=60s" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v6
+      - name: M2 Integration Tests with Magento 2 Version 2.4.9 (PHP 8.5)
+        uses: extdn/github-actions-m2/magento-integration-tests/8.5@master
+        with:
+          module_name: FireGento_MageSetup
+          composer_name: firegento/magesetup2
+          magento_version: '2.4.9'
           composer_version: '2'
