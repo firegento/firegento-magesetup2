@@ -4,19 +4,9 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
-## [Unreleased]
+## Newer Versions
 
-### Added
-
-- ...
-
-### Changed
-
-- ...
-
-### Removed
-
-- ...
+See [GitHub releases](https://github.com/firegento/firegento-magesetup2/releases).
 
 ## [v1.2.3] - 2025-05-24
 
