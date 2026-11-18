@@ -35,17 +35,25 @@ class Config
     private $pageFactory;
 
     /**
+     * @var \Magento\Cms\Model\ResourceModel\Page
+     */
+    private $pageResource;
+
+    /**
      * Config constructor.
      *
      * @param \Magento\Framework\App\Helper\Context $context
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param PageFactory $pageFactory
+     * @param \Magento\Cms\Model\ResourceModel\Page $pageResource
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        PageFactory $pageFactory
+        PageFactory $pageFactory,
+        \Magento\Cms\Model\ResourceModel\Page $pageResource
     ) {
+        $this->pageResource = $pageResource;
         $this->context = $context;
         $this->storeManager = $storeManager;
         $this->scopeConfig = $context->getScopeConfig();
@@ -103,7 +111,7 @@ class Config
         /** @var \Magento\Cms\Model\Page $page */
         $page = $this->pageFactory->create();
         $page->setStoreId($this->storeManager->getStore()->getId());
-        $page->load($identifier, 'identifier');
+        $this->pageResource->load($page, $identifier, 'identifier');
 
         if (!$page->getId()) {
             return false;

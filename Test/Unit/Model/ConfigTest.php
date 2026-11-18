@@ -41,8 +41,7 @@ class ConfigTest extends TestCase
         $readerMock = $this->createMock(\FireGento\MageSetup\Model\Config\Reader::class);
         $readerMock->expects(self::once())->method('read')->willReturn($readerData);
 
-        $cacheMock = $this->getMockBuilder(\Magento\Framework\Config\CacheInterface::class)
-            ->disableOriginalConstructor()->getMockForAbstractClass();
+        $cacheMock = $this->createMock(\Magento\Framework\Config\CacheInterface::class);
 
         $objectManager = new ObjectManager($this);
 
@@ -53,26 +52,17 @@ class ConfigTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function getCountry()
+    public function testGetCountry()
     {
         self::assertEquals('de', $this->config->getCountry());
     }
 
-    /**
-     * @test
-     */
-    public function getAllowedCountries()
+    public function testGetAllowedCountries()
     {
         self::assertEquals([1 => 'de', 2 => 'at'], $this->config->getAllowedCountries());
     }
 
-    /**
-     * @test
-     */
-    public function getSystemConfig()
+    public function testGetSystemConfig()
     {
         $expectedResult = [
             'customer__create_account__confirm' => 0,

@@ -63,7 +63,6 @@ class Details extends \Magento\Framework\View\Element\Template
         \Magento\Tax\Helper\Data $taxHelper,
         array $data = []
     ) {
-        $this->storeManager = $context->getStoreManager();
         $this->magesetupConfig = $magesetupConfig;
         $this->customerSession = $customerSession;
         $this->groupRepository = $groupRepository;
@@ -162,7 +161,7 @@ class Details extends \Magento\Framework\View\Element\Template
         if ($taxPercent === null) {
             $productTaxClassId = $this->saleableItem->getTaxClassId();
             if ($productTaxClassId) {
-                $store = $this->storeManager->getStore();
+                $store = $this->_storeManager->getStore();
                 $groupId = $this->customerSession->getCustomerGroupId();
                 $group = $this->groupRepository->getById($groupId);
                 $customerTaxClassId = $group->getTaxClassId();
