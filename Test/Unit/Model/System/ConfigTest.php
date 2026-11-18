@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class ConfigTest extends TestCase
 {
     /**
-     * @var \FireGento\MageSetup\Model\Config
+     * @var \FireGento\MageSetup\Model\System\Config
      */
     private $config;
 
@@ -22,12 +22,12 @@ class ConfigTest extends TestCase
         parent::setUp();
 
         $scopeConfigMock = $this->createMock(ScopeConfigInterface::class);
-        $scopeConfigMock->expects($this->any())->method('getValue')
+        $scopeConfigMock->method('getValue')
             ->with(self::equalTo('general/country/eu_countries'))
             ->willReturn('DE,AT');
 
-        $context = $this->createMock(Context::class, [], [], '', false);
-        $context->expects(self::any())->method('getScopeConfig')->willReturn($scopeConfigMock);
+        $context = $this->createMock(Context::class);
+        $context->method('getScopeConfig')->willReturn($scopeConfigMock);
         /** @var Context $context */
 
         $objectManager = new ObjectManager($this);
@@ -40,19 +40,13 @@ class ConfigTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function isCountryInEu()
+    public function testIsCountryInEu()
     {
         self::assertTrue($this->config->isCountryInEu('DE'));
         self::assertFalse($this->config->isCountryInEu('CH'));
     }
 
-    /**
-     * @test
-     */
-    public function getEuCountries()
+    public function testGetEuCountries()
     {
         self::assertEquals(['DE', 'AT'], $this->config->getEuCountries());
     }

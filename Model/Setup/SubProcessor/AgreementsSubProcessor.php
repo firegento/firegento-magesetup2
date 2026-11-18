@@ -34,19 +34,27 @@ class AgreementsSubProcessor extends AbstractSubProcessor
     private $agreementsRepository;
 
     /**
+     * @var \Magento\CheckoutAgreements\Model\ResourceModel\Agreement
+     */
+    private $agreementResource;
+
+    /**
      * AgreementsSubProcessor constructor.
      *
      * @param WriterInterface $configWriter
      * @param \Magento\Framework\Module\Dir\Reader $moduleReader
      * @param \Magento\CheckoutAgreements\Model\AgreementFactory $agreementFactory
      * @param \Magento\CheckoutAgreements\Model\CheckoutAgreementsRepository $agreementsRepository
+     * @param \Magento\CheckoutAgreements\Model\ResourceModel\Agreement $agreementResource
      */
     public function __construct(
         WriterInterface $configWriter,
         \Magento\Framework\Module\Dir\Reader $moduleReader,
         \Magento\CheckoutAgreements\Model\AgreementFactory $agreementFactory,
-        \Magento\CheckoutAgreements\Model\CheckoutAgreementsRepository $agreementsRepository
+        \Magento\CheckoutAgreements\Model\CheckoutAgreementsRepository $agreementsRepository,
+        \Magento\CheckoutAgreements\Model\ResourceModel\Agreement $agreementResource
     ) {
+        $this->agreementResource = $agreementResource;
         $this->moduleReader = $moduleReader;
         $this->agreementFactory = $agreementFactory;
         $this->agreementsRepository = $agreementsRepository;
@@ -107,7 +115,8 @@ class AgreementsSubProcessor extends AbstractSubProcessor
             // Create agreement
             /** @var \Magento\CheckoutAgreements\Model\Agreement $agreement */
             $agreement = $this->agreementFactory->create();
-            $agreement = $agreement->setStoreId(0)->load($name, 'name');
+            $agreement->setStoreId(0);
+            $this->agreementResource->load($agreement, $name, 'name');
             if (!$agreement->getId()) {
                 $agreement = $this->agreementFactory->create();
             }

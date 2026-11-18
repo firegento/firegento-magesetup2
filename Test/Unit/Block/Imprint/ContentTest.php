@@ -5,10 +5,12 @@
  * See LICENSE.md bundled with this module for license details.
  */
 
-namespace FireGento\MageSetup\Unit\Test\Block\Imprint;
+namespace FireGento\MageSetup\Test\Unit\Block\Imprint;
 
 use FireGento\MageSetup\Block\Imprint\Content;
 use Magento\Directory\Api\CountryInformationAcquirerInterface;
+use Magento\Directory\Api\Data\CountryInformationInterface;
+use Magento\Framework\Escaper;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\View\Element\Template\Context;
@@ -33,19 +35,12 @@ class ContentTest extends TestCase
     {
         parent::setUp();
 
-        $this->countryInformationAcquirerMock = $this
-            ->getMockBuilder(CountryInformationAcquirerInterface::class)
-            ->disableOriginalConstructor()
-            ->setMethods([])
-            ->getMockForAbstractClass();
+        $this->countryInformationAcquirerMock = $this->createMock(CountryInformationAcquirerInterface::class);
 
         $this->contextMock = $this->createMock(Context::class);
+        $this->contextMock->method('getEscaper')->willReturn(new Escaper());
 
-        $this->scopeConfigMock = $this
-            ->getMockBuilder(ScopeConfigInterface::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['getValue'])
-            ->getMockForAbstractClass();
+        $this->scopeConfigMock = $this->createMock(ScopeConfigInterface::class);
 
         $this->contextMock
             ->expects($this->atLeastOnce())
@@ -65,24 +60,20 @@ class ContentTest extends TestCase
         $countryName = "Germany";
 
         $this->scopeConfigMock
-            ->expects($this->at(0))
+            ->expects($this->once())
             ->method('getValue')
             ->willReturn('DE');
 
-        /** @var CountryInformationAcquirerInterface|MockObject $countryInformationAcquirerInterfaceMock */
-        $countryInformationAcquirerInterfaceMock = $this
-            ->getMockBuilder(CountryInformationAcquirerInterface::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['getFullNameLocale'])
-            ->getMockForAbstractClass();
+        /** @var CountryInformationInterface|MockObject $countryInformationAcquirerInterfaceMock */
+        $countryInformationAcquirerInterfaceMock = $this->createMock(CountryInformationInterface::class);
 
         $countryInformationAcquirerInterfaceMock
-            ->expects($this->at(0))
+            ->expects($this->once())
             ->method('getFullNameLocale')
             ->willReturn($countryName);
 
         $this->countryInformationAcquirerMock
-            ->expects($this->at(0))
+            ->expects($this->once())
             ->method('getCountryInfo')
             ->willReturn($countryInformationAcquirerInterfaceMock);
 
@@ -93,7 +84,7 @@ class ContentTest extends TestCase
     {
         $baseUrl = "http://www.test.com";
         $this->scopeConfigMock
-            ->expects($this->at(0))
+            ->expects($this->once())
             ->method('getValue')
             ->willReturn($baseUrl);
 
@@ -103,18 +94,13 @@ class ContentTest extends TestCase
     public function testGetEmail(): void
     {
         $email = "max@muster.de";
-        # empty email case 1
+        $this->scopeConfigMock->expects($this->exactly(3))
+            ->method('getValue')
+            ->with('general/imprint/email', \Magento\Store\Model\ScopeInterface::SCOPE_STORE)
+            ->willReturnOnConsecutiveCalls('', $email, $email);
+
         self::assertSame('', $this->sut->getEmail());
-        # antispam true
-        $this->scopeConfigMock
-            ->expects(self::at(0))
-            ->method('getValue')
-            ->willReturn($email);
         self::assertSame($email, $this->sut->getEmail(false));
-        $this->scopeConfigMock
-            ->expects($this->at(0))
-            ->method('getValue')
-            ->willReturn($email);
 
         $expected = '<a href="#" onclick="toRecipient();">max<span class="no-display">nospamplease'
             . '</span>@<span class="no-display">nospamplease</span>muster.de</a><script>function '

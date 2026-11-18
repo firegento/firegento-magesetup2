@@ -48,6 +48,16 @@ class CmsSubProcessor extends AbstractSubProcessor
     private $blockRepository;
 
     /**
+     * @var \Magento\Cms\Model\ResourceModel\Page
+     */
+    private $pageResource;
+
+    /**
+     * @var \Magento\Cms\Model\ResourceModel\Block
+     */
+    private $blockResource;
+
+    /**
      * CmsSubProcessor constructor.
      *
      * @param WriterInterface $configWriter
@@ -56,6 +66,8 @@ class CmsSubProcessor extends AbstractSubProcessor
      * @param PageRepository $pageRepository
      * @param BlockFactory $blockFactory
      * @param BlockRepository $blockRepository
+     * @param \Magento\Cms\Model\ResourceModel\Page $pageResource
+     * @param \Magento\Cms\Model\ResourceModel\Block $blockResource
      */
     public function __construct(
         WriterInterface $configWriter,
@@ -63,8 +75,12 @@ class CmsSubProcessor extends AbstractSubProcessor
         PageFactory $pageFactory,
         PageRepository $pageRepository,
         BlockFactory $blockFactory,
-        BlockRepository $blockRepository
+        BlockRepository $blockRepository,
+        \Magento\Cms\Model\ResourceModel\Page $pageResource,
+        \Magento\Cms\Model\ResourceModel\Block $blockResource
     ) {
+        $this->pageResource = $pageResource;
+        $this->blockResource = $blockResource;
         $this->moduleReader = $moduleReader;
         $this->pageFactory = $pageFactory;
         $this->pageRepository = $pageRepository;
@@ -150,7 +166,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         $data['content'] = $content;
 
         $page = $this->pageFactory->create();
-        $page = $page->load($data['identifier'], 'identifier');
+        $this->pageResource->load($page, $data['identifier'], 'identifier');
 
         if ($page->getId()) {
             $data['page_id'] = $page->getId();
@@ -203,7 +219,7 @@ class CmsSubProcessor extends AbstractSubProcessor
         $data['content'] = $content;
 
         $block = $this->blockFactory->create();
-        $block = $block->load($blockData['identifier'], 'identifier');
+        $this->blockResource->load($block, $blockData['identifier'], 'identifier');
 
         if ($block->getId()) {
             $data['block_id'] = $block->getId();

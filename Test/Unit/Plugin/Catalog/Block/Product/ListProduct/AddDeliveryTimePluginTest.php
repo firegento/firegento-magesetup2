@@ -16,13 +16,13 @@ use PHPUnit\Framework\TestCase;
 
 class AddDeliveryTimePluginTest extends TestCase
 {
-    /** @var ScopeConfigInterface | \PHPUnit_Framework_MockObject_MockObject */
+    /** @var ScopeConfigInterface | \PHPUnit\Framework\MockObject\MockObject */
     protected $scopeConfigMock;
 
-    /** @var LayoutInterface | \PHPUnit_Framework_MockObject_MockObject */
+    /** @var LayoutInterface | \PHPUnit\Framework\MockObject\MockObject */
     protected $layoutMock;
 
-    /** @var ListProduct | \PHPUnit_Framework_MockObject_MockObject */
+    /** @var ListProduct | \PHPUnit\Framework\MockObject\MockObject */
     protected $listProductMock;
 
     /** @var \Closure */
@@ -31,7 +31,7 @@ class AddDeliveryTimePluginTest extends TestCase
     /** @var  AddDeliveryTimePlugin */
     protected $plugin;
 
-    /** @var Product | \PHPUnit_Framework_MockObject_MockObject */
+    /** @var Product | \PHPUnit\Framework\MockObject\MockObject */
     protected $productMock;
 
     public function setUp(): void
@@ -42,13 +42,11 @@ class AddDeliveryTimePluginTest extends TestCase
 
         $this->plugin = new AddDeliveryTimePlugin($this->scopeConfigMock);
 
-        $this->layoutMock = $this->getMockBuilder(LayoutInterface::class)
-            ->setMethods(['getBlock'])
-            ->getMockForAbstractClass();
+        $this->layoutMock = $this->createMock(LayoutInterface::class);
 
         $this->listProductMock = $this->getMockBuilder(ListProduct::class)
             ->disableOriginalConstructor()
-            ->setMethods(['getLayout'])
+            ->onlyMethods(['getLayout'])
             ->getMock();
 
         $this->listProductMock->method('getLayout')
@@ -67,10 +65,9 @@ class AddDeliveryTimePluginTest extends TestCase
      * Ensures that the plugin does not do anything stupid if the delivery
      * info block is not present in the layout.
      *
-     * @test
      * @return void
      */
-    public function afterGetProductDetailsHtmlDoesNotDoAnythingIfBlockDoesNotExist()
+    public function testAfterGetProductDetailsHtmlDoesNotDoAnythingIfBlockDoesNotExist()
     {
         // Simulate the situation when the block does not exist.
         $this->layoutMock->expects($this->atLeastOnce())
@@ -81,6 +78,6 @@ class AddDeliveryTimePluginTest extends TestCase
         $result = $this->plugin->afterGetProductDetailsHtml($this->listProductMock, '', $this->productMock);
 
         // Make sure that the plugin does not modify the result.
-        self::assertSame($result, $result);
+        self::assertSame('', $result);
     }
 }
